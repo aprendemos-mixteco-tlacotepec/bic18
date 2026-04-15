@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSS" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos </a></button>
+                                <ul class="submenu">
+                                     <li><a href="">Saludos y frases de cortesía</a></li>
+                                     <li><a href="Campos semanticos/frutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras y legumbres</a></li>
+                                     <li><a href="Campos semanticos/partes del cuerpo/partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="">Enfermedades</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">Pronunciación</a>
+                        <a href="#">Lección de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script>
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script>
+            </header>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f0f8f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+header {
+    background-color: rgba(17, 52, 158, 0.8);
+    padding: 10px;
+    text-align: center;
+}
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(20, 186, 215, 0.5);
+    border-bottom: 2px solid #000;
+}
+.menu a {
+    text-decoration: none;
+    background-color: #3715a7;
+    padding: 10px 15px;
+    color: rgb(245, 247, 245);
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.menu a:hover {
+    background-color: #4bbf73;
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    }
+    .logo-header {
+    height: auto;
+    width: 120px; 
+    }
+
+    footer {
+        background-color: #004d26;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      
+      footer a {
+        color: #ffd700;
+        text-decoration: none;
+      }
+      nav ul {
+list-style: none;
+padding: 0;
+margin: 0;
+position: relative;
+}
+nav ul li {
+position: relative;
+}
+nav ul li a {
+color: white;
+text-decoration: none;
+padding: 10px;
+display: block;
+}
+nav ul li:hover > a {
+background: #666;
+}
+/* Submenús */
+nav ul li ul {
+display: none;
+position: absolute;
+background: #555;
+padding: 0;
+min-width: 180px;
+z-index: 100;
+}
+nav ul li:hover ul {
+display: block;
+}
+nav ul li ul li a {
+padding: 10px;
+border-bottom: 1px solid #666;
+}
+nav ul li ul li a:hover {
+background: #777;
+}
+ul.menu li button:hover { background: #666; }
+
+    header img {
+      width: 100px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px auto;
+      max-width: 1000px;
+      gap: 30px;
+    }
+
+    .part {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.3s;
+    }
+
+    .part:hover {
+      transform: scale(1.05);
+    }
+
+    .part img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .part button {
+      background: #00703c;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .part button:hover {
+      background: #56ab2f;
+    }
+
+    /* Juego interactivo */
+    #game {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      width: 80%;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background: #004d26;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #9be4b2;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 48px;
+}
+nav {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
+h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+}
+h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 35px;
+}
+footer {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+}
+  </style>
+<body>
+  <main>
+    <section class="container">
+      <div class="part">
+        <img src="imagen/cabeza1234.jfif" alt="Cabeza">
+        <h3><em>Xini</em></h3>
+        <audio id="audio1" src="audio/cabeza.mp3"></audio>
+        <button onclick="document.getElementById('audio1').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/barba.webp" alt="Mano">
+        <h3><em>Ixi nuu</em></h3>
+        <audio id="audio2" src="audio/barba.mp3"></audio>
+        <button onclick="document.getElementById('audio2').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/ojo.png" alt="Ojo">
+        <h3><em>Ndutyi</em></h3>
+        <audio id="audio3" src="audio/ojos.mp3"></audio>
+        <button onclick="document.getElementById('audio3').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/oreja.png" alt="Pie">
+        <h3> <em>So´o</em></h3>
+        <audio id="audio4" src="audio/oreja.mp3"></audio>
+        <button onclick="document.getElementById('audio4').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/pestaña_2.webp" alt="Brazo">
+       <h3><em>Ixi ndutyi</em></h3>
+        <audio id="audio5" src="audio/pestaña.mp3"></audio>
+       <button onclick="document.getElementById('audio5').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/cuello.png" alt="Cuello">
+        <h3><em>Sukun </em></h3>
+        <audio id="audio6" src="audio/cuello.mp3"></audio>
+        <button onclick="document.getElementById('audio6').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/bigote.webp" alt="bigote">
+        <h3><em>Ixi yu´u</em></h3>
+        <audio id="audio7" src="audio/bigote.mp3"></audio>
+        <button onclick="document.getElementById('audio7').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/dientes.jpg" alt="dientes">
+        <h3> <em>Un´u</em></h3>
+        <audio id="audio8" src="audio/dientes.mp3"></audio>
+        <button onclick="document.getElementById('audio8').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/lengua.png" alt="Lengua">
+        <h3><em>Yaa</em></h3>
+        <audio id="audio9" src="audio/lengua.mp3"></audio>
+        <button onclick="document.getElementById('audio9').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/nariz.png" alt="nariz">
+        <h3><em>Stnii</em></h3>
+        <audio id="audio10" src="audio/nariz.mp3"></audio>
+        <button onclick="document.getElementById('audio10').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/cabello123.jfif" alt="cabello">
+        <h3><em>Ixi xini</em></h3>
+
+        <audio id="audio11" src="audio/pelo de cabeza.mp3"></audio>
+        <button onclick="document.getElementById('audio11').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/mano.png" alt="mano">
+        <h3> <em>Nda´a</em></h3>
+        <audio id="audio12" src="audio/mano.mp3"></audio>
+        <button onclick="document.getElementById('audio12').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/uñas.webp" alt="uña">
+        <h3> <em>Tnii</em></h3>
+        <audio id="audio13" src="audio/uñasdemano.mp3"></audio>
+        <button onclick="document.getElementById('audio13').play()">🔊 Escuchar</button>
+      </div>
+
+            <div class="part">
+        <img src="imagen/TOBILLO.webp" alt="tobillo">
+        <h3> <em>Sukun ja´a</em></h3>
+        <audio id="audio14" src="audio/tobillos.mp3"></audio>
+        <button onclick="document.getElementById('audio14').play()">🔊 Escuchar</button>
+      </div>
+
+            <div class="part">
+        <img src="imagen/espalda2.2" alt="espalda">
+        <h3><em>Yata </em></h3>
+        <audio id="audio15" src="audio/espalda.mp3"></audio>
+        <button onclick="document.getElementById('audio15').play()">🔊 Escuchar</button>
+      </div>
+
+       <div class="part">
+        <img src="imagen/codos.webp" alt="codo">
+        <h3><em>Xuu ko´ndo nda´a </em></h3>
+        <audio id="audio16" src="audio/CODO.mp3"></audio>
+        <button onclick="document.getElementById('audio16').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/hombrouna nueva.png" alt="hombro">
+        <h3> <em>Nusoko</em></h3>
+        <audio id="audio17" src="audio/ombros.mp3"></audio>
+        <button onclick="document.getElementById('audio17').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/muñeca.webp" alt="muñeca">
+        <h3> <em>Sukun nda´a </em></h3>
+        <audio id="audio18" src="audio/muñecas.mp3"></audio>
+        <button onclick="document.getElementById('audio18').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/boca.png" alt="boca">
+        <h3> <em> Yu´u</em></h3>
+        <audio id="audio19" src="audio/boca.mp3"></audio>
+        <button onclick="document.getElementById('audio19').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/axila.webp" alt="axila">
+        <h3> <em>tyii xe´en </em></h3>
+        <audio id="audio20" src="audio/axila.mp3"></audio>
+        <button onclick="document.getElementById('audio20').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/barbilla.webp" alt="barbilla">
+        <h3> <em>Ixi tyii yiki yu´u </em></h3>
+        <audio id="audio21" src="audio/barbilla.mp3"></audio>
+        <button onclick="document.getElementById('audio21').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/bicep.webp" alt="bicep">
+        <h3> <em>Nu kokno nda´a </em></h3>
+        <audio id="audio22" src="audio/bicep.mp3"></audio>
+        <button onclick="document.getElementById('audio22').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/caderas123.jpg" alt="caderas">
+        <h3> <em> Yata ka´a</em></h3>
+        <audio id="audio23" src="audio/caderas.mp3"></audio>
+        <button onclick="document.getElementById('audio23').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/gluteos.png" alt="gluteos">
+        <h3> <em>Xuu </em></h3>
+        <audio id="audio24" src="audio/gluteos.mp3"></audio>
+        <button onclick="document.getElementById('audio24').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/dedos de la mano.webp" alt="dedos">
+        <h3> <em>Xini nda´a</em></h3>
+        <audio id="audio25" src="audio/dedos de la mano.mp3"></audio>
+        <button onclick="document.getElementById('audio25').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/la panza.jfif" alt="estomago">
+        <h3><em>tyii </em></h3>
+        <audio id="audio26" src="audio/estomago.mp3"></audio>
+        <button onclick="document.getElementById('audio26').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/labios.png" alt="labios">
+        <h3> <em>Ñii yu´u</em></h3>
+        <audio id="audio27" src="audio/labios.mp3"></audio>
+        <button onclick="document.getElementById('audio27').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/obligoi.webp" alt="ombligo">
+        <h3> <em>Xendu</em></h3>
+        <audio id="audio28" src="audio/obligo.mp3"></audio>
+        <button onclick="document.getElementById('audio28').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/palam.webp" alt="palmadelamano">
+        <h3> <em>Ini nda´a</em></h3>
+        <audio id="audio29" src="audio/palma de la mano.mp3"></audio>
+        <button onclick="document.getElementById('audio29').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/pantorrilla.webp" alt="pantorrilla">
+        <h3><em>Nuu kokno ja´a</em></h3>
+        <audio id="audio30" src="audio/patorrilla.mp3"></audio>
+        <button onclick="document.getElementById('audio30').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/pecho.png" alt="pechos">
+        <h3> <em>Ndoso</em></h3>
+        <audio id="audio31" src="audio/pechos.mp3"></audio>
+        <button onclick="document.getElementById('audio31').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/PESTAÑA.webp" alt="pestaña">
+        <h3><em>Ixi ndutyi</em></h3>
+        <audio id="audio32" src="audio/pestaña.mp3"></audio>
+        <button onclick="document.getElementById('audio32').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imagen/ROSTRO.webp" alt="rostro">
+        <h3><em>Nu`u</em></h3>
+        <audio id="audio33" src="audio/rostro.mp3"></audio>
+        <button onclick="document.getElementById('audio33').play()">🔊 Escuchar</button>
+      </div>
+
+ <nav class="menu">
+        <a href="actividad-cuerpo.html"><Actividad></a>
+        </nav>
+                             <script>
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script>
+
+
+    </section>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Juego de Lengua Mixteca</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background: linear-gradient(135deg,#f9d976,#f39f86);
+}
+.seccion{display:none;}
+button{
+    padding:10px 20px;
+    margin:5px;
+    font-size:16px;
+    cursor:pointer;
+}
+.card{
+    display:inline-block;
+    width:100px;
+    height:100px;
+    margin:10px;
+    background:#fff;
+    line-height:100px;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+    border:2px solid #333;
+}
+.oculto{
+    background:#333;
+    color:#333;
+}
+</style>
+</head>
+<body>
+  <footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>
+
+

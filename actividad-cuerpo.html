@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSS" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos </a></button>
+                                <ul class="submenu">
+                                     <li><a href="">Saludos y frases de cortesía</a></li>
+                                     <li><a href="Campos semanticos/frutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras y legumbres</a></li>
+                                     <li><a href="Campos semanticos/partes del cuerpo/partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="">Enfermedades</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">Pronunciación</a>
+                        <a href="#">Lección de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script>
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script>
+            </header>
+           
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f0f8f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+header {
+    background-color: rgba(17, 52, 158, 0.8);
+    padding: 10px;
+    text-align: center;
+}
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(20, 186, 215, 0.5);
+    border-bottom: 2px solid #000;
+}
+.menu a {
+    text-decoration: none;
+    background-color: #3715a7;
+    padding: 10px 15px;
+    color: rgb(245, 247, 245);
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.menu a:hover {
+    background-color: #4bbf73;
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    }
+    .logo-header {
+    height: auto;
+    width: 120px; 
+    }
+
+    footer {
+        background-color: #004d26;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      
+      footer a {
+        color: #ffd700;
+        text-decoration: none;
+      }
+      nav ul {
+list-style: none;
+padding: 0;
+margin: 0;
+position: relative;
+}
+nav ul li {
+position: relative;
+}
+nav ul li a {
+color: white;
+text-decoration: none;
+padding: 10px;
+display: block;
+}
+nav ul li:hover > a {
+background: #666;
+}
+/* Submenús */
+nav ul li ul {
+display: none;
+position: absolute;
+background: #555;
+padding: 0;
+min-width: 180px;
+z-index: 100;
+}
+nav ul li:hover ul {
+display: block;
+}
+nav ul li ul li a {
+padding: 10px;
+border-bottom: 1px solid #666;
+}
+nav ul li ul li a:hover {
+background: #777;
+}
+ul.menu li button:hover { background: #666; }
+
+    header img {
+      width: 100px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px auto;
+      max-width: 1000px;
+      gap: 30px;
+    }
+
+    .part {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.3s;
+    }
+
+    .part:hover {
+      transform: scale(1.05);
+    }
+
+    .part img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .part button {
+      background: #00703c;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .part button:hover {
+      background: #56ab2f;
+    }
+
+    /* Juego interactivo */
+    #game {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      width: 80%;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background: #004d26;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #9be4b2;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 48px;
+}
+nav {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
+h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+}
+h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 35px;
+}
+footer {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+}
+  </style>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f8c471, #f7dc6f);
+    text-align: center;
+    padding: 20px;
+}
+
+.container{
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 15px rgb(247, 246, 246);
+}
+.question{
+    margin-bottom: 20px;
+}
+button{
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ca6f1e;
+    color: white;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #873600;
+}
+#resultado{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Juego Interactivo: Lengua Mixteca sobre las partes del cuerpo 🎉</h1>
+<h2>Propósito: Esta actividad nos permite evaluar y fortalecer la adquizición del vocabulario de las
+                 partes del cuerpo,a través de la lectura y la asociación de significados contextualizados. </h2>
+<div class="container">
+
+<div class="question">
+<p><b>1.</b> ¿Còmo se dice cabeza en la lengua mixteca?</p>
+<button onclick="responder(this, true)">xini</button>
+<button onclick="responder(this, false)">Stnii</button>
+<button onclick="responder(this, false)">Ixi chii yiki yu´u</button>
+</div>
+
+<div class="question">
+<p><b>2.</b> ¿Me ocupas para escuchar el canto de las aves?</p>
+<button onclick="responder(this, false)">Nu kokno nada´a </button>
+<button onclick="responder(this, false)">Xuu ko´ndo nada´a</button>
+<button onclick="responder(this, true)">So´o</button>
+</div>
+
+<div class="question">
+<p><b>3.</b> ¿Còmo se dice caderas en mixteco?</p>
+<button onclick="responder(this, false)">Nu chii</button>
+<button onclick="responder(this, true)">Yata ka´a</button>
+<button onclick="responder(this, false)">Sukun nda´a</button>
+</div>
+
+<div class="question">
+<p><b>4.</b> Esta parte es esencial para divisar el horizonte:</p>
+<button onclick="responder(this, true)">Nduchi</button>
+<button onclick="responder(this, false)">Ixi chii yiki yu´u</button>
+<button onclick="responder(this, false)">Yata ka´a</button>
+</div>
+
+<button onclick="mostrarResultado()">Ver Resultado</button>
+<button onclick="reiniciar()">Reiniciar</button>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+let puntaje = 0;
+let respondidas = 0;
+
+function responder(boton, correcta){
+    if(boton.classList.contains("respondido")) return;
+
+    let botones = boton.parentElement.querySelectorAll("button");
+    botones.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.add("respondido");
+    });
+
+    if(correcta){
+        puntaje++;
+        boton.style.backgroundColor = "green";
+    } else {
+        boton.style.backgroundColor = "red";
+    }
+
+    respondidas++;
+}
+
+function mostrarResultado(){
+    let mensaje = "";
+    if(respondidas < 4){
+        mensaje = "⚠️ Responde todas las preguntas primero.";
+    } else {
+        if(puntaje == 4){
+            mensaje = "🏆 ¡Excelente! sigue asi, eres muy bueno para esto.";
+        } else if(puntaje >= 2){
+            mensaje = "👍 ¡Muy bien estas progresando ya te falta poco.";
+        } else {
+            mensaje = "📚 No te sientas mal y sigue aprendiedo.";
+        }
+        mensaje += "<br>Puntaje: " + puntaje + " / 4";
+    }
+    document.getElementById("resultado").innerHTML = mensaje;
+}
+
+function reiniciar(){
+    location.reload();
+}
+</script>
+
+</body>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>
+
