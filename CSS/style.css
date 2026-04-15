@@ -1,0 +1,138 @@
+<style>
+/* CSS Básico */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: blue;
+    color: black;
+}
+header {
+    background-color: rgba(17, 52, 158, 0.8);
+    padding: 10px;
+    text-align: center;
+}
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(20, 186, 215, 0.5);
+    border-bottom: 2px solid #000;
+}
+.menu a {
+    text-decoration: none;
+    background-color: #3715a7;
+    padding: 10px 15px;
+    color: rgb(245, 247, 245);
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.menu a:hover {
+    background-color: #4bbf73;
+}
+h1 {
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000;
+    margin-top: 10px;
+}
+h2 {
+    text-align: center;
+    color: #0a0909;
+    text-shadow: 2px 2px 4px #f4f0f0;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: rgb(86, 202, 128);
+}
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    }
+    .logo-header {
+    height: auto;
+    width: 140px; 
+    }
+    h3 {
+        text-align: center;
+        color: #0f0d0d;
+        text-shadow: 2px 2px 4px #e2dada;
+        margin-top: 10px;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: rgb(74, 169, 53);
+    }
+    footer {
+        background-color: #004d26;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      
+      footer a {
+        color: #ffd700;
+        text-decoration: none;
+      }
+      nav ul {
+list-style: none;
+padding: 0;
+margin: 0;
+position: relative;
+}
+nav ul li {
+position: relative;
+}
+nav ul li a {
+color: white;
+text-decoration: none;
+padding: 10px;
+display: block;
+}
+nav ul li:hover > a {
+background: #666;
+}
+/* Submenús */
+nav ul li ul {
+display: none;
+position: absolute;
+background: #555;
+padding: 0;
+min-width: 180px;
+z-index: 100;
+}
+nav ul li:hover ul {
+display: block;
+}
+nav ul li ul li a {
+padding: 10px;
+border-bottom: 1px solid #666;
+}
+nav ul li ul li a:hover {
+background: #777;
+}
+ul.menu li button:hover { background: #666; }
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 48px;
+}
+nav {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
+h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+}
+h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 35px;
+}
+footer {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+}
+</style>
