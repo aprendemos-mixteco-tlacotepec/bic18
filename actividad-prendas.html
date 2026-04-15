@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Juntos aprendamos mixteco</title>
+            <link rel="stylesheet" href="CSS/style.css">
+        </head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSS" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="../index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos</button>
+                                <ul class="submenu">
+                                     <li><a href=""Saludos></a></li>
+                                     <li><a href="Campos semanticos/frutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras</a></li>
+                                     <li><a href="">partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="">Enfermedades</a></li>
+                                </ul>
+                            </ul>
+                        </li>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">pronunciación</a>
+                        <a href="#">leccion de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script>
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script>
+            </header>
+
+
+            <h1>👕 Adivina la Prenda 🌟</h1>
+            <H2>Propósito: Esta actividad nos permite evaluar y fortalecer la adquizición del vocabulario de las
+                 prendas de vestir,a través de la lectura y la asociación de significados contextualizados.  
+            </H2>
+
+<div class="container" id="juego">
+
+    <p id="adivinanza" style="font-size:18px; font-weight:bold;"></p>
+    
+    <div id="opciones"></div>
+
+    <p id="resultado"></p>
+    <p>⭐ Puntaje: <span id="puntaje">0</span></p>
+
+    <button onclick="siguiente()">Siguiente</button>
+
+</div>
+
+<div class="container" id="pantallaFinal">
+    <h2>🎉 Juego terminado 🎉</h2>
+    <p>Tu puntaje final es:</p>
+    <h1 id="puntajeFinal"></h1>
+    <button onclick="reiniciar()">Jugar otra vez</button>
+</div>
+
+<script>
+const prendas = [
+    { adivinanza:"Me pones en la cabeza para protegerte del sol.", esp:"", mix:"Ñuu xini" },
+    { adivinanza:"Cubro tu cuerpo, que soy?.", esp:"", mix:" Sa`ma" },
+    { adivinanza:"Me pongo en las piernas y puedo ser largo o corto.", esp:"", mix:"Loo" },
+    { adivinanza:"Me pones cuando hace frío y tengo mangas largas.", esp:"", mix:"Su’un kokno" },
+    { adivinanza:"Me pones en los pies y soy abierto, tradicional.", esp:"", mix:" Ntsijan ñii" },
+    { adivinanza:"Me pongo en los pies dentro de los zapatos.", esp:"", mix:"Ja ñu´u ja´a" },
+    { adivinanza:"Soy similar a la camisa, pero más casual y sin botones.", esp:"", mix:"Su´nu yi´i ma" },
+    { adivinanza:"Camisa ligera, mangas cortas para el calor.", esp:"", mix:"Su’un nda’a kuitsi" },
+    { adivinanza:"Sudadera con capucha, para días fríos.", esp:"", mix:"Su’un i’ni" },
+    { adivinanza:"Playera con mangas largas para cubrir brazos.", esp:"", mix:"Su’un nda’a kani" },
+    { adivinanza:"Ropa femenina que cubre desde los hombros hasta las piernas.", esp:"", mix:"Xoo" },
+    { adivinanza:"Me pongo debajo de la ropa, es íntima.", esp:"", mix:"Sa´ma yi´i ma" },
+    { adivinanza:"Aprieto la cintura para mantener tu fuerza.", esp:"", mix:"Ja nga tyii" },
+    { adivinanza:"Pequeño círculo que va de adorno en los dedos.", esp:"", mix:"Xe’en" },
+    { adivinanza:"Me pones en la cabeza, parecido al sombrero pero casual.", esp:"", mix:" Ja ñu´u xini" },
+    { adivinanza:"Pequeño adorno que se pone en las orejas.", esp:"", mix:"Siki so´o" },
+    { adivinanza:"Me pones al cuello para abrigarte.", esp:"", mix:" Ja ñu´u sukun" },
+    { adivinanza:"Protejo tus ojos del sol y la luz.", esp:"", mix:"Ja ñu’u ndutyi" },
+    { adivinanza:"Guardo dinero y tarjetas en mi interior.", esp:"", mix:"Nuu ñu’un xu’un" },
+    { adivinanza:"Me pongo en las manos para mantenerlas calientes.", esp:"", mix:" Ja ñu’u nda’a" },
+    { adivinanza:"Ropa interior masculina.", esp:"", mix:"Sa´ma yi´i ma" },
+    { adivinanza:"Soy un tejido de palma utilizado por las mujeres.", esp:"", mix:"Tnani" },
+    { adivinanza:"Es un lienzo grande, grueso utilizado en el frio.", esp:"", mix:"Soo ini" },
+    { adivinanza:"Accesorio que se utiliza para danzar o bailar.", esp:"", mix:"Pañitu" }
+];
+
+
+
+
+let indiceActual = 0;
+let puntos = 0;
+
+function cargarJuego(){
+    document.getElementById("resultado").textContent="";
+    
+    const actual = prendas[indiceActual];
+    document.getElementById("adivinanza").textContent = actual.adivinanza;
+
+    // Crear 3 opciones mezcladas
+    let opciones = prendas.map(p => `${p.esp}  ${p.mix}`);
+    opciones = opciones.sort(()=>0.5-Math.random());
+    opciones = opciones.slice(0,3);
+    if(!opciones.includes(`${actual.esp}  ${actual.mix}`)){
+        opciones[Math.floor(Math.random()*3)] = `${actual.esp}  ${actual.mix}`;
+    }
+
+    const div = document.getElementById("opciones");
+    div.innerHTML = "";
+    opciones.forEach(op=>{
+        const btn = document.createElement("button");
+        btn.textContent = op;
+        btn.onclick = ()=>seleccionar(op);
+        div.appendChild(btn);
+    });
+}
+
+function seleccionar(opcion){
+    const actual = prendas[indiceActual];
+    const resultado = document.getElementById("resultado");
+
+    if(opcion === `${actual.esp}  ${actual.mix}`){
+        puntos++;
+        resultado.textContent = "✅ ¡Correcto!";
+        resultado.className = "correcto";
+    } else {
+        resultado.textContent = `❌ Incorrecto. La respuesta correcta es: ${actual.esp}  ${actual.mix}`;
+        resultado.className = "incorrecto";
+    }
+    document.getElementById("puntaje").textContent = puntos;
+}
+
+function siguiente(){
+    indiceActual++;
+    if(indiceActual >= prendas.length){
+        document.getElementById("juego").style.display="none";
+        document.getElementById("pantallaFinal").style.display="block";
+        document.getElementById("puntajeFinal").textContent = puntos;
+    } else {
+        cargarJuego();
+    }
+}
+
+function reiniciar(){
+    indiceActual=0;
+    puntos=0;
+    document.getElementById("pantallaFinal").style.display="none";
+    document.getElementById("juego").style.display="block";
+    document.getElementById("puntaje").textContent = 0;
+    cargarJuego();
+}
+
+cargarJuego();
+</script>
+<style>
+body{
+    font-family: 'Comic Sans MS', cursive;
+    text-align:center;
+    background: linear-gradient(135deg, #3ea66b, #34e4cd);
+    background-size: 300% 300%;
+    animation: fondoAnimado 8s ease infinite;
+    margin:0;
+    padding:0;
+}
+
+@keyframes fondoAnimado{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.container{
+    background:white;
+    width:480px;
+    margin:30px auto;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    background:#ff758c;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    margin:5px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#ff5e78;
+    transform:scale(1.1);
+}
+
+.correcto{
+    color:rgb(23, 224, 204);
+    font-size:20px;
+    margin-top:10px;
+}
+
+.incorrecto{
+    color:red;
+    font-size:18px;
+    margin-top:10px;
+}
+
+#pantallaFinal{
+    display:none;
+}
+</style>
+<a href="#">Reseña de San Agustín Tlacotepec</a>
+</body>
+
+         
+         </div>
+        
+
+    </section>
+  </main>
+  <footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>

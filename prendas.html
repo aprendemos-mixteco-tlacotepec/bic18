@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Juntos aprendamos mixteco</title>
+            <link rel="stylesheet" href="CSS/style.css">
+        </head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSS" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="../index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos</button>
+                                <ul class="submenu">
+                                     <li><a href=""Saludos></a></li>
+                                     <li><a href="Campos semanticos/frutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras</a></li>
+                                     <li><a href="">partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="">Enfermedades</a></li>
+                                </ul>
+                            </ul>
+                        </li>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">pronunciación</a>
+                        <a href="#">leccion de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script>
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script>
+            </header>
+  <main>
+    <section>
+      <h3>Aprende Mixteco con imágenes y audio</h3>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="IMAGEN/sombre.webp" alt="Sombrero">
+          <p><strong>Mixteco:</strong> ñuu xini</p>
+          <audio controls>
+            <source src="AUDIO/sombrero.mp3" type="audio/mp3">
+          </audio>
+        </div>
+
+        <div class="gallery-item">
+          <img src="IMAGEN/conjunto.jfif" alt="Camisa">
+          <p><strong>Mixteco:</strong> Sa`ma</p>
+          <audio controls>
+            <source src="AUDIO/camisa.ogg" type="audio/mp3">
+          </audio>
+        </div>
+
+        <div class="gallery-item">
+          <img src="IMAGEN/panta.webp" alt="Pantalón">
+          <p><strong>Mixteco:</strong> loo</p>
+          <audio controls>
+            <source src="AUDIO/pantalon.mp3" type="audio/mp3">
+          </audio>
+        </div>
+
+        <div class="gallery-item">
+          <img src="IMAGEN/Chamarra.webp" alt="chamarra">
+          <p><strong>Mixteco:</strong> Su’un kokno </p>
+          <audio controls>
+            <source src="AUDIO/chamarra.mp3" type="audio/mp3">
+          </audio>
+          </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/huaraches.jpg" alt="huaraches">
+          <p><strong>Mixteco:</strong> Ntsija´an ñii </p>
+          <audio controls>
+            <source src="AUDIO/huaraches.mp3" type="audio/mp3">
+          </audio>
+        </div>
+
+        <div class="gallery-item">
+          <img src="IMAGEN/Calcetín.jpg" alt="Calcetín">
+          <p><strong>Mixteco:</strong> Ja ñu´u ja´a </p>
+          <audio controls>
+            <source src="AUDIO/calcetin.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+          <div class="gallery-item">
+          <img src="IMAGEN/camisetas.jpg" alt="camiseta">
+          <p><strong>Mixteco:</strong> Su´nu yi´i ma </p>
+          <audio controls>
+            <source src="AUDIO/camiseta.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/PLAYERA.jpg" alt="Playera, camisa de manga corta, blusa">
+          <p><strong>Mixteco:</strong> Su’nu nda’a kuitsi </p>
+          <audio controls>
+            <source src="AUDIO/playera.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+          <div class="gallery-item">
+          <img src="IMAGEN/cobija.webp" alt="Cobija">
+          <p><strong>Mixteco:</strong> Su’nu i’ni </p>
+          <audio controls>
+            <source src="AUDIO/rebozo.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/Playera de manga larga, camisa de manga larga.webp" alt="playera de manga larga">
+          <p><strong>Mixteco:</strong> Su’nu nda’a kani </p>
+          <audio controls>
+            <source src="AUDIO/playera de manga larga.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/Vestido.webp" alt="Vestido">
+          <p><strong>Mixteco:</strong> Xoo </p>
+          <audio controls>
+            <source src="AUDIO/vestido.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+          <div class="gallery-item">
+          <img src="IMAGEN/Ropa interior.avif" alt="ropa interior">
+          <p><strong>Mixteco:</strong> Sa´ma yi´i ma </p>
+          <audio controls>
+            <source src="AUDIO/ropa interior.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/trapoparaamarrar.jfif" alt="Faja">
+          <p><strong>Mixteco:</strong> Ja nga tyii </p>
+          <audio controls>
+            <source src="AUDIO/faja.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/anillo.webp" alt="anillo">
+          <p><strong>Mixteco:</strong> Xe’en </p>
+          <audio controls>
+            <source src="AUDIO/anillo.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/Gorra, gorro.jpg" alt="Gorra, gorro">
+          <p><strong>Mixteco:</strong> Ja ñu´u xini </p>
+          <audio controls>
+            <source src="AUDIO/gorro.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+          <div class="gallery-item">
+          <img src="IMAGEN/Arete.jpg" alt="arete">
+          <p><strong>Mixteco:</strong> Siki so´o </p>
+          <audio controls>
+            <source src="AUDIO/arete.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/Guante.webp" alt="Guante">
+          <p><strong>Mixteco:</strong> Ja ñu’u nda’a </p>
+          <audio controls>
+            <source src="AUDIO/guante.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/Billetera.webp" alt="Billetera">
+          <p><strong>Mixteco:</strong> Nuu ñu’un xu’un  </p>
+          <audio controls>
+            <source src="AUDIO/billetera.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+          <div class="gallery-item">
+          <img src="IMAGEN/Gafas.webp" alt="Gafas">
+          <p><strong>Mixteco:</strong> Ja ñu’u ndutyi  </p>
+          <audio controls>
+            <source src="AUDIO/lentes.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/Bufanda.webp" alt="bufanda">
+          <p><strong>Mixteco:</strong> Ja ñu´u sukun  </p>
+          <audio controls>
+            <source src="AUDIO/bufanda.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         
+
+          <div class="gallery-item">
+          <img src="IMAGEN/soyate.jfif" alt="ceñidor">
+          <p><strong>Mixteco:</strong>  Tnani </p>
+          <audio controls>
+            <source src="AUDIO/ceñidor.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/Rebozo.webp" alt="Rebozo">
+          <p><strong>Mixteco:</strong> Soo ini </p>
+          <audio controls>
+            <source src="AUDIO/rebozo.mp3" type="audio/mp3">
+          </audio>
+         </div>
+
+         <div class="gallery-item">
+          <img src="IMAGEN/Pañuelo.jpg" alt="Pañuelo">
+          <p><strong>Mixteco:</strong> Pañitu  </p>
+          <audio controls>
+            <source src="AUDIO/pañuelo.mp3" type="audio/mp3">
+          </audio>
+         </div>
+         <nav class="menu">
+        <a href="actividad-prendas.html"><Actividad></a>
+        </nav>
+                             <script>
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script>
+        </section>
+
+
+        
+        
+
+    </section>
+  </main>
+  <footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>
