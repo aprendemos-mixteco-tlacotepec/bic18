@@ -7,9 +7,6 @@ body {
   color: #333;
 }
 
-
-<style>
-/* CSS Básico */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -125,7 +122,6 @@ nav ul li ul li a:hover {
 background: #777;
 }
 ul.menu li button:hover { background: #666; }
-</style>
 
 h1 {
   margin-top: 15x;
