@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #0c0c0c, #160606);
+  color: #333;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #14f5d7, #30e05c);
+  color: rgb(7, 7, 7);
+  text-align: center;
+  padding: 50px 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.7em;
+  letter-spacing: 1px;
+}
+
+header h2 {
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+/* CONTENIDO */
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2em;
+  color: #0d0d0e;
+}
+
+/* GALERÍA */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 30px;
+}
+
+/* TARJETAS */
+.gallery-item {
+  background: white;
+  border-radius: 20px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* EFECTO HOVER */
+.gallery-item:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* BORDE SUPERIOR DECORATIVO */
+.gallery-item::before {
+  content: "🩺";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 40px;
+  opacity: 0.1;
+}
+
+/* IMÁGENES */
+.gallery-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 12px;
+}
+
+/* TEXTO */
+.gallery-item p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.gallery-item strong {
+  color: #ee2005;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+}
+</style>
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Juntos aprendamos mixteco</title>
+            <link rel="stylesheet" href="CSS/style.css">
+        </head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSS" class="logo-header">
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src=""  alt="imagotipo de la pagina web"  class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos </a></button>
+                                <ul class="submenu">
+                                     <li><a href="Campos semanticos/saludos y frases de cortesia/saludos_y_frases_de_cortesia.html">Saludos y frases de cortesía</a></li>
+                                     <li><a href="Campos semanticos/fRutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras y legumbres</a></li>
+                                     <li><a href="Campos semanticos/partes del cuerpo/partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="enfermedades.html">Enfermedades</a>Enfermedades</li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">Pronunciación</a>
+                        <a href="#">Lección de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+
+  <h3>Aprende Mixteco con imágenes y audio</h3>
+
+<div class="gallery">
+
+ 
+
+  
+
+ 
+
+  <div class="gallery-item">
+    <img src="IMAGEN/calambre.webp" alt="Calambres">
+    <p><strong>Enfermedad:</strong> Kue´e Ndakuiyo</p>
+    <p><strong>Síntomas:</strong> Contracción muscular dolorosa</p>
+
+    <audio controls>
+            <source src="AUDIO/calambre.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+
+
+  <div class="gallery-item">
+    <img src="IMAGEN/Diarrea.webp" alt="Diarrea">
+    <p><strong>Enfermedad:</strong>Kue´e kuun </p>
+    <p><strong>Síntomas:</strong> Heces líquidas frecuentes, dolor abdominal</p>
+
+    <audio controls>
+            <source src="AUDIO/diarrea.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/dolor de estomago.webp" alt="Dolor de estómago">
+    <p><strong>Enfermedad:</strong> Dolor de estómago</p>
+    <p><strong>Síntomas:</strong> Dolor abdominal, ardor</p>
+
+    <audio controls>
+            <source src="AUDIO/dolor de estomago.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/dolor de espalda.webp" alt="Dolor de espalda">
+    <p><strong>Enfermedad:</strong> Dolor de espalda</p>
+    <p><strong>Síntomas:</strong> Dolor muscular en la zona lumbar</p>
+
+    <audio controls>
+            <source src="AUDIO/dolor de espalda.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/empacho.jpg" alt="Empacho">
+    <p><strong>Enfermedad:</strong> Empacho</p>
+    <p><strong>Síntomas:</strong> Pesadez estomacal, náuseas</p>
+
+    <audio controls>
+            <source src="AUDIO/empacho.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/dolor de cabeza.webp" alt="Dolor de cabeza">
+    <p><strong>Enfermedad:</strong> Ku´u xini</p>
+    <p><strong>Síntomas:</strong> Dolor o presión en la cabeza</p>
+
+    <audio controls>
+            <source src="AUDIO/dolor de cabeza.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  
+
+  <div class="gallery-item">
+    <img src="IMAGEN/gripe.webp" alt="Gripe">
+    <p><strong>Enfermedad:</strong> Kue´e stnii </p>
+    <p><strong>Síntomas:</strong> Fiebre, tos, congestión</p>
+
+    <audio controls>
+            <source src="AUDIO/gripe.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/mareos.webp" alt="Mareos">
+    <p><strong>Enfermedad:</strong> Nee nuu</p>
+    <p><strong>Síntomas:</strong> Sensación de inestabilidad</p>
+
+    <audio controls>
+            <source src="AUDIO/mareo.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  
+
+  <div class="gallery-item">
+    <img src="IMAGEN/varicela.webp" alt="Varicela">
+    <p><strong>Enfermedad:</strong> Varicela</p>
+    <p><strong>Síntomas:</strong> Ampollas en la piel, fiebre</p>
+
+    <audio controls>
+            <source src="AUDIO/varicela.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/diabetes.jpg" alt="Diabetes">
+    <p><strong>Enfermedad:</strong> Kue´e xii </p>
+    <p><strong>Síntomas:</strong> Sed excesiva, orinar frecuentemente</p>
+
+    <audio controls>
+            <source src="AUDIO/diabetes.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/vomito.jpg" alt="Vómito">
+    <p><strong>Enfermedad:</strong> Kue´e ndujan </p>
+    <p><strong>Síntomas:</strong> Expulsión del contenido del estómago</p>
+
+    <audio controls>
+            <source src="AUDIO/vomito.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEn/tos.webp" alt="Tos">
+    <p><strong>Enfermedad:</strong> Kue´e sayu </p>
+    <p><strong>Síntomas:</strong> Irritación en la garganta</p>
+
+    <audio controls>
+            <source src="AUDIO/tos.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+
+
+
+
+
+
+ <div class="gallery-item">
+    <img src="IMAGEN/asco.webp" alt="Asco ">
+    <p><strong>Enfermedad:</strong> Ku knini ini</p>
+    <p><strong>Síntomas:</strong>Una sensación de malestar en el estómago que puede preceder al vómito </p>
+
+    <audio controls>
+            <source src="AUDIO/asco.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/tuber.webp" alt="Tuberculosis ">
+    <p><strong>Enfermedad:</strong>Kue´e sayu xeen </p>
+    <p><strong>Síntomas:</strong> Dolor en el pecho y sensación de malestar general </p>
+
+    <audio controls>
+            <source src="AUDIO/tuberculosis.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+
+
+
+
+
+  <div class="gallery-item">
+    <img src="IMAGEN/susto.jpg" alt=" Susto ">
+    <p><strong>Enfermedad:</strong>Kue´e yu´u </p>
+    <p><strong>Síntomas:</strong> Respuesta emocional intensa y repentina ante una situación que nos ha causado miedo o sorpresa </p>
+
+    <audio controls>
+            <source src="AUDIO/susto.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/Reuma.jpg" alt=" Reuma  ">
+    <p><strong>Enfermedad:</strong>Kue´e yiki </p>
+    <p><strong>Síntomas:</strong>  Agrupa una variedad de trastornos que afectan el aparato locomotor, causando dolor y malestar </p>
+
+    <audio controls>
+            <source src="AUDIO/reuma.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/Hipo.jpg" alt="Hipo">
+    <p><strong>Enfermedad:</strong> Kaki´i </p>
+    <p><strong>Síntomas:</strong> Puedes sentir una ligera sensación de opresión en el pecho, el abdomen o la garganta. </p>
+
+    <audio controls>
+            <source src="AUDIO/hipo.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/Dolor de muela.webp" alt=" Dolor de muela">
+    <p><strong>Enfermedad:</strong>U´u nu´u o</p>
+    <p><strong>Síntomas:</strong> Dolor al tragar o masticar y sensación de incomodidad o malestar en la boca. 
+ </p>
+
+    <audio controls>
+            <source src="AUDIO/dolor de muela.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/Dolor de cuerpo.webp" alt=" Dolor de cuerpo ">
+    <p><strong>Enfermedad:</strong>U´u ni tuu o </p>
+    <p><strong>Síntomas:</strong>Un desequilibrio en el cuerpo que ocasiona cansancio y dolor </p>
+
+    <audio controls>
+            <source src="AUDIO/dolor de cuerpo.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/Dolor de oído.jpg" alt="Dolor de oído ">
+    <p><strong>Enfermedad:</strong>Ta´vi yi´i so´o </p>
+    <p><strong>Síntomas:</strong> Pequeño malestar en el oido</p>
+
+    <audio controls>
+            <source src="AUDIO/dolor de oido.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/Desmayo.webp" alt="Desmayo">
+    <p><strong>Enfermedad:</strong>Nee nuu</p>
+    <p><strong>Síntomas:</strong> Los síntomas del desmayo incluyen palidez, mareos, sudoración, visión borrosa y debilidad </p>
+
+    <audio controls>
+            <source src="AUDIO/desmayo.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+
+  <div class="gallery-item">
+    <img src="IMAGEN/Disentería.webp" alt=" Disentería">
+    <p><strong>Enfermedad:</strong>Sajin </p>
+    <p><strong>Síntomas:</strong> se caracteriza por diarrea severa con sangre y moco, dolor abdominal, fiebre y deshidratación. </p>
+
+    <audio controls>
+            <source src="AUDIO/desinteria.wav" type="audio/mp3">
+            Tu navegador no soporta audio.
+          </audio>
+
+  </div>
+ <nav class="menu">
+        <a href="juegosenfermedades.html"><Actividad>Siguiente</a>
+        </nav>
+</div>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es">
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Juntos aprendamos mixteco</title>
+            <link rel="stylesheet" href="CSS/style.css">
+        </head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSS" class="logo-header">
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src=""  alt="imagotipo de la pagina web"  class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos </a></button>
+                                <ul class="submenu">
+                                     <li><a href="Campos semanticos/saludos y frases de cortesia/saludos_y_frases_de_cortesia.html">Saludos y frases de cortesía</a></li>
+                                     <li><a href="Campos semanticos/fRutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras y legumbres</a></li>
+                                     <li><a href="Campos semanticos/partes del cuerpo/partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="enfermedades.html">Enfermedades</a>Enfermedades</li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">Pronunciación</a>
+                        <a href="#">Lección de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+<head>
+<meta charset="UTF-8">
+<title>Relacionar Enfermedades Español - Mixteco</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#15cedb,#ef73f3);
+    color:rgb(17, 17, 17);
+    text-align:center;
+    margin:0;
+}
+
+h1{
+    margin:20px 0;
+}
+
+.container{
+    display:flex;
+    justify-content:space-around;
+    position:relative;
+    width:90%;
+    margin:0 auto;
+}
+
+.column{
+    width:40%;
+}
+
+.item{
+    background:rgb(8, 248, 228);
+    color:black;
+    margin:10px;
+    padding:10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.item.selected{
+    background:#f4a261;
+}
+
+.item.correct{
+    background:#83f006;
+    color:rgb(15, 243, 232);
+    cursor:default;
+}
+
+.item.wrong{
+    background:#e63946;
+    color:rgb(37, 36, 36);
+}
+
+svg{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎯 Relaciona la enfermedad con su nombre en mixteco</h1>
+
+<div class="container" id="gameArea">
+    <div class="column" id="leftColumn"></div>
+    <div class="column" id="rightColumn"></div>
+    <svg id="lines"></svg>
+</div>
+
+<script>
+
+const pairs = [
+{es:"Asma", mix:"Tachi yuku"},
+{es:"Anemia", mix:"Kue ña'a"},
+{es:"Cáncer", mix:"Kue ndavi"},
+{es:"Diarrea", mix:"Kue´e kuun"},
+{es:"Dolor de estómago", mix:"Ndu'u tiyan"},
+{es:"Dolor de espalda", mix:"Ndu'u sata"},
+{es:"Empacho", mix:"Kue ndii tiyan"},
+{es:"Dolor de cabeza", mix:"Ku´u xini"},
+{es:"Gripe", mix:"Kue´e stnii"},
+{es:"Resfriado", mix:"Tachi vixi"},
+{es:"Diabetes", mix:"Kue´e xii "},
+{es:"Vómito", mix:"Kue´e ndujan"},
+{es:"Desmayo", mix:"Nee nuu"},
+{es:"Dolor de oido", mix:"Ta´vi yi´i so´o"},
+{es:"Dolor de cuerpo", mix:"U´u ni tuu o "},
+{es:"Dolor de muela", mix:"U´u nu´u o"},
+{es:"Hipo", mix:"Kaki´i"},
+{es:"Reuma", mix:"Kue´e yiki"},
+{es:"Susto", mix:"Kue´e yu´u "},
+{es:"tuberculosis", mix:"Kue´e sayu xeen "},
+{es:"Asco", mix:"Ku knini ini"},
+{es:"Mareos", mix:"Nee nuu"},
+{es:"dolor de cabeza", mix:"Ku´u xini"},
+{es:"Disentería", mix:"Sajin"},
+{es:"Tos", mix:"Kue´e sayu"}
+];
+
+let selectedLeft = null;
+
+function shuffle(array){
+    return array.sort(()=>Math.random()-0.5);
+}
+
+function startGame(){
+    const left = document.getElementById("leftColumn");
+    const right = document.getElementById("rightColumn");
+    const svg = document.getElementById("lines");
+
+    left.innerHTML="";
+    right.innerHTML="";
+    svg.innerHTML="";
+
+    let rightItems = shuffle([...pairs]);
+
+    pairs.forEach(pair=>{
+        const div = document.createElement("div");
+        div.classList.add("item");
+        div.textContent = pair.es;
+        div.dataset.value = pair.es;
+        div.onclick = ()=>selectLeft(div);
+        left.appendChild(div);
+    });
+
+    rightItems.forEach(pair=>{
+        const div = document.createElement("div");
+        div.classList.add("item");
+        div.textContent = pair.mix;
+        div.dataset.value = pair.es;
+        div.onclick = ()=>selectRight(div);
+        right.appendChild(div);
+    });
+}
+
+function selectLeft(element){
+    if(element.classList.contains("correct")) return;
+
+    document.querySelectorAll("#leftColumn .item").forEach(i=>i.classList.remove("selected"));
+    element.classList.add("selected");
+    selectedLeft = element;
+}
+
+function selectRight(element){
+    if(!selectedLeft || element.classList.contains("correct")) return;
+
+    if(selectedLeft.dataset.value === element.dataset.value){
+        selectedLeft.classList.add("correct");
+        element.classList.add("correct");
+        drawLine(selectedLeft, element);
+    }else{
+        element.classList.add("wrong");
+        setTimeout(()=>element.classList.remove("wrong"),600);
+    }
+
+    selectedLeft.classList.remove("selected");
+    selectedLeft = null;
+}
+
+function drawLine(leftEl, rightEl){
+    const svg = document.getElementById("lines");
+
+    const leftRect = leftEl.getBoundingClientRect();
+    const rightRect = rightEl.getBoundingClientRect();
+    const containerRect = document.getElementById("gameArea").getBoundingClientRect();
+
+    const line = document.createElementNS("http://www.w3.org/2000/svg","line");
+    line.setAttribute("x1", leftRect.right - containerRect.left);
+    line.setAttribute("y1", leftRect.top + leftRect.height/2 - containerRect.top);
+    line.setAttribute("x2", rightRect.left - containerRect.left);
+    line.setAttribute("y2", rightRect.top + rightRect.height/2 - containerRect.top);
+    line.setAttribute("stroke", "#2a9d8f");
+    line.setAttribute("stroke-width", "3");
+
+    svg.appendChild(line);
+}
+
+startGame();
+
+</script>
+
+</body>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>
