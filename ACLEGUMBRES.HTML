@@ -1,0 +1,408 @@
+<head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSS" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos </a></button>
+                                <ul class="submenu">
+                                     <li><a href="">Saludos y frases de cortesía</a></li>
+                                     <li><a href="Campos semanticos/frutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras y legumbres</a></li>
+                                     <li><a href="Campos semanticos/partes del cuerpo/partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="">Enfermedades</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">Pronunciación</a>
+                        <a href="#">Lección de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script>
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script>
+            </header>
+<h1>🎮 Memorama 3D Mixteco PRO</h1>
+<p>Aprende Mixteco jugando con emojis 🌽🌶️🥔</p>
+
+<div id="info">
+    Puntaje: <span id="puntaje">0</span> |
+    Intentos: <span id="intentos">0</span> |
+    Aciertos: <span id="aciertos">0</span>
+</div>
+
+<div id="records">
+    🏆 Mejor récord: <span id="mejor">0</span>
+</div>
+
+<div id="tablero"></div>
+
+<p id="mensaje"></p>
+
+<!-- Sonidos simples -->
+<audio id="sndOk" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+<audio id="sndBad" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+<audio id="sndWin" src="https://actions.google.com/sounds/v1/cartoon/party_horn.ogg"></audio>
+
+<script>
+// ====== DATOS ======
+const pares = [
+    {esp:"🌽 Maíz", mix:"Nuni", color:"#f2c400"},
+    {esp:"🌶️ Chile", mix:"Ya'a", color:"#d62828"},
+    {esp:"🥔 Papa", mix:"Tsikuitsi", color:"#c2a66f"},
+    {esp:"🫘 Frijol", mix:"Ndutyi", color:"#5a2d0c"},
+    {esp:"🧅 Cebolla", mix:"Tsikumi", color:"#9b5de5"},
+    {esp:"🥬 Quelite", mix:"Yuva", color:"#2f9e44"},
+    {esp:"🎃 Calabacita", mix:"Yikin yute", color:"#6abf4b"},
+    {esp:"🌿 Verdolaga", mix:"Yuva xikutnu", color:"#1b7f5a"}
+];
+
+// Crear cartas
+let cartas = [];
+pares.forEach(p => {
+    cartas.push({texto: p.esp, pareja: p.mix, color: p.color});
+    cartas.push({texto: p.mix, pareja: p.esp, color: p.color});
+});
+
+// Mezclar
+cartas.sort(() => Math.random() - 0.5);
+
+const tablero = document.getElementById("tablero");
+
+let primera = null;
+let segunda = null;
+let bloqueado = false;
+let intentos = 0;
+let aciertos = 0;
+let puntaje = 0;
+
+// Cargar récord
+let mejor = localStorage.getItem("mejor_memorama") || 0;
+document.getElementById("mejor").textContent = mejor;
+
+// Crear tablero
+cartas.forEach((c) => {
+    const div = document.createElement("div");
+    div.className = "carta";
+    div.innerHTML = `
+        <div class="carta-inner">
+            <div class="cara frente">❓</div>
+            <div class="cara atras" style="background:${c.color}">
+                ${c.texto}
+            </div>
+        </div>
+    `;
+    div.dataset.texto = c.texto;
+    div.dataset.pareja = c.pareja;
+    div.addEventListener("click", () => voltear(div));
+    tablero.appendChild(div);
+});
+
+function voltear(carta) {
+    if (bloqueado || carta.classList.contains("volteada")) return;
+
+    carta.classList.add("volteada");
+
+    if (!primera) {
+        primera = carta;
+    } else {
+        segunda = carta;
+        intentos++;
+        document.getElementById("intentos").textContent = intentos;
+        comprobar();
+    }
+}
+
+function comprobar() {
+    bloqueado = true;
+
+    const t1 = primera.dataset.texto;
+    const p1 = primera.dataset.pareja;
+    const t2 = segunda.dataset.texto;
+
+    if (p1 === t2) {
+        // Correcto
+        aciertos++;
+        puntaje += 15;
+
+        document.getElementById("sndOk").play();
+
+        document.getElementById("aciertos").textContent = aciertos;
+        document.getElementById("puntaje").textContent = puntaje;
+
+        const msg = document.getElementById("mensaje");
+        msg.textContent = "🎉 ¡Excelente! +15 puntos";
+        msg.style.color = "green";
+        msg.classList.add("boom");
+        setTimeout(()=>msg.classList.remove("boom"),300);
+
+        primera = null;
+        segunda = null;
+        bloqueado = false;
+
+        if (aciertos === pares.length) {
+            document.getElementById("sndWin").play();
+
+            // Guardar récord
+            if (puntaje > mejor) {
+                mejor = puntaje;
+                localStorage.setItem("mejor_memorama", mejor);
+                document.getElementById("mejor").textContent = mejor;
+            }
+
+            setTimeout(() => {
+                alert("🏆 ¡Ganaste!\nPuntaje final: " + puntaje + "\nMejor récord: " + mejor);
+            }, 400);
+        }
+    } else {
+        // Incorrecto
+        puntaje = Math.max(0, puntaje - 5);
+        document.getElementById("sndBad").play();
+
+        document.getElementById("puntaje").textContent = puntaje;
+        const msg = document.getElementById("mensaje");
+        msg.textContent = "❌ Ups, intenta otra vez (-5)";
+        msg.style.color = "red";
+
+        setTimeout(() => {
+            primera.classList.remove("volteada");
+            segunda.classList.remove("volteada");
+            primera = null;
+            segunda = null;
+            bloqueado = false;
+        }, 900);
+    }
+}
+</script>
+<style>
+/* ====== JUEGO 3D ====== */
+#juego3d {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.card3d {
+    width: 260px;
+    height: 320px;
+    margin: 20px auto;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card3d.flip .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    padding: 15px;
+}
+
+.front {
+    background: linear-gradient(180deg,#ff9a3c,#ff6a00);
+    color: white;
+}
+
+.front img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid white;
+    margin-bottom: 10px;
+}
+
+.back {
+    background: linear-gradient(180deg,#7cffc4,#1fbf75);
+    color: #003b22;
+    transform: rotateY(180deg);
+    font-weight: bold;
+}
+
+#opciones button {
+    margin: 10px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    background: #ff6700;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#opciones button:hover {
+    background: #d65500;
+}
+
+#mensaje {
+    font-size: 20px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+</style>
+// Iniciar juego
+cargarPalabra();
+</script>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Memorama Mixteco 3D PRO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: radial-gradient(circle at top, #fff2d1, #ffb703);
+    text-align: center;
+}
+
+h1 {
+    margin-top: 20px;
+    color: #ff6a00;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+}
+
+#info {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+#tablero {
+    max-width: 900px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    padding: 15px;
+}
+
+.carta {
+    width: 120px;
+    height: 140px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.carta-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.carta.volteada .carta-inner {
+    transform: rotateY(180deg) scale(1.08);
+}
+
+.cara {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    backface-visibility: hidden;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.frente {
+    background: linear-gradient(180deg,#ff9a3c,#ff6a00);
+    color: white;
+    font-size: 32px;
+}
+
+.atras {
+    color: white;
+    transform: rotateY(180deg);
+}
+
+#mensaje {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 15px;
+    min-height: 28px;
+}
+
+.boom {
+    animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+#records {
+    margin: 10px;
+    font-size: 18px;
+    color: #5a2d0c;
+    font-weight: bold;
+}
+</style>
+</head>
+  <footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
