@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>actividades</title>
+</head>
+<body>
+
+<h1>Bienvenido a las actividades</h1>
+
+<a href="index.html">Regresar a la página principal</a>
+</body>
+</html>
+<style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5f7c5;
+            color: #333333;
+        }
+
+        header {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 30px 10px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7a/Mixteca_Oaxaque%C3%B1a.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            position: relative;
+            z-index: 2;
+            font-size: 2em;
+            margin: 0;
+        }
+
+        header img {
+            width: 120px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            z-index: 2;
+            position: relative;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #00695c;
+        }
+
+        .numeros {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .numero {
+            background-color: #e0f2f1;
+            border-radius: 12px;
+            padding: 15px;
+            width: 180px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .numero img {
+            width: 100px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .numero p {
+            margin: 10px 0;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .actividad {
+            background-color: #e8f5ebaf;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .actividad h3 {
+            color: #00154dd7;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #005f50;
+        }
+
+        footer {
+            background-color: #003d33;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+  <section class="actividad">
+            <h3>🔢 Actividad: adivina la naturaleza</h3>
+            <p>Escucha el audio y adivina la naturaleza</p>
+            <audio controls>
+                    <source src="audio/aire.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <audio controls>
+                    <source src="audio/barranco.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+            </audio>
+            <audio controls>
+                    <source src="audio/frio.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <form id="actividadForm">
+                <label><input type="radio" name="respuesta" value="1"> In</label><br>
+                <label><input type="radio" name="respuesta" value="2"> Un</label><br>
+                <label><input type="radio" name="respuesta" value="3"> Uni</label><br><br>
+                <button type="button" onclick="verificarRespuesta1()">Verificar</button>
+            </form>
+            <p id="resultado"></p>
+        </section>
+        <section class="actividad">
+            <h3>🔢 Actividad: adivina el numero</h3>
+            <p>Escucha el audio y adivina el numero</p>
+            <audio controls>
+                    <source src="audio/estrellas.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <audio controls>
+                    <source src="audio/luna.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+            </audio>
+            <audio controls>
+                    <source src="audio/nube.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <form id="actividadForm2">
+                <label><input type="radio" name="respuesta" value="4"> Uxi Kuun</label><br>
+                <label><input type="radio" name="respuesta" value="5"> Ja'on Kuun</label><br>
+                <label><input type="radio" name="respuesta" value="6"> Ja'on uu</label><br><br>
+                <button type="button" onclick="verificarRespuesta2()">Verificar</button>
+            </form>
+            <p id="resultado2"></p>
+        </section>
+        <section class="actividad">
+            <h3>🔢 Actividad: adivina el numero</h3>
+            <p>Escucha el audio y adivina el numero</p>
+            <audio controls>
+                    <source src="audio/cinco.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <audio controls>
+                    <source src="audio/ocho.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+            </audio>
+            <audio controls>
+                    <source src="audio/veinte.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <form id="actividadForm">
+                <label><input type="radio" name="respuesta" value="1"> U'un</label><br>
+                <label><input type="radio" name="respuesta" value="2"> Una</label><br>
+                <label><input type="radio" name="respuesta" value="3"> Oko</label><br><br>
+                <button type="button" onclick="verificarRespuesta3()">Verificar</button>
+            </form>
+            <p id="resultado"></p>
+        </section>
+        <script> 
+        function verificarRespuesta1() {
+            const opciones = document.getElementsByName('respuesta');
+            let seleccion = null;
+            for (let i = 0; i < opciones.length; i++) {
+                if (opciones[i].checked) {
+                    seleccion = opciones[i].value;
+                    break;
+                }
+            }
+
+            const resultado = document.getElementById('resultado');
+            if (!seleccion) {
+                resultado.textContent = "Por favor selecciona una respuesta.";
+                resultado.style.color = "red";
+                return;
+            }
+
+            if (seleccion === "2") {
+                resultado.textContent = "✅ ¡Correcto! 'Un' significa 'Dos'.";
+                resultado.style.color = "green";
+            } else {
+                resultado.textContent = "❌ Incorrecto. Intenta otra vez.";
+                resultado.style.color = "red";
+            }
+        }
+        </script>
+        <script>
+        function verificarRespuesta2() {
+            const opciones = document.getElementsByName('respuesta');
+            let seleccion = null;
+            for (let i = 0; i < opciones.length; i++) {
+                if (opciones[i].checked) {
+                    seleccion = opciones[i].value;
+                    break;
+                }
+            }
+
+            const resultado = document.getElementById('resultado');
+            if (!seleccion) {
+                resultado.textContent = "Por favor selecciona una respuesta.";
+                resultado.style.color = "red";
+                return;
+            }
+
+            if (seleccion === "3") {
+                resultado.textContent = "✅ ¡Correcto! 'Ja'on uu' significa 'Diesiciete'.";
+                resultado.style.color = "green";
+            } else {
+                resultado.textContent = "❌ Incorrecto. Intenta otra vez.";
+                resultado.style.color = "red";
+            }
+        }
+        </script>
