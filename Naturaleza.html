@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Juntos aprendamos mixteco</title>
+            <link rel="stylesheet" href="CSS/style.css">
+        </head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSIIO" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos </a></button>
+                                <ul class="submenu">
+                                     <li><a href="">Saludos</a></li>
+                                     <li><a href="Campos semanticos/frutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras</a></li>
+                                     <li><a href="Campos semanticos/partes del cuerpo/partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="">Enfermedades</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">pronunciación</a>
+                        <a href="#">leccion de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script> 
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script> 
+            </header>
+           <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5f7c5;
+            color: oklch(32.109% 0.00004 271.152 / 0.774);
+        }
+
+
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #00695c;
+        }
+
+        .numeros {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .numero {
+            background-color: #e0f2f1;
+            border-radius: 12px;
+            padding: 15px;
+            width: 180px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .numero img {
+            width: 100px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .numero p {
+            margin: 10px 0;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .actividad {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .actividad h3 {
+            color: #004d40;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #005f50;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <h2>Naturaleza en Mixteco</h2>
+
+        <section class="Numeros">
+            <div class="numero">
+                <img src="imagenesnaturaleza/agua.web.webp" alt="Número 1">
+                <p><strong>ndute</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/agua.mp3" type="audio/mp3">
+                </audio>
+            </div>
+
+            <div class="numero">
+                <img src="imagenesnaturaleza/aire.web.webp" alt="Número 2">
+                <p><strong>Tachi</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/aire.mp3" type="audio/mp3">
+                </audio>
+            </div>
+
+            <div class="numero">
+                <img src="imagenesnaturaleza/animales.web.webp" alt="Número 3">
+                <p><strong>Kitsi</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/animales.mp3" type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/arciris.web.webp" alt="Numero 4">
+                <p><strong></strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/arcoiris.mp3" Type="audio/mp3">
+                </audio> 
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/arollo.web.webp" lat="Numero 5">
+                <p><strong>yute lule</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/arollo.mp3" Type="audio/mp3">
+                </audio> 
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/barranco.web.webp" alt="Numero 6">
+                <p><strong>yuu</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/barranco.mp3"  Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/cerro.web.webp" alt="Numero 7">
+                <p><strong>yuku</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/cerro.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/cielo.web.webp" alt="Numero 8">
+                <p><strong>anstivi</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/cielo.mp3" type="audio/mp3">
+                </audio> 
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/estrellas.web.webp" alt="Nuemro 9">
+                <p><strong>tsikoxini</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/estrellas.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/frio.web.webp" alt="numeros 10">
+                <p><strong>vijin</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/frio.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/ladera.web.webp" alt="numeros 11">
+                <p><strong>kueto</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/ladera.mp3" Type="audio/mp3">
+                </audio>
+            </div> 
+            <div class="numero">
+                <img src="imagenesnaturaleza/lumbre.web.webp" alt="numeros 12">
+                <p><strong>ñu´u</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/lumbre.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/lluvia.web.webp" alt="numeros 13">
+                <p><strong>savi</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/lluvia.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/luna.web.webp" alt="numeros 14">
+                <p><strong>yoo</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/luna.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/montañas.web.webp" alt="numeros 15">
+                <p><strong>yuku</strong></p>
+                <audio controls>
+                    <source src="audionaturaleza/montaña.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/nube.web.webp" alt="numeros 16">
+                <p><source>viko</p>
+                <audio controls>
+                    <source src="audionaturaleza/nube.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/piedra.web.webp" alt="numeros 17">
+                <p><source>yuu</p>
+                <audio controls>
+                    <source src="audionaturaleza/piedra.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/plantas.web.webp" alt="numeros 18">
+                <p><source>yutnu kuii</p>
+                <audio controls>
+                    <source src="audionaturaleza/plantas.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/rayo.web.webp" alt="numeros 19">
+                <p><source>tajna</p>
+                <audio controls>
+                    <source src="audionaturaleza/rayo.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/sol.web.webp" alt="numeros 20">
+                <p><source>nkantsi</p>
+                <audio controls>
+                    <source src="audionaturaleza/sol.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/temblor.web.webp" alt="numeros 21">
+                <p><source>tnaa</p>
+                <audio controls>
+                    <source src="audionaturaleza/temblor.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/tierra.web.webp" alt="numeros 22">
+                <p><source>ñu´u</p>
+                <audio controls>
+                    <source src="audionaturaleza/tierra.mp3" Type="audio/mp3">
+                </audio>
+            </div>
+            <div class="numero">
+                <img src="imagenesnaturaleza/valle.web.webp" alt="numeros 23">
+                <p><source>nundaa</p>
+                <audio controls>
+                    <source src="audionaturaleza/valle.mp3" Type="audio/mp3">
+                </audio>
+        </section>  
+    </main>
+</body>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>
