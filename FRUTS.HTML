@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Juntos aprendamos mixteco</title>
+            <link rel="stylesheet" href="CSS/style.css">
+        </head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSIIO" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos </a></button>
+                                <ul class="submenu">
+                                     <li><a href="">Saludos</a></li>
+                                     <li><a href="Campos semanticos/frutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras</a></li>
+                                     <li><a href="Campos semanticos/partes del cuerpo/partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="">Enfermedades</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">pronunciación</a>
+                        <a href="#">leccion de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script> 
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script> 
+            </header>
+<title>Frutas en Mixteco - BIC San Agustín Tlacotepec</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+
+    main {
+        padding: 40px 20px;
+        flex: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 2.5em;
+        color: #2c5f2d;
+        margin-bottom: 40px;
+    }
+
+    .cajon-frutas {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .fruta {
+        background-color: #ffffff;
+        border-radius: 20px;
+        padding: 15px;
+        width: 220px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        transition: box-shadow 0.3s;
+    }
+
+    .fruta:hover {
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .fruta img {
+        width: 100%;
+        border-radius: 15px;
+        margin-bottom: 12px;
+    }
+
+    .fruta-info h3 {
+        margin: 0 0 8px 0;
+        font-size: 1.1em;
+        text-align: center;
+        color: #4a7c59;
+    }
+
+    audio {
+        width: 100%;
+        outline: none;
+        border-radius: 8px;
+    }
+
+    .actividad {
+        text-align: center;
+        margin: 50px auto;
+        background-color: #d9f0e1;
+        padding: 25px;
+        border-radius: 20px;
+        max-width: 600px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .actividad input {
+        padding: 10px;
+        margin: 12px 0;
+        border: 1px solid #4a7c59;
+        border-radius: 8px;
+        width: 60%;
+        max-width: 250px;
+        font-size: 1em;
+    }
+
+    .actividad button {
+        padding: 10px 20px;
+        background-color: #4a7c59;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s;
+    }
+
+    .actividad button:hover {
+        background-color: #2c5f2d;
+    }
+
+    #resultado {
+        font-weight: bold;
+        margin-top: 12px;
+    }
+</style>
+<body>
+<main>
+    <h2>Frutas en Mixteco</h2>
+
+    <div class="cajon-frutas">
+        <!-- Cada tarjeta de fruta -->
+        <div class="fruta">
+            <img src="imgfrutas/aguacate.webp" alt="Aguacate">
+            <div class="fruta-info">
+                <h3> <em>Tsityi</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/AGUACATE.XD.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="imgfrutas/anona.webp" alt="Anona">
+            <div class="fruta-info">
+                <h3> <em>Ndoko</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/ANONA.XDDDDDDDDDD.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="imgfrutas/capulin.webp" alt="Capulín">
+            <div class="fruta-info">
+                <h3> <em>Ndia'a tsitnuu</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/CAPULIN.DX.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="imgfrutas/durazno.webp" alt="Durazno">
+            <div class="fruta-info">
+                <h3>  <em>Nde'ya</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/DURAZNO.XD.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="Imgfrutas/guayaba.webp" alt="Guayaba">
+            <div class="fruta-info">
+                <h3>  <em>Tsikuentsiki</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/GUAYABA.XD.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="imgfrutas/lima.webp" alt="Lima">
+            <div class="fruta-info">
+                <h3> <em>Tsikuaa</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/LIMA.DX.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="imgfrutas/limon.jpg" alt="Limón">
+            <div class="fruta-info">
+                <h3>  <em>Tsikuaa iya</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/LIMON.XD.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="imgfrutas/platano colorado.webp" alt="platano colorado">
+            <div class="fruta-info">
+                <h3> <em>Ntsika kua'a</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/PLATANO COLORADO.XD.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="imgfrutas/piña.webp" alt="Piña">
+            <div class="fruta-info">
+                <h3>  <em>Vijin</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/PIÑA.XD.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="imgfrutas/platano de platanar.webp" alt="Plátano verde">
+            <div class="fruta-info">
+                <h3> <em>Ntsika kuii</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/PLATANO VERDE.XD.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="imgfrutas/tuna.webp" alt="Tuna">
+            <div class="fruta-info">
+                <h3>  <em>Tyiki</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/TUNA.XD.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="fruta">
+            <img src="imgfrutas/zapote amarillo.webp" alt="Zapote">
+            <div class="fruta-info">
+                <h3>  <em>Ntsika saknaa</em></h3>
+                <audio controls>
+                    <source src="AUDIOfrutas/ZAPOTE AMARILLO.XD.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+    </div>
+
+ <!-- BOTÓN JUEGOS -->
+<button onclick="toggleGames()" style="
+position:fixed;
+top:10px;
+right:10px;
+z-index:1000;
+padding:10px;
+border:none;
+border-radius:10px;
+background:white;
+cursor:pointer;
+">
+🎮 Juegos
+</button>
+
+<!-- SECCIÓN JUEGOS -->
+<div id="gamesSection" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#222,#555);
+z-index:999;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+color:white;
+">
+
+<h2>🎮 Tres en Raya</h2>
+
+<div id="board" style="
+display:grid;
+grid-template-columns:repeat(3,100px);
+gap:5px;
+margin:20px;
+"></div>
+
+<p id="status"></p>
+
+<button onclick="resetGame()">Reiniciar</button>
+<button onclick="toggleGames()">Volver</button>
+
+</div>
+
+<script>
+function toggleGames(){
+    let g = document.getElementById("gamesSection");
+    g.style.display = g.style.display === "flex" ? "none" : "flex";
+}
+
+/* ===== JUEGO ===== */
+let board = document.getElementById("board");
+let statusText = document.getElementById("status");
+
+let cells = [];
+let currentPlayer = "X";
+
+function createBoard(){
+    board.innerHTML = "";
+    cells = [];
+
+    for(let i=0;i<9;i++){
+        let cell = document.createElement("div");
+        cell.style.width="100px";
+        cell.style.height="100px";
+        cell.style.background="rgba(255,255,255,0.2)";
+        cell.style.display="flex";
+        cell.style.justifyContent="center";
+        cell.style.alignItems="center";
+        cell.style.fontSize="30px";
+        cell.style.cursor="pointer";
+
+        cell.onclick = () => play(cell);
+
+        board.appendChild(cell);
+        cells.push(cell);
+    }
+}
+
+function play(cell){
+    if(cell.innerText !== "") return;
+
+    cell.innerText = currentPlayer;
+
+    if(checkWin()){
+        statusText.innerText = currentPlayer + " gana!";
+        return;
+    }
+
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
+}
+
+function checkWin(){
+    const combos = [
+        [0,1,2],[3,4,5],[6,7,8],
+        [0,3,6],[1,4,7],[2,5,8],
+        [0,4,8],[2,4,6]
+    ];
+
+    return combos.some(c =>
+        cells[c[0]].innerText &&
+        cells[c[0]].innerText === cells[c[1]].innerText &&
+        cells[c[1]].innerText === cells[c[2]].innerText
+    );
+}
+
+function resetGame(){
+    currentPlayer = "X";
+    statusText.innerText = "";
+    createBoard();
+}
+
+createBoard();
+</script>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>🎉 Memorama de Frutas Mixteco 🎉</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+#game {
+    display: grid;
+    grid-template-columns: repeat(6, 120px);
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    width: 120px;
+    height: 120px;
+    background: #4CAF50;
+    border-radius: 12px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    position: relative;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 🎆 Confeti */
+.confeti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    animation: caer 3s linear forwards;
+}
+
+@keyframes caer {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+<body>
+ <nav class="menu">
+        <a href="actividadesfrutas.html"><Actividad>Actividad</a>
+        </nav>
+</main>
+</body>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Juntos aprendamos mixteco</title>
+            <link rel="stylesheet" href="CSS/style.css">
+        </head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSIIO" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos </a></button>
+                                <ul class="submenu">
+                                     <li><a href="">Saludos</a></li>
+                                     <li><a href="Campos semanticos/frutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras</a></li>
+                                     <li><a href="Campos semanticos/partes del cuerpo/partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="">Enfermedades</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">pronunciación</a>
+                        <a href="#">leccion de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script> 
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script> 
+            </header>
+<meta charset="UTF-8">
+<title>🎉 Memorama de Frutas Mixteco 🎉</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+#game {
+    display: grid;
+    grid-template-columns: repeat(6, 120px);
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    width: 120px;
+    height: 120px;
+    background: #4CAF50;
+    border-radius: 12px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    position: relative;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 🎆 Confeti */
+.confeti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    animation: caer 3s linear forwards;
+}
+
+@keyframes caer {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+<body>
+
+<h1>🎉 Memorama de Frutas Mixteco 🎉</h1>
+<div id="score">Puntaje: 0</div>
+<div id="game"></div>
+
+<script>
+const frutaS = [
+    {nombre: "Aguacate", imagen: "IMAGEN/aguacate.webp"},
+    {nombre: "Anona", imagen: "IMAGEN/anona.webp"},
+    {nombre: "Capulin", imagen: "IMAGEN/capulin.webp"},
+    {nombre: "Durazno", imagen: "IMAGEN/durazno.webp"},
+    {nombre: "Guayaba", imagen: "IMAGEN/guayaba.webp"},
+    {nombre: "Lima", imagen: "IMAGEN/lima.webp"},
+    {nombre: "Limon", imagen: "IMAGEN/limon.jpg"},
+    {nombre: "Platano Colorado", imagen: "IMAGEN/platano colorado.webp"},
+    {nombre: "Piña", imagen: "IMAGEN/piña.webp"},
+    {nombre: "Platano Verde", imagen: "IMAGEN/platano de platanar.webp"},
+    {nombre: "Tuna", imagen: "IMAGEN/tuna.webp"},
+    {nombre: "Zapote", imagen: "IMAGEN/zapote amarillo.webp"}
+];
+
+let cardsArray = [];
+let matchedPairs = 0;
+let score = 0;
+
+const game = document.getElementById("game");
+const scoreDisplay = document.getElementById("score");
+
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+
+function iniciarJuego(){
+    game.innerHTML = "";
+    cardsArray = [...frutaS, ...frutaS]; // ✅ arreglo correcto
+    cardsArray.sort(() => Math.random() - 0.5);
+
+    matchedPairs = 0;
+    score = 0;
+    updateScore();
+
+    cardsArray.forEach(fruta => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.name = fruta.nombre;
+
+        card.innerHTML = `
+            <div class="front">❓</div>
+            <div class="back">
+                <img src="${fruta.imagen}" alt="${fruta.nombre}">
+            </div>
+        `;
+
+        card.addEventListener("click", flipCard);
+        game.appendChild(card);
+    });
+}
+
+function flipCard() {
+    if(lockBoard) return;
+    if(this === firstCard) return;
+
+    this.classList.add("flipped");
+
+    if(!firstCard){
+        firstCard = this;
+        return;
+    }
+
+    secondCard = this;
+    lockBoard = true;
+
+    checkMatch();
+}
+
+function checkMatch(){
+    const isMatch = firstCard.dataset.name === secondCard.dataset.name;
+
+    if(isMatch){
+        score += 10;
+        matchedPairs++;
+
+        firstCard.removeEventListener("click", flipCard);
+        secondCard.removeEventListener("click", flipCard);
+
+        if(matchedPairs === frutaS.length){
+            lanzarConfeti(); // 🎆 confeti al ganar
+        }
+
+        resetBoard();
+    } else {
+        score -= 2;
+        setTimeout(() => {
+            firstCard.classList.remove("flipped");
+            secondCard.classList.remove("flipped");
+            resetBoard();
+        }, 1000);
+    }
+
+    updateScore();
+}
+
+function lanzarConfeti(){
+    for(let i = 0; i < 100; i++){
+        const confeti = document.createElement("div");
+        confeti.classList.add("confeti");
+
+        confeti.style.left = Math.random() * 100 + "vw";
+        confeti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
+
+        document.body.appendChild(confeti);
+
+        setTimeout(() => confeti.remove(), 3000);
+    }
+}
+
+function resetBoard(){
+    [firstCard, secondCard, lockBoard] = [null, null, false];
+}
+
+function updateScore(){
+    scoreDisplay.textContent = `Puntaje: ${score}`;
+}
+
+// Inicia el juego al cargar
+iniciarJuego();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mercado Mixteco - Juego Mejorado</title>
+<style>
+body {
+  margin: 0; padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f8ff;
+  text-align: center;
+}
+.container { max-width: 600px; margin: auto; padding: 20px; }
+h1 { color: #58cc02; }
+#question { font-size: 28px; margin: 20px 0; }
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.option {
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.2s;
+}
+.option:hover { background: #f1f1f1; }
+.correct { background: #d4f8d4; border-color: #58cc02; }
+.wrong { background: #ffd6d6; border-color: red; }
+#status { font-size: 20px; margin: 15px; }
+.top { display:flex; justify-content: space-between; margin-top: 10px; }
+.progress { height: 12px; background: #ddd; border-radius: 10px; overflow: hidden; margin: 15px 0; }
+.bar { height: 100%; background: #58cc02; width: 0%; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🛒 Mercado Mixteco</h1>
+  <div class="top">
+    <div id="hearts">❤️❤️❤️</div>
+    <div id="score">⭐ 0</div>
+  </div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <p id="question"></p>
+  <div class="options-grid" id="options"></div>
+  <p id="status"></p>
+</div>
+
+<script>
+// Datos de frutas
+const frutas = [
+  { nombre: "Aguacate", mixteco: "Tsityi" },
+  { nombre: "Anona", mixteco: "Ndoko" },
+  { nombre: "Capulín", mixteco: "Ndia a tsitnunu" },
+  { nombre: "Durazno", mixteco: "Nde'ya" },
+  { nombre: "Guayaba", mixteco: "Tsikuentsiki" },
+  { nombre: "Lima", mixteco: "Tsikuaa" },
+  { nombre: "Limón", mixteco: "Tsikuaa iya" },
+  { nombre: "Plátano", mixteco: "Ntsika kuii" }
+];
+
+let puntos = 0, vidas = 3, progreso = 0, actual;
+
+// Referencias DOM
+const question = document.getElementById("question");
+const optionsDiv = document.getElementById("options");
+
+// Mezclar arreglo
+function mezclar(arr) {
+  let copia = [...arr];
+  for(let i = copia.length-1; i > 0; i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+  return copia;
+}
+
+// Crear nueva pregunta
+function nuevaPregunta() {
+  optionsDiv.innerHTML = "";
+  document.getElementById("status").textContent = "";
+
+  // Elegir fruta aleatoria
+  actual = frutas[Math.floor(Math.random()*frutas.length)];
+  question.textContent = "Selecciona el nombre mixteco de: " + actual.nombre;
+
+  // Seleccionar 3 opciones incorrectas + la correcta
+  let opciones = frutas.filter(f => f.mixteco !== actual.mixteco); // solo incorrectas
+  opciones = mezclar(opciones).slice(0,3); // tomar 3 al azar
+  opciones.push(actual); // agregar la correcta
+  opciones = mezclar(opciones); // mezclar todas
+
+  // Crear botones
+  opciones.forEach(f => {
+    const btn = document.createElement("div");
+    btn.className = "option";
+    btn.textContent = f.mixteco;
+    btn.onclick = () => verificar(btn,f);
+    optionsDiv.appendChild(btn);
+  });
+}
+
+// Verificar respuesta
+function verificar(btn,f) {
+  const status = document.getElementById("status");
+  if(f.mixteco === actual.mixteco){
+    btn.classList.add("correct");
+    status.textContent = "✅ Correcto";
+    puntos++;
+    progreso += 12;
+  } else {
+    btn.classList.add("wrong");
+    status.textContent = "❌ Incorrecto";
+    vidas--;
+  }
+
+  actualizarUI();
+
+  setTimeout(()=>{
+    if(vidas <= 0){
+      alert("💀 Perdiste! Puntaje final: " + puntos);
+      location.reload();
+    } else {
+      nuevaPregunta();
+    }
+  },700);
+}
+
+// Actualizar UI
+function actualizarUI() {
+  document.getElementById("score").textContent = "⭐ " + puntos;
+  document.getElementById("hearts").textContent = "❤️".repeat(vidas);
+  document.getElementById("bar").style.width = progreso + "%";
+}
+
+// Iniciar juego
+nuevaPregunta();
+</script>
+
+</main>
+</body>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>
