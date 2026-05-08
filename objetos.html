@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>objetos de una cocina tradicional</title>
+
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #1d2671, #c33764);
+    color: white;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+/* TARJETAS */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    width: 250px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    height: 150px;       
+    object-fit: cover;    
+    border-radius: 10px;
+}
+
+.card button {
+    margin-top: 10px;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* SOPA DE LETRAS */
+#game {
+    text-align: center;
+    margin: 40px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 35px);
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.cell {
+    width: 35px;
+    height: 35px;
+    background: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cell.selected {
+    background: yellow;
+}
+
+/* FELICIDADES */
+#winMessage {
+    display: none;
+    font-size: 30px;
+    margin-top: 20px;
+    animation: pop 1s ease infinite alternate;
+}
+
+@keyframes pop {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+/* CONFETI */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: yellow;
+    top: 0;
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Galería Interactiva</h1>
+
+<div class="container">
+
+    <div class="card">
+        <img src="imagenesA/fogon.jpeg">
+        <h3>Nuu ñu’un</h3>
+        <p></p>
+        <audio id="audio1">
+            <source src="audiosA/fogon.mp3">
+        </audio>
+        <button onclick="audio1.play()">🔊 Escuchar</button>
+    </div>
+    
+<div class="card">
+        <img src="imagenesA/olla.jpeg">
+        <h3>Kisi ñu’un</h3>
+        <p></p>
+        <audio id="audio2">
+            <source src="audiosA/olla de barro.mp3">
+        </audio>
+        <button onclick="audio2.play()">🔊 Escuchar</button>
+    </div>
+    
+    <div class="card">
+        <img src="imagenesA/jarra de barro.webp">
+        <h3>Tsindo’o ñu’un</h3>
+        <p></p>
+        <audio id="audio3">
+            <source src="audiosA/jarra de barro.mp3">
+        </audio>
+        <button onclick="audio3.play()">🔊 Escuchar</button>
+    </div>
+    
+    <div class="card">
+        <img src="imagenesA/cuchara.webp">
+        <h3> Tsikasi</h3>
+        <p></p>
+        <audio id="audio4">
+            <source src="audiosA/cuchara de madera.mp3">
+        </audio>
+        <button onclick="audio4.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/cuchillo.webp">
+        <h3> Yutyi</h3>
+        <p></p>
+        <audio id="audio5">
+            <source src="audiosA/cuchillo.mp3">
+        </audio>
+        <button onclick="audio5.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/ocote.jpeg">
+        <h3>Itsi suja</h3>
+        <p></p>
+        <audio id="audio6">
+            <source src="audiosA/ocote.mp3">
+        </audio>
+        <button onclick="audio6.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/jicara.jpeg">
+        <h3>Ñajín yutnu</h3>
+        <p></p>
+        <audio id="audio7">
+            <source src="audiosA/jicara de madera.mp3">
+        </audio>
+        <button onclick="audio7.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/plato.jpeg">
+        <h3>Ko’o ñu’un</h3>
+        <p></p>
+        <audio id="audio8">
+            <source src="audiosA/plato de barro.mp3">
+        </audio>
+        <button onclick="audio8.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/trapo.webp">
+        <h3>Sa’ma</h3>
+        <p></p>
+        <audio id="audio9">
+            <source src="audiosA/trapo.mp3">
+        </audio>
+        <button onclick="audio9.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/nixtamal.webp">
+        <h3>Ndaku</h3>
+        <p></p>
+        <audio id="audio10">
+            <source src="audiosA/nixtamal.mp3">
+        </audio>
+        <button onclick="audio10.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/comal">
+        <h3>Jiyo</h3>
+        <p></p>
+        <audio id="audio11">
+            <source src="audiosA/">
+        </audio>
+        <button onclick="audio11.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/escobetilla.jpeg">
+        <h3>Yiku</h3>
+        <p></p>
+        <audio id="audio12">
+            <source src="audiosA/escobetilla.mp3">
+        </audio>
+        <button onclick="audio12.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/palo.webp">
+        <h3>Tnusuun</h3>
+        <p></p>
+        <audio id="audio13">
+            <source src="audiosA/palo para mover el nixtamal.mp3">
+        </audio>
+        <button onclick="audio13.play()">🔊 Escuchar</button>
+    </div>
+
+    <div class="card">
+        <img src="imagenesA/">
+        <h3>Tsivityi</h3>
+        <p></p>
+        <audio id="audio14">
+            <source src=".mp3">
+        </audio>
+        <button onclick="audio14.play()">🔊 Escuchar</button>
+    </div>
+
+    <div class="card">
+        <img src="imagenesA/tenate.jpeg">
+        <h3>Ndo’o staa</h3>
+        <p></p>
+        <audio id="audio15">
+            <source src="audiosA/tenate de tortilla.mp3">
+        </audio>
+        <button onclick="audio15.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/molcajete.jpeg">
+        <h3>Ko’o jaxi ya’a</h3>
+        <p></p>
+        <audio id="audio16">
+            <source src="audiosA/molcajete.mp3">
+        </audio>
+        <button onclick="audio16.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/metate.webp">
+        <h3>Yoso</h3>
+        <p></p>
+        <audio id="audio17">
+            <source src="audiosA/metate.mp3">
+        </audio>
+        <button onclick="audio17.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/mano de metate.webp">
+        <h3>Nda’a yoso</h3>
+        <p></p>
+        <audio id="audio18">
+            <source src="audiosA/mano de metate.mp3">
+        </audio>
+        <button onclick="audio18.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/cazuela.webp">
+        <h3>Tsija’an</h3>
+        <p></p>
+        <audio id="audio19">
+            <source src="audiosA/casuela.mp3">
+        </audio>
+        <button onclick="audio19.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/cantaro.webp">
+        <h3>kiyi</h3>
+        <p></p>
+        <audio id="audio20">
+            <source src="audiosA/cantaro.mp3">
+        </audio>
+        <button onclick="audio20.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/leña.jpeg">
+        <h3>Tutnu</h3>
+        <p></p>
+        <audio id="audio22">
+            <source src="audiosA/leña.mp3">
+        </audio>
+        <button onclick="audio22.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/servilleta.jpeg">
+        <h3>Sa’ma ñu’un Staa</h3>
+        <p></p>
+        <audio id="audio23">
+            <source src="audiosA/servilleta de tortilla.mp3">
+        </audio>
+        <button onclick="audio23.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/carbon">
+        <h3>Tsikayi</h3>
+        <p></p>
+        <audio id="audio24">
+            <source src="audiosA/carbon.mp3">
+        </audio>
+        <button onclick="audio24.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/nailo.webp">
+        <h3>Tutu sa’a staa</h3>
+        <p></p>
+        <audio id="audio25">
+            <source src="audiosA/pendientw">
+        </audio>
+        <button onclick="audio25.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/chikihuite.jpeg">
+        <h3>ksijiyo</h3>
+        <p></p>
+        <audio id="audio26">
+            <source src="audiosA/chikihuite.mp3">
+        </audio>
+        <button onclick="audio26.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/fuego.webp">
+        <h3>Nuu ñu’un</h3>
+        <p></p>
+        <audio id="audio27">
+            <source src="audiosA/lumbre.mp3">
+        </audio>
+        <button onclick="audio27.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/seniza.jpeg">
+        <h3>Yaa</h3>
+        <p></p>
+        <audio id="audio28">
+            <source src="audiosA/ceniza.mp3">
+        </audio>
+        <button onclick="audio28.play()">🔊 Escuchar</button>
+    </div>
+</div>
+
+<!-- SOPA DE LETRAS -->
+<div id="game">
+    <h2>Sopa de Letras</h2>
+
+    <div class="grid" id="grid"></div>
+
+    <h3>Palabras:</h3>
+    <p id="wordList"></p>
+
+    <div id="winMessage">🎉 ¡Felicidades has completado el juego! 🎉</div>
+</div>
+
+<script>
+const words = ["Nuu ñu’un",
+"Kisi ñu’un",
+"Kisi", 
+"Kisi kaa",
+"Tsindo’o ñu’un",
+"Tsikasi",
+"Yutyi",
+"Itsi suja",
+"Ñajín yutnu",
+"Ko’o ñu’un",
+"Ko’o",
+"Sa’ma",
+"Ndaku",
+"Kakna",
+"Jiyo",
+"Yiku",
+"Tnusuun",
+"Tsivityi",
+"Ndo’o staa",
+"Ko’o jaxi ya’a",
+"Yoso",
+"Nda’a yoso",
+"Tsija’an",
+"kiyi",
+"Yutnu sa’a Staa",
+"Tutnu",
+"Sa’ma ñu’un Staa",
+"Tsikayi",
+"Tutu sa’a staa",
+"ksijiyo",
+"Nuu ñu’un",
+"Yaa"];
+const found = [];
+
+document.getElementById("wordList").innerText = words.join(", ");
+
+const size = 10;
+const grid = document.getElementById("grid");
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+// Crear grid
+for (let i = 0; i < size * size; i++) {
+    let div = document.createElement("div");
+    div.className = "cell";
+    div.textContent = letters[Math.floor(Math.random() * letters.length)];
+    div.onclick = () => selectLetter(div);
+    grid.appendChild(div);
+}
+
+// Colocar palabras
+function placeWord(word, row) {
+    let start = Math.floor(Math.random() * (size - word.length));
+    for (let i = 0; i < word.length; i++) {
+        let index = row * size + start + i;
+        grid.children[index].textContent = word[i];
+    }
+}
+
+words.forEach((w, i) => placeWord(w, i));
+
+// Selección
+let selectedWord = "";
+
+function selectLetter(cell) {
+    cell.classList.toggle("selected");
+    selectedWord += cell.textContent;
+
+    checkWord();
+}
+
+// Verificar palabra
+function checkWord() {
+    if (words.includes(selectedWord) && !found.includes(selectedWord)) {
+        found.push(selectedWord);
+        selectedWord = "";
+
+        if (found.length === words.length) {
+            winGame();
+        }
+    }
+
+    if (selectedWord.length > 5) selectedWord = "";
+}
+
+// GANAR
+function winGame() {
+    document.getElementById("winMessage").style.display = "block";
+    createConfetti();
+}
+
+// Animación confeti
+function createConfetti() {
+    for (let i = 0; i < 50; i++) {
+        let conf = document.createElement("div");
+        conf.className = "confetti";
+        conf.style.left = Math.random() * 100 + "vw";
+        conf.style.background = `hsl(${Math.random()*360},100%,50%)`;
+        conf.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(conf);
+    }
+}
+</script>
+
+</body>
+</html>
