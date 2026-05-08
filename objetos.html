@@ -1,5 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Juntos aprendamos mixteco</title>
+            <link rel="stylesheet" href="CSS/style.css">
+        </head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSS" class="logo-header">
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src=""  alt="imagotipo de la pagina web"  class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos </a></button>
+                                <ul class="submenu">
+                                     <li><a href="Campos semanticos/saludos y frases de cortesia/saludos_y_frases_de_cortesia.html">Saludos y frases de cortesía</a></li>
+                                     <li><a href="Campos semanticos/fRutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras y legumbres</a></li>
+                                     <li><a href="Campos semanticos/partes del cuerpo/partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="colores.html">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="enfermedades.html">Enfermedades</a>Enfermedades</li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">Pronunciación</a>
+                        <a href="#">Lección de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script>
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script>
+            </header>
 <head>
 <meta charset="UTF-8">
 <title>objetos de una cocina tradicional</title>
