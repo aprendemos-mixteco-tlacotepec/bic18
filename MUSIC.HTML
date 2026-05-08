@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Juntos aprendamos mixteco</title>
+            <link rel="stylesheet" href="CSS/style.css">
+        </head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/Logotipo cseiio.png" alt="Logo CSS" class="logo-header">
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src=""  alt="imagotipo de la pagina web"  class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="menu-btn">Campos semanticos </a></button>
+                                <ul class="submenu">
+                                     <li><a href="Campos semanticos/saludos y frases de cortesia/saludos_y_frases_de_cortesia.html">Saludos y frases de cortesía</a></li>
+                                     <li><a href="Campos semanticos/fRutas/FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="Campos semanticos/verduras/verduras.html">Verduras y legumbres</a></li>
+                                     <li><a href="Campos semanticos/partes del cuerpo/partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="">Comidas</a></li>
+                                     <li><a href="Campos semanticos/bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="Campos semanticos/prendas de vestir/prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="Campos semanticos/objetos/objetos.html">Objetos</a></li>
+                                     <li><a href="">Animales</a></li>
+                                     <li><a href="colores.html">Colores</a></li>
+                                     <li><a href="">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Numeros</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="enfermedades.html">Enfermedades</a>Enfermedades</li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado de lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="#">Canciones</a>
+                        <a href="#">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">Pronunciación</a>
+                        <a href="#">Lección de lecto-escritura</a>
+                        <a href="#">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script>
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script>
+            </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUSICA MIXTECA</title>
+
+<style>
+
+body{
+margin:0;
+font-family:sans-serif;
+background:#0b2239;
+color:white;
+}
+
+header{
+text-align:center;
+padding:15px;
+background:#0f2f4f;
+font-size:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+gap:20px;
+padding:15px;
+justify-items:center;
+}
+
+
+.card{
+background:#123a5c;
+border-radius:15px;
+padding:15px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.4);
+transform: perspective(800px);
+transition:0.3s ease;
+animation: appear 0.6s ease;
+}
+
+.card:hover{
+transform: perspective(800px) rotateY(8deg) rotateX(5deg) scale(1.03);
+}
+
+@keyframes appear{
+from{opacity:0; transform:scale(0.9);}
+to{opacity:1; transform:scale(1);}
+}
+
+.card img{
+width:100%;
+height:140px;
+object-fit:cover;
+border-radius:12px;
+}
+
+audio{
+width:100%;
+margin-top:10px;
+}
+
+.nav{
+position:fixed;
+bottom:0;
+width:100%;
+display:flex;
+justify-content:space-around;
+background:#0f2f4f;
+padding:10px;
+}
+
+.nav button{
+background:#1DB954;
+border:none;
+padding:10px 15px;
+border-radius:10px;
+color:white;
+}
+
+section{display:none;padding-bottom:80px;}
+section.active{display:block;}
+
+.game{
+text-align:center;
+padding:20px;
+}
+
+.option{
+display:block;
+margin:10px auto;
+width:80%;
+padding:10px;
+background:#1DB954;
+border:none;
+border-radius:10px;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>MUSICAS DE LA CULTURA MIXTECA</header>
+
+<!-- MUSICA -->
+<section id="musica" class="active">
+
+<div class="grid">
+
+<div class="card"><img src="IMAGENm/INCONFUNDIBLE.png"><p>CHILENA MIXTECAORGANO</p><audio controls><source src="musica/CHILENA MIXTECAORGANO INCONFUNDIBLE DE OAXACAVIDEO OFICIAL 2022.mp3"></audio></div>
+<div class="card"><img src="IMAGENm/VIKO.png"><p>VIKO ÑUU YUKUNAMA</p><audio controls><source src="musica/chilena viko ñuu yukunama (videoclip) Los chavez del Guamuchil (video oficial).mp3"></audio></div>
+<div class="card"><img src="IMAGENm/BURRO LOCO.png"><p>BURRO LOCO</p><audio controls><source src="musica/El Burro Loco ( Video Oficial ) - El Compa Sebas Y Su Teclado ( Gigantes De La Costa ).mp3"></audio></div>
+<div class="card"><img src="IMAGENm/SOBERANO.png"><p>LEJOS DE MI TIERRA</p><audio controls><source src="musica/Grupo Soberano De Tierra Mixteca - Lejos De Mi Tierra (Video Oficial).mp3"></audio></div>
+<div class="card"><img src="IMAGENm/LOS CHAVEZ.png"><p>BAJO LAS ESTRELLAS</p><audio controls><source src="musica/los chavez del guamuchil.mp3"></audio></div>
+<div class="card"><img src="IMAGENm/CARLOS.png"><p>NUESTRAS LEGUAS</p><audio controls><source src="musica/NUESTRAS LENGUAS ÑUUSAVI 2.wav"></audio></div>
+<div class="card"><img src="IMAGENm/POR TUS CAPRICHOS.png"><p>POR TUS CAPRICHOS</p><audio controls><source src="musica/Por Tus Caprichos [Video Oficial] Los Rayos de Oaxaca 2023.mp3"></audio></div>
+<div class="card"><img src="IMAGENm/LOBOMIXTECO.png"><p>MUJER DE CAMPO</p><audio controls><source src="musica/LOBO MIXTECO  MUJER DE CAMPO (Video Clip 4K) 2023.mp3"></audio></div>
+<div class="card"><img src="IMAGENm/MIXTECO.png"><p>QUIEREME NIÑA</p><audio controls><source src="musica/Lobo Mixteco  Video Clip Oficial 2025  Quiereme Niña 4k.mp3"></audio></div>
+<div class="card"><img src="img/10.jpg"><p>Canción 10</p><audio controls><source src="audio/a10.mp3"></audio></div>
+<div class="card"><img src="img/10.jpg"><p>Canción 10</p><audio controls><source src="audio/a10.mp3"></audio></div>
+<div class="card"><img src="img/10.jpg"><p>Canción 10</p><audio controls><source src="audio/a10.mp3"></audio></div>
+<div class="card"><img src="img/10.jpg"><p>Canción 10</p><audio controls><source src="audio/a10.mp3"></audio></div>
+<div class="card"><img src="img/10.jpg"><p>Canción 10</p><audio controls><source src="audio/a10.mp3"></audio></div>
+
+
+
+</div>
+
+</section>
+
+
+
+</section>
+
+<!-- NAV -->
+<div class="nav">
+<button onclick="show('musica')">🎵 Músicas</button>
+<button onclick="show('juego')">🎮 Juegos</button>
+</div>
+
+<script>
+
+/* CAMBIO DE PANTALLA */
+function show(id){
+document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+/* 🔥 FIX: SOLO 1 AUDIO A LA VEZ */
+const audios = document.querySelectorAll("audio");
+
+audios.forEach(audio=>{
+audio.addEventListener("play",()=>{
+audios.forEach(a=>{
+if(a !== audio){
+a.pause();
+a.currentTime = 0;
+}
+});
+});
+});
+
+
+
+
+<!-- ===== MAPA MIXTECO ===== -->
+<div id="mapa-mixteco-wrapper">
+    <div class="header-mixteco">
+        <h2>🌎 Mapa Musical en Mixteco</h2>
+        <p>Explora regiones y escucha sus canciones</p>
+    </div>
+
+    <div id="mapa-mixteco"></div>
+
+    <div class="controls-mixteco">
+        <button id="btnPlayAll">🎧 Escuchar todas</button>
+    </div>
+</div>
+
+<!-- LEAFLET -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+#mapa-mixteco-wrapper{
+    font-family: Arial, sans-serif;
+}
+
+.header-mixteco{
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:10px;
+}
+
+#mapa-mixteco{
+    height:400px;
+    width:100%;
+}
+
+.controls-mixteco{
+    background:#222;
+    text-align:center;
+    padding:15px;
+}
+
+.controls-mixteco button{
+    padding:12px 20px;
+    font-size:16px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    background:#28a745;
+    color:white;
+}
+
+.controls-mixteco button:hover{
+    background:#218838;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // 🔥 Crear mapa
+    const map = L.map('mapa-mixteco').setView([17.07, -96.72], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    // 🎯 Icono
+    const icono = L.icon({
+        iconUrl: "https://cdn-icons-png.flaticon.com/512/727/727245.png",
+        iconSize: [35, 35]
+    });
+
+    // 🎧 audios globales
+    const audios = [];
+
+    // 📍 datos
+    const lugares = [
+        {
+            nombre: "Mixteca Alta",
+            coords: [17.3, -97.5],
+            audio: "audio1.mp3",
+            mixteco: "Nda'a tu'un savi",
+            espanol: "Palabra de la lluvia"
+        },
+        {
+            nombre: "Mixteca Baja",
+            coords: [17.0, -98.0],
+            audio: "audio2.mp3",
+            mixteco: "Kua'a ña'an ini",
+            espanol: "Vamos a ver el corazón"
+        },
+        {
+            nombre: "Mixteca Costa",
+            coords: [16.2, -97.8],
+            audio: "audio3.mp3",
+            mixteco: "Saa ña kivi",
+            espanol: "Así nace el día"
+        }
+    ];
+
+    // 📌 markers
+    lugares.forEach(lugar => {
+
+        const marker = L.marker(lugar.coords, { icon: icono }).addTo(map);
+
+        marker.bindPopup(`
+            <b>${lugar.nombre}</b><br><br>
+            🗣️ Mixteco: ${lugar.mixteco}<br>
+            🇪🇸 Español: ${lugar.espanol}<br><br>
+            <audio controls src="${lugar.audio}"></audio>
+        `);
+
+        const audio = new Audio(lugar.audio);
+        audios.push(audio);
+    });
+
+    // 🔊 reproducir todos
+    document.getElementById("btnPlayAll").addEventListener("click", function () {
+        audios.forEach(a => {
+            a.currentTime = 0;
+            a.play().catch(() => {
+                console.log("Bloqueado por navegador");
+            });
+        });
+    });
+
+});
+</script>
+
+</script>
+ <nav class="menu">
+        <a href="MUSIC1.HTML"><Actividad>Actividad</a>
+        </nav>
+</body>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+
+</html> 
