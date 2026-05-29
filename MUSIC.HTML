@@ -1,370 +1,575 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Juntos aprendamos mixteco</title>
-            <link rel="stylesheet" href="CSS/style.css">
-        </head>
-        <body>
-            <header>
-                  <header class="encabezado">
-                    <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
-                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
-                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
-                </header>
-                <h1>Juntos aprendamos mixteco</h1>
-                <nav class="menu">
-                        <a href="index.html">Inicio</a>
-                            <ul class="menu">
-                                 <li> <a href="#"> Campos semánticos </a>
-                                <ul class="submenu">
-                                     <li><a href="Campos semanticos/saludos y frases de cortesia/saludos_y_frases_de_cortesia.html">Saludos y frases de cortesía</a></li>
-                                     <li><a href="FRUTS.HTML">Frutas</a></li>
-                                     <li><a href="verduras y legumbres.html">Verduras y legumbres</a></li>
-                                     <li><a href="partes_del_cuerpo.html">Partes del cuerpo</a></li>
-                                     <li><a href="comidas.html">Comidas</a></li>
-                                     <li><a href="bebidas/bebidas.html">Bebidas</a></li>
-                                     <li><a href="prendas.html">Prendas de vestir</a></li>
-                                     <li><a href="objetos.html">Objetos</a></li>
-                                     <li><a href="animales.html">Animales</a></li>
-                                     <li><a href="colores.html">Colores</a></li>
-                                     <li><a href="Naturaleza.html">Naturaleza</a></li>
-                                     <li><a href="Campos semanticos/numeros/Numeros.html">Números</a></li>
-                                     <li><a href="">Ocupaciones</a></li>
-                                     <li><a href="enfermedades.html">Enfermedades</a></li>
-                                </ul>
-                            </li>
-                            </ul>
-                        <a href="#">Alfabeto ilustrado en la lengua mixteca</a>
-                        <a href="#">Juegos</a>
-                        <a href="MUSIC.HTML">Canciones</a>
-                        <a href="#">Saberes de San Agustín Tlacotepec</a>
-                        <a href="#">Pronunciación</a>
-                        <a href="#">Lección de lecto-escritura</a>
-                        <a href="#">Reseña de San Agustín Tlacotepec</a>
-                    </nav>
-                     <script>
-                      // Mostrar/ocultar submenús al hacer clic
-                     const botones = document.querySelectorAll('.menu-btn');
-                     botones.forEach(btn => {
-                     btn.addEventListener('click', () => {
-                     const submenu = btn.nextElementSibling;
-                     const visible = submenu.style.display === 'block';
-                     // Oculta otros submenús
-                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
-                     // Alterna el submenú seleccionado
-                     submenu.style.display = visible ? 'none' : 'block';
-                     });
-                     });
-                     </script>
-            </header>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MUSICA MIXTECA</title>
+<title>MÚSICA MIXTECA</title>
 
 <style>
-
-body{
-margin:0;
-font-family:sans-serif;
-background:#0b2239;
-color:white;
+body {
+  margin: 0;
+  font-family: Arial;
+  height: 100vh;
+  display: flex;
+  background: linear-gradient(135deg,#0f172a,#1e293b);
+  transition: background 1.2s ease, filter 0.3s ease;
+  overflow: hidden;
 }
 
-header{
-text-align:center;
-padding:15px;
-background:#0f2f4f;
-font-size:20px;
+/* SIDEBAR */
+.lista {
+  width: 28%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 15px;
+  overflow-y: auto;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
-gap:20px;
-padding:15px;
-justify-items:center;
+.lista li {
+  padding: 12px;
+  margin: 8px 0;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-
-.card{
-background:#123a5c;
-border-radius:15px;
-padding:15px;
-text-align:center;
-box-shadow:0 5px 15px rgba(0,0,0,0.4);
-transform: perspective(800px);
-transition:0.3s ease;
-animation: appear 0.6s ease;
+.lista li:hover {
+  transform: translateX(6px);
+  background: rgba(255,255,255,0.18);
 }
 
-.card:hover{
-transform: perspective(800px) rotateY(8deg) rotateX(5deg) scale(1.03);
+/* CENTRO */
+.centro {
+  width: 72%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1100px;
 }
 
-@keyframes appear{
-from{opacity:0; transform:scale(0.9);}
-to{opacity:1; transform:scale(1);}
+/* 🧊 CARD 3D (tu animación original) */
+.card {
+  background: rgba(255,255,255,0.92);
+  padding: 30px;
+  border-radius: 22px;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+
+  transform: rotateX(6deg) rotateY(-6deg);
+  transition: 0.5s ease;
 }
 
-.card img{
-width:100%;
-height:140px;
-object-fit:cover;
-border-radius:12px;
+.card:hover {
+  transform: rotateX(0deg) rotateY(0deg) scale(1.02);
 }
 
-audio{
-width:100%;
-margin-top:10px;
+/* PLAYER */
+.player {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(12px);
 }
 
-.nav{
-position:fixed;
-bottom:0;
-width:100%;
-display:flex;
-justify-content:space-around;
-background:#0f2f4f;
-padding:10px;
+.cover {
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#1db954,#0f172a);
 }
 
-.nav button{
-background:#1DB954;
-border:none;
-padding:10px 15px;
-border-radius:10px;
-color:white;
+.info {
+  flex: 1;
+  text-align: left;
 }
 
-section{display:none;padding-bottom:80px;}
-section.active{display:block;}
-
-.game{
-text-align:center;
-padding:20px;
+.bar {
+  width: 100%;
+  height: 6px;
+  background: #334155;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 6px;
 }
 
-.option{
-display:block;
-margin:10px auto;
-width:80%;
-padding:10px;
-background:#1DB954;
-border:none;
-border-radius:10px;
-color:white;
+.progress {
+  width: 0%;
+  height: 100%;
+  background: #1db954;
+  transition: 0.3s;
 }
 
+.playBtn {
+  border: none;
+  background: #1db954;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* QUIZ */
+.game button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background: #1e293b;
+  color: white;
+  transition: 0.3s;
+}
+
+.game button:hover {
+  background: #334155;
+}
 </style>
 </head>
 
 <body>
 
-<header>MUSICAS DE LA CULTURA MIXTECA</header>
-
-<!-- MUSICA -->
-<section id="musica" class="active">
-
-<div class="grid">
-
-<div class="card"><img src="IMAGENm/INCONFUNDIBLE.png"><p>CHILENA MIXTECAORGANO</p><audio controls><source src="musica/CHILENA MIXTECAORGANO INCONFUNDIBLE DE OAXACAVIDEO OFICIAL 2022.mp3"></audio></div>
-<div class="card"><img src="IMAGENm/VIKO.png"><p>VIKO ÑUU YUKUNAMA</p><audio controls><source src="musica/chilena viko ñuu yukunama (videoclip) Los chavez del Guamuchil (video oficial).mp3"></audio></div>
-<div class="card"><img src="IMAGENm/BURRO LOCO.png"><p>BURRO LOCO</p><audio controls><source src="musica/El Burro Loco ( Video Oficial ) - El Compa Sebas Y Su Teclado ( Gigantes De La Costa ).mp3"></audio></div>
-<div class="card"><img src="IMAGENm/SOBERANO.png"><p>LEJOS DE MI TIERRA</p><audio controls><source src="musica/Grupo Soberano De Tierra Mixteca - Lejos De Mi Tierra (Video Oficial).mp3"></audio></div>
-<div class="card"><img src="IMAGENm/LOS CHAVEZ.png"><p>BAJO LAS ESTRELLAS</p><audio controls><source src="musica/los chavez del guamuchil.mp3"></audio></div>
-<div class="card"><img src="IMAGENm/CARLOS.png"><p>NUESTRAS LEGUAS</p><audio controls><source src="musica/NUESTRAS LENGUAS ÑUUSAVI 2.wav"></audio></div>
-<div class="card"><img src="IMAGENm/POR TUS CAPRICHOS.png"><p>POR TUS CAPRICHOS</p><audio controls><source src="musica/Por Tus Caprichos [Video Oficial] Los Rayos de Oaxaca 2023.mp3"></audio></div>
-<div class="card"><img src="IMAGENm/LOBOMIXTECO.png"><p>MUJER DE CAMPO</p><audio controls><source src="musica/LOBO MIXTECO  MUJER DE CAMPO (Video Clip 4K) 2023.mp3"></audio></div>
-<div class="card"><img src="IMAGENm/MIXTECO.png"><p>QUIEREME NIÑA</p><audio controls><source src="musica/Lobo Mixteco  Video Clip Oficial 2025  Quiereme Niña 4k.mp3"></audio></div>
-<div class="card"><img src="img/10.jpg"><p>Canción 10</p><audio controls><source src="audio/a10.mp3"></audio></div>
-<div class="card"><img src="img/10.jpg"><p>Canción 10</p><audio controls><source src="audio/a10.mp3"></audio></div>
-<div class="card"><img src="img/10.jpg"><p>Canción 10</p><audio controls><source src="audio/a10.mp3"></audio></div>
-<div class="card"><img src="img/10.jpg"><p>Canción 10</p><audio controls><source src="audio/a10.mp3"></audio></div>
-<div class="card"><img src="img/10.jpg"><p>Canción 10</p><audio controls><source src="audio/a10.mp3"></audio></div>
-
-
-
+<div class="lista">
+  <h2 style="text-align:center;">MÚSICA MIXTECA</h2>
+  <ul id="lista"></ul>
 </div>
 
-</section>
+<div class="centro">
+  <div class="card">
 
+    <h2 id="titulo">APRENDE MIXTECO</h2>
 
+    <!-- PLAYER -->
+    <div class="player" id="player" style="display:none;">
+      <div class="cover"></div>
 
-</section>
+      <div class="info">
+        <div id="songName">Canción</div>
+        <div class="bar">
+          <div class="progress" id="progress"></div>
+        </div>
+      </div>
 
-<!-- NAV -->
-<div class="nav">
-<button onclick="show('musica')">🎵 Músicas</button>
-<button onclick="show('juego')">🎮 Juegos</button>
+      <button class="playBtn" onclick="togglePlay()">▶</button>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="game">
+      <h3 id="pregunta">Pregunta</h3>
+      <div id="opciones"></div>
+    </div>
+
+  </div>
 </div>
 
 <script>
 
-/* CAMBIO DE PANTALLA */
-function show(id){
-document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-}
+/* 🎵 10 CANCIONES */
+const canciones = [
+  {titulo:"CANCION MIXTECA", audio:"Canción Mixteca interpretada por la soprano Patricia Trujano Granados.mp3"},
+  {titulo:"VIKO ÑUU YUKUNAMA", audio:"chilena viko ñuu yukunama (videoclip) Los chavez del Guamuchil (video oficial).mp3"},
+  {titulo:"XA'A NA LO'O LOKO XAKU YU", audio:"XA'A NA LO'O LOKO.mp3"},
+  {titulo:"NUESTRAS LENGUAS", audio:"NUESTRAS LENGUAS ÑUUSAVI 2.wav"},
+  {titulo:"EL AGUARDIENTITO", audio:"AUD-20260520-WA0001.mp3"},
+  {titulo:"VICHIN NIN DOU'UN ", audio:"AUD-202605200-WA0025.mp3"},
+  {titulo:"ITA NU YUKU ", audio:"AUD-202605201-WA0024.mp3"},
+  {titulo:"YUVI TUN DAXI", audio:"YUVI TUN DAXI.mp3"},
+  {titulo:"NDUVI NIÑA DUVI", audio:"NDUVI NIÑA YUVI.mp3"},
+  {titulo:"TUXA NUMA", audio:"TUXA NUMA.mp3"}
+];
 
-/* 🔥 FIX: SOLO 1 AUDIO A LA VEZ */
-const audios = document.querySelectorAll("audio");
+const lista = document.getElementById("lista");
 
-audios.forEach(audio=>{
-audio.addEventListener("play",()=>{
-audios.forEach(a=>{
-if(a !== audio){
-a.pause();
-a.currentTime = 0;
-}
+canciones.forEach((c,i)=>{
+  lista.innerHTML += `<li onclick="cancion(${i})">${c.titulo}</li>`;
 });
-});
-});
 
+/* 🎮 QUIZ */
+const preguntas = [
+  {q:"¿Cómo se dice agua?", opciones:["nduta","yuku","ñuu"], correcta:0},
+  {q:"¿Cómo se dice casa?", opciones:["kava","yivi","ndoo"], correcta:1},
+  {q:"¿Cómo se dice maíz?", opciones:["savi","tachi","ito"], correcta:1},
+  {q:"¿Cómo se dice sol?", opciones:["ñu'u","kuni","ta'vi"], correcta:0},
+  {q:"¿Cómo se dice tierra?", opciones:["yuku","ndee","kavi"], correcta:0},
+  {q:"¿Cómo se dice viento?", opciones:["tachi","savi","ñuu"], correcta:0},
+  {q:"¿Cómo se dice montaña?", opciones:["yuku","nduta","kava"], correcta:0},
+  {q:"¿Cómo se dice río?", opciones:["nduta","ñuu","kuni"], correcta:0},
+  {q:"¿Cómo se dice flor?", opciones:["ita","yivi","savi"], correcta:0},
+  {q:"¿Cómo se dice vida?", opciones:["ñuu","yuku","ndee"], correcta:0}
+];
 
+let pIndex = 0;
+let bloqueado = false;
 
+/* AUDIO */
+let audio;
+let playing = false;
+let interval;
 
-<!-- ===== MAPA MIXTECO ===== -->
-<div id="mapa-mixteco-wrapper">
-    <div class="header-mixteco">
-        <h2>🌎 Mapa Musical en Mixteco</h2>
-        <p>Explora regiones y escucha sus canciones</p>
-    </div>
+/* 🌈 FONDO ANIMADO */
+function cambiarFondo(i){
+  document.body.style.filter = "blur(5px)";
 
-    <div id="mapa-mixteco"></div>
+  setTimeout(()=>{
+    document.body.style.background =
+      `linear-gradient(135deg,
+      hsl(${i*25},35%,18%),
+      hsl(${200+i*10},30%,22%))`;
 
-    <div class="controls-mixteco">
-        <button id="btnPlayAll">🎧 Escuchar todas</button>
-    </div>
-</div>
-
-<!-- LEAFLET -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<style>
-#mapa-mixteco-wrapper{
-    font-family: Arial, sans-serif;
+    document.body.style.filter = "blur(0px)";
+  },150);
 }
 
-.header-mixteco{
-    background:#111;
-    color:#fff;
-    text-align:center;
-    padding:10px;
+/* 🎵 CANCIÓN */
+function cancion(i){
+
+  document.getElementById("titulo").innerText = canciones[i].titulo;
+  document.getElementById("songName").innerText = canciones[i].titulo;
+  document.getElementById("player").style.display = "flex";
+
+  cambiarFondo(i);
+
+  if(audio){
+    audio.pause();
+    audio.currentTime = 0;
+  }
+
+  audio = new Audio(canciones[i].audio);
+  audio.play();
+  playing = true;
+
+  document.querySelector(".playBtn").innerText = "⏸";
+
+  clearInterval(interval);
+
+  interval = setInterval(()=>{
+    if(audio.duration){
+      let p = (audio.currentTime/audio.duration)*100;
+      document.getElementById("progress").style.width = p+"%";
+    }
+  },200);
 }
 
-#mapa-mixteco{
-    height:400px;
-    width:100%;
+/* ▶ PLAY */
+function togglePlay(){
+  if(!audio) return;
+
+  if(playing){
+    audio.pause();
+    playing=false;
+    document.querySelector(".playBtn").innerText="▶";
+  } else {
+    audio.play();
+    playing=true;
+    document.querySelector(".playBtn").innerText="⏸";
+  }
 }
 
-.controls-mixteco{
-    background:#222;
-    text-align:center;
-    padding:15px;
+/* 🎮 QUIZ */
+function cargarPregunta(){
+  const p = preguntas[pIndex];
+  bloqueado=false;
+
+  document.getElementById("pregunta").innerText=p.q;
+
+  const cont=document.getElementById("opciones");
+  cont.innerHTML="";
+
+  p.opciones.forEach((op,i)=>{
+    cont.innerHTML+=`<button onclick="responder(${i})">${op}</button>`;
+  });
 }
 
-.controls-mixteco button{
-    padding:12px 20px;
-    font-size:16px;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    background:#28a745;
-    color:white;
+function responder(i){
+  if(bloqueado) return;
+  bloqueado=true;
+
+  const p=preguntas[pIndex];
+  const botones=document.querySelectorAll("#opciones button");
+
+  botones.forEach((b,idx)=>{
+    if(idx===p.correcta){
+      b.style.background="green";
+      b.style.color="white";
+    } else if(idx===i){
+      b.style.background="red";
+      b.style.color="white";
+    } else {
+      b.style.opacity="0.4";
+    }
+    b.style.pointerEvents="none";
+  });
+
+  setTimeout(()=>{
+    pIndex++;
+    if(pIndex>=preguntas.length) pIndex=0;
+    cargarPregunta();
+  },1200);
 }
 
-.controls-mixteco button:hover{
-    background:#218838;
-}
-</style>
+/* INIT */
+cargarPregunta();
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    // 🔥 Crear mapa
-    const map = L.map('mapa-mixteco').setView([17.07, -96.72], 7);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap'
-    }).addTo(map);
-
-    // 🎯 Icono
-    const icono = L.icon({
-        iconUrl: "https://cdn-icons-png.flaticon.com/512/727/727245.png",
-        iconSize: [35, 35]
-    });
-
-    // 🎧 audios globales
-    const audios = [];
-
-    // 📍 datos
-    const lugares = [
-        {
-            nombre: "Mixteca Alta",
-            coords: [17.3, -97.5],
-            audio: "audio1.mp3",
-            mixteco: "Nda'a tu'un savi",
-            espanol: "Palabra de la lluvia"
-        },
-        {
-            nombre: "Mixteca Baja",
-            coords: [17.0, -98.0],
-            audio: "audio2.mp3",
-            mixteco: "Kua'a ña'an ini",
-            espanol: "Vamos a ver el corazón"
-        },
-        {
-            nombre: "Mixteca Costa",
-            coords: [16.2, -97.8],
-            audio: "audio3.mp3",
-            mixteco: "Saa ña kivi",
-            espanol: "Así nace el día"
-        }
-    ];
-
-    // 📌 markers
-    lugares.forEach(lugar => {
-
-        const marker = L.marker(lugar.coords, { icon: icono }).addTo(map);
-
-        marker.bindPopup(`
-            <b>${lugar.nombre}</b><br><br>
-            🗣️ Mixteco: ${lugar.mixteco}<br>
-            🇪🇸 Español: ${lugar.espanol}<br><br>
-            <audio controls src="${lugar.audio}"></audio>
-        `);
-
-        const audio = new Audio(lugar.audio);
-        audios.push(audio);
-    });
-
-    // 🔊 reproducir todos
-    document.getElementById("btnPlayAll").addEventListener("click", function () {
-        audios.forEach(a => {
-            a.currentTime = 0;
-            a.play().catch(() => {
-                console.log("Bloqueado por navegador");
-            });
-        });
-    });
-
-});
 </script>
 
-</script>
- <nav class="menu">
-        <a href="MUSIC1.HTML"><Actividad>Actividad</a>
-        </nav>
 </body>
-<footer>
-    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
-    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
-    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
-    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
-    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
-  </footer>
+<div id="infoBox" style="
+position:fixed;
+bottom:20px;
+right:20px;
+background:rgba(0,0,0,0.7);
+padding:15px;
+border-radius:10px;
+color:white;
+font-family:Arial;
+width:300px;
+cursor:move;
+z-index:9999;
+">
 
-</html> 
+<p><b>Dirección:</b> Bachillerato Integral Comunitario de San Agustín Tlacotepec, Oaxaca</p>
+
+<p><b>Facebook:</b>
+<a href="#" style="color:lightblue;">
+BIC San Agustín Tlacotepec
+</a>
+</p>
+
+<p><b>Correo:</b> bic.tlacotepec@gmail.com</p>
+
+<p><b>Teléfonos:</b> 953-123-4567 / 953-987-6543</p>
+
+</div>
+
+<script>
+  </script>
+
+<!-- BOTON APP -->
+<button id="abrirApp" style="
+position:fixed;
+top:20px;
+right:20px;
+padding:12px 25px;
+border:none;
+border-radius:12px;
+background:#2563eb;
+color:white;
+font-size:16px;
+cursor:pointer;
+z-index:9999;
+">
+ ACTIVIDAD
+</button>
+
+<!-- VENTANA -->
+<div id="ventanaApp" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:80%;
+height:80%;
+background:white;
+border-radius:20px;
+padding:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+z-index:10000;
+overflow:auto;
+font-family:Arial;
+">
+
+<h1>ACTIVIDAD</h1>
+
+<p>
+
+
+
+
+
+
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ROMPECANCIONES</title>
+  <style>
+    :root {
+      --rojo-tierra: #A63A2B;
+      --ocre-dorado: #D9A441;
+      --verde-milpa: #29a94f;
+      --azul-profundo: #cb6060;
+      --blanco-suave: #776b6b;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--ocre-dorado), var(--rojo-tierra));
+      color: var(--blanco-suave);
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: var(--azul-profundo);
+    }
+    p {
+      font-size: 1.1em;
+    }
+    #contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .frase {
+      background: var(--blanco-suave);
+      color: var(--azul-profundo);
+      border: 2px solid var(--verde-milpa);
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin: 8px;
+      cursor: grab;
+      font-weight: bold;
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+    .frase:hover {
+      transform: scale(1.05);
+      background: var(--verde-milpa);
+      color: var(--blanco-suave);
+    }
+    button {
+      background: var(--verde-milpa);
+      color: var(--blanco-suave);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: var(--azul-profundo);
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+    #motivacion {
+      margin-top: 10px;
+      font-size: 1.1em;
+      font-style: italic;
+      color: var(--blanco-suave);
+    }
+    #resultado.correcto {
+      color: #00FF88;
+      animation: brillar 1s infinite alternate;
+    }
+    #resultado.incorrecto {
+      color: #FF4444;
+    }
+    @keyframes brillar {
+      from { text-shadow: 0 0 5px #00FF88; }
+      to { text-shadow: 0 0 15px #00FF88; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎵 Rompecanciones Mixteco</h1>
+  <p>Arrastra las frases para ordenarlas correctamente:</p>
+
+  <div id="contenedor">
+    <div class="frase" draggable="true">Nduva siki</div>
+    <div class="frase" draggable="true">Kuaa ndii</div>
+    <div class="frase" draggable="true">Ña’á ñuu</div>
+    <div class="frase" draggable="true">Tata nuni</div>
+  </div>
+
+  <button onclick="verificar()">Verificar orden</button>
+  <div id="resultado"></div>
+  <div id="motivacion"></div>
+
+  <script>
+    const frasesCorrectas = ["Ña’á ñuu","Kuaa ndii","Tata nuni","Nduva siki"];
+    const mensajesMotivacion = [
+      "💪 Vas bien, sigue así!",
+      "🎶 Ya casi lo tienes!",
+      "🔥 No te rindas, estás cerca!",
+      "✨ Excelente ritmo, continúa!"
+    ];
+    let arrastrado = null;
+
+    document.querySelectorAll(".frase").forEach(f => {
+      f.addEventListener("dragstart", e => arrastrado = f);
+      f.addEventListener("dragover", e => e.preventDefault());
+      f.addEventListener("drop", e => {
+        e.preventDefault();
+        if(arrastrado && arrastrado !== f){
+          let contenedor = document.getElementById("contenedor");
+          contenedor.insertBefore(arrastrado, f);
+          mostrarMotivacion();
+        }
+      });
+    });
+
+    function mostrarMotivacion(){
+      const motivacion = document.getElementById("motivacion");
+      const mensaje = mensajesMotivacion[Math.floor(Math.random() * mensajesMotivacion.length)];
+      motivacion.innerText = mensaje;
+    }
+
+    function verificar(){
+      let frases = Array.from(document.querySelectorAll(".frase")).map(f => f.innerText);
+      let resultado = document.getElementById("resultado");
+      if(JSON.stringify(frases) === JSON.stringify(frasesCorrectas)){
+        resultado.innerText = "✅ ¡Correcto! 🎶";
+        resultado.className = "correcto";
+        new Audio('mixteco_cancion.mp3').play();
+      } else {
+        resultado.innerText = "❌ Intenta de nuevo";
+        resultado.className = "incorrecto";
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+</p>
+
+<button id="cerrarApp" style="
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:red;
+color:rgb(0, 0, 0);
+cursor:pointer;
+">
+Cerrar
+</button>
+
+</div>
+
+<script>
+document.getElementById("abrirApp").onclick = function(){
+    document.getElementById("ventanaApp").style.display = "block";
+}
+
+document.getElementById("cerrarApp").onclick = function(){
+    document.getElementById("ventanaApp").style.display = "none";
+}
+</script>
