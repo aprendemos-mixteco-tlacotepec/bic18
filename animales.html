@@ -821,76 +821,9 @@ h1 {
 
 </div>
 
-<!-- JUEGO -->
-<div id="game">
-    <h2>🎮 Juego: Escucha y Adivina</h2>
-
-    <button onclick="playAudio()">🔊 Reproducir audio</button>
-
-    <div id="options"></div>
-
-    <div id="msg"></div>
-</div>
-
-<script>
-
-const data = [
-    {name:"Sol", audio:"a1"},
-    {name:"Luna", audio:"a2"},
-    {name:"Mar", audio:"a3"}
-];
-
-let index = 0;
-
-const options = document.getElementById("options");
-const msg = document.getElementById("msg");
-
-function loadOptions() {
-    options.innerHTML = "";
-
-    data.forEach(item => {
-        let div = document.createElement("div");
-        div.className = "option";
-        div.innerText = item.name;
-
-        div.onclick = () => check(item.name);
-
-        options.appendChild(div);
-    });
-}
-
-function playAudio() {
-    document.getElementById(data[index].audio).play();
-}
-
-function check(answer) {
-    let correct = data[index].name;
-
-    if (answer === correct) {
-        msg.innerText = "✔ Correcto";
-
-        setTimeout(() => {
-            index++;
-
-            if (index < data.length) {
-                msg.innerText = "Siguiente nivel...";
-                loadOptions();
-            } else {
-                document.getElementById("game").innerHTML =
-                    `<h2>🎉 ¡FELICIDADES!</h2>
-                     <p>Completaste el reto correctamente</p>`;
-            }
-        }, 1000);
-
-    } else {
-        msg.innerText = "❌ Vuelve a intentarlo";
-    }
-}
-
-loadOptions();
-
-</script>
-
+<nav class="menu">
+        <a href="Actividades de animales.html"> Actvidad <Actividad></a>
+        </nav>
 </body>
 <footer>
     <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
