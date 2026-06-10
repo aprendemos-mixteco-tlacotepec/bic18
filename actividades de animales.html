@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Juntos aprendamos mixteco</title>
+            <link rel="stylesheet" href="CSS/style.css">
+        </head>
+        <body>
+            <header>
+                <header class="encabezado">
+                    <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
+                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
+                </header>
+                <h1>Juntos aprendamos mixteco</h1>
+                <nav class="menu">
+                        <a href="index.html">Inicio</a>
+                            <ul class="menu">
+                                 <li> <a href="#"> Campos semánticos </a>
+                                <ul class="submenu">
+                                     <li><a href="Campos semanticos/saludos y frases de cortesia/saludos_y_frases_de_cortesia.html">Saludos y frases de cortesía</a></li>
+                                     <li><a href="FRUTS.HTML">Frutas</a></li>
+                                     <li><a href="verduras y legumbres.html">Verduras y legumbres</a></li>
+                                     <li><a href="partes_del_cuerpo.html">Partes del cuerpo</a></li>
+                                     <li><a href="comidas.html">Comidas</a></li>
+                                     <li><a href="bebidas/bebidas.html">Bebidas</a></li>
+                                     <li><a href="prendas.html">Prendas de vestir</a></li>
+                                     <li><a href="objetos.html">Objetos</a></li>
+                                     <li><a href="animales.html">Animales</a></li>
+                                     <li><a href="colores.html">Colores</a></li>
+                                     <li><a href="Naturaleza.html">Naturaleza</a></li>
+                                     <li><a href="Campos semanticos/numeros/Numeros.html">Números</a></li>
+                                     <li><a href="">Ocupaciones</a></li>
+                                     <li><a href="enfermedades.html">Enfermedades</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <a href="#">Alfabeto ilustrado en la lengua mixteca</a>
+                        <a href="#">Juegos</a>
+                        <a href="MUSIC.HTML">Canciones</a>
+                        <a href="saberes.html">Saberes de San Agustín Tlacotepec</a>
+                        <a href="#">Pronunciación</a>
+                        <a href="#">Lección de lecto-escritura</a>
+                        <a href="reseña.html">Reseña de San Agustín Tlacotepec</a>
+                    </nav>
+                     <script>
+                      // Mostrar/ocultar submenús al hacer clic
+                     const botones = document.querySelectorAll('.menu-btn');
+                     botones.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                     const submenu = btn.nextElementSibling;
+                     const visible = submenu.style.display === 'block';
+                     // Oculta otros submenús
+                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
+                     // Alterna el submenú seleccionado
+                     submenu.style.display = visible ? 'none' : 'block';
+                     });
+                     });
+                     </script>
+            </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memorama de Animales</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#0f2027,#2c5364);
+    color:white;
+    text-align:center;
+}
+
+h1{
+    margin-top:30px;
+    font-size:45px;
+}
+
+#nivel{
+    font-size:25px;
+    margin-bottom:20px;
+}
+
+.memorama{
+    display:grid;
+    grid-template-columns:repeat(5,180px);
+    gap:20px;
+    justify-content:center;
+    margin:30px auto;
+}
+
+.carta{
+    width:180px;
+    height:180px;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:.5s;
+    cursor:pointer;
+}
+
+.carta.girar{
+    transform:rotateY(180deg);
+}
+
+.frente,
+.atras{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:15px;
+    overflow:hidden;
+    backface-visibility:hidden;
+}
+
+.frente{
+    background:white;
+    transform:rotateY(180deg);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.frente img{
+    width:100%;
+    height:140px;
+    object-fit:cover;
+}
+
+.frente h3{
+    color:black;
+    margin:0;
+    padding:5px;
+}
+
+.atras{
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+}
+
+#btnNivel{
+    display:none;
+    padding:15px 30px;
+    border:none;
+    border-radius:10px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+#mensaje{
+    display:none;
+    font-size:40px;
+    margin-top:30px;
+}
+
+@media(max-width:1000px){
+
+.memorama{
+grid-template-columns:repeat(2,150px);
+}
+
+.carta{
+width:150px;
+height:150px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🧠 Memorama de Animales</h1>
+
+<div id="nivel">
+Nivel 1
+</div>
+
+<div class="memorama" id="memorama"></div>
+
+<button id="btnNivel" onclick="siguienteNivel()">
+➡️ Siguiente Nivel
+</button>
+
+<div id="mensaje">
+🎉 ¡Excelente Trabajo! 🎉
+</div>
+
+<script>
+
+const niveles=[
+
+[
+{id:"zancudo",tipo:"imagen",contenido:"imagenesA/zancudo.jpg"},
+{id:"zancudo",tipo:"texto",contenido:"Tsikueñu"},
+
+{id:"ardilla",tipo:"imagen",contenido:"imagenesA/ardilla.jpg"},
+{id:"ardilla",tipo:"texto",contenido:"Kueñi"},
+
+{id:"chachalaca",tipo:"imagen",contenido:"imagenesA/chachalaca.jpg"},
+{id:"chachalaca",tipo:"texto",contenido:"Lajan"},
+
+{id:"chapulin",tipo:"imagen",contenido:"imagenesA/chapulín.jpg"},
+{id:"chapulin",tipo:"texto",contenido:"Tsika"},
+
+{id:"colibri",tipo:"imagen",contenido:"imagenesA/colibri.jpg"},
+{id:"colibri",tipo:"texto",contenido:"Ndsiyoo"}
+],
+
+[
+{id:"guajolota",tipo:"imagen",contenido:"imagenesA/guajolota.jpg"},
+{id:"guajolota",tipo:"texto",contenido:"Koni"},
+
+{id:"guajolote",tipo:"imagen",contenido:"imagenesA/guajolote.jpg"},
+{id:"guajolote",tipo:"texto",contenido:"Ko'lo"},
+
+{id:"gato",tipo:"imagen",contenido:"imagenesA/gato.jpg"},
+{id:"gato",tipo:"texto",contenido:"Vilu"},
+
+{id:"lagartija",tipo:"imagen",contenido:"imagenesA/lagartija.jpg"},
+{id:"lagartija",tipo:"texto",contenido:"Lana´ña"},
+
+{id:"perro",tipo:"imagen",contenido:"imagenesA/perro.jpg"},
+{id:"perro",tipo:"texto",contenido:"Ina"}
+],
+
+[
+{id:"arana",tipo:"imagen",contenido:"imagenesA/araña.jpg"},
+{id:"arana",tipo:"texto",contenido:"Tsindoo"},
+
+{id:"aranacapulina",tipo:"imagen",contenido:"imagenesA/araña capulina.jpg"},
+{id:"aranacapulina",tipo:"texto",contenido:"Tsiñu´u"},
+
+{id:"cienpies",tipo:"imagen",contenido:"imagenesA/cienpies.jpg"},
+{id:"cienpies",tipo:"texto",contenido:"Koo yuja"},
+
+{id:"gusano",tipo:"imagen",contenido:"imagenesA/gusano de maguey.jpg"},
+{id:"gusano",tipo:"texto",contenido:"Sintda´a"},
+
+{id:"aventurilla",tipo:"imagen",contenido:"imagenesA/aventurilla.jpg"},
+{id:"aventurilla",tipo:"texto",contenido:"Longrii"}
+],
+
+[
+{id:"cenzontle",tipo:"imagen",contenido:"imagenesA/cenzontle.jpg"},
+{id:"cenzontle",tipo:"texto",contenido:"Saa nuu tachi"},
+
+{id:"zopilote",tipo:"imagen",contenido:"imagenesA/zopilote.jpg"},
+{id:"zopilote",tipo:"texto",contenido:"Choko"},
+
+{id:"coyote",tipo:"imagen",contenido:"imagenesA/coyote.jpg"},
+{id:"coyote",tipo:"texto",contenido:"Vo´o"},
+
+{id:"tlacuache",tipo:"imagen",contenido:"imagenesA/tlacuache.jpg"},
+{id:"tlacuache",tipo:"texto",contenido:"Jako"},
+
+{id:"escorpion",tipo:"imagen",contenido:"imagenesA/escorpión.jpg"},
+{id:"escorpion",tipo:"texto",contenido:"Koo sutu"}
+],
+
+[
+{id:"vibora",tipo:"imagen",contenido:"imagenesA/vibora.jpg"},
+{id:"vibora",tipo:"texto",contenido:"Koo"},
+
+{id:"cascabel",tipo:"imagen",contenido:"imagenesA/vibora de cascabel.jpg"},
+{id:"cascabel",tipo:"texto",contenido:"Koo kaa"},
+
+{id:"renacuajo",tipo:"imagen",contenido:"imagenesA/renacuajos.jpg"},
+{id:"renacuajo",tipo:"texto",contenido:"Lava´va"}
+]
+
+];
+
+let nivelActual=0;
+let primera=null;
+let segunda=null;
+let bloqueo=false;
+let parejas=0;
+
+const tablero=document.getElementById("memorama");
+
+function cargarNivel(){
+
+tablero.innerHTML="";
+parejas=0;
+
+const datos=[...niveles[nivelActual]];
+datos.sort(()=>Math.random()-0.5);
+
+datos.forEach(item=>{
+
+const carta=document.createElement("div");
+carta.className="carta";
+carta.dataset.id=item.id;
+
+if(item.tipo==="imagen"){
+
+carta.innerHTML=`
+<div class="frente">
+<img src="${item.contenido}">
+</div>
+<div class="atras">?</div>
+`;
+
+}else{
+
+carta.innerHTML=`
+<div class="frente">
+<h3>${item.contenido}</h3>
+</div>
+<div class="atras">?</div>
+`;
+
+}
+
+carta.onclick=()=>{
+
+if(
+bloqueo ||
+carta===primera ||
+carta.classList.contains("girar")
+)return;
+
+carta.classList.add("girar");
+
+if(!primera){
+
+primera=carta;
+
+}else{
+
+segunda=carta;
+bloqueo=true;
+
+if(
+primera.dataset.id===
+segunda.dataset.id
+){
+
+parejas++;
+
+primera=null;
+segunda=null;
+bloqueo=false;
+
+if(
+parejas===niveles[nivelActual].length/2
+){
+
+if(
+nivelActual===niveles.length-1
+){
+
+document.getElementById("mensaje").style.display="block";
+
+}else{
+
+document.getElementById("btnNivel").style.display="inline-block";
+
+}
+
+}
+
+}else{
+
+setTimeout(()=>{
+
+primera.classList.remove("girar");
+segunda.classList.remove("girar");
+
+primera=null;
+segunda=null;
+bloqueo=false;
+
+},1000);
+
+}
+
+}
+
+};
+
+tablero.appendChild(carta);
+
+});
+
+}
+
+function siguienteNivel(){
+
+nivelActual++;
+
+document.getElementById("nivel").textContent=
+"Nivel "+(nivelActual+1);
+
+document.getElementById("btnNivel").style.display="none";
+
+cargarNivel();
+
+}
+
+cargarNivel();
+
+</script>
+
+</body>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://www.facebook.com/bic.tlacotepec?mibextid=ZbWKwL" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bic18tiic@gmail.com">bic18tiic@gmail.com</a></p>
+    <p>Teléfonos: (953) 124 2447 | (971) 102 0650</p>
+  </footer>
+</html>
