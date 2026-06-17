@@ -24,7 +24,7 @@ z-index:1000;
 .logo{
 display:flex;
 align-items:center;
-gap:10px;
+gap:20px;
 color:white;
 font-weight:700;
 }
