@@ -1,60 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
-              <link rel="stylesheet" href="CSS/style.css">
     <head>
-        <body>
-            <header>
-                  <header class="encabezado">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="CSS/style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
                     <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
-                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
-                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
-                </header>
-                <h1>Juntos aprendamos mixteco</h1>
-                <nav class="menu">
-                        <a href="index.html">Inicio</a>
-                            <ul class="menu">
-                                 <li> <a href="#"> Campos semánticos </a>
-                                <ul class="submenu">
-                                     <li><a href="Campos semanticos/saludos y frases de cortesia/saludos_y_frases_de_cortesia.html">Saludos y frases de cortesía</a></li>
-                                     <li><a href="FRUTS.HTML">Frutas</a></li>
-                                     <li><a href="verduras y legumbres.html">Verduras y legumbres</a></li>
-                                     <li><a href="partes_del_cuerpo.html">Partes del cuerpo</a></li>
-                                     <li><a href="comidas.html">Comidas</a></li>
-                                     <li><a href="bebidas/bebidas.html">Bebidas</a></li>
-                                     <li><a href="prendas.html">Prendas de vestir</a></li>
-                                     <li><a href="objetos.html">Objetos</a></li>
-                                     <li><a href="animales.html">Animales</a></li>
-                                     <li><a href="colores.html">Colores</a></li>
-                                     <li><a href="Naturaleza.html">Naturaleza</a></li>
-                                     <li><a href="Campos semanticos/numeros/Numeros.html">Números</a></li>
-                                     <li><a href="">Ocupaciones</a></li>
-                                     <li><a href="enfermedades.html">Enfermedades</a></li>
-                                </ul>
-                            </li>
-                            </ul>
-                        <a href="#">Alfabeto ilustrado en la lengua mixteca</a>
-                        <a href="#">Juegos</a>
-                        <a href="MUSIC.HTML">Canciones</a>
-                        <a href="saberes.html">Saberes de San Agustín Tlacotepec</a>
-                        <a href="#">Pronunciación</a>
-                        <a href="#">Lección de lecto-escritura</a>
-                        <a href="reseña.html">Reseña de San Agustín Tlacotepec</a>
-                    </nav>
-                     <script>
-                      // Mostrar/ocultar submenús al hacer clic
-                     const botones = document.querySelectorAll('.menu-btn');
-                     botones.forEach(btn => {
-                     btn.addEventListener('click', () => {
-                     const submenu = btn.nextElementSibling;
-                     const visible = submenu.style.display === 'block';
-                     // Oculta otros submenús
-                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
-                     // Alterna el submenú seleccionado
-                     submenu.style.display = visible ? 'none' : 'block';
-                     });
-                     });
-                     </script>
-            </header>
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="#">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
