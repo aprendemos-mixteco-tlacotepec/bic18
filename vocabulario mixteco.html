@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="CSS/style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="CSS/script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+ <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="#">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(180deg,#ff9a3c,#ffb26b);
+color:#2b2b2b;
+}
+
+
+/* HEADER */
+header{
+background:rgba(17,52,158,.85);
+padding:10px;
+text-align:center;
+color:white;
+}
+
+.container{
+max-width:1100px;
+margin:0 auto;
+padding:20px;
+}
+
+/* TARJETAS */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
+}
+
+.card{
+background:#fff8f0;
+border-radius:12px;
+padding:12px;
+box-shadow:0 6px 18px rgba(0,0,0,.12);
+text-align:center;
+}
+
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.phrase{font-weight:800;margin:10px 0 6px;}
+.desc{color:#555}
+
+/* ACTIVIDAD */
+.activity{
+margin-top:28px;
+background:rgba(255,255,255,.2);
+padding:16px;
+border-radius:12px;
+}
+
+.options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:12px;
+}
+
+.option{
+background:white;
+border-radius:10px;
+padding:8px;
+cursor:pointer;
+text-align:center;
+}
+
+.option img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+button.play{
+background:transparent;
+border:2px solid #ff8a1a;
+padding:8px 12px;
+border-radius:10px;
+cursor:pointer;
+font-weight:700;
+}
+
+/* FOOTER */
+footer{
+background:#004d26;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<section class="grid" id="cards"></section>
+
+<section class="activity">
+
+<h2>🎮 Actividad </h2>
+
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+
+<div>
+❤️ Vidas:
+<span id="vidas">3</span>
+</div>
+
+<div>
+⭐ Puntos:
+<span id="score">0</span>
+</div>
+
+<div>
+🔥 Combo:
+<span id="combo">0</span>
+</div>
+
+<div>
+⏱️ Tiempo:
+<span id="timer">10</span>
+</div>
+
+</div>
+
+<br>
+
+<button id="startGame" style="
+background:#2b4eff;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+display:block;
+margin:15px auto;
+">
+🚀 Iniciar Juego
+</button>
+
+<div id="prompt"
+style="background:white;padding:15px;border-radius:12px;font-size:22px;font-weight:bold;text-align:center;">
+</div>
+
+<br>
+
+<div class="options" id="options"></div>
+
+<h2 id="result"></h2>
+
+<button id="newBtn">🎲 Nueva ronda</button>
+
+</section>
+
+</div>
+
+<script>
+
+const items = [
+  {phrase:'ya´arrijo nuro', img:'imagenes/compermisoati.jpg', audio:'audios/compermisoati.mp3'},
+  {phrase:'ya´sa jo´nuni', img:'imagenes/compermisoausted.jpg', audio:'audios/compermisoausted.mp3'},
+  {phrase:'Ta´vi o ntsii', img:'imagenes/buenosdias.jpg', audio:'audios/buenosdias.mp3'},
+  {phrase:'Ta´vi o ñini', img:'imagenes/buenastardes.jpg', audio:'audios/buenastardes.mp3'},
+  {phrase:'Ta´vi o ngunee', img:'imagenes/buenasnoches.jpg', audio:'audios/buenasnoches.mp3'},
+  {phrase:'¿naxi oo ni?', img:'imagenes/comoestausted.jpg', audio:'audios/comoestausted.mp3'},
+  {phrase:'¿naxi oo ro?', img:'imagenes/comoestas.jpg', audio:'audios/comoestastu.mp3'},
+  {phrase:'Kuaa ka’un ini ro nuu rri', img:'imagenes/perdoname.jpg', audio:'audios/perdoname.mp3'},
+  {phrase:'Kuaa ka’un ini ro nuu sa', img:'imagenes/perdoneme.jpg', audio:'audios/perdoneme.mp3'},
+  {phrase:'Tnu’un mani ini', img:'imagenes/porfavor.jpg', audio:'audios/porfavor.mp3'},
+  {phrase:'Kuta vi sa', img:'imagenes/graciasausted.jpg', audio:'audios/graciasausted.mp3'},
+  {phrase:'Kuta vi rri', img:'imagenes/graciasati.jpg', audio:'audios/graciasati.mp3'},
+  {phrase:'ñatu nukuu', img:'imagenes/denada.jpg', audio:'audios/denada.mp3'},
+  {phrase:'Ndakna’a o', img:'imagenes/hastapronto.jpg', audio:'audios/hastapronto.mp3'},
+  {phrase:'Ndakna’a o de´e yuu nte', img:'imagenes/nosvemosmañana.jpg', audio:'audios/nosvemosmañana.mp3'},
+  {phrase:'Ndakna’a o de´e isa', img:'imagenes/nosvemospasadomañana.jpg', audio:'audios/nosvemospasadomañana.mp3'},
+  {phrase:'Ndakna’a o de´e una kina', img:'imagenes/nosvemosenochodias.jpg', audio:'audios/nosvemosenochodias.mp3'},
+  {phrase:'Ndakna’a o de´e nu iyo', img:'imagenes/nosvemosenunmes.jpg', audio:'audios/nosvemosenunmes.mp3'},
+  {phrase:'Ndakna’a o de´e jinu kuiya', img:'imagenes/nosvemosenunaño.jpg', audio:'audios/nosvemosenunaño.mp3'},
+  {phrase:'jiko´o ini ve´e', img:'imagenes/pasaalacasa.jpg', audio:'audios/pasaalacasa.mp3'}
+];
+// TARJETAS
+const container=document.getElementById("cards");
+
+items.forEach(it=>{
+let card=document.createElement("div");
+card.innerHTML=`
+<img src="${it.img}">
+<div class="phrase">${it.phrase}</div>
+<button class="play">🔊 Escuchar</button>
+`;card.className="card";
+const boton = card.querySelector(".play");
+
+boton.addEventListener("click", ()=>{
+
+const audio = new Audio(it.audio);
+
+audio.play();
+
+});
+
+container.appendChild(card);
+});
+
+// ACTIVIDAD
+let current;
+let score = 0;
+let vidas = 3;
+let combo = 0;
+
+let tiempo = 10;
+let intervalo;
+
+function iniciarTemporizador(){
+
+clearInterval(intervalo);
+
+tiempo = 10;
+
+document.getElementById("timer").textContent = tiempo;
+
+intervalo = setInterval(()=>{
+
+tiempo--;
+
+document.getElementById("timer").textContent = tiempo;
+
+if(tiempo <= 0){
+
+clearInterval(intervalo);
+
+vidas--;
+
+combo = 0;
+
+document.getElementById("vidas").textContent = vidas;
+document.getElementById("combo").textContent = combo;
+
+document.getElementById("result").innerHTML =
+"⏰ Tiempo agotado";
+
+if(vidas <= 0){
+
+finJuego();
+
+}else{
+
+setTimeout(nueva,1500);
+
+}
+
+}
+
+},1000);
+
+}
+
+function finJuego(){
+
+document.getElementById("prompt").innerHTML =
+"🏆 Juego terminado";
+
+document.getElementById("options").innerHTML = "";
+
+document.getElementById("result").innerHTML =
+"Tu puntaje final fue: <b>"+score+"</b>";
+
+clearInterval(intervalo);
+
+}
+
+function nueva(){
+
+current = Math.floor(Math.random()*items.length);
+
+document.getElementById("prompt").innerHTML =
+"🎮 Escucha el audio y selecciona la imagen correcta ";
+
+const audio = new Audio(items[current].audio);
+
+audio.play();
+
+let opciones = [current];
+
+while(opciones.length < 4){
+
+let r = Math.floor(Math.random()*items.length);
+
+if(!opciones.includes(r)){
+
+opciones.push(r);
+
+}
+
+}
+
+opciones.sort(()=>Math.random()-0.5);
+
+let cont = document.getElementById("options");
+
+cont.innerHTML = "";
+
+opciones.forEach(i=>{
+
+let div = document.createElement("div");
+
+div.className = "option";
+
+div.innerHTML = `
+<img src="${items[i].img}">
+`;
+
+div.onclick = ()=>{
+
+clearInterval(intervalo);
+
+if(i === current){
+
+combo++;
+
+let puntosGanados = 10 * combo;
+
+score += puntosGanados;
+
+document.getElementById("result").innerHTML =
+"✅ Correcto<br>🔥 Combo x"+combo+
+"<br>+"+puntosGanados+" puntos";
+
+}else{
+
+vidas--;
+
+combo = 0;
+
+document.getElementById("result").innerHTML =
+"❌ Incorrecto";
+
+}
+
+document.getElementById("score").textContent = score;
+document.getElementById("vidas").textContent = vidas;
+document.getElementById("combo").textContent = combo;
+
+if(vidas <= 0){
+
+finJuego();
+
+}else{
+
+setTimeout(nueva,1500);
+
+}
+
+};
+
+cont.appendChild(div);
+
+});
+
+iniciarTemporizador();
+
+}
+
+document.getElementById("newBtn").onclick = nueva;
+document.getElementById("startGame").onclick = ()=>{
+
+document.getElementById("startGame").style.display = "none";
+
+nueva();
+
+};
+
+
+</script>
+
+</body>
+<footer>
+<p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+<p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+<p>Facebook: <a href="https://www.facebook.com/bic.tlacotepec?mibextid=ZbWKwL" target="_blank">@BICSanAgustinTlacotepec</a></p>
+<p>Correo: <a href="mailto:bic18tiic@gmail.com">bic18tiic@gmail.com</a></p>
+<p>Teléfonos: (953) 124 2447 | (971) 102 0650</p
+</footer>
+</html>
