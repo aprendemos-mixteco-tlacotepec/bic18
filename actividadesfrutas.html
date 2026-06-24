@@ -114,6 +114,42 @@ img {
 <h1>🎉 Memorama de Frutas Mixteco 🎉</h1>
 <div id="score">Puntaje: 0</div>
 <div id="game"></div>
+    <section class="app-section">
+        <h2>Juegos</h2>
+        <div class="app-grid">
+            
+           
+        </div>
+
+        <div class="tab-buttons">
+            <button type="button" class="active" data-show="memorama">Memorama</button>
+            <button type="button" data-show="quiz">Quiz</button>
+        </div>
+
+        <section id="memorama" class="panel active">
+            <div class="game-intro">
+                <h3>Memorama de Frutas</h3>
+                <p>Haz clic en una tarjeta para descubrir la fruta o su nombre en mixteco. Empareja los dos lados correctos.</p>
+            </div>
+            <div id="score-memorama">Puntaje: 0</div>
+            <div id="game" class="memorama-grid"></div>
+        </section>
+
+        <section id="quiz" class="panel">
+            <div class="game-intro">
+                <h3>Quiz de Frutas</h3>
+                <p>Selecciona el nombre en mixteco correspondiente a la fruta en español.</p>
+            </div>
+            <div class="top-bar">
+                <div id="hearts">❤️❤️❤️</div>
+                <div id="score">⭐ 0</div>
+            </div>
+            <div class="progress"><div class="bar" id="bar"></div></div>
+            <p id="question"></p>
+            <div class="options-grid" id="options"></div>
+            <p id="status"></p>
+        </section>
+    </section>
 
 <script>
 const frutaS = [
