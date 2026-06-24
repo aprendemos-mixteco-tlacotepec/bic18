@@ -117,130 +117,212 @@ img {
 
 <script>
 const frutaS = [
-    {nombre: "Aguacate", imagen: "imgfrutas/aguacate.webp"},
-    {nombre: "Anona", imagen: "imgfrutas/anona.webp"},
-    {nombre: "Capulin", imagen: "imgfrutas/capulin.webp"},
-    {nombre: "Durazno", imagen: "imgfrutas/durazno.webp"},
-    {nombre: "Guayaba", imagen: "imgfrutas/guayaba.webp"},
-    {nombre: "Lima", imagen: "imgfrutas/lima.webp"},
-    {nombre: "Limon", imagen: "imgfrutas/limon.jpg"},
-    {nombre: "Platano Colorado", imagen: "imgfrutas/platano colorado.webp"},
-    {nombre: "Piña", imagen: "imgfrutas/piña.webp"},
-    {nombre: "Platano Verde", imagen: "imgfrutas/platano de platanar.webp"},
-    {nombre: "Tuna", imagen: "imgfrutas/tuna.webp"},
-    {nombre: "Zapote", imagen: "imgfrutas/zapote amarillo.webp"}
+    { nombre: "Aguacate", mixteco: "Tsityi" },
+    { nombre: "Anona", mixteco: "Ndoko" },
+    { nombre: "Capulín", mixteco: "Ndia'a tsitnuu" },
+    { nombre: "Durazno", mixteco: "Nde'ya" },
+    { nombre: "Guayaba", mixteco: "Tsikuentsiki" },
+    { nombre: "Lima", mixteco: "Tsikuaa" },
+    { nombre: "Limón", mixteco: "Tsikuaa iya" },
+    { nombre: "Plátano Colorado", mixteco: "Ntsika kua'a" },
+    { nombre: "Piña", mixteco: "Vijin" },
+    { nombre: "Plátano Verde", mixteco: "Ntsika kuii" },
+    { nombre: "Tuna", mixteco: "Tyiki" },
+    { nombre: "Zapote", mixteco: "Ntsika saknaa" }
 ];
 
-let cardsArray = [];
 let matchedPairs = 0;
-let score = 0;
-
-const game = document.getElementById("game");
-const scoreDisplay = document.getElementById("score");
-
+let scoreMemorama = 0;
 let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
+let currentQuestion = null;
+let quizScore = 0;
+let quizLives = 3;
+let quizProgress = 0;
 
-function iniciarJuego(){
-    game.innerHTML = "";
-    cardsArray = [...frutaS, ...frutaS]; // ✅ arreglo correcto
-    cardsArray.sort(() => Math.random() - 0.5);
+const game = document.getElementById('game');
+const scoreDisplay = document.getElementById('score-memorama');
+const question = document.getElementById('question');
+const optionsDiv = document.getElementById('options');
+const statusText = document.getElementById('status');
+const hearts = document.getElementById('hearts');
+const scoreQuiz = document.getElementById('score');
+const progressBar = document.getElementById('bar');
 
+function iniciarMemorama() {
+    game.innerHTML = '';
+    const cards = [];
+
+    frutaS.forEach(fruta => {
+        cards.push({ type: 'spanish', text: fruta.nombre, pairId: fruta.nombre });
+        cards.push({ type: 'mixteco', text: fruta.mixteco, pairId: fruta.nombre });
+    });
+
+    const shuffled = cards.sort(() => Math.random() - 0.5);
     matchedPairs = 0;
-    score = 0;
-    updateScore();
+    scoreMemorama = 0;
+    updateMemoramaScore();
 
-    cardsArray.forEach(fruta => {
-        const card = document.createElement("div");
-        card.classList.add("card");
-        card.dataset.name = fruta.nombre;
-
+    shuffled.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.pair = item.pairId;
+        card.dataset.type = item.type;
         card.innerHTML = `
             <div class="front">❓</div>
-            <div class="back">
-                <img src="${fruta.imagen}" alt="${fruta.nombre}">
-            </div>
+            <div class="back"><span>${item.text}</span></div>
         `;
-
-        card.addEventListener("click", flipCard);
+        card.addEventListener('click', flipCard);
         game.appendChild(card);
     });
 }
 
 function flipCard() {
-    if(lockBoard) return;
-    if(this === firstCard) return;
+    if (lockBoard) return;
+    if (this === firstCard) return;
 
-    this.classList.add("flipped");
+    this.classList.add('flipped');
 
-    if(!firstCard){
+    if (!firstCard) {
         firstCard = this;
         return;
     }
 
     secondCard = this;
     lockBoard = true;
-
     checkMatch();
 }
 
-function checkMatch(){
-    const isMatch = firstCard.dataset.name === secondCard.dataset.name;
+function checkMatch() {
+    const isMatch = firstCard.dataset.pair === secondCard.dataset.pair && firstCard.dataset.type !== secondCard.dataset.type;
 
-    if(isMatch){
-        score += 10;
+    if (isMatch) {
+        scoreMemorama += 10;
         matchedPairs++;
-
-        firstCard.removeEventListener("click", flipCard);
-        secondCard.removeEventListener("click", flipCard);
-
-        if(matchedPairs === frutaS.length){
-            lanzarConfeti(); // 🎆 confeti al ganar
+        firstCard.removeEventListener('click', flipCard);
+        secondCard.removeEventListener('click', flipCard);
+        if (matchedPairs === frutaS.length) {
+            lanzarConfeti();
         }
-
         resetBoard();
     } else {
-        score -= 2;
+        scoreMemorama = Math.max(0, scoreMemorama - 2);
         setTimeout(() => {
-            firstCard.classList.remove("flipped");
-            secondCard.classList.remove("flipped");
+            firstCard.classList.remove('flipped');
+            secondCard.classList.remove('flipped');
             resetBoard();
-        }, 1000);
+        }, 900);
     }
-
-    updateScore();
+    updateMemoramaScore();
 }
 
-function lanzarConfeti(){
-    for(let i = 0; i < 100; i++){
-        const confeti = document.createElement("div");
-        confeti.classList.add("confeti");
+function resetBoard() {
+    [firstCard, secondCard, lockBoard] = [null, null, false];
+}
 
-        confeti.style.left = Math.random() * 100 + "vw";
-        confeti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
+function updateMemoramaScore() {
+    scoreDisplay.textContent = `Puntaje: ${scoreMemorama}`;
+}
 
+function lanzarConfeti() {
+    for (let i = 0; i < 60; i++) {
+        const confeti = document.createElement('div');
+        confeti.className = 'confeti';
+        confeti.style.left = Math.random() * 100 + 'vw';
+        confeti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
         document.body.appendChild(confeti);
-
         setTimeout(() => confeti.remove(), 3000);
     }
 }
 
-function resetBoard(){
-    [firstCard, secondCard, lockBoard] = [null, null, false];
+function mezclar(arr) {
+    const copia = [...arr];
+    for (let i = copia.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copia[i], copia[j]] = [copia[j], copia[i]];
+    }
+    return copia;
 }
 
-function updateScore(){
-    scoreDisplay.textContent = `Puntaje: ${score}`;
+function nuevaPregunta() {
+    optionsDiv.innerHTML = '';
+    statusText.textContent = '';
+
+    currentQuestion = frutaS[Math.floor(Math.random() * frutaS.length)];
+    question.textContent = `Selecciona el nombre mixteco de: ${currentQuestion.nombre}`;
+
+    let opciones = frutaS.filter(f => f.mixteco !== currentQuestion.mixteco);
+    opciones = mezclar(opciones).slice(0, 3);
+    opciones.push(currentQuestion);
+    opciones = mezclar(opciones);
+
+    opciones.forEach(f => {
+        const btn = document.createElement('div');
+        btn.className = 'option';
+        btn.textContent = f.mixteco;
+        btn.addEventListener('click', () => verificarRespuesta(btn, f));
+        optionsDiv.appendChild(btn);
+    });
 }
 
-// Inicia el juego al cargar
-iniciarJuego();
+function verificarRespuesta(btn, opcion) {
+    if (opcion.mixteco === currentQuestion.mixteco) {
+        btn.classList.add('correct');
+        statusText.textContent = '✅ Correcto';
+        quizScore++;
+        quizProgress = Math.min(100, quizProgress + 14);
+    } else {
+        btn.classList.add('wrong');
+        statusText.textContent = '❌ Incorrecto';
+        quizLives--;
+    }
+    actualizarUIQuiz();
+
+    setTimeout(() => {
+        if (quizLives <= 0) {
+            alert(`💀 Perdiste! Puntaje final: ${quizScore}`);
+            reiniciarQuiz();
+        } else {
+            nuevaPregunta();
+        }
+    }, 700);
+}
+
+function actualizarUIQuiz() {
+    scoreQuiz.textContent = `⭐ ${quizScore}`;
+    hearts.textContent = '❤️'.repeat(Math.max(0, quizLives));
+    progressBar.style.width = `${quizProgress}%`;
+}
+
+function reiniciarQuiz() {
+    quizScore = 0;
+    quizLives = 3;
+    quizProgress = 0;
+    actualizarUIQuiz();
+    nuevaPregunta();
+}
+
+function showPanel(id) {
+    document.querySelectorAll('.panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === id);
+    });
+    document.querySelectorAll('.tab-buttons button').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.show === id);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    iniciarMemorama();
+    reiniciarQuiz();
+    document.querySelectorAll('.tab-buttons button').forEach(button => {
+        button.addEventListener('click', () => showPanel(button.dataset.show));
+    });
+    document.querySelectorAll('.app-card button').forEach(button => {
+        button.addEventListener('click', () => showPanel(button.dataset.panel));
+    });
+});
 </script>
-
-</body>
-</html>
-
 
 
 
