@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+                    <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="Alfabeto.html">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="#">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f0f8f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0886a5, #24b4e0);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    header img {
+      width: 100px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+
+    h1 {
+      margin-top: 10px;
+      font-size: 28px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      color: #0c0708;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px auto;
+      max-width: 1000px;
+      gap: 30px;
+    }
+
+    .part {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.3s;
+    }
+
+    .part:hover {
+      transform: scale(1.05);
+    }
+
+    .part img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .part button {
+      background: #0aa5ec;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .part button:hover {
+      background: #56ab2f;
+    }
+
+    /* Juego interactivo */
+    #game {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      width: 80%;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background: #0596c2;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #9be4b2;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bachillerato Integral Comunitario de San Agustín Tlacotepec</h1>
+    <h2>Vocales nasales</h2>
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="part">
+        <img src="imgalfabeto/masa.webp" alt="masa">
+        <h3><em>an</em></h3>
+        <h3><em>ñujan</em></h3>
+        <audio id="audio1" src="audiosalfabeto/cabeza.mp3"></audio>
+        <button onclick="document.getElementById('audio1').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imgalfabeto/piña.webp" alt="piña">
+        <h3><em>in</em></h3>
+        <h3><em>vijin</em></h3>
+        <audio id="audio2" src="audiosalfabeto/barba.mp3"></audio>
+        <button onclick="document.getElementById('audio2').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imgalfabeto/15.webp" alt="15">
+        <h3><em>on</em></h3>
+        <h3><em>ja'on</em></h3>
+        <audio id="audio3" src="audiosalfabeto/ojos.mp3"></audio>
+        <button onclick="document.getElementById('audio3').play()">🔊 Escuchar</button>
+      </div>
+
+      <div class="part">
+        <img src="imgalfabeto/cuello.webp" alt="cuello">
+        <h3><em>un</em></h3>
+        <h3> <em>sùkun</em></h3>
+        <audio id="audio4" src="audiosalfabeto/oreja.mp3"></audio>
+        <button onclick="document.getElementById('audio4').play()">🔊 Escuchar</button>
+      </div>
+
+    
+    </section>
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sopa de Letras Mixteca Interactiva</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background:#f4f4f4;
+    padding:20px;
+}
+
+h1{
+    color:#2c3e50;
+}
+
+#sopa{
+    display:grid;
+    grid-template-columns:repeat(12,40px);
+    gap:2px;
+    justify-content:center;
+    margin:20px auto;
+}
+
+.celda{
+    width:40px;
+    height:40px;
+    border:1px solid #999;
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+    user-select:none;
+}
+
+.seleccionada{
+    background:#87ceeb;
+}
+
+.encontrada{
+    background:#4CAF50;
+    color:white;
+}
+
+#lista{
+    font-size:18px;
+    margin:20px;
+}
+
+.encontradaTexto{
+    text-decoration:line-through;
+    color:green;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crucigrama Mixteco</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background:#f4f4f4;
+    padding:20px;
+}
+
+h1{
+    color:#2c3e50;
+}
+
+#timer{
+    font-size:28px;
+    color:#e74c3c;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.crucigrama{
+    display:grid;
+    grid-template-columns:repeat(8,45px);
+    gap:2px;
+    justify-content:center;
+    margin:20px auto;
+}
+
+input{
+    width:45px;
+    height:45px;
+    text-align:center;
+    font-size:22px;
+    text-transform:uppercase;
+}
+
+.bloque{
+    width:45px;
+    height:45px;
+    background:#333;
+}
+
+.correcta{
+    background:#8ef58e;
+}
+
+.incorrecta{
+    background:#ff9999;
+}
+
+.pistas{
+    max-width:600px;
+    margin:auto;
+    text-align:left;
+    background:white;
+    padding:15px;
+    border-radius:10px;
+}
+
+button{
+    padding:10px 20px;
+    margin:10px;
+    cursor:pointer;
+}
+
+#mensaje{
+    font-size:20px;
+    font-weight:bold;
+    margin-top:15px;
+}
+</style>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sopa de Letras Mixteca</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background:#f4f6f9;
+    padding:20px;
+}
+
+h1{
+    color:#1e3a5f;
+}
+
+#timer{
+    font-size:28px;
+    font-weight:bold;
+    color:#d62828;
+    margin-bottom:10px;
+}
+
+#grid{
+    display:grid;
+    grid-template-columns:repeat(12,40px);
+    gap:2px;
+    justify-content:center;
+    margin:20px auto;
+    user-select:none;
+}
+
+.cell{
+    width:40px;
+    height:40px;
+    background:white;
+    border:1px solid #999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.selected{
+    background:#7ec8e3;
+}
+
+.found{
+    background:#4CAF50;
+    color:white;
+}
+
+#words{
+    margin-top:15px;
+    font-size:18px;
+}
+
+.foundWord{
+    text-decoration: line-through;
+    color: green;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Sopa de Letras - Lengua Mixteca</h1>
+
+<div id="timer">05:00</div>
+
+<div id="grid"></div>
+
+<div id="words"></div>
+
+<div id="message"></div>
+
+<script>
+
+// =======================
+// PALABRAS MIXTECAS
+// =======================
+const words = ["ÑUJAN","VIJIN","JAON","SÙKUN",];
+
+const size = 12;
+
+// =======================
+// MATRIZ BASE
+// =======================
+let grid = [
+['Ñ','U','J','A','N','E','R','T','Y','U','I','V'],
+['A','B','C','D','E','F','G','H','I','J','K','L'],
+['J','A','O','N','M','N','O','P','Q','R','S','T'],
+['Z','X','C','V','B','N','M','A','S','D','F','G'],
+['V','I','J','I','N','K','L','Z','X','C','V','B'],
+['Q','W','E','R','T','Y','U','I','O','P','A','S'],
+['S','Ù','K','U','N','G','H','J','K','L','Z','X'],
+['Y','U','K','U','C','V','B','N','M','Q','W','E'],
+['A','S','D','F','G','H','J','K','L','Z','X','C'],
+['Q','W','E','R','T','Y','U','I','O','P','A','S'],
+['Z','X','C','V','B','N','M','A','S','D','F','G'],
+['H','J','K','L','Q','W','E','R','T','Y','U','I']
+];
+
+const gridDiv = document.getElementById("grid");
+
+let selectedCells = [];
+let isMouseDown = false;
+let foundWords = [];
+
+// =======================
+// CREAR TABLERO
+// =======================
+for(let i=0;i<size;i++){
+    for(let j=0;j<size;j++){
+
+        const div = document.createElement("div");
+        div.classList.add("cell");
+        div.textContent = grid[i][j];
+
+        div.dataset.row = i;
+        div.dataset.col = j;
+
+        div.addEventListener("mousedown",()=>{
+            isMouseDown = true;
+            selectedCells = [div];
+            div.classList.add("selected");
+        });
+
+        div.addEventListener("mouseenter",()=>{
+            if(isMouseDown){
+                selectedCells.push(div);
+                div.classList.add("selected");
+            }
+        });
+
+        gridDiv.appendChild(div);
+    }
+}
+
+// =======================
+// MOUSE UP
+// =======================
+document.addEventListener("mouseup",()=>{
+
+    if(!isMouseDown) return;
+    isMouseDown = false;
+
+    let word = selectedCells.map(c=>c.textContent).join("");
+    let reverse = word.split("").reverse().join("");
+
+    let found = words.find(w=>w===word || w===reverse);
+
+    if(found && !foundWords.includes(found)){
+
+        foundWords.push(found);
+
+        selectedCells.forEach(c=>{
+            c.classList.remove("selected");
+            c.classList.add("found");
+        });
+
+        document.getElementById("message").innerHTML =
+        "✅ Encontraste: " + found;
+
+        updateWords();
+
+        if(foundWords.length === words.length){
+            clearInterval(timer);
+            document.getElementById("message").innerHTML =
+            "🎉 ¡Completaste la sopa de letras!";
+        }
+
+    }else{
+        selectedCells.forEach(c=>{
+            c.classList.remove("selected");
+        });
+    }
+
+    selectedCells = [];
+});
+
+// =======================
+// LISTA DE PALABRAS
+// =======================
+function updateWords(){
+    document.getElementById("words").innerHTML =
+    "<b>Palabras:</b> " +
+    words.map(w=>{
+        return foundWords.includes(w)
+        ? `<span class="foundWord">${w}</span>`
+        : w;
+    }).join(" | ");
+}
+
+updateWords();
+
+// =======================
+// TEMPORIZADOR
+// =======================
+let time = 300;
+
+const timer = setInterval(()=>{
+
+    let m = Math.floor(time/60);
+    let s = time%60;
+
+    document.getElementById("timer").textContent =
+    String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+
+    time--;
+
+    if(time < 0){
+        clearInterval(timer);
+
+        document.getElementById("message").innerHTML =
+        "⏰ Tiempo agotado";
+
+        document.querySelectorAll(".cell")
+        .forEach(c=>c.style.pointerEvents="none");
+    }
+
+},1000);
+
+</script>
+
+</body>
+<footer>
+<p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+<p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+<p>Facebook: <a href="https://www.facebook.com/bic.tlacotepec?mibextid=ZbWKwL" target="_blank">@BICSanAgustinTlacotepec</a></p>
+<p>Correo: <a href="mailto:bic18tiic@gmail.com">bic18tiic@gmail.com</a></p>
+<p>Teléfonos: (953) 124 2447 | (971) 102 0650</p
+
+</footer>
+</html>

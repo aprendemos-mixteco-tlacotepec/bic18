@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+                    <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="Alfabeto.html">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="#">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocales Mixtecas</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#dff5e4;
+      color:#222;
+    }
+
+    .hero{
+      text-align:center;
+      padding:50px 20px 20px;
+    }
+
+    .hero h1{
+      font-size:3rem;
+      color:#8b0000;
+      margin-bottom:10px;
+    }
+
+    .hero p{
+      color:#555;
+      font-size:1.1rem;
+    }
+
+    .container{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:25px;
+      padding:40px;
+    }
+
+    .card{
+      width:220px;
+      background:white;
+      border-radius:20px;
+      padding:25px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .letter{
+      font-size:5rem;
+      font-weight:bold;
+      margin-bottom:10px;
+    }
+
+    .audio-btn{
+      border:none;
+      background:#eee;
+      padding:12px 18px;
+      border-radius:50%;
+      cursor:pointer;
+      font-size:1.2rem;
+      margin:15px 0;
+      transition:0.3s;
+    }
+
+    .audio-btn:hover{
+      background:#ddd;
+    }
+
+    .word{
+      font-size:2rem;
+      font-weight:bold;
+    }
+
+    .meaning{
+      color:#666;
+      margin-top:5px;
+    }
+
+    .a{ border-top:10px solid #e63946; }
+    .e{ border-top:10px solid #f4a261; }
+    .i{ border-top:10px solid #457b9d; }
+    .o{ border-top:10px solid #2a9d8f; }
+    .u{ border-top:10px solid #9b5de5; }
+
+    .a .letter{ color:#e63946; }
+    .e .letter{ color:#f4a261; }
+    .i .letter{ color:#457b9d; }
+    .o .letter{ color:#2a9d8f; }
+    .u .letter{ color:#9b5de5; }
+
+    .activity{
+      background:white;
+      width:85%;
+      max-width:750px;
+      margin:50px auto;
+      padding:40px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .activity h2{
+      color:#8b0000;
+      margin-bottom:15px;
+      font-size:2rem;
+    }
+
+    #question{
+      font-size:1.2rem;
+      margin-bottom:20px;
+    }
+
+    .play-btn{
+      background:#2a9d8f;
+      color:white;
+      border:none;
+      padding:15px 30px;
+      border-radius:12px;
+      font-size:1rem;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .play-btn:hover{
+      background:#21867a;
+      transform:scale(1.05);
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:15px;
+      margin-top:30px;
+    }
+
+    .buttons button{
+      padding:15px 25px;
+      border:none;
+      border-radius:12px;
+      background:#8b0000;
+      color:white;
+      font-size:1rem;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .buttons button:hover{
+      background:#a50000;
+      transform:scale(1.05);
+    }
+
+    #result{
+      margin-top:25px;
+      font-size:1.3rem;
+      font-weight:bold;
+    }
+
+    #score,
+    #progress{
+      margin-top:15px;
+      color:#555;
+      font-size:1rem;
+    }
+
+    .memory-section{
+      background:white;
+      width:85%;
+      max-width:900px;
+      margin:40px auto;
+      padding:35px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .memory-section h2{
+      color:#8b0000;
+      margin-bottom:18px;
+      font-size:2rem;
+    }
+
+    .memory-grid{
+      display:grid;
+      grid-template-columns:repeat(5, minmax(100px,1fr));
+      gap:15px;
+      margin-top:25px;
+    }
+
+    .memory-card{
+      position:relative;
+      width:100%;
+      padding-top:100%;
+      cursor:pointer;
+      perspective:1000px;
+    }
+
+    .memory-inner{
+      position:absolute;
+      inset:0;
+      transition:transform .5s;
+      transform-style:preserve-3d;
+      border-radius:18px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .memory-card.flipped .memory-inner{
+      transform:rotateY(180deg);
+    }
+
+    .memory-front,
+    .memory-back{
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      backface-visibility:hidden;
+      font-size:2.5rem;
+      font-weight:700;
+    }
+
+    .memory-front{
+      background:#2a9d8f;
+      color:white;
+    }
+
+    .memory-back{
+      background:#f8fafc;
+      color:#2a9d8f;
+      transform:rotateY(180deg);
+      border:3px solid #2a9d8f;
+      flex-direction:column;
+      gap:10px;
+      padding:12px;
+    }
+
+    .memory-back img{
+      width:60px;
+      height:60px;
+      object-fit:contain;
+      border-radius:12px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .memory-back span{
+      display:block;
+      font-size:1rem;
+      color:#1f4e79;
+      font-weight:700;
+      margin-top:4px;
+    }
+
+    .memory-info{
+      margin-top:22px;
+      font-size:1rem;
+      color:#444;
+    }
+
+    .memory-info span{
+      display:inline-block;
+      margin:0 12px;
+      font-weight:700;
+    }
+
+    footer{
+      background:#8b0000;
+      color:white;
+      text-align:center;
+      padding:25px;
+      margin-top:50px;
+    }
+
+    @keyframes celebrate3D{
+      0%{ transform:rotateX(0deg) rotateY(0deg) scale(1); opacity:1; }
+      50%{ transform:rotateX(180deg) rotateY(180deg) scale(1.08); }
+      100%{ transform:rotateX(360deg) rotateY(360deg) scale(1); opacity:1; }
+    }
+
+    .memory-section.won{
+      animation:celebrate3D 1s ease-in-out;
+    }
+
+    @media (max-width: 768px){
+      .memory-grid{
+        grid-template-columns:repeat(2, minmax(100px,1fr));
+      }
+
+      .card{
+        width:90%;
+        max-width:280px;
+      }
+
+      .hero h1{
+        font-size:2.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <h1>LAS VOCALES EN MIXTECO</h1>
+    <p>Aprende las vocales básicas </p>
+  </section>
+
+  <section class="container">
+    <div class="card a">
+      <div class="letter">A</div>
+      <button onclick="playAudio('audiosalfabeto/antisivi 1.wav')">🔊</button>
+      <div class="word">Antsivi</div>
+      <div class="meaning">Cielo</div>
+    </div>
+
+    <div class="card e">
+      <div class="letter">E</div>
+      <button onclick="playAudio('audiosalfabeto/yete 4.wav')">🔊</button>
+      <div class="word">Yete</div>
+      <div class="meaning">Cabello de Elote</div>
+    </div>
+
+    <div class="card i">
+      <div class="letter">I</div>
+      <button onclick="playAudio('audiosalfabeto/ITA.wav')">🔊</button>
+      <div class="word">Ita</div>
+      <div class="meaning">Flor</div>
+    </div>
+
+    <div class="card o">
+      <div class="letter">O</div>
+      <button onclick="playAudio('audiosalfabeto/oko 2.wav')">🔊</button>
+      <div class="word">Oko</div>
+      <div class="meaning">20</div>
+    </div>
+
+    <div class="card u">
+      <div class="letter">U</div>
+      <button onclick="playAudio('audiosalfabeto/uxi 3.wav')">🔊</button>
+      <div class="word">Uxi</div>
+      <div class="meaning">3</div>
+    </div>
+  </section>
+
+  <section class="activity">
+    <h2>Actividad Interactiva</h2>
+
+    <p id="question">¿Qué vocal escuchaste?</p>
+
+    <button class="play-btn" onclick="playSound()">
+      🔊 Escuchar Vocal
+    </button>
+
+    <div class="buttons">
+      <button onclick="checkAnswer('A')">A</button>
+      <button onclick="checkAnswer('E')">E</button>
+      <button onclick="checkAnswer('I')">I</button>
+      <button onclick="checkAnswer('O')">O</button>
+      <button onclick="checkAnswer('U')">U</button>
+    </div>
+
+    <div id="result"></div>
+    <div id="score">Puntos: 0</div>
+    <div id="progress">Pregunta 1 de 5</div>
+  </section>
+
+  <section class="memory-section">
+    <h2>Memorama de las vocales</h2>
+    <p>Encuentra las parejas de vocales básicas. Haz clic en dos cartas para descubrirlas.</p>
+    <div class="memory-grid" id="memoryGrid"></div>
+    <div class="memory-info">
+      <span id="matches">Parejas: 0</span>
+      <span id="attempts">Intentos: 0</span>
+    </div>
+  </section>
+
+  <script>
+    const questions = [
+      {
+        audio: "A",
+        audioSrc: "audiosalfabeto/antisivi 1.wav",
+        correct: "A",
+        question: "Escucha la vocal de Antsivi (cielo)"
+      },
+      {
+        audio: "E",
+        audioSrc: "audiosalfabeto/yete 4.wav",
+        correct: "E",
+        question: "Escucha la vocal de Yete (cabello de elote)"
+      },
+      {
+        audio: "I",
+        audioSrc: "audiosalfabeto/ITA.wav",
+        correct: "I",
+        question: "Escucha la vocal de Ita (flor)"
+      },
+      {
+        audio: "O",
+        audioSrc: "audiosalfabeto/oko 2.wav",
+        correct: "O",
+        question: "Escucha la vocal de Oko (20)"
+      },
+      {
+        audio: "U",
+        audioSrc: "audiosalfabeto/uxi 3.wav",
+        correct: "U",
+        question: "Escucha la vocal de Uxi (3)"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionText = document.getElementById("question");
+    const result = document.getElementById("result");
+    const scoreText = document.getElementById("score");
+    const progress = document.getElementById("progress");
+
+    let audioPlayer;
+
+    function playAudio(src){
+      if(audioPlayer){
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+      }
+      audioPlayer = new Audio(src);
+      audioPlayer.play().catch(() => {
+        console.warn('No se pudo reproducir el audio:', src);
+      });
+    }
+
+    function speakText(text){
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = "es-ES";
+      speech.rate = 0.8;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(speech);
+    }
+
+    function loadQuestion(){
+      result.innerHTML = "";
+      const q = questions[currentQuestion];
+      questionText.innerHTML = q.question;
+      progress.innerHTML = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
+    }
+
+    function playSound(){
+      const q = questions[currentQuestion];
+      playAudio(q.audioSrc);
+    }
+
+    function checkAnswer(answer){
+      const q = questions[currentQuestion];
+
+      if(answer === q.correct){
+        result.innerHTML = "✅ ¡Correcto!";
+        result.style.color = "green";
+        score++;
+      }else{
+        result.innerHTML = `❌ Incorrecto. Era: ${q.correct}`;
+        result.style.color = "red";
+      }
+
+      scoreText.innerHTML = `Puntos: ${score}`;
+
+      setTimeout(() => {
+        currentQuestion++;
+
+        if(currentQuestion < questions.length){
+          loadQuestion();
+        }else{
+          finishGame();
+        }
+      }, 1500);
+    }
+
+    function finishGame(){
+      questionText.innerHTML = "🎉 Actividad terminada";
+      result.innerHTML = `Obtuviste ${score} de ${questions.length} puntos`;
+      result.style.color = "#8b0000";
+      progress.innerHTML = "Completado";
+      document.querySelector(".buttons").style.display = "none";
+      document.querySelector(".play-btn").style.display = "none";
+    }
+
+    const memoryPairs = [
+      {
+        letter: 'A',
+        label: 'Antsivi',
+        image: "imgalfabeto/CIELO.webp"
+      },
+      {
+        letter: 'E',
+        label: 'Yete',
+        image: "imgalfabeto/CABELLO DE ELOTE.webp"
+      },
+      {
+        letter: 'I',
+        label: 'Ita',
+        image: "imgalfabeto/FLOR.webp"
+      },
+      {
+        letter: 'O',
+        label: 'Oko',
+        image: "imgalfabeto/20.webp"
+      },
+      {
+        letter: 'U',
+        label: 'Uni',
+        image: "imgalfabeto/3.webp"
+      }
+    ];
+
+    const memoryGrid = document.getElementById('memoryGrid');
+    const matchesText = document.getElementById('matches');
+    const attemptsText = document.getElementById('attempts');
+
+    let firstCard = null;
+    let secondCard = null;
+    let lockBoard = false;
+    let matches = 0;
+    let attempts = 0;
+
+    function createMemoryCards(){
+      const cards = memoryPairs
+        .flatMap(item => [item, item])
+        .sort(() => Math.random() - 0.5);
+
+      memoryGrid.innerHTML = cards.map((card, index) => `
+        <div class="memory-card" data-letter="${card.letter}" data-index="${index}">
+          <div class="memory-inner">
+            <div class="memory-front">?</div>
+            <div class="memory-back">
+              <img src="${card.image}" alt="${card.letter}">
+              <span>${card.label}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      document.querySelectorAll('.memory-card').forEach(card => {
+        card.addEventListener('click', () => flipCard(card));
+      });
+    }
+
+    function flipCard(card){
+      if(lockBoard || card === firstCard || card.classList.contains('matched')) return;
+
+      card.classList.add('flipped');
+
+      if(!firstCard){
+        firstCard = card;
+        return;
+      }
+
+      secondCard = card;
+      lockBoard = true;
+      attempts++;
+      attemptsText.textContent = `Intentos: ${attempts}`;
+
+      checkForMatch();
+    }
+
+    function checkForMatch(){
+      const isMatch = firstCard.dataset.letter === secondCard.dataset.letter;
+
+      if(isMatch){
+        firstCard.classList.add('matched');
+        secondCard.classList.add('matched');
+        matches++;
+        matchesText.textContent = `Parejas: ${matches}`;
+        
+        if(matches === memoryPairs.length){
+          setTimeout(() => {
+            document.querySelector('.memory-section').classList.add('won');
+          }, 300);
+        }
+        
+        resetBoard();
+      } else {
+        setTimeout(() => {
+          firstCard.classList.remove('flipped');
+          secondCard.classList.remove('flipped');
+          resetBoard();
+        }, 900);
+      }
+    }
+
+    function resetBoard(){
+      [firstCard, secondCard] = [null, null];
+      lockBoard = false;
+    }
+
+    createMemoryCards();
+    loadQuestion();
+  </script>
+
+</body>
+<footer>
+<p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+<p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+<p>Facebook: <a href="https://www.facebook.com/bic.tlacotepec?mibextid=ZbWKwL" target="_blank">@BICSanAgustinTlacotepec</a></p>
+<p>Correo: <a href="mailto:bic18tiic@gmail.com">bic18tiic@gmail.com</a></p>
+<p>Teléfonos: (953) 124 2447 | (971) 102 0650</p
+
+</footer>
+</html>
+
+
