@@ -568,6 +568,9 @@
     </section>
 </main>
 
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -599,7 +602,7 @@ h2{
 }
 
 .mem-card{
-  height:100px;
+  height:90px;
   background:#fff;
   border-radius:10px;
   border:1px solid #ccc;
@@ -607,6 +610,7 @@ h2{
   position:relative;
   transform-style:preserve-3d;
   transition:transform .4s;
+  font-size:16px;
 }
 
 .mem-card.flipped{
@@ -622,40 +626,37 @@ h2{
   align-items:center;
   backface-visibility:hidden;
   border-radius:10px;
+  padding:5px;
 }
 
 .front{
   background:#2e7d32;
   color:white;
-  font-size:30px;
+  font-size:28px;
 }
 
 .back{
   transform:rotateY(180deg);
-  padding:5px;
-}
-
-.back img{
-  max-width:70px;
+  font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<h2>🧠 Memorama de Frutas (Mixteco)</h2>
+<h2>🧠 Memorama de Frutas (Texto)</h2>
 <div id="score">Puntaje: 0</div>
 <div id="game" class="memorama-grid"></div>
 
 <script>
 // ===== DATOS =====
 const frutas = [
-  {nombre:"Aguacate", mixteco:"Tsityi", img:"imgfrutas/aguacate.png"},
-  {nombre:"Anona", mixteco:"Ndoko", img:"imgfrutas/anona.png"},
-  {nombre:"Durazno", mixteco:"Nde'ya", img:"imgfrutas/durazno.png"},
-  {nombre:"Guayaba", mixteco:"Tsikuentsiki", img:"imgfrutas/guayaba.png"},
-  {nombre:"Lima", mixteco:"Tsikuaa", img:"imgfrutas/lima.png"},
-  {nombre:"Piña", mixteco:"Vijin", img:"imgfrutas/pina.png"}
+  {esp:"Aguacate", mix:"Tsityi"},
+  {esp:"Anona", mix:"Ndoko"},
+  {esp:"Durazno", mix:"Nde'ya"},
+  {esp:"Guayaba", mix:"Tsikuentsiki"},
+  {esp:"Lima", mix:"Tsikuaa"},
+  {esp:"Piña", mix:"Vijin"}
 ];
 
 const game = document.getElementById("game");
@@ -677,8 +678,8 @@ function iniciar(){
   let cards = [];
 
   frutas.forEach(f=>{
-    cards.push({id:f.nombre, tipo:"img", contenido:`<img src="${f.img}">`});
-    cards.push({id:f.nombre, tipo:"txt", contenido:`<strong>${f.mixteco}</strong>`});
+    cards.push({id:f.esp, tipo:"esp", texto:f.esp});
+    cards.push({id:f.esp, tipo:"mix", texto:f.mix});
   });
 
   cards.sort(()=>Math.random()-0.5);
@@ -691,7 +692,7 @@ function iniciar(){
 
     card.innerHTML=`
       <div class="front">❓</div>
-      <div class="back">${c.contenido}</div>
+      <div class="back">${c.texto}</div>
     `;
 
     card.onclick=()=>voltear(card);
@@ -716,18 +717,18 @@ function voltear(card){
 }
 
 function comprobar(){
-  const ok =
+  const correcto =
     first.dataset.id === second.dataset.id &&
     first.dataset.tipo !== second.dataset.tipo;
 
-  if(ok){
+  if(correcto){
     score += 10;
     pairs++;
     first.onclick=null;
     second.onclick=null;
     reset();
     if(pairs === frutas.length){
-      alert("🎉 ¡Ganaste!");
+      alert("🎉 ¡Ganaste el memorama!");
     }
   }else{
     score = Math.max(0, score-2);
@@ -753,6 +754,10 @@ iniciar();
 </script>
 
 </body>
+</html>
+
+
+
 </html>
 </body>
 <footer>
