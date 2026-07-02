@@ -568,214 +568,192 @@
     </section>
 </main>
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Memorama de Frutas Mixteco</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f6f5;
+  text-align:center;
+}
+
+h2{
+  color:#2e7d32;
+}
+
+#score{
+  margin:10px;
+  font-weight:bold;
+}
+
+.memorama-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  max-width:420px;
+  margin:20px auto;
+}
+
+.mem-card{
+  height:100px;
+  background:#fff;
+  border-radius:10px;
+  border:1px solid #ccc;
+  cursor:pointer;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .4s;
+}
+
+.mem-card.flipped{
+  transform:rotateY(180deg);
+}
+
+.front, .back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  backface-visibility:hidden;
+  border-radius:10px;
+}
+
+.front{
+  background:#2e7d32;
+  color:white;
+  font-size:30px;
+}
+
+.back{
+  transform:rotateY(180deg);
+  padding:5px;
+}
+
+.back img{
+  max-width:70px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>🧠 Memorama de Frutas (Mixteco)</h2>
+<div id="score">Puntaje: 0</div>
+<div id="game" class="memorama-grid"></div>
+
 <script>
-const frutaS = [
-    { nombre: "Aguacate", mixteco: "Tsityi", img:imgfrutas/aguacate.png },
-    { nombre: "Anona", mixteco: "Ndoko" },
-    { nombre: "Capulín", mixteco: "Ndia'a tsitnuu" },
-    { nombre: "Durazno", mixteco: "Nde'ya" },
-    { nombre: "Guayaba", mixteco: "Tsikuentsiki" },
-    { nombre: "Lima", mixteco: "Tsikuaa" },
-    { nombre: "Limón", mixteco: "Tsikuaa iya" },
-    { nombre: "Plátano Colorado", mixteco: "Ntsika kua'a" },
-    { nombre: "Piña", mixteco: "Vijin" },
-    { nombre: "Plátano Verde", mixteco: "Ntsika kuii" },
-    { nombre: "Tuna", mixteco: "Tyiki" },
-    { nombre: "Zapote", mixteco: "Ntsika saknaa" }
+// ===== DATOS =====
+const frutas = [
+  {nombre:"Aguacate", mixteco:"Tsityi", img:"imgfrutas/aguacate.png"},
+  {nombre:"Anona", mixteco:"Ndoko", img:"imgfrutas/anona.png"},
+  {nombre:"Durazno", mixteco:"Nde'ya", img:"imgfrutas/durazno.png"},
+  {nombre:"Guayaba", mixteco:"Tsikuentsiki", img:"imgfrutas/guayaba.png"},
+  {nombre:"Lima", mixteco:"Tsikuaa", img:"imgfrutas/lima.png"},
+  {nombre:"Piña", mixteco:"Vijin", img:"imgfrutas/pina.png"}
 ];
 
-let matchedPairs = 0;
-let scoreMemorama = 0;
-let firstCard = null;
-let secondCard = null;
-let lockBoard = false;
-let currentQuestion = null;
-let quizScore = 0;
-let quizLives = 3;
-let quizProgress = 0;
+const game = document.getElementById("game");
+const scoreTxt = document.getElementById("score");
 
-const game = document.getElementById('game');
-const scoreDisplay = document.getElementById('score-memorama');
-const question = document.getElementById('question');
-const optionsDiv = document.getElementById('options');
-const statusText = document.getElementById('status');
-const hearts = document.getElementById('hearts');
-const scoreQuiz = document.getElementById('score');
-const progressBar = document.getElementById('bar');
+let first = null;
+let second = null;
+let lock = false;
+let score = 0;
+let pairs = 0;
 
-function iniciarMemorama() {
-    game.innerHTML = '';
-    const cards = [];
+// ===== INICIAR MEMORAMA =====
+function iniciar(){
+  game.innerHTML="";
+  score = 0;
+  pairs = 0;
+  actualizar();
 
-    frutaS.forEach(fruta => {
-        cards.push({ type: 'spanish', text: fruta.nombre, pairId: fruta.nombre });
-        cards.push({ type: 'mixteco', text: fruta.mixteco, pairId: fruta.nombre });
-    });
+  let cards = [];
 
-    const shuffled = cards.sort(() => Math.random() - 0.5);
-    matchedPairs = 0;
-    scoreMemorama = 0;
-    updateMemoramaScore();
+  frutas.forEach(f=>{
+    cards.push({id:f.nombre, tipo:"img", contenido:`<img src="${f.img}">`});
+    cards.push({id:f.nombre, tipo:"txt", contenido:`<strong>${f.mixteco}</strong>`});
+  });
 
-    shuffled.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.dataset.pair = item.pairId;
-        card.dataset.type = item.type;
-        card.innerHTML = `
-            <div class="front">❓</div>
-            <div class="back"><span>${item.text}</span></div>
-        `;
-        card.addEventListener('click', flipCard);
-        game.appendChild(card);
-    });
+  cards.sort(()=>Math.random()-0.5);
+
+  cards.forEach(c=>{
+    const card = document.createElement("div");
+    card.className="mem-card";
+    card.dataset.id=c.id;
+    card.dataset.tipo=c.tipo;
+
+    card.innerHTML=`
+      <div class="front">❓</div>
+      <div class="back">${c.contenido}</div>
+    `;
+
+    card.onclick=()=>voltear(card);
+    game.appendChild(card);
+  });
 }
 
-function flipCard() {
-    if (lockBoard) return;
-    if (this === firstCard) return;
+// ===== LÓGICA =====
+function voltear(card){
+  if(lock || card===first) return;
 
-    this.classList.add('flipped');
+  card.classList.add("flipped");
 
-    if (!firstCard) {
-        firstCard = this;
-        return;
+  if(!first){
+    first = card;
+    return;
+  }
+
+  second = card;
+  lock = true;
+  comprobar();
+}
+
+function comprobar(){
+  const ok =
+    first.dataset.id === second.dataset.id &&
+    first.dataset.tipo !== second.dataset.tipo;
+
+  if(ok){
+    score += 10;
+    pairs++;
+    first.onclick=null;
+    second.onclick=null;
+    reset();
+    if(pairs === frutas.length){
+      alert("🎉 ¡Ganaste!");
     }
-
-    secondCard = this;
-    lockBoard = true;
-    checkMatch();
+  }else{
+    score = Math.max(0, score-2);
+    setTimeout(()=>{
+      first.classList.remove("flipped");
+      second.classList.remove("flipped");
+      reset();
+    },800);
+  }
+  actualizar();
 }
 
-function checkMatch() {
-    const isMatch = firstCard.dataset.pair === secondCard.dataset.pair && firstCard.dataset.type !== secondCard.dataset.type;
-
-    if (isMatch) {
-        scoreMemorama += 10;
-        matchedPairs++;
-        firstCard.removeEventListener('click', flipCard);
-        secondCard.removeEventListener('click', flipCard);
-        if (matchedPairs === frutaS.length) {
-            lanzarConfeti();
-        }
-        resetBoard();
-    } else {
-        scoreMemorama = Math.max(0, scoreMemorama - 2);
-        setTimeout(() => {
-            firstCard.classList.remove('flipped');
-            secondCard.classList.remove('flipped');
-            resetBoard();
-        }, 900);
-    }
-    updateMemoramaScore();
+function reset(){
+  [first, second, lock] = [null, null, false];
 }
 
-function resetBoard() {
-    [firstCard, secondCard, lockBoard] = [null, null, false];
+function actualizar(){
+  scoreTxt.textContent = "Puntaje: " + score;
 }
 
-function updateMemoramaScore() {
-    scoreDisplay.textContent = `Puntaje: ${scoreMemorama}`;
-}
-
-function lanzarConfeti() {
-    for (let i = 0; i < 60; i++) {
-        const confeti = document.createElement('div');
-        confeti.className = 'confeti';
-        confeti.style.left = Math.random() * 100 + 'vw';
-        confeti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
-        document.body.appendChild(confeti);
-        setTimeout(() => confeti.remove(), 3000);
-    }
-}
-
-function mezclar(arr) {
-    const copia = [...arr];
-    for (let i = copia.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [copia[i], copia[j]] = [copia[j], copia[i]];
-    }
-    return copia;
-}
-
-function nuevaPregunta() {
-    optionsDiv.innerHTML = '';
-    statusText.textContent = '';
-
-    currentQuestion = frutaS[Math.floor(Math.random() * frutaS.length)];
-    question.textContent = `Selecciona el nombre mixteco de: ${currentQuestion.nombre}`;
-
-    let opciones = frutaS.filter(f => f.mixteco !== currentQuestion.mixteco);
-    opciones = mezclar(opciones).slice(0, 3);
-    opciones.push(currentQuestion);
-    opciones = mezclar(opciones);
-
-    opciones.forEach(f => {
-        const btn = document.createElement('div');
-        btn.className = 'option';
-        btn.textContent = f.mixteco;
-        btn.addEventListener('click', () => verificarRespuesta(btn, f));
-        optionsDiv.appendChild(btn);
-    });
-}
-
-function verificarRespuesta(btn, opcion) {
-    if (opcion.mixteco === currentQuestion.mixteco) {
-        btn.classList.add('correct');
-        statusText.textContent = '✅ Correcto';
-        quizScore++;
-        quizProgress = Math.min(100, quizProgress + 14);
-    } else {
-        btn.classList.add('wrong');
-        statusText.textContent = '❌ Incorrecto';
-        quizLives--;
-    }
-    actualizarUIQuiz();
-
-    setTimeout(() => {
-        if (quizLives <= 0) {
-            alert(`💀 Perdiste! Puntaje final: ${quizScore}`);
-            reiniciarQuiz();
-        } else {
-            nuevaPregunta();
-        }
-    }, 700);
-}
-
-function actualizarUIQuiz() {
-    scoreQuiz.textContent = `⭐ ${quizScore}`;
-    hearts.textContent = '❤️'.repeat(Math.max(0, quizLives));
-    progressBar.style.width = `${quizProgress}%`;
-}
-
-function reiniciarQuiz() {
-    quizScore = 0;
-    quizLives = 3;
-    quizProgress = 0;
-    actualizarUIQuiz();
-    nuevaPregunta();
-}
-
-function showPanel(id) {
-    document.querySelectorAll('.panel').forEach(panel => {
-        panel.classList.toggle('active', panel.id === id);
-    });
-    document.querySelectorAll('.tab-buttons button').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.show === id);
-    });
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-    iniciarMemorama();
-    reiniciarQuiz();
-    document.querySelectorAll('.tab-buttons button').forEach(button => {
-        button.addEventListener('click', () => showPanel(button.dataset.show));
-    });
-    document.querySelectorAll('.app-card button').forEach(button => {
-        button.addEventListener('click', () => showPanel(button.dataset.panel));
-    });
-});
+// ===== START =====
+iniciar();
 </script>
+
+</body>
+</html>
 </body>
 <footer>
 <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
