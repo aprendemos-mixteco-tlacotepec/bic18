@@ -638,7 +638,11 @@ h2{
 
 <body>
 
-<h2>
+<h2>Memorama de Frutas en Mixteco</h2>
+
+<div id="score">Puntaje: 0</div>
+
+<div id="game" class="memorama-grid"></div>
 
 <script>
 // ===== DATOS =====
@@ -662,7 +666,7 @@ let pairs = 0;
 
 // ===== INICIAR MEMORAMA =====
 function iniciar(){
-  game.innerHTML="";
+  game.innerHTML = "";
   score = 0;
   pairs = 0;
   actualizar();
@@ -716,14 +720,14 @@ function comprobar(){
   if(correcto){
     score += 10;
     pairs++;
-    first.onclick=null;
-    second.onclick=null;
+    first.onclick = null;
+    second.onclick = null;
     reset();
     if(pairs === frutas.length){
       alert("🎉 ¡Ganaste el memorama!");
     }
   }else{
-    score = Math.max(0, score-2);
+    score = Math.max(0, score - 2);
     setTimeout(()=>{
       first.classList.remove("flipped");
       second.classList.remove("flipped");
@@ -734,7 +738,9 @@ function comprobar(){
 }
 
 function reset(){
-  [first, second, lock] = [null, null, false];
+  first = null;
+  second = null;
+  lock = false;
 }
 
 function actualizar(){
@@ -747,6 +753,9 @@ iniciar();
 
 </body>
 </html>
+
+
+
 
 
 
