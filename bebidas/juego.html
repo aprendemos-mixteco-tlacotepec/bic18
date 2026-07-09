@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Juego Mixteco</title>
+
+<style>
+  body{
+margin:0;
+font-family:'Segoe UI', sans-serif;
+background:#fefae0; /* mismo fondo que bebidas */
+color:#1a1a1a;
+text-align:center;
+}
+
+/* CONTENEDOR */
+.container{
+max-width:500px;
+margin:auto;
+padding:20px;
+}
+
+/* TITULO */
+h1{
+margin-bottom:5px;
+}
+
+/* TIEMPO */
+#tiempo{
+font-weight:bold;
+}
+
+/* BARRA */
+#barra-tiempo{
+width:100%;
+max-width:350px;
+height:14px;
+background:rgba(255,255,255,0.2);
+border-radius:20px;
+overflow:hidden;
+margin:10px auto 20px;
+}
+
+#progreso{
+height:100%;
+width:100%;
+background:linear-gradient(90deg,#22c55e,#4ade80);
+transition:width 1s linear;
+}
+#barra-tiempo{
+background:#dad7cd;
+}
+
+#progreso{
+background:#588157;
+}
+
+/* PALABRA */
+#palabra-mixteco{
+font-size:26px;
+font-weight:900;
+margin:15px 0;
+}
+
+/* GRID */
+#imagenes-juego{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+/* TARJETAS */
+.opcion{
+background:white;
+border-radius:16px;
+padding:10px;
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+cursor:pointer;
+transition:.25s;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+header{
+background:#588157;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+}
+
+.logo img{
+width:60px;
+height:60px;
+border-radius:8px;
+}
+
+.school-title{
+font-weight:bold;
+}
+
+/* TITULO */
+h1{
+color:#344e41;
+}
+
+/* TARJETAS */
+.opcion{
+background:#f0f7f1;
+border-radius:16px;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* BOTON */
+button{
+background:linear-gradient(135deg,#588157,#3a5a40);
+}
+/* HOVER */
+.opcion:hover{
+transform:scale(1.05);
+}
+
+/* IMAGEN */
+.opcion img{
+width:100%;
+height:120px;
+object-fit:contain;
+}
+
+/* CORRECTO */
+.correcta{
+border:3px solid #22c55e;
+box-shadow:0 0 15px #22c55e;
+}
+
+/* INCORRECTO */
+.incorrecta{
+border:3px solid #ef4444;
+box-shadow:0 0 15px #ef4444;
+}
+
+/* BOTON */
+button{
+margin-top:10px;
+padding:10px 18px;
+border:none;
+border-radius:10px;
+background:linear-gradient(135deg,#22c55e,#16a34a);
+color:white;
+font-weight:700;
+cursor:pointer;
+transition:.2s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* LINK */
+a{
+color:#c7d2fe;
+font-weight:bold;
+text-decoration:none;
+}
+
+a:hover{
+text-decoration:underline;
+}
+    </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<body>
+    <div class="container">
+<h1> 🤓 Juego de velocidad 🤓</h1>
+
+<p>Tiempo: <span id="tiempo">30</span>s</p>
+<p>❤️ Vidas: <span id="vidas">3</span></p>
+<p>🏆 Récord: <span id="record">0</span></p>
+<div id="barra-tiempo">
+<div id="progreso"></div>
+</div>
+
+<h3 id="palabra-mixteco"></h3>
+
+<div id="imagenes-juego"></div>
+
+<p>Puntos: <span id="score">0</span></p>
+
+<button onclick="iniciarJuego()">Jugar otra vez</button>
+
+<br><br>
+<a href="index.html">⬅ Volver</a>
+</div>
+<audio id="sonido-correcto" src="audio/Correct Answer GameShow - QuickSounds.com (1).mp3"></audio>
+<audio id="sonido-error" src="audio/lesiakower-error-mistake-sound-effect-incorrect-answer-437420.mp3"></audio>
+
+<script>
+const bebidasJuego = [
+{img:"imagen/embotellada.jpg", mix:"Ndute"},
+{img:"imagen/aguaapura.png", mix:"Ndute uun"},
+{img:"imagen/cafee.jpg", mix:"Tee i’ni"},
+{img:"imagen/Agua de sabor.png", mix:"Ndute vixi"},
+{img:"imagen/agua de naranja.webp", mix:"Ndute tsikuaa"},
+{img:"imagen/agualimon.jpg", mix:"Ndute tsikuaa iya"},
+{img:"imagen/agua de guayaba.png", mix:"Ndute tsikuentsikin"},
+{img:"imagen/agua dechilaca.png", mix:"Ndute tsinduyu"},
+{img:"imagen/atoles-de-oaxaca-1024x683.jpg", mix:"Toli"},
+{img:"imagen/cerveza.jpeg", mix:"Ntsixi"},
+{img:"imagen/Jicara-con-pulque (1).webp", mix:"Ntsixi kuijin"},
+
+];
+let vidas = 3;
+let record = localStorage.getItem("recordMixteco") || 0;
+let score = 0;
+let tiempo = 30;
+let juegoActivo = false;
+let temporizador;
+
+function iniciarJuego(){
+
+clearInterval(temporizador);
+
+score = 0;
+vidas = 3;
+tiempo = 30;
+juegoActivo = true;
+
+document.getElementById("score").textContent = score;
+document.getElementById("vidas").textContent = vidas;
+document.getElementById("record").textContent = record;
+document.getElementById("tiempo").textContent = tiempo;
+
+nuevaRonda();
+
+temporizador = setInterval(()=>{
+tiempo--;
+
+document.getElementById("tiempo").textContent = tiempo;
+document.getElementById("progreso").style.width = (tiempo/30)*100 + "%";
+
+if(tiempo <= 0 || vidas <= 0){
+
+clearInterval(temporizador);
+juegoActivo = false;
+
+// 🏆 guardar récord
+if(score > record){
+record = score;
+localStorage.setItem("recordMixteco", record);
+}
+
+document.getElementById("palabra-mixteco").textContent =
+"💀 Fin del juego. Puntos: " + score;
+
+document.getElementById("imagenes-juego").innerHTML="";
+}
+
+},1000);
+}
+function nuevaRonda(){
+
+if(!juegoActivo) return;
+
+// palabra correcta
+const palabra = bebidasJuego[Math.floor(Math.random()*bebidasJuego.length)];
+
+document.getElementById("palabra-mixteco").textContent = palabra.mix;
+
+const contenedor = document.getElementById("imagenes-juego");
+contenedor.innerHTML = "";
+
+// 🔥 copiar array y mezclarlo
+let opciones = [...bebidasJuego].sort(() => Math.random() - 0.5);
+
+// tomar solo 4
+opciones = opciones.slice(0,4);
+
+// asegurar que la correcta esté dentro
+if(!opciones.some(op => op.mix === palabra.mix)){
+opciones[0] = palabra;
+}
+
+// mezclar otra vez
+opciones.sort(() => Math.random() - 0.5);
+
+// renderizar
+opciones.forEach(op => {
+
+const card = document.createElement("div");
+card.className = "opcion";
+
+const img = document.createElement("img");
+img.src = op.img;
+
+card.appendChild(img);
+
+card.onclick = () => {
+
+if(!juegoActivo) return;
+
+if(op.mix === palabra.mix){
+
+card.classList.add("correcta");
+
+document.getElementById("sonido-correcto").play();
+
+// 🎆 confetti
+confetti({
+particleCount: 80,
+spread: 70,
+origin: { y: 0.6 }
+});
+
+score++;
+document.getElementById("score").textContent = score;
+
+setTimeout(nuevaRonda, 500);
+
+}
+else{
+
+card.classList.add("incorrecta");
+document.getElementById("sonido-error").play();
+
+}
+if(vidas <= 0){
+
+juegoActivo = false;
+clearInterval(temporizador);
+
+// guardar récord
+if(score > record){
+record = score;
+localStorage.setItem("recordMixteco", record);
+}
+
+document.getElementById("palabra-mixteco").textContent =
+"💀 Sin vidas. Puntos: " + score;
+
+document.getElementById("imagenes-juego").innerHTML="";
+
+return; // 🔥 esto es clave
+}
+};
+
+contenedor.appendChild(card);
+
+});
+
+}
+
+
+iniciarJuego();
+</script>
+
+</body>
+</html>
