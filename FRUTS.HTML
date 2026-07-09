@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -530,88 +530,38 @@
         </div>
     </div>
 
-   
+    <section class="app-section">
+        <h2>Juegos</h2>
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="showPanel('memorama')">Memorama</button>
+            <button class="tab-btn" onclick="showPanel('quiz')">Quiz</button>
+        </div>
+
+        <section id="memorama" class="panel active">
+            <div class="game-intro">
+                <h3>Memorama de Frutas</h3>
+                <p>Haz clic en una tarjeta para descubrir la fruta o su nombre en mixteco. Empareja los dos lados correctos.</p>
+            </div>
+            <div id="score-memorama">Puntaje: 0</div>
+            <div id="game" class="memorama-grid"></div>
+        </section>
+
+        <section id="quiz" class="panel">
+            <div class="game-intro">
+                <h3>Quiz de Frutas</h3>
+                <p>Selecciona el nombre en mixteco correspondiente a la fruta en español.</p>
+            </div>
+            <div class="top-bar">
+                <div id="hearts">❤️❤️❤️</div>
+                <div id="score">⭐ 0</div>
+            </div>
+            <div class="progress"><div class="bar" id="bar"></div></div>
+            <p id="question"></p>
+            <div class="options-grid" id="options"></div>
+            <p id="status"></p>
+        </section>
+    </section>
 </main>
-
-
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Memorama de Frutas Mixteco</title>
-
-<style>
-body{
-  font-family: Arial, sans-serif;
-  background:#f4f6f5;
-  text-align:center;
-}
-
-h2{
-  color:#2e7d32;
-}
-
-#score{
-  margin:10px;
-  font-weight:bold;
-}
-
-.memorama-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  max-width:420px;
-  margin:20px auto;
-}
-
-.mem-card{
-  height:90px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #ccc;
-  cursor:pointer;
-  position:relative;
-  transform-style:preserve-3d;
-  transition:transform .4s;
-  font-size:16px;
-}
-
-.mem-card.flipped{
-  transform:rotateY(180deg);
-}
-
-.front, .back{
-  position:absolute;
-  width:100%;
-  height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  backface-visibility:hidden;
-  border-radius:10px;
-  padding:5px;
-}
-
-.front{
-  background:#2e7d32;
-  color:white;
-  font-size:28px;
-}
-
-.back{
-  transform:rotateY(180deg);
-  font-weight:bold;
-}
-</style>
-</head>
-
-<body>
-
-
-<div id="score">Puntaje: 0</div>
-
-<div id="game" class="memorama-grid"></div>
 
 <script>
 // ===== DATOS =====
@@ -625,7 +575,7 @@ const frutas = [
 ];
 
 const game = document.getElementById("game");
-const scoreTxt = document.getElementById("score");
+const scoreTxt = document.getElementById("score-memorama");
 
 let first = null;
 let second = null;
@@ -651,13 +601,13 @@ function iniciar(){
 
   cards.forEach(c=>{
     const card = document.createElement("div");
-    card.className="mem-card";
+    card.className="card";
     card.dataset.id=c.id;
     card.dataset.tipo=c.tipo;
 
     card.innerHTML=`
       <div class="front">❓</div>
-      <div class="back">${c.texto}</div>
+      <div class="back"><span>${c.texto}</span></div>
     `;
 
     card.onclick=()=>voltear(card);
@@ -694,6 +644,7 @@ function comprobar(){
     reset();
     if(pairs === frutas.length){
       alert("🎉 ¡Ganaste el memorama!");
+      iniciar();
     }
   }else{
     score = Math.max(0, score - 2);
@@ -716,25 +667,29 @@ function actualizar(){
   scoreTxt.textContent = "Puntaje: " + score;
 }
 
+// ===== CAMBIAR PANEL =====
+function showPanel(panelId) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+  event.target.classList.add('active');
+  
+  if(panelId === 'memorama' && !game.innerHTML) {
+    iniciar();
+  }
+}
 
+// Iniciar memorama al cargar
+window.addEventListener('load', iniciar);
 </script>
 
-</body>
-</html>
-
-
-
-
-
-
-</html>
-</body>
 <footer>
 <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
 <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
 <p>Facebook: <a href="https://www.facebook.com/bic.tlacotepec?mibextid=ZbWKwL" target="_blank">@BICSanAgustinTlacotepec</a></p>
 <p>Correo: <a href="mailto:bic18tiic@gmail.com">bic18tiic@gmail.com</a></p>
-<p>Teléfonos: (953) 124 2447 | (971) 102 0650</p
-
+<p>Teléfonos: (953) 124 2447 | (971) 102 0650</p>
 </footer>
+
+</body>
 </html>
