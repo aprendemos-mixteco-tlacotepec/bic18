@@ -42,6 +42,7 @@
 
 </header>
 
+<title>Juntos aprendamos mixteco</title>
 
 <style>
 body{
@@ -90,6 +91,13 @@ border-radius:10px;
 
 .phrase{font-weight:800;margin:10px 0 6px;}
 .desc{color:#555}
+
+.translation{
+    font-size:16px;
+    color:#555;
+    font-style:italic;
+    margin:8px 0 12px;
+}
 
 /* ACTIVIDAD */
 .activity{
@@ -143,6 +151,11 @@ margin-top:30px;
 </head>
 
 <body>
+
+
+<header>
+<h2>Saludos y frases de cortesía</h2>
+</header>
 
 <div class="container">
 <section class="grid" id="cards"></section>
@@ -210,51 +223,58 @@ style="background:white;padding:15px;border-radius:12px;font-size:22px;font-weig
 <script>
 
 const items = [
-  {phrase:'Ya´a rri joo nuro', img:'imagenes/compermisoati.jpg', audio:'audios/compermisoati.mp3'},
-  {phrase:'Ya´a sa joo nuni', img:'imagenes/compermisoausted.jpg', audio:'audios/compermisoausted.mp3'},
-  {phrase:'Ta´vi o ntsii', img:'imagenes/buenosdias.jpg', audio:'audios/buenosdias.mp3'},
-  {phrase:'Ta´vi o ñini', img:'imagenes/buenastardes.jpg', audio:'audios/buenastardes.mp3'},
-  {phrase:'Ta´vi o ngunee', img:'imagenes/buenasnoches.jpg', audio:'audios/buenasnoches.mp3'},
-  {phrase:'¿Naxi oo ni?', img:'imagenes/comoestausted.jpg', audio:'audios/comoestausted.mp3'},
-  {phrase:'¿Naxi oo ro?', img:'imagenes/comoestas.jpg', audio:'audios/comoestastu.mp3'},
-  {phrase:'Kuaa ka’nu ini ro nuu rri', img:'imagenes/perdoname.jpg', audio:'audios/perdoname.mp3'},
-  {phrase:'Kuaa ka’nu ini ni nuu sa', img:'imagenes/perdoneme.jpg', audio:'audios/perdoneme.mp3'},
-  {phrase:'Tnu’un mani ini', img:'imagenes/porfavor.jpg', audio:'audios/porfavor.mp3'},
-  {phrase:'Kuta´vi sa', img:'imagenes/graciasausted.jpg', audio:'audios/graciasausted.mp3'},
-  {phrase:'Kuta´vi rri', img:'imagenes/graciasati.jpg', audio:'audios/graciasati.mp3'},
-  {phrase:'Ñatuu nukuu', img:'imagenes/denada.jpg', audio:'audios/denada.mp3'},
-  {phrase:'Ndakna’a o', img:'imagenes/hastapronto.jpg', audio:'audios/hastapronto.mp3'},
-  {phrase:'Ndakna’a o ndee yutne', img:'imagenes/nosvemosmañana.jpg', audio:'audios/nosvemosmañana.mp3'},
-  {phrase:'Ndakna’a o ndee isa', img:'imagenes/nosvemospasadomañana.jpg', audio:'audios/nosvemospasadomañana.mp3'},
-  {phrase:'Ndakna’a o ndee una kina', img:'imagenes/nosvemosenochodias.jpg', audio:'audios/nosvemosenochodias.mp3'},
-  {phrase:'Ndakna’a o ndee nuu in yoo', img:'imagenes/nosvemosenunmes.jpg', audio:'audios/nosvemosenunmes.mp3'},
-  {phrase:'Ndakna’a o ndee jinu kuiya', img:'imagenes/nosvemosenunaño.jpg', audio:'audios/nosvemosenunaño.mp3'},
-  {phrase:'Jikoo ini ve´e', img:'imagenes/pasaalacasa.jpg', audio:'audios/pasaalacasa.mp3'}
+  
+  {phrase:'Ta´vi o ntsii', spanish:'Buenos días', img:'imagenes/buenosdias.jpg', audio:'audios/buenosdias.mp3'},
+  {phrase:'Ta´vi o ñini', spanish:'Buenas tardes', img:'imagenes/buenastardes.jpg', audio:'audios/buenastardes.mp3'},
+  {phrase:'Ta´vi o ngunee', spanish:'Buenas noches', img:'imagenes/buenasnoches.jpg', audio:'audios/buenasnoches.mp3'},
+  {phrase:'¿naxi oo ni?', spanish:'¿Cómo está usted?', img:'imagenes/comoestausted.jpg', audio:'audios/comoestausted.mp3'},
+  {phrase:'¿naxi oo ro?', spanish:'¿Cómo estás?', img:'imagenes/comoestas.jpg', audio:'audios/comoestastu.mp3'},
+  {phrase:'Kuaa ka’un ini ro nuu rri', spanish:'Perdóname', img:'imagenes/perdoname.jpg', audio:'audios/perdoname.mp3'},
+  {phrase:'Kuaa ka’un ini ro nuu sa', spanish:'Perdóneme', img:'imagenes/perdoneme.jpg', audio:'audios/perdoneme.mp3'},
+  {phrase:'Tnu’un mani ini', spanish:'Por favor', img:'imagenes/porfavor.jpg', audio:'audios/porfavor.mp3'},
+  {phrase:'Kuta vi sa', spanish:'Gracias a usted', img:'imagenes/graciasausted.jpg', audio:'audios/graciasausted.mp3'},
+  {phrase:'Kuta vi rri', spanish:'Gracias a ti', img:'imagenes/graciasati.jpg', audio:'audios/graciasati.mp3'},
+  {phrase:'ñatu nukuu', spanish:'De nada', img:'imagenes/denada.jpg', audio:'audios/denada.mp3'},
+  {phrase:'Ndakna’a o', spanish:'Hasta pronto', img:'imagenes/hastapronto.jpg', audio:'audios/hastapronto.mp3'},
+  {phrase:'Ndakna’a o de´e yuu nte', spanish:'Nos vemos mañana', img:'imagenes/nosvemosmañana.jpg', audio:'audios/nosvemosmañana.mp3'},
+  {phrase:'Ndakna’a o de´e isa', spanish:'Nos vemos pasado mañana', img:'imagenes/nosvemospasadomañana.jpg', audio:'audios/nosvemospasadomañana.mp3'},
+  {phrase:'Ndakna’a o de´e una kina', spanish:'Nos vemos en ocho días', img:'imagenes/nosvemosenochodias.jpg', audio:'audios/nosvemosenochodias.mp3'},
+  {phrase:'Ndakna’a o de´e nu iyo', spanish:'Nos vemos en un mes', img:'imagenes/nosvemosenunmes.jpg', audio:'audios/nosvemosenunmes.mp3'},
+  {phrase:'Ndakna’a o de´e jinu kuiya', spanish:'Nos vemos en un año', img:'imagenes/nosvemosenunaño.jpg', audio:'audios/nosvemosenunaño.mp3'},
+  {phrase:'jiko´o ini ve´e', spanish:'Pasa a la casa', img:'imagenes/pasaalacasa.jpg', audio:'audios/pasaalacasa.mp3'},
+  {phrase:'ya´arrijo nuro', spanish:'Con permiso a ti', img:'imagenes/compermisoati.jpg', audio:'audios/compermisoati.mp3'},
+  {phrase:'ya´sa jo´nuni', spanish:'Con permiso a usted', img:'imagenes/compermisoausted.jpg', audio:'audios/compermisoausted.mp3'},
+
 ];
+
 // TARJETAS
-const container=document.getElementById("cards");
+const container = document.getElementById("cards");
 
-items.forEach(it=>{
-let card=document.createElement("div");
-card.innerHTML=`
-<img src="${it.img}">
-<div class="phrase">${it.phrase}</div>
-<button class="play">🔊 Escuchar</button>
-`;card.className="card";
-const boton = card.querySelector(".play");
+items.forEach(it => {
 
-boton.addEventListener("click", ()=>{
+  let card = document.createElement("div");
 
-const audio = new Audio(it.audio);
+  card.innerHTML = `
+    <img src="${it.img}">
+    <div class="phrase">${it.phrase}</div>
+    <div class="translation">${it.spanish}</div>
+    <button class="play">🔊 Escuchar</button>
+  `;
 
-audio.play();
+  card.className = "card";
+
+  const boton = card.querySelector(".play");
+
+  boton.addEventListener("click", () => {
+    const audio = new Audio(it.audio);
+    audio.play();
+  });
+
+  container.appendChild(card);
 
 });
 
-container.appendChild(card);
-});
-
-// ACTIVIDAD
+// ACTIVIDAD//
 let current;
 let score = 0;
 let vidas = 3;
@@ -421,6 +441,16 @@ document.getElementById("startGame").style.display = "none";
 nueva();
 
 };
+
+
+</script>
+
+<footer>
+<p><strong>Bachillerato Integral Comunitario</strong></p>
+</footer>
+
+</body>
+</html>
 
 
 </script>
