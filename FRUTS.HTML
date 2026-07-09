@@ -574,9 +574,6 @@ const frutas = [
   {esp:"Piña", mix:"Vijin"}
 ];
 
-const game = document.getElementById("game");
-const scoreTxt = document.getElementById("score-memorama");
-
 let first = null;
 let second = null;
 let lock = false;
@@ -585,9 +582,17 @@ let pairs = 0;
 
 // ===== INICIAR MEMORAMA =====
 function iniciar(){
+  const game = document.getElementById("game");
+  const scoreTxt = document.getElementById("score-memorama");
+  
+  if (!game) return;
+  
   game.innerHTML = "";
   score = 0;
   pairs = 0;
+  first = null;
+  second = null;
+  lock = false;
   actualizar();
 
   let cards = [];
@@ -664,7 +669,8 @@ function reset(){
 }
 
 function actualizar(){
-  scoreTxt.textContent = "Puntaje: " + score;
+  const scoreTxt = document.getElementById("score-memorama");
+  if(scoreTxt) scoreTxt.textContent = "Puntaje: " + score;
 }
 
 // ===== CAMBIAR PANEL =====
@@ -674,13 +680,13 @@ function showPanel(panelId) {
   document.getElementById(panelId).classList.add('active');
   event.target.classList.add('active');
   
-  if(panelId === 'memorama' && !game.innerHTML) {
+  if(panelId === 'memorama') {
     iniciar();
   }
 }
 
-// Iniciar memorama al cargar
-window.addEventListener('load', iniciar);
+// Iniciar memorama cuando el DOM esté listo
+setTimeout(()=>iniciar(), 100);
 </script>
 
 <footer>
