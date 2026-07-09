@@ -44,7 +44,8 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Juegos Mixteco PRO MAX</title>
+
+<title>Juegos Mixteco</title>
 
 <style>
 
@@ -295,12 +296,12 @@ transform:scale(1.03);
 background:#0ea5e9;
 }
 
-.correcta{
+.correctaQuiz{
 background:lime !important;
 color:black;
 }
 
-.incorrecta{
+.incorrectaQuiz{
 background:#ef4444 !important;
 }
 
@@ -317,234 +318,571 @@ color:yellow;
 }
 
 
-/* ================= CRUCIGRAMA ================= */
-
-#cruciContainer{
-display:flex;
-justify-content:center;
-align-items:flex-start;
-gap:40px;
-flex-wrap:wrap;
-margin-top:20px;
-}
-
-#boardC{
-display:grid;
-grid-template-columns: repeat(20,40px);
-gap:4px;
-background:#0f172a;
-padding:15px;
-border-radius:20px;
-box-shadow:0 0 25px #38bdf8;
-}
-
-.cellC{
-position:relative;
-transition:0.2s;
-}
-
-.cellC:hover{
-transform:scale(1.08);
-}
-
-.cellC input{
-width:40px;
-height:40px;
-text-align:center;
-font-size:20px;
-font-weight:bold;
-border:none;
-outline:none;
-border-radius:8px;
-background:white;
-transition:0.2s;
-text-transform:uppercase;
-}
-
-.cellC input:focus{
-background:#fde047;
-transform:scale(1.1);
-box-shadow:0 0 10px yellow;
-}
-
-.block{
-background:#020617;
-border-radius:8px;
-}
-
-.num{
-position:absolute;
-top:1px;
-left:3px;
-font-size:10px;
-font-weight:bold;
-color:#000;
-z-index:2;
-}
-
-.ok{
-background:lime !important;
-}
-
-.bad{
-background:#ef4444 !important;
-}
-
-#panelPistas{
-background:#0f172a;
-padding:20px;
-border-radius:20px;
-min-width:260px;
-text-align:left;
-box-shadow:0 0 20px #38bdf8;
-}
-
-#panelPistas h3{
-color:#38bdf8;
-}
-
 /* ================= ADIVINANZAS ================= */
 
 #adivinanzas{
-background:linear-gradient(135deg,#020617,#0f172a,#111827);
-padding:30px;
-border-radius:25px;
-box-shadow:
-0 0 20px #38bdf8,
-0 0 40px rgba(56,189,248,0.4);
-animation:fondoMove 6s infinite alternate;
-}
 
-/* TITULO */
-
-#adivinanzas h2{
-font-size:42px;
-color:#38bdf8;
-text-shadow:
-0 0 10px #38bdf8,
-0 0 20px #38bdf8;
-margin-bottom:30px;
-animation:glow 2s infinite alternate;
-}
-
-/* CAJA */
-
-#adivinanzasBox{
-max-width:800px;
+max-width:700px;
 margin:auto;
-background:rgba(15,23,42,0.9);
-padding:40px;
-border-radius:25px;
-backdrop-filter:blur(8px);
-box-shadow:
-0 0 20px rgba(56,189,248,0.5),
-0 0 50px rgba(56,189,248,0.2);
+padding:25px;
+background:white;
+border-radius:20px;
+box-shadow:0 0 15px rgba(0,0,0,.2);
+
 }
 
-/* PREGUNTA */
+#progreso{
 
-#rQ{
-font-size:32px;
-line-height:45px;
-margin-bottom:30px;
-color:white;
-animation:fadeIn 0.5s;
-}
-
-/* RESPUESTA */
-
-#rA{
-font-size:30px;
-margin-top:25px;
+font-size:20px;
 font-weight:bold;
-color:#fde047;
-text-shadow:0 0 10px yellow;
-animation:pop 0.4s;
+margin-bottom:15px;
+
 }
 
-/* BOTONES */
+#marcador{
 
-#adivinanzas button{
-padding:15px 30px;
-margin:10px;
 font-size:22px;
-font-weight:bold;
+margin-bottom:20px;
+
+}
+
+.opcion{
+
+display:block;
+
+width:100%;
+
+margin:12px 0;
+
+padding:15px;
+
+font-size:20px;
+
 border:none;
-border-radius:15px;
+
+border-radius:12px;
+
 cursor:pointer;
-background:linear-gradient(135deg,#38bdf8,#2563eb);
+
+background:#4CAF50;
+
 color:white;
-transition:0.25s;
-box-shadow:0 0 15px rgba(56,189,248,0.5);
+
+transition:.3s;
+
 }
 
-#adivinanzas button:hover{
-transform:scale(1.08);
-box-shadow:
-0 0 15px #38bdf8,
-0 0 30px #38bdf8;
-background:linear-gradient(135deg,#0ea5e9,#38bdf8);
+.opcion:hover{
+
+transform:scale(1.02);
+
 }
 
-/* EFECTOS */
+.correcta{
 
-@keyframes glow{
-from{
-text-shadow:
-0 0 10px #38bdf8;
-}
-to{
-text-shadow:
-0 0 20px #38bdf8,
-0 0 40px #38bdf8;
-}
+background:#2ecc71 !important;
+
 }
 
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(10px);
+.incorrecta{
+
+background:#e74c3c !important;
+
 }
-to{
-opacity:1;
-transform:translateY(0);
+
+.opcion:disabled{
+
+cursor:not-allowed;
+
+opacity:.9;
+
+}
+
+
+/*==========================================
+REMODELACIÓN V2 - INTERFAZ DE JUEGOS
+==========================================*/
+
+html{scroll-behavior:smooth;}
+
+body{
+background:linear-gradient(135deg,#fff7d6,#f7f4ec,#eaf5e4);
+background-size:300% 300%;
+animation:fondoV2 14s ease infinite;
+font-family:Arial, sans-serif;
+}
+
+@keyframes fondoV2{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.hero{
+min-height:80vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px 20px;
+background:linear-gradient(135deg,#3E8E41,#2563eb);
+color:white;
+}
+
+.hero-content{
+max-width:900px;
+animation:entradaV2 .8s ease;
+}
+
+.hero-icon{
+font-size:80px;
+margin-bottom:15px;
+}
+
+.hero h1{
+background:none;
+font-size:52px;
+padding:0;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:22px;
+line-height:1.7;
+margin-bottom:30px;
+}
+
+.hero-btn{
+display:inline-block;
+background:#f4c430;
+color:#1f2937;
+text-decoration:none;
+padding:15px 35px;
+border-radius:40px;
+font-weight:bold;
+box-shadow:0 12px 25px rgba(0,0,0,.25);
+transition:.3s;
+}
+
+.hero-btn:hover{
+transform:translateY(-5px);
+background:white;
+}
+
+.barra-juegos{
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+padding:14px;
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(12px);
+box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+
+.barra-juegos a,
+.barra-juegos button{
+text-decoration:none;
+border:none;
+background:#ffffff;
+color:#1e3a8a;
+padding:10px 16px;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,.10);
+transition:.25s;
+}
+
+.barra-juegos a:hover,
+.barra-juegos button:hover{
+background:#3E8E41;
+color:white;
+transform:translateY(-3px);
+}
+
+.menu-juegos{
+padding:70px 8%;
+text-align:center;
+}
+
+.menu-juegos h2{
+font-size:42px;
+color:#3E8E41;
+margin-bottom:10px;
+}
+
+.menu-subtitulo{
+font-size:20px;
+color:#374151;
+margin-bottom:40px;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:28px;
+}
+
+.menu-card{
+background:white;
+border-radius:25px;
+padding:32px 24px;
+box-shadow:0 15px 35px rgba(0,0,0,.12);
+cursor:pointer;
+transition:.35s;
+border:3px solid transparent;
+}
+
+.menu-card:hover{
+transform:translateY(-12px) scale(1.02);
+border-color:#3E8E41;
+}
+
+.menu-icon{
+font-size:62px;
+margin-bottom:15px;
+transition:.3s;
+}
+
+.menu-card:hover .menu-icon{
+transform:scale(1.18) rotate(5deg);
+}
+
+.menu-card h3{
+font-size:25px;
+color:#2563eb;
+margin-bottom:12px;
+}
+
+.menu-card p{
+color:#4b5563;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+.menu-card button,
+.volver-menu{
+border:none;
+background:linear-gradient(90deg,#2563eb,#38bdf8);
+color:white;
+padding:12px 25px;
+border-radius:30px;
+cursor:pointer;
+font-weight:bold;
+transition:.25s;
+box-shadow:0 8px 18px rgba(37,99,235,.25);
+}
+
+.menu-card button:hover,
+.volver-menu:hover{
+transform:translateY(-4px);
+background:linear-gradient(90deg,#3E8E41,#22c55e);
+}
+
+.section{
+max-width:1200px;
+margin:40px auto;
+animation:entradaV2 .5s ease;
+}
+
+.section h2{
+font-size:34px;
+margin-bottom:15px;
+}
+
+/* QUIZ restaurado: azul, centrado y sin conflicto */
+#quiz .opcion{
+display:block;
+width:80%;
+max-width:520px;
+margin:12px auto;
+padding:15px;
+background:#38bdf8;
+color:white;
+border-radius:12px;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
+}
+
+#quiz .opcion:hover{
+background:#0ea5e9;
+transform:scale(1.03);
+}
+
+#quiz .correctaQuiz{
+background:lime !important;
+color:black !important;
+}
+
+#quiz .incorrectaQuiz{
+background:#ef4444 !important;
+color:white !important;
+}
+
+/* Adivinanzas independientes */
+#adivinanzas{
+background:#ffffff;
+color:#1f2937;
+}
+
+#adivinanzas #rQ{
+font-size:24px;
+margin:20px auto;
+max-width:850px;
+line-height:1.6;
+}
+
+#adivinanzas .opcion{
+display:block;
+width:90%;
+max-width:620px;
+margin:12px auto;
+padding:15px;
+background:#22c55e;
+color:white;
+border:none;
+border-radius:14px;
+font-size:19px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
+}
+
+#adivinanzas .opcion:hover{
+background:#16a34a;
+transform:translateY(-3px);
+}
+
+#adivinanzas .correcta{
+background:#2ecc71 !important;
+color:white !important;
+}
+
+#adivinanzas .incorrecta{
+background:#e74c3c !important;
+color:white !important;
+}
+
+#adivinanzas .opcion:disabled{
+cursor:not-allowed;
+opacity:.95;
+}
+
+#progreso,
+#marcador{
+color:#1f2937;
+}
+
+@keyframes entradaV2{
+from{opacity:0;transform:translateY(25px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@media(max-width:700px){
+.hero h1{font-size:35px;}
+.hero p{font-size:17px;}
+
+.barra-juegos{
+gap:6px;
+}
+
+.barra-juegos a,
+.barra-juegos button{
+font-size:13px;
+padding:8px 10px;
+}
+
+.section{
+margin:20px 10px;
+padding:18px;
+}
+
+#boardM{
+grid-template-columns:repeat(3,95px);
+gap:10px;
+}
+
+.cardM{
+width:95px;
+height:95px;
+font-size:15px;
+}
+
+#sopaGrid{
+grid-template-columns:repeat(20,22px);
+gap:2px;
+padding:10px;
+overflow:auto;
+}
+
+.cell{
+width:22px;
+height:22px;
+font-size:12px;
 }
 }
 
-@keyframes pop{
-0%{
-transform:scale(0.7);
-opacity:0;
-}
-100%{
-transform:scale(1);
-opacity:1;
-}
+
+/*==========================================
+MODO APP POR PANTALLAS - CORREGIDO
+==========================================*/
+
+body.vista-inicio #menuJuegos,
+body.vista-inicio .section,
+body.vista-inicio .barra-juegos{
+display:none !important;
 }
 
-@keyframes fondoMove{
-0%{
-background-position:left;
+body.vista-menu .hero,
+body.vista-menu .section{
+display:none !important;
 }
-100%{
-background-position:right;
+
+body.vista-menu .barra-juegos{
+display:flex !important;
 }
+
+body.vista-menu #menuJuegos{
+display:block !important;
+min-height:calc(100vh - 80px);
+}
+
+body.vista-juego .hero,
+body.vista-juego #menuJuegos{
+display:none !important;
+}
+
+body.vista-juego .barra-juegos{
+display:flex !important;
+}
+
+body.vista-juego .section{
+display:none !important;
+}
+
+body.vista-juego .section.juego-activo{
+display:block !important;
+min-height:calc(100vh - 90px);
+}
+
+.section.juego-activo{
+padding-top:35px;
+}
+
+.section.juego-activo::before{
+content:"";
+display:block;
+width:90px;
+height:6px;
+background:linear-gradient(90deg,#3E8E41,#2563eb);
+border-radius:20px;
+margin:0 auto 25px;
+}
+
+
+/*==========================================
+AJUSTE FINAL: SIN BARRA SUPERIOR Y FONDO UNIFORME
+==========================================*/
+
+.barra-juegos{
+display:none !important;
+}
+
+body.vista-menu .barra-juegos,
+body.vista-juego .barra-juegos{
+display:none !important;
+}
+
+body,
+body.vista-inicio,
+body.vista-menu,
+body.vista-juego{
+background:linear-gradient(135deg,#fff7d6,#f7f4ec,#eaf5e4) !important;
+background-size:300% 300% !important;
+animation:fondoV2 14s ease infinite !important;
+}
+
+.section,
+#memorama,
+#sopa,
+#quiz,
+#adivinanzas{
+background:rgba(255,255,255,.95) !important;
+color:#1f2937 !important;
+border-radius:25px !important;
+box-shadow:0 15px 35px rgba(0,0,0,.12) !important;
+}
+
+body.vista-juego .section.juego-activo{
+display:block !important;
+min-height:calc(100vh - 40px);
+margin-top:30px;
+margin-bottom:30px;
+}
+
+.volver-menu{
+display:inline-block;
+margin-top:30px;
 }
 
 </style>
 </head>
 
-<body>
+<body class="vista-inicio">
 
-<h1>🎮 Juegos en Mixteco 🎮</h1>
+<header class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-icon">🌽</div>
+    <h1>Juntos Aprendamos Mixteco</h1>
+    <p>Aprende jugando con actividades interactivas en lengua mixteca.</p>
+    <a href="#" onclick="mostrarMenu(); return false;" class="hero-btn">🎮 Ver juegos</a>
+  </div>
+</header>
 
-<div>
-<button onclick="show('memorama')">Memorama</button>
-<button onclick="show('sopa')">Sopa</button>
-<button onclick="show('quiz')">Quiz</button>
-<button onclick="show('crucigrama')">Crucigrama</button>
-<button onclick="show('adivinanzas')">Adivinanzas</button>
-</div>
+
+
+
+<section id="menuJuegos" class="menu-juegos">
+  <h2>🎮 Juegos interactivos</h2>
+  <p class="menu-subtitulo">Selecciona una actividad para comenzar.</p>
+
+  <div class="menu-grid">
+    <article class="menu-card" onclick="show('memorama')">
+      <div class="menu-icon">🧠</div>
+      <h3>Memorama</h3>
+      <p>Encuentra los pares de números en mixteco.</p>
+      <button>Comenzar</button>
+    </article>
+
+    <article class="menu-card" onclick="show('sopa')">
+      <div class="menu-icon">🔤</div>
+      <h3>Sopa de letras</h3>
+      <p>Busca palabras ocultas en el tablero.</p>
+      <button>Comenzar</button>
+    </article>
+
+    <article class="menu-card" onclick="show('quiz')">
+      <div class="menu-icon">❓</div>
+      <h3>Quiz</h3>
+      <p>Responde preguntas y suma puntos.</p>
+      <button>Comenzar</button>
+    </article>
+
+    <article class="menu-card" onclick="show('adivinanzas')">
+      <div class="menu-icon">🌽</div>
+      <h3>Adivinanzas</h3>
+      <p>Elige la respuesta correcta tipo examen.</p>
+      <button>Comenzar</button>
+    </article>
+  </div>
+</section>
 
 <!-- ================= MEMORAMA ================= -->
 
@@ -560,13 +898,15 @@ Encuentra los pares iguales 😎
 
 <p id="winM"></p>
 
+<button class="volver-menu" onclick="volverMenu()">⬆ Volver al menú</button>
+
 </div>
 
 <!-- SOPA -->
 
 <div id="sopa" class="section">
 
-<h2>🔤 Sopa de Letras </h2>
+<h2>🔤 Sopa de letras </h2>
 
 <div id="sopaContainer">
 
@@ -587,6 +927,8 @@ Encuentra los pares iguales 😎
 <div id="lista"></div>
 
 </div>
+
+<button class="volver-menu" onclick="volverMenu()">⬆ Volver al menú</button>
 
 </div>
 
@@ -617,66 +959,90 @@ Encuentra los pares iguales 😎
 
 </div>
 
-</div>
-
-<!-- CRUCIGRAMA -->
-<div id="crucigrama" class="section">
-
-<h2>🧩 Crucigrama </h2>
-
-<div id="cruciContainer">
-
-<div id="boardC"></div>
-
-<div id="panelPistas">
-
-<h3>➡ Horizontales</h3>
-<ol id="hintsH"></ol>
-
-<h3>⬇ Verticales</h3>
-<ol id="hintsV"></ol>
+<button class="volver-menu" onclick="volverMenu()">⬆ Volver al menú</button>
 
 </div>
-</div>
 
-<br>
-
-<button onclick="checkC()">Verificar</button>
-
-<p id="resC"></p>
-
-</div>
 
 <!-- ADIVINANZAS -->
 
 <div id="adivinanzas" class="section">
 
-<h2>🤔 Adivinanzas</h2>
+    <h2>🌽 Adivinanzas 🌽</h2>
 
-<div id="adivinanzasBox">
+    <div id="progreso"></div>
 
-<p id="rQ"></p>
+    <div id="marcador">
+        ✅ <span id="correctas">0</span>
+        &nbsp;&nbsp;&nbsp;
+        ❌ <span id="incorrectas">0</span>
+    </div>
 
-<button onclick="ver()">
-👀 Ver respuesta
-</button>
+    <h3 id="rQ"></h3>
 
-<p id="rA"></p>
+    <div id="rA"></div>
 
-<button onclick="sig()">
-➡ Siguiente
-</button>
-
-</div>
+<button class="volver-menu" onclick="volverMenu()">⬆ Volver al menú</button>
 
 </div>
+
 <script>
 
-
 /* MENU */
+function mostrarInicio(){
+
+document.body.className = "vista-inicio";
+
+document.querySelectorAll('.section').forEach(s=>{
+s.classList.remove('juego-activo');
+s.style.display='none';
+});
+
+window.scrollTo({top:0, behavior:"smooth"});
+
+}
+
+function mostrarMenu(){
+
+document.body.className = "vista-menu";
+
+document.querySelectorAll('.section').forEach(s=>{
+s.classList.remove('juego-activo');
+s.style.display='none';
+});
+
+setTimeout(()=>{
+document.getElementById('menuJuegos').scrollIntoView({
+behavior:'smooth',
+block:'start'
+});
+},80);
+
+}
+
 function show(sec){
-document.querySelectorAll('.section').forEach(s=>s.style.display='none');
-document.getElementById(sec).style.display='block';
+
+document.body.className = "vista-juego";
+
+document.querySelectorAll('.section').forEach(s=>{
+s.classList.remove('juego-activo');
+s.style.display='none';
+});
+
+const pantalla = document.getElementById(sec);
+pantalla.classList.add('juego-activo');
+pantalla.style.display='block';
+
+setTimeout(()=>{
+pantalla.scrollIntoView({behavior:'smooth', block:'start'});
+},80);
+
+}
+
+function volverMenu(){
+
+mostrarMenu();
+
 }
 
 /* ================= MEMORAMA ================= */
@@ -774,7 +1140,7 @@ primera=null;
 if(aciertos===numerosMixteco.length){
 
 document.getElementById("winM").innerText=
-"🎉 ¡Ganaste el memorama bro! 😎🔥";
+"🎉 ¡Ganaste el memorama! 😎🔥";
 
 }
 
@@ -1078,7 +1444,7 @@ let preguntas=[
 
 {
 q:"¿Qué es NDUTE?",
-o:["Agua","Rio","Mar"],
+o:["Agua","Río","Mar"],
 c:0
 },
 
@@ -1090,13 +1456,13 @@ c:1
 
 {
 q:"¿Qué es TEE I´NI?",
-o:["Cafe","Cerveza","Atole"],
+o:["Café","Cerveza","Atole"],
 c:0
 },
 
 {
 q:"¿Qué es NDUTE TSIKUAA?",
-o:["AGua de naranja","Agua de guallaba","Agua de sandia"],
+o:["Agua de naranja","Agua de guallaba","Agua de sandia"],
 c:0
 },
 
@@ -1182,7 +1548,7 @@ if(i==p.c){
 d.classList.add("correctaQuiz");
 
 document.getElementById("res").innerText=
-"✅ Correcto bro 😎";
+"✅ Correcto 😎";
 
 puntos++;
 
@@ -1196,7 +1562,7 @@ puntos;
 d.classList.add("incorrectaQuiz");
 
 document.getElementById("res").innerText=
-"❌ Incorrecto bro";
+"❌ Incorrecto 😢";
 
 /* MOSTRAR CORRECTA */
 
@@ -1222,7 +1588,7 @@ function next(){
 if(!respondido){
 
 document.getElementById("res").innerText=
-"⚠ Responde primero bro";
+"⚠ Responde primero ";
 
 return;
 
@@ -1265,208 +1631,147 @@ load();
 
 load();
 
+// ================= ADIVINANZAS ENMIXTECO ================= //
 
-/* CRUCIGRAMA DE COMIDAS EN MIXTECO */
-
-let size=20;
-
-let grid=Array(size).fill().map(()=>Array(size).fill(null));
-
-let H=[
-
-{n:1,w:"DUXA",r:1,c:2,p:"Pozole"},
-
-{n:5,w:"DEMINUCHU´UN",r:5,c:2,p:"Caldo de pollo"},
-
-{n:7,w:"STAXITI",r:9,c:1,p:"Sope"},
-
-{n:8,w:"STAJI´I",r:13,c:5,p:"Empanada de hongos"}
-
-];
-
-let V=[
-
-{n:2,w:"STÁ",r:1,c:8,p:"Tortilla"},
-
-{n:3,w:"LU´U",r:3,c:14,p:"Totopos"},
-
-{n:4,w:"STAñAMA",r:2,c:11,p:"Tamal"},
-
-{n:6,w:"ÑU´UJITNU",r:7,c:17,p:"Barbacoa"}
-
-];
-
-H.forEach(p=>{
-for(let i=0;i<p.w.length;i++) grid[p.r][p.c+i]=p.w[i];
-});
-V.forEach(p=>{
-for(let i=0;i<p.w.length;i++) grid[p.r+i][p.c]=p.w[i];
-});
-
-let boardC=document.getElementById("boardC");
-
-for(let i=0;i<size;i++){
-for(let j=0;j<size;j++){
-let cell=document.createElement("div");
-cell.className="cellC";
-
-if(grid[i][j]==null){
-cell.classList.add("block");
-}else{
-let input=document.createElement("input");
-input.maxLength=1;
-input.addEventListener("input",()=>{
-
-input.value=input.value.toUpperCase();
-
-input.style.background="#fde047";
-
-setTimeout(()=>{
-input.style.background="white";
-},200);
-
-});
-input.dataset.correct=grid[i][j];
-cell.appendChild(input);
-
-let num=[...H,...V].find(p=>p.r==i&&p.c==j);
-if(num){
-let n=document.createElement("div");
-n.className="num";
-n.innerText=num.n;
-cell.appendChild(n);
-}
-}
-boardC.appendChild(cell);
-}
-}
-
-let hintsH=document.getElementById("hintsH");
-let hintsV=document.getElementById("hintsV");
-
-H.forEach(p=>{
-let li=document.createElement("li");
-li.innerText=p.n+". "+p.p+" ("+p.w.length+")";
-hintsH.appendChild(li);
-});
-V.forEach(p=>{
-let li=document.createElement("li");
-li.innerText=p.n+". "+p.p+" ("+p.w.length+")";
-hintsV.appendChild(li);
-});
-
-function checkC(){
-let ok=true;
-document.querySelectorAll("#boardC input").forEach(inp=>{
-if(inp.value.toUpperCase()==inp.dataset.correct){
-inp.classList.add("ok");
-}else{
-inp.classList.add("bad");
-ok=false;
-}
-});
-resC.innerText=ok?"🎉 Correcto":"❌ Hay errores";
-}
-
-/* ================= ADIVINANZAS EN MIXTECO ================= */
-
-let adv=[
-
+let adv = [
 {
 q:"🥒 Verde por fuera y suave por dentro, crezco en la milpa y me usan en comida. ¿Qué soy?",
+op:["Calabacita","Papa","Chile","Cebolla"],
 a:"Calabacita"
 },
-
 {
 q:"🍠 Dulce y naranja, crezco bajo tierra y parece papa. ¿Qué soy?",
+op:["Camote","Elote","Frijol","Trigo"],
 a:"Camote"
 },
-
 {
 q:"🥬 Verde y espinoso por fuera, en caldo soy delicioso. ¿Qué soy?",
+op:["Chayote","Chile","Quelite","Papa"],
 a:"Chayote"
 },
-
 {
 q:"🟢 Pequeño y redondo, siempre voy acompañado en la comida. ¿Qué soy?",
+op:["Chícharo","Frijol","Maíz","Ejote"],
 a:"Chícharo"
 },
-
 {
 q:"🎃 Grande y redonda, de mí hacen dulce y bebida. ¿Qué soy?",
+op:["Chilacayota","Calabacita","Papa","Chile"],
 a:"Chilacayota"
 },
-
 {
 q:"🌶️ Picoso y pequeño, si me comes mucho te hago llorar. ¿Qué soy?",
+op:["Chile","Camote","Elote","Trigo"],
 a:"Chile"
 },
-
 {
 q:"🌱 Largo y verde, parezco frijol pero más delgado. ¿Qué soy?",
+op:["Ejote","Chícharo","Maíz","Papa"],
 a:"Ejote"
 },
-
 {
 q:"🌽 Amarillo y sabroso, me comes desgranado o entero. ¿Qué soy?",
+op:["Elote","Trigo","Frijol","Camote"],
 a:"Elote"
 },
-
 {
 q:"🫘 Pequeño pero poderoso, negro o bayo me puedes encontrar. ¿Qué soy?",
+op:["Frijol","Papa","Chile","Cebolla"],
 a:"Frijol"
 },
-
 {
 q:"🌾 Soy la base de muchas tortillas. ¿Qué soy?",
+op:["Maíz","Trigo","Ejote","Quelite"],
 a:"Maíz"
 },
-
 {
 q:"🥔 Vivo bajo tierra y en papas fritas me convierto. ¿Qué soy?",
+op:["Papa","Camote","Calabacita","Chile"],
 a:"Papa"
 },
-
 {
 q:"🌾 Dorado y largo, conmigo hacen pan. ¿Qué soy?",
+op:["Trigo","Maíz","Frijol","Elote"],
 a:"Trigo"
 },
-
 {
 q:"🧅 Tengo muchas capas y hago llorar al cortarme. ¿Qué soy?",
+op:["Cebolla","Papa","Chile","Chayote"],
 a:"Cebolla"
 },
-
 {
 q:"🥬 Verde y pequeño, crezco en el campo y soy muy nutritivo. ¿Qué soy?",
+op:["Quelite","Ejote","Elote","Camote"],
 a:"Quelite"
 }
-
 ];
 
-let ri=0;
+let ri = 0;
 
-/* CARGAR */
+let buenas = 0;
+
+let malas = 0;
 
 function cargar(){
 
-document.getElementById("rQ").innerText=
-adv[ri].q;
+document.getElementById("progreso").innerHTML =
+`Pregunta ${ri+1} de ${adv.length}`;
 
-document.getElementById("rA").innerText="";
+document.getElementById("correctas").innerText = buenas;
+document.getElementById("incorrectas").innerText = malas;
+
+document.getElementById("rQ").innerText = adv[ri].q;
+
+let html="";
+
+adv[ri].op.forEach(op=>{
+
+html+=`
+<button class="opcion" onclick="verificar(this,'${op}')">
+${op}
+</button>
+`;
+
+});
+
+document.getElementById("rA").innerHTML=html;
 
 }
 
-/* VER RESPUESTA */
+function verificar(btn,respuesta){
 
-function ver(){
+let botones=document.querySelectorAll("#adivinanzas .opcion");
 
-document.getElementById("rA").innerText=
-"✅ "+adv[ri].a;
+botones.forEach(b=>b.disabled=true);
+
+if(respuesta===adv[ri].a){
+
+btn.classList.add("correcta");
+buenas++;
+
+}else{
+
+btn.classList.add("incorrecta");
+malas++;
+
+botones.forEach(b=>{
+
+if(b.innerText===adv[ri].a){
+
+b.classList.add("correcta");
 
 }
 
-/* SIGUIENTE */
+});
+
+}
+
+document.getElementById("correctas").innerText=buenas;
+document.getElementById("incorrectas").innerText=malas;
+
+setTimeout(sig,2000);
+
+}
 
 function sig(){
 
@@ -1474,16 +1779,47 @@ ri++;
 
 if(ri>=adv.length){
 
+let porcentaje=Math.round((buenas/adv.length)*100);
+
+let mensaje="";
+
+if(porcentaje==100){
+
+mensaje="🏆 ¡Perfecto!";
+
+}else if(porcentaje>=80){
+
+mensaje="🥇 ¡Excelente trabajo!";
+
+}else if(porcentaje>=60){
+
+mensaje="👏 Muy bien";
+
+}else{
+
+mensaje="📚 Sigue practicando";
+
+}
+
 document.getElementById("adivinanzas").innerHTML=`
 
-<h2>🏆 Terminaste las adivinanzas 🏆</h2>
+<h2>🎉 Juego terminado 🎉</h2>
 
-<p style="font-size:25px;">
-Muy bien bro 😎
-</p>
+<h1>${porcentaje}%</h1>
+
+<p>${mensaje}</p>
+
+<h3>
+
+✅ ${buenas} Aciertos<br>
+❌ ${malas} Errores
+
+</h3>
 
 <button onclick="location.reload()">
+
 🔄 Jugar otra vez
+
 </button>
 
 `;
@@ -1496,9 +1832,13 @@ cargar();
 
 }
 
-/* START */
-
 cargar();
+
+
+</script>
+
+</body>
+</html>
 
 </script>
 
