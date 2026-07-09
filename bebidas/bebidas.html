@@ -1,167 +1,60 @@
 <!doctype html>
 <html lang="es">
-   <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Juntos aprendamos mixteco</title>
-            <link rel="stylesheet" href="CSS/style.css">
-        </head>
-        <body>
-            <header>
-               <header class="encabezado">
-                    <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
-                    <h1>BACHILLERATO INTEGRAL COMUNITARIO DE SAN AGUSTÍN TLACOTEPEC</h1>
-                    <img src="logotipos/logotipo bic18.png" alt="Logo BIC" class="logo-header">
-                </header>
-                <h1>Juntos aprendamos mixteco</h1>
-                <nav class="menu">
-                        <a href="index.html">Inicio</a>
-                            <ul class="menu">
-                                 <li> <a href="#"> Campos semánticos </a>
-                                <ul class="submenu">
-                                     <li><a href="Campos semanticos/saludos y frases de cortesia/saludos_y_frases_de_cortesia.html">Saludos y frases de cortesía</a></li>
-                                     <li><a href="FRUTS.HTML">Frutas</a></li>
-                                     <li><a href="verduras y legumbres.html">Verduras y legumbres</a></li>
-                                     <li><a href="partes_del_cuerpo.html">Partes del cuerpo</a></li>
-                                     <li><a href="comidas.html">Comidas</a></li>
-                                     <li><a href="bebidas/bebidas.html">Bebidas</a></li>
-                                     <li><a href="prendas.html">Prendas de vestir</a></li>
-                                     <li><a href="objetos.html">Objetos</a></li>
-                                     <li><a href="animales.html">Animales</a></li>
-                                     <li><a href="colores.html">Colores</a></li>
-                                     <li><a href="Naturaleza.html">Naturaleza</a></li>
-                                     <li><a href="Campos semanticos/numeros/Numeros.html">Números</a></li>
-                                     <li><a href="">Ocupaciones</a></li>
-                                     <li><a href="enfermedades.html">Enfermedades</a></li>
-                                </ul>
-                            </li>
-                            </ul>
-                        <a href="#">Alfabeto ilustrado en la lengua mixteca</a>
-                        <a href="#">Juegos</a>
-                        <a href="MUSIC.HTML">Canciones</a>
-                        <a href="#">Saberes de San Agustín Tlacotepec</a>
-                        <a href="#">Pronunciación</a>
-                        <a href="#">Lección de lecto-escritura</a>
-                        <a href="#">Reseña de San Agustín Tlacotepec</a>
-                    </nav>
-                     <script> 
-                      // Mostrar/ocultar submenús al hacer clic
-                     const botones = document.querySelectorAll('.menu-btn');
-                     botones.forEach(btn => {
-                     btn.addEventListener('click', () => {
-                     const submenu = btn.nextElementSibling;
-                     const visible = submenu.style.display === 'block';
-                     // Oculta otros submenús
-                     document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
-                     // Alterna el submenú seleccionado
-                     submenu.style.display = visible ? 'none' : 'block';
-                     });
-                     });
-                     </script> 
-            </header>
-<STYle>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>Bebidas en Mixteco — Bachillerato Integral Comunitario</title></h1>
+
   <style>
-/* CSS Básico */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: blue;
-    color: black;
-}
-header {
-    background-color: rgba(17, 52, 158, 0.8);
-    padding: 10px;
-    text-align: center;
-}
-.menu {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px;
-    background-color: rgba(20, 186, 215, 0.5);
-    border-bottom: 2px solid #000;
-}
-.menu a {
-    text-decoration: none;
-    background-color: #3715a7;
-    padding: 10px 15px;
-    color: rgb(245, 247, 245);
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-.menu a:hover {
-    background-color: #4bbf73;
-}
-
-.encabezado {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+    /* =====================================
+       🎓 ESTILO ESCOLAR
+    ======================================*/
+    :root{
+      --accent:#c28006;
+      --accent-soft:#1cced4;
+      --bg:#f7d9a2;
+      --card:#ffffff;
+      --text:#1a1a1a;
+      --muted:#6b7280;
+      --green:#27ae60;
     }
-    .logo-header {
-    height: auto;
-    width: 120px; 
+    
+    *{
+      box-sizing:border-box;
+      user-select:none;
     }
 
-    footer {
-        background-color: #004d26;
-        color: white;
-        text-align: center;
-        padding: 20px;
-      }
-      
-      footer a {
-        color: #ffd700;
-        text-decoration: none;
-      }
-      nav ul {
-list-style: none;
-padding: 0;
-margin: 0;
-position: relative;
-}
-nav ul li {
-position: relative;
-}
-nav ul li a {
-color: white;
-text-decoration: none;
-padding: 10px;
-display: block;
-}
-nav ul li:hover > a {
-background: #666;
-}
-/* Submenús */
-nav ul li ul {
-display: none;
-position: absolute;
-background: #555;
-padding: 0;
-min-width: 180px;
-z-index: 100;
-}
-nav ul li:hover ul {
-display: block;
-}
-nav ul li ul li a {
-padding: 10px;
-border-bottom: 1px solid #666;
-}
-nav ul li ul li a:hover {
-background: #777;
-}
-ul.menu li button:hover { background: #666; }
+    body{
+      margin:0;
+      background:var(--bg);
+      font-family:'Nunito', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+    }
+
+    /* Header */
+    header{
+      background:#70ece2;
+      border-bottom:2px solid #ffffff;
+      padding:15px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    
+    .logo img{
+      width:70px;
+      height:70px;
+      object-fit:cover;
+      border-radius:6px;
+      border:2px solid #d6e9ff;
+    }
 
     .school-title h1{
       margin:0;
       font-size:20px;
-      font-weight:800;
+      font-weight:70;
       color:var(--accent);
-      text-shadow:0 1px 0 white;
+      text-shadow:0 1px 0 rgb(153, 105, 43);
     }
 
     .page-title{
@@ -183,13 +76,33 @@ ul.menu li button:hover { background: #666; }
       grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
       gap:16px;
     }
+    body{
+  background:#fefae0;
+}
+
+header{
+  background:#588157;
+}
+
+.page-title{
+  color:#344e41;
+}
+
+.card{
+  background:#ffffff;
+  border:2px solid #dad7cd;
+}
+
+.btn{
+  background:linear-gradient(135deg,#588157,#3a5a40);
+}
     
     .card{
       background:var(--card);
       border:2px solid #ddebff;
       padding:14px;
       border-radius:12px;
-      box-shadow:2px 4px 0 #1160e9;
+      box-shadow:2px 4px 0 #accbff;
       transition:.25s;
     }
 
@@ -205,6 +118,14 @@ ul.menu li button:hover { background: #666; }
       border-radius:6px;
       border:2px solid #dcebff;
     }
+    .card{
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
 
     .mixteco{
       font-weight:900;
@@ -218,16 +139,17 @@ ul.menu li button:hover { background: #666; }
     }
 
     .btn{
-      background:var(--accent);
-      border:none;
-      padding:8px 12px;
-      color:#fff;
-      font-weight:700;
-      border-radius:6px;
-      cursor:pointer;
-      transition:.5s;
-    }
-
+  background:linear-gradient(135deg,#d8d8d8,#a3b18a); /* color pro */
+  border:none;
+  padding:10px 20px; /* 🔥 tamaño más grande */
+  color:white;
+  font-weight:700;
+  font-size:18px; /* 🔥 texto más grande */
+  border-radius:12px;
+  cursor:pointer;
+  box-shadow:0 6px 15px rgba(0,0,0,.3);
+  transition:.2s;
+}
     .btn:hover{
       background:#003b7a;
     }
@@ -238,100 +160,94 @@ ul.menu li button:hover { background: #666; }
       color:var(--accent);
     }
 
-    /* =============================
-       MEMORAMA
-    ==============================*/
-    .memorama-title{
-      text-align:center;
-      font-size:26px;
-      margin-top:35px;
-      font-weight:900;
-      color:var(--accent);
-    }
-
-    #tablero-memo{
-      width:100%;
-      max-width:600px;
-      margin:auto;
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-    }
-
-    .memo-card{
-      background:white;
-      border:2px solid var(--accent);
-      border-radius:12px;
-      min-height:90px;
-      font-size:18px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-weight:800;
-      box-shadow:2px 4px 0 #042c6f;
-      cursor:pointer;
-      transition:.25s;
-    }
-
-    .memo-card img{
-      width:70px;
-      display:block;
-    }
-
-    .memo-card.volteada{
-      background:var(--accent);
-      color:rgb(8, 13, 121);
-      transform:scale(1.05);
-    }
-
-    .memo-card.lista{
-      background:var(--green);
-      border-color:#1c7643;
-      color:rgb(5, 15, 152);
-    }
-
-    #mensajeMemorama{
-      text-align:center;
-      margin-top:15px;
-      font-size:20px;
-      font-weight:900;
-    }
- footer {
-        background-color: #004d26;
-        color: white;
-        text-align: center;
-        padding: 20px;
-      } 
-      footer a {
-        color: #ffd700;
-        text-decoration: none;
-      }
-      h1{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 48px;
+   #juego-velocidad{
+text-align:center;
+margin-top:60px;
+padding:20px;
+background:#eef6ff;
+border-radius:12px;
+box-shadow:0 6px 15px rgba(0,0,0,.15);
 }
-nav {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 20px;
+
+#palabra-mixteco{
+font-size:30px;
+color:#1e3a8a;
+margin:20px;
+font-weight:900;
 }
-h2 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 35px;
+
+#imagenes-juego{
+display:grid;
+grid-template-columns:repeat(2,160px);
+gap:20px;
+justify-content:center;
 }
-h3 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-family: 35px;
+
+.img-opcion{
+width:160px;
+height:160px;
+object-fit:cover;
+border-radius:12px;
+cursor:pointer;
+border:4px solid transparent;
+transition:.25s;
 }
-footer {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 18px;
+
+.img-opcion:hover{
+transform:scale(1.1);
+}
+
+.correcta{
+border-color:#27ae60;
+}
+
+.incorrecta{
+border-color:#e74c3c;
+}
+
+#reiniciar{
+margin-top:20px;
+padding:10px 20px;
+background:#1e3a8a;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:700;
+}
+#barra-tiempo{
+width:300px;
+height:20px;
+background:#ddd;
+margin:10px auto;
+border-radius:10px;
+overflow:hidden;
+}
+
+#progreso{
+height:100%;
+width:100%;
+background:#27ae60;
+transition:width 1s linear;
 }
   </style>
 </head>
 
 <body>
 
+<header>
+  <div class="logo">
+    <img src="imagen/logoCSEIIO.png">
+  </div>
 
+  <div class="school-title">
+    <h4>Bachillerato Integral Comunitario de San Agustín Tlacotepec</h4>
+  </div>
+
+  <div class="logo">
+    <img src="imagen/bic18.png">
+  </div>
+</header>
 
 <main>
   
@@ -345,42 +261,42 @@ footer {
     <!-- 🔹 Repite este bloque para cada bebida (ya corregido) -->
     
     <div class="card">
-      <img src="imagen/embotellada.jpg">
+      <img src="imagen/aguaapura.png">
       <div class="mixteco">Ndute</div>
-      <div class="spanish">Agua</div>
+      <div class="spanish"></div>
       <audio id="audio-atole" src="audio/Agua__mixteco.mp3"></audio>
      <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
 
     </div>
 
     <div class="card">
-      <img src="imagen/aguaapura.png">
+      <img src="imagen/Agua-pura.jpg">
       <div class="mixteco">Ndute uun</div>
-      <div class="spanish">Agua Pura</div>
+      <div class="spanish"></div>
       <audio id="audio-refresco" src="audio/Agua pura_mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
 
     <div class="card">
-      <img src="imagen/cafee.jpg">
+      <img src="imagen/cafe-de-olla-1010x1024.jpg">
       <div class="mixteco">Tee i’ni</div>
-      <div class="spanish">Cafe</div>
+      <div class="spanish"></div>
       <audio id="audio-aguardiente" src="audio/Cafe__mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
 
     <div class="card">
-      <img src="imagen/Agua de sabor.png">
+      <img src="imagen/agua d sabor.jpg">
       <div class="mixteco">Ndute vixi</div>
-      <div class="spanish">Agua de sabor</div>
+      <div class="spanish"></div>
       <audio id="audio-pulque" src="audio/Agua de sabor__mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
 
     <div class="card">
-      <img src="imagen/agua de naranja.webp">
+      <img src="imagen/juiceorange.jpeg">
       <div class="mixteco">Ndute tsikuaa</div>
-      <div class="spanish">Agua de naranja</div>
+      <div class="spanish"></div>
       <audio id="audio-tepache" src="audio/Agua naranja__mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
@@ -388,7 +304,7 @@ footer {
     <div class="card">
       <img src="imagen/agualimon.jpg">
       <div class="mixteco">Ndute tsikuaa iya</div>
-      <div class="spanish">Agua de limon</div>
+      <div class="spanish"></div>
       <audio id="audio-agua" src="audio/Agua de limon__mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
@@ -396,7 +312,7 @@ footer {
     <div class="card">
       <img src="imagen/agua de guayaba.png">
       <div class="mixteco">Ndute tsikuentsikin.</div>
-      <div class="spanish">Agua de guayaba</div>
+      <div class="spanish"></div>
 <audio id="audio-guayaba" src="audio/Agua de guayaba_mixteco.mp3"></audio>
 <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
@@ -404,7 +320,7 @@ footer {
      <div class="card">
       <img src="imagen/agua dechilaca.png">
       <div class="mixteco">Ndute tsinduyu</div>
-      <div class="spanish">Agua de chilacayota</div>
+      <div class="spanish"></div>
       <audio id="audio-chilacayota" src="audio/Agua de chilacayota.mixteco.mp3"></audio>
 <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
@@ -412,39 +328,39 @@ footer {
      <div class="card">
       <img src="imagen/8a9728ae9dc44f6cdea182ea9f177302.jpg">
       <div class="mixteco">Tee vixi</div>
-      <div class="spanish">Refresco</div>
+      <div class="spanish"></div>
  <audio id="audio-refresco2" src="audio/Refresco__mixteco.mp3"></audio>
 <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
 
     <div class="card">
-      <img src="imagen/atoli.png">
+      <img src="imagen/atoles-de-oaxaca-1024x683.jpg">
       <div class="mixteco">Toli</div>
-      <div class="spanish">Atole</div>
+      <div class="spanish"></div>
       <audio id="audio-atole" src="audio/Atole__mixteco.mp3"></audio>
 <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
 
      <div class="card">
-      <img src="imagen/atole.png">
+      <img src="imagen/tolinuniii.jpeg">
       <div class="mixteco">Toli nuni</div>
-      <div class="spanish">Atole de maiz</div>
+      <div class="spanish"></div>
       <audio id="audio-agua" src="audio/Atole de maiz__mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
 
      <div class="card">
-      <img src="imagen/cerveza.jpeg">
+      <img src="imagen/bbembria.jpg">
       <div class="mixteco">Ntsixi</div>
-      <div class="spanish">Bebida embriagante</div>
+      <div class="spanish"></div>
       <audio id="audio-agua" src="audio/Bebida embriagante__mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
 
      <div class="card">
-      <img src="imagen/pulqueee.png">
+      <img src="imagen/Jicara-con-pulque (1).webp">
       <div class="mixteco">Ntsixi kuijin</div>
-      <div class="spanish">Pulque</div>
+      <div class="spanish"></div>
       <audio id="audio-agua" src="audio/Pulque__mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
@@ -452,7 +368,7 @@ footer {
      <div class="card">
       <img src="imagen/tepacge.jpg">
       <div class="mixteco">Ndixi Kua’a</div>
-      <div class="spanish">Tepache</div>
+      <div class="spanish"></div>
       <audio id="audio-agua" src="audio/Tepache__mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
@@ -460,31 +376,24 @@ footer {
      <div class="card">
       <img src="imagen/enjambre.png">
       <div class="mixteco">Ntsixi ñuñu</div>
-      <div class="spanish">Enjambre</div>
+      <div class="spanish"></div>
       <audio id="audio-agua" src="audio/Enjambre__mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
 
     <div class="card">
-      <img src="imagen/aguardientee.jpg">
+      <img src="imagen/Copa_Aguardiente_Cristar_Shooter_2.webp">
       <div class="mixteco">Ndixi</div>
-      <div class="spanish">Aguardiente</div>
+      <div class="spanish"></div>
       <audio="audio-agua" src="audio/Aguardiente__mixteco.mp3"></audio>
       <button class="btn" onclick="playAudio(this)">▶ Reproducir</button>
     </div>
-
+    <div style="text-align:center; margin-bottom:20px;">
+      <a href="juego.html">
+        <button class="btn">🎮 Pon aprueba tu conocimiento </button>
+      </a>
+    </div>
   </section>
-
-
-  <!-- =========================================================
-       🎮 MEMORAMA ESCOLAR
-  ==========================================================-->
-
-  <h2 class="memorama-title">🧠 Memorama — Une la imagen con su nombre</h2>
-
-  <div id="tablero-memo"></div>
-  <p id="mensajeMemorama"></p>
-
 
 </main>
 
@@ -492,115 +401,23 @@ footer {
   // ===========================
   // 🟦 AUDIO REPRODUCTOR
   // ===========================
-  function playAudio(id){
-    const a = document.getElementById(id);
-    document.querySelectorAll("audio").forEach(el => {
-      if(el !== a){ el.pause(); el.currentTime = 0; }
-    });
-    a.play();
-  }
+  function playAudio(btn){
+  const card = btn.closest(".card");
+  const audio = card.querySelector("audio");
 
-
-  // ===========================
-  // 🔷 MEMORAMA
-  // ===========================
-  const bebidas = [
-    { img:"imagen/atole.jpg", mix:"Toli" },
-    { img:"imagen/refrescos.jpg", mix:"Te vixi" },
-    { img:"imagen/aguardiente.jpg", mix:"Ndixi" },
-    { img:"imagen/pulque.jpg", mix:"Ndidi" },
-    { img:"imagen/tepache.jpg", mix:"Ndixi kua´a" },
-    { img:"imagen/agua.jpg", mix:"Ndute" }
-  ];
-
-  let tarjetas = [];
-
-  bebidas.forEach((b,i)=>{
-    tarjetas.push({id:i,tipo:"img",contenido:b.img});
-    tarjetas.push({id:i,tipo:"txt",contenido:b.mix});
+  document.querySelectorAll("audio").forEach(a=>{
+    if(a!==audio){
+      a.pause();
+      a.currentTime=0;
+    }
   });
 
-  tarjetas = tarjetas.sort(()=>Math.random()-0.5);
-
-  const tablero = document.getElementById("tablero-memo");
-  const mensaje = document.getElementById("mensajeMemorama");
-
-  let carta1=null;
-  let carta2=null;
-  let lock=false;
-  let aciertos=0;
-
-  tarjetas.forEach(t=>{
-    const div=document.createElement("div");
-    div.classList.add("memo-card");
-    div.dataset.id=t.id;
-    div.dataset.tipo=t.tipo;
-    div.textContent="❓";
-    div.addEventListener("click",()=>voltear(div,t));
-    tablero.appendChild(div);
-  });
-
-  function voltear(card,data){
-    if(lock) return;
-    if(card.classList.contains("volteada") || card.classList.contains("lista")) return;
-
-    card.classList.add("volteada");
-    card.innerHTML = data.tipo==="img"
-      ? `<img src="${data.contenido}">`
-      : data.contenido;
-
-    if(!carta1){
-      carta1={card,data};
-    } else {
-      carta2={card,data};
-      verificar();
-    }
-  }
-
-  function verificar(){
-    lock=true;
-
-    if(
-      carta1.data.id===carta2.data.id &&
-      carta1.data.tipo!==carta2.data.tipo
-    ){
-      carta1.card.classList.add("lista");
-      carta2.card.classList.add("lista");
-      aciertos++;
-
-      carta1=null;
-      carta2=null;
-      lock=false;
-
-      if(aciertos===bebidas.length){
-        mensaje.textContent="🎉 ¡Excelente! Completaste el memorama";
-        mensaje.style.color="var(--green)";
-      }
-
-    } else {
-      setTimeout(()=>{
-        resetCard(carta1.card);
-        resetCard(carta2.card);
-        carta1=null;
-        carta2=null;
-        lock=false;
-      },600);
-    }
-  }
-
-  function resetCard(card){
-    card.classList.remove("volteada");
-    card.textContent="❓";
-  }
+  audio.currentTime=0;
+  audio.play();
+}
+;
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
-<footer>
-    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
-    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
-    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
-    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
-    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
-  </footer>
 </html>
 
