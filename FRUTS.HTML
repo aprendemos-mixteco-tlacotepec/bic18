@@ -569,189 +569,217 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Memorama de Frutas Mixteco</title>
+<title>Memorama Mixteco</title>
 
 <style>
 body{
-  font-family: Arial, sans-serif;
-  background:#f4f6f5;
-  text-align:center;
+    font-family:Arial,sans-serif;
+    background:#eef5ef;
+    text-align:center;
 }
 
 h2{
-  color:#2e7d32;
+    color:#2e7d32;
 }
 
 #score{
-  margin:10px;
-  font-weight:bold;
+    font-size:18px;
+    margin:15px;
+    font-weight:bold;
 }
 
-.memorama-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  max-width:420px;
-  margin:20px auto;
+button{
+    padding:8px 15px;
+    background:#2e7d32;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-.mem-card{
-  height:90px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #ccc;
-  cursor:pointer;
-  position:relative;
-  transform-style:preserve-3d;
-  transition:transform .4s;
-  font-size:16px;
+button:hover{
+    background:#1f5d25;
 }
 
-.mem-card.flipped{
-  transform:rotateY(180deg);
+#game{
+    display:grid;
+    grid-template-columns:repeat(4,90px);
+    gap:10px;
+    justify-content:center;
+    margin-top:20px;
 }
 
-.front, .back{
-  position:absolute;
-  width:100%;
-  height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  backface-visibility:hidden;
-  border-radius:10px;
-  padding:5px;
+.card{
+    width:90px;
+    height:90px;
+    position:relative;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    transition:.4s;
+}
+
+.card.flip{
+    transform:rotateY(180deg);
+}
+
+.face{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:10px;
+    backface-visibility:hidden;
+    border:1px solid #888;
+    font-weight:bold;
 }
 
 .front{
-  background:#2e7d32;
-  color:white;
-  font-size:28px;
+    background:#2e7d32;
+    color:white;
+    font-size:28px;
 }
 
 .back{
-  transform:rotateY(180deg);
-  font-weight:bold;
+    background:white;
+    transform:rotateY(180deg);
+    font-size:15px;
 }
 </style>
 </head>
 
 <body>
 
+<h2>Memorama Español - Mixteco</h2>
 
 <div id="score">Puntaje: 0</div>
 
-<div id="game" class="memorama-grid"></div>
+<button onclick="crearJuego()">Nuevo Juego</button>
+
+<div id="game"></div>
 
 <script>
-// ===== DATOS =====
-const frutas = [
-  {esp:"Aguacate", mix:"Tsityi"},
-  {esp:"Anona", mix:"Ndoko"},
-  {esp:"Durazno", mix:"Nde'ya"},
-  {esp:"Guayaba", mix:"Tsikuentsiki"},
-  {esp:"Lima", mix:"Tsikuaa"},
-  {esp:"Piña", mix:"Vijin"}
+
+const frutas=[
+["Aguacate","Tsityi"],
+["Anona","Ndoko"],
+["Durazno","Nde'ya"],
+["Guayaba","Tsikuentsiki"],
+["Lima","Tsikuaa"],
+["Piña","Vijin"]
 ];
 
-const game = document.getElementById("game");
-const scoreTxt = document.getElementById("score");
+const game=document.getElementById("game");
+const score=document.getElementById("score");
 
-let first = null;
-let second = null;
-let lock = false;
-let score = 0;
-let pairs = 0;
+let primera=null;
+let segunda=null;
+let bloqueo=false;
+let puntos=0;
+let parejas=0;
 
-// ===== INICIAR MEMORAMA =====
-function iniciar(){
-  game.innerHTML = "";
-  score = 0;
-  pairs = 0;
-  actualizar();
+function crearJuego(){
 
-  let cards = [];
+    game.innerHTML="";
+    puntos=0;
+    parejas=0;
+    actualizar();
 
-  frutas.forEach(f=>{
-    cards.push({id:f.esp, tipo:"esp", texto:f.esp});
-    cards.push({id:f.esp, tipo:"mix", texto:f.mix});
-  });
+    let cartas=[];
 
-  cards.sort(()=>Math.random()-0.5);
+    frutas.forEach(f=>{
+        cartas.push({id:f[0],tipo:"esp",texto:f[0]});
+        cartas.push({id:f[0],tipo:"mix",texto:f[1]});
+    });
 
-  cards.forEach(c=>{
-    const card = document.createElement("div");
-    card.className="mem-card";
-    card.dataset.id=c.id;
-    card.dataset.tipo=c.tipo;
+    cartas.sort(()=>Math.random()-0.5);
 
-    card.innerHTML=`
-      <div class="front">❓</div>
-      <div class="back">${c.texto}</div>
-    `;
+    cartas.forEach(c=>{
 
-    card.onclick=()=>voltear(card);
-    game.appendChild(card);
-  });
+        const div=document.createElement("div");
+        div.className="card";
+        div.dataset.id=c.id;
+        div.dataset.tipo=c.tipo;
+
+        div.innerHTML=`
+        <div class="face front">❓</div>
+        <div class="face back">${c.texto}</div>
+        `;
+
+        div.onclick=()=>voltear(div);
+
+        game.appendChild(div);
+
+    });
+
 }
 
-// ===== LÓGICA =====
-function voltear(card){
-  if(lock || card===first) return;
+function voltear(carta){
 
-  card.classList.add("flipped");
+    if(bloqueo || carta===primera || carta.classList.contains("ok")) return;
 
-  if(!first){
-    first = card;
-    return;
-  }
+    carta.classList.add("flip");
 
-  second = card;
-  lock = true;
-  comprobar();
-}
-
-function comprobar(){
-  const correcto =
-    first.dataset.id === second.dataset.id &&
-    first.dataset.tipo !== second.dataset.tipo;
-
-  if(correcto){
-    score += 10;
-    pairs++;
-    first.onclick = null;
-    second.onclick = null;
-    reset();
-    if(pairs === frutas.length){
-      alert("🎉 ¡Ganaste el memorama!");
+    if(!primera){
+        primera=carta;
+        return;
     }
-  }else{
-    score = Math.max(0, score - 2);
-    setTimeout(()=>{
-      first.classList.remove("flipped");
-      second.classList.remove("flipped");
-      reset();
-    },800);
-  }
-  actualizar();
+
+    segunda=carta;
+    bloqueo=true;
+
+    if(
+        primera.dataset.id===segunda.dataset.id &&
+        primera.dataset.tipo!==segunda.dataset.tipo
+    ){
+
+        primera.classList.add("ok");
+        segunda.classList.add("ok");
+
+        puntos+=10;
+        parejas++;
+
+        reiniciar();
+
+        if(parejas===frutas.length){
+            setTimeout(()=>{
+                alert("🎉 ¡Ganaste!\nPuntaje: "+puntos);
+            },300);
+        }
+
+    }else{
+
+        puntos=Math.max(0,puntos-2);
+
+        setTimeout(()=>{
+            primera.classList.remove("flip");
+            segunda.classList.remove("flip");
+            reiniciar();
+        },700);
+
+    }
+
+    actualizar();
+
 }
 
-function reset(){
-  first = null;
-  second = null;
-  lock = false;
+function reiniciar(){
+    primera=null;
+    segunda=null;
+    bloqueo=false;
 }
 
 function actualizar(){
-  scoreTxt.textContent = "Puntaje: " + score;
+    score.textContent="Puntaje: "+puntos;
 }
 
+crearJuego();
 
 </script>
 
 </body>
 </html>
-
 
 
 
