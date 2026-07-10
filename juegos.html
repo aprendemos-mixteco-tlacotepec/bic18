@@ -1120,7 +1120,11 @@ Encuentra los pares iguales 😎
 
 <!-- ================= ADIVINANZAS EN MIXTECO ================= -->
 
-<section id="adivinanzas" class="seccion-adivinanzas">
+<section id="adivinanzas" class="section seccion-adivinanzas">
+
+    <button class="volver" onclick="volverMenu()">
+        ⬅ Volver al menú
+    </button>
 
     <div class="encabezado-adivinanzas">
         <h2>🧠 Adivinanzas en mixteco</h2>
@@ -1128,9 +1132,21 @@ Encuentra los pares iguales 😎
     </div>
 
     <div class="marcador-adivinanzas">
-        <span>Pregunta: <b id="numeroAdivinanza">1</b>/<b id="totalAdivinanzas">14</b></span>
-        <span>✅ Correctas: <b id="correctasAdivinanzas">0</b></span>
-        <span>❌ Incorrectas: <b id="incorrectasAdivinanzas">0</b></span>
+        <span>
+            Pregunta:
+            <b id="numeroAdivinanza">1</b>/
+            <b id="totalAdivinanzas">14</b>
+        </span>
+
+        <span>
+            ✅ Correctas:
+            <b id="correctasAdivinanzas">0</b>
+        </span>
+
+        <span>
+            ❌ Incorrectas:
+            <b id="incorrectasAdivinanzas">0</b>
+        </span>
     </div>
 
     <div class="barra-progreso-adivinanzas">
@@ -1141,9 +1157,15 @@ Encuentra los pares iguales 😎
 
         <h3 id="preguntaAdivinanza"></h3>
 
-        <div id="opcionesAdivinanza" class="opciones-adivinanza"></div>
+        <div
+            id="opcionesAdivinanza"
+            class="opciones-adivinanza"
+        ></div>
 
-        <p id="mensajeAdivinanza" class="mensaje-adivinanza"></p>
+        <p
+            id="mensajeAdivinanza"
+            class="mensaje-adivinanza"
+        ></p>
 
         <button
             id="btnSiguienteAdivinanza"
