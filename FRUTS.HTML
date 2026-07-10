@@ -539,188 +539,209 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Memorama de Frutas Mixteco</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memorama Mixteco</title>
 
 <style>
 body{
-  font-family: Arial, sans-serif;
-  background:#f4f6f5;
-  text-align:center;
-}
-
-h2{
-  color:#2e7d32;
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    text-align:center;
 }
 
 #score{
-  margin:10px;
-  font-weight:bold;
+    font-size:22px;
+    margin:20px;
+    font-weight:bold;
 }
 
-.memorama-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  max-width:420px;
-  margin:20px auto;
+#game{
+    display:grid;
+    grid-template-columns:repeat(4,120px);
+    gap:15px;
+    justify-content:center;
 }
 
 .mem-card{
-  height:90px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #ccc;
-  cursor:pointer;
-  position:relative;
-  transform-style:preserve-3d;
-  transition:transform .4s;
-  font-size:16px;
+    width:120px;
+    height:120px;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:.5s;
+    cursor:pointer;
 }
 
 .mem-card.flipped{
-  transform:rotateY(180deg);
+    transform:rotateY(180deg);
 }
 
-.front, .back{
-  position:absolute;
-  width:100%;
-  height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  backface-visibility:hidden;
-  border-radius:10px;
-  padding:5px;
+.front,.back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    font-weight:bold;
+    backface-visibility:hidden;
 }
 
 .front{
-  background:#2e7d32;
-  color:white;
-  font-size:28px;
+    background:#4CAF50;
+    color:white;
 }
 
 .back{
-  transform:rotateY(180deg);
-  font-weight:bold;
+    background:white;
+    color:#333;
+    transform:rotateY(180deg);
+    border:2px solid #4CAF50;
 }
 </style>
 </head>
-
 <body>
 
+<h1>Memorama Mixteco</h1>
 
 <div id="score">Puntaje: 0</div>
 
-<div id="game" class="memorama-grid"></div>
+<div id="game"></div>
 
 <script>
-// ===== DATOS =====
-const frutas = [
-  {esp:"Aguacate", mix:"Tsityi"},
-  {esp:"Anona", mix:"Ndoko iñu"},
-  {esp:"Durazno", mix:"Nde'ya"},
-  {esp:"Guayaba", mix:"Tsikuentsikin"},
-  {esp:"Lima", mix:"Tsikuaa"},
-  {esp:"Piña", mix:"Vijin"}
+
+const frutas=[
+{esp:"Manzana",mix:"Yutya"},
+{esp:"Piña",mix:"Vijin"},
+{esp:"Limón",mix:"Tsikuaa iya"},
+{esp:"Guayaba",mix:"Tsikuentsiki"}
 ];
 
-const game = document.getElementById("game");
-const scoreTxt = document.getElementById("score");
+const game=document.getElementById("game");
+const scoreTxt=document.getElementById("score");
 
-let first = null;
-let second = null;
-let lock = false;
-let score = 0;
-let pairs = 0;
+let score=0;
+let pairs=0;
 
-// ===== INICIAR MEMORAMA =====
+let first=null;
+let second=null;
+let lock=false;
+
+iniciar();
+
 function iniciar(){
-  game.innerHTML = "";
-  score = 0;
-  pairs = 0;
-  actualizar();
 
-  let cards = [];
+game.innerHTML="";
+score=0;
+pairs=0;
+actualizar();
 
-  frutas.forEach(f=>{
-    cards.push({id:f.esp, tipo:"esp", texto:f.esp});
-    cards.push({id:f.esp, tipo:"mix", texto:f.mix});
-  });
+let cards=[];
 
-  cards.sort(()=>Math.random()-0.5);
+frutas.forEach(f=>{
+cards.push({id:f.esp,tipo:"esp",texto:f.esp});
+cards.push({id:f.esp,tipo:"mix",texto:f.mix});
+});
 
-  cards.forEach(c=>{
-    const card = document.createElement("div");
-    card.className="mem-card";
-    card.dataset.id=c.id;
-    card.dataset.tipo=c.tipo;
+cards.sort(()=>Math.random()-0.5);
 
-    card.innerHTML=`
-      <div class="front">❓</div>
-      <div class="back">${c.texto}</div>
-    `;
+cards.forEach(c=>{
 
-    card.onclick=()=>voltear(card);
-    game.appendChild(card);
-  });
+const card=document.createElement("div");
+card.className="mem-card";
+card.dataset.id=c.id;
+card.dataset.tipo=c.tipo;
+
+card.innerHTML=`
+<div class="front">❓</div>
+<div class="back">${c.texto}</div>
+`;
+
+card.onclick=()=>voltear(card);
+
+game.appendChild(card);
+
+});
+
 }
 
-// ===== LÓGICA =====
 function voltear(card){
-  if(lock || card===first) return;
 
-  card.classList.add("flipped");
+if(lock || card===first || card.classList.contains("flipped")) return;
 
-  if(!first){
-    first = card;
-    return;
-  }
+card.classList.add("flipped");
 
-  second = card;
-  lock = true;
-  comprobar();
+if(!first){
+first=card;
+return;
+}
+
+second=card;
+lock=true;
+comprobar();
+
 }
 
 function comprobar(){
-  const correcto =
-    first.dataset.id === second.dataset.id &&
-    first.dataset.tipo !== second.dataset.tipo;
 
-  if(correcto){
-    score += 10;
-    pairs++;
-    first.onclick = null;
-    second.onclick = null;
-    reset();
-    if(pairs === frutas.length){
-      alert("🎉 ¡Ganaste el memorama!");
-    }
-  }else{
-    score = Math.max(0, score - 2);
-    setTimeout(()=>{
-      first.classList.remove("flipped");
-      second.classList.remove("flipped");
-      reset();
-    },800);
-  }
-  actualizar();
+const correcto=
+first.dataset.id===second.dataset.id &&
+first.dataset.tipo!==second.dataset.tipo;
+
+if(correcto){
+
+score+=10;
+pairs++;
+
+first.onclick=null;
+second.onclick=null;
+
+reset();
+
+if(pairs===frutas.length){
+
+setTimeout(()=>{
+alert("🎉 ¡Ganaste el memorama!");
+},300);
+
+}
+
+}else{
+
+score=Math.max(0,score-2);
+
+setTimeout(()=>{
+
+first.classList.remove("flipped");
+second.classList.remove("flipped");
+reset();
+
+},800);
+
+}
+
+actualizar();
+
 }
 
 function reset(){
-  first = null;
-  second = null;
-  lock = false;
+first=null;
+second=null;
+lock=false;
 }
 
 function actualizar(){
-  scoreTxt.textContent = "Puntaje: " + score;
+scoreTxt.textContent="Puntaje: "+score;
 }
-
 
 </script>
 
 </body>
 </html>
+
+
+
 
 
 
