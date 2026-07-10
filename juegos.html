@@ -318,85 +318,221 @@ color:yellow;
 }
 
 
-/* ================= ADIVINANZAS ================= */
+/* ================= DISEÑO DE ADIVINANZAS ================= */
 
-#adivinanzas{
-
-max-width:700px;
-margin:auto;
-padding:25px;
-background:white;
-border-radius:20px;
-box-shadow:0 0 15px rgba(0,0,0,.2);
-
+.seccion-adivinanzas {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    font-family: Arial, sans-serif;
+    color: white;
 }
 
-#progreso{
-
-font-size:20px;
-font-weight:bold;
-margin-bottom:15px;
-
+.encabezado-adivinanzas {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-#marcador{
-
-font-size:22px;
-margin-bottom:20px;
-
+.encabezado-adivinanzas h2 {
+    margin: 0;
+    font-size: 36px;
+    color: #38bdf8;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
 }
 
-.opcion{
-
-display:block;
-
-width:100%;
-
-margin:12px 0;
-
-padding:15px;
-
-font-size:20px;
-
-border:none;
-
-border-radius:12px;
-
-cursor:pointer;
-
-background:#01b4a8;
-
-color:white;
-
-transition:.3s;
-
+.encabezado-adivinanzas p {
+    font-size: 18px;
+    color: #cbd5e1;
 }
 
-.opcion:hover{
-
-transform:scale(1.02);
-
+.marcador-adivinanzas {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 15px;
+    background: #0f172a;
+    border: 2px solid #334155;
+    border-radius: 14px;
 }
 
-.correcta{
-
-background:#00ff6a !important;
-
+.marcador-adivinanzas span {
+    font-size: 17px;
 }
 
-.incorrecta{
-
-background:#e74c3c !important;
-
+.barra-progreso-adivinanzas {
+    width: 100%;
+    height: 16px;
+    margin-bottom: 22px;
+    overflow: hidden;
+    background: #334155;
+    border-radius: 20px;
 }
 
-.opcion:disabled{
-
-cursor:not-allowed;
-
-opacity:.9;
-
+#progresoAdivinanzas {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    border-radius: 20px;
+    transition: width 0.4s ease;
 }
+
+.tarjeta-adivinanza {
+    padding: 30px;
+    text-align: center;
+    background: #1e293b;
+    border: 2px solid #38bdf8;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+}
+
+#preguntaAdivinanza {
+    min-height: 70px;
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.opciones-adivinanza {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.opcion-adivinanza {
+    width: 100%;
+    min-height: 60px;
+    padding: 14px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    background: #2563eb;
+    border: 3px solid transparent;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.opcion-adivinanza:hover:not(:disabled) {
+    background: #1d4ed8;
+    transform: scale(1.03);
+}
+
+/* RESPUESTA SELECCIONADA CORRECTAMENTE */
+
+.opcion-adivinanza.respuesta-correcta {
+    color: white;
+    background: #16a34a;
+    border-color: #86efac;
+    box-shadow: 0 0 18px rgba(34, 197, 94, 0.8);
+    animation: aciertoAdivinanza 0.5s ease;
+}
+
+/* RESPUESTA INCORRECTA SELECCIONADA */
+
+.opcion-adivinanza.respuesta-incorrecta {
+    color: white;
+    background: #dc2626;
+    border-color: #fca5a5;
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.8);
+    animation: errorAdivinanza 0.4s ease;
+}
+
+/* RESPUESTA CORRECTA MOSTRADA DESPUÉS DE FALLAR */
+
+.opcion-adivinanza.mostrar-correcta {
+    color: white;
+    background: #0891b2;
+    border-color: #67e8f9;
+    box-shadow: 0 0 18px rgba(6, 182, 212, 0.8);
+}
+
+.opcion-adivinanza:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.mensaje-adivinanza {
+    min-height: 30px;
+    margin-top: 22px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mensaje-correcto {
+    color: #86efac;
+}
+
+.mensaje-incorrecto {
+    color: #fca5a5;
+}
+
+.btn-siguiente-adivinanza {
+    margin-top: 15px;
+    padding: 13px 28px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    background: #7c3aed;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.btn-siguiente-adivinanza:hover:not(:disabled) {
+    background: #6d28d9;
+    transform: scale(1.05);
+}
+
+.btn-siguiente-adivinanza:disabled {
+    background: #475569;
+    cursor: not-allowed;
+}
+
+@keyframes aciertoAdivinanza {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes errorAdivinanza {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+@media (max-width: 650px) {
+    .opciones-adivinanza {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-adivinanza {
+        padding: 20px;
+    }
+
+    #preguntaAdivinanza {
+        font-size: 20px;
+    }
+}
+
 
 
 /*==========================================
@@ -1631,208 +1767,271 @@ load();
 
 load();
 
-// ================= ADIVINANZAS ENMIXTECO ================= //
+// ================= DATOS DE LAS ADIVINANZAS =================
 
-let adv = [
-{
-q:"🥒 Verde por fuera y suave por dentro, crezco en la milpa y me usan en comida. ¿Qué soy?",
-op:["Naña yute","Yikin yute","Ya’a kuii","Ña'mi tanaña"],
-b:"Yikin yute"
-},
-{
-q:"🍠 Dulce y naranja, crezco bajo tierra y parece papa. ¿Qué soy?",
-op:["Ña'mi","Ntsixin","Ndutyi tnuu","Triu"],
-a:"Ña'mi"
-},
-{
-q:"🥬 Verde y espinoso por fuera, en caldo soy delicioso. ¿Qué soy?",
-op:["Yuva","Ya'a","Naña yute","Tsikuitsi"],
-c:"Naña yute"
-},
-{
-q:"🟢 Pequeño y redondo, siempre voy acompañado en la comida. ¿Qué soy?",
-op:["Ndutyi tsinduu yute","Ndutyi kuijin","Nuni","Ntsityi yute"],
-a:"Ndutyi tsinduu yute"
-},
-{
-q:"🎃 Grande y redonda, de mí hacen dulce y bebida. ¿Qué soy?",
-op:["Tsikumi","Tsinduyu","Ndutyi","Ya’a kuii"],
-b:"Tsinduyu"
-},
-{
-q:"🌶️ Picoso y pequeño, si me comes mucho te hago llorar. ¿Qué soy?",
-op:["Ya'a","Ña'mi","Ndoko","Triu"],
-a:"Ya'a"
-},
-{
-q:"🌱 Largo y verde, parezco frijol pero más delgado. ¿Qué soy?",
-op:["Ndoko","Ntsityi yute","Nuni","Tsikuitsi"],
-b:"Ntsityi yute"
-},
-{
-q:"🌽 Amarillo y sabroso, me comes desgranado o entero. ¿Qué soy?",
-op:["Ntsixin","Triu","Ndutyi","Ña'mi"],
-a:"Ntsixin"
-},
-{
-q:"🫘 Pequeño pero poderoso, negro o bayo me puedes encontrar. ¿Qué soy?",
-op:["Ndutyi","Tsikuitsi","Yuva tayoo","Yuva xikutnu"],
-a:"Ndutyi"
-},
-{
-q:"🌾 Soy la base de muchas tortillas. ¿Qué soy?",
-op:["Yuva","Nuni","Minu ñuu savi","Ya’a yityi"],
-b:"Nuni"
-},
-{
-q:"🥔 Vivo bajo tierra y en papas fritas me convierto. ¿Qué soy?",
-op:["Yikin yute","Ndutyi kuijin","Tsikuitsi","Ña'mi tanaña"],
-c:"Tsikuitsi"
-},
-{
-q:"🌾 Dorado y largo, conmigo hacen pan. ¿Qué soy?",
-op:["Triu","Nuni","Nuu ta’yi","Ya’a kuii"],
-a:"Triu"
-},
-{
-q:"🧅 Tengo muchas capas y hago llorar al cortarme. ¿Qué soy?",
-op:["Tsikumi","Minu ñuu savi","Ña'mi tanaña","Nuu ta’yi"],
-a:"Tsikumi"
-},
-{
-q:"🥬 Verde y pequeño, crezco en el campo y soy muy nutritivo. ¿Qué soy?",
-op:["Yuva","Ntsityi yute","Ntsixin","Ña'mi"],
-a:"Yuva"
-}
+const adv = [
+    {
+        q: "🥒 Verde por fuera y suave por dentro, crezco en la milpa y me usan en comida. ¿Qué soy?",
+        op: ["Naña yute", "Yikin yute", "Ya’a kuii", "Ña'mi tanaña"],
+        correcta: "Yikin yute"
+    },
+    {
+        q: "🍠 Dulce y naranja, crezco bajo tierra y parece papa. ¿Qué soy?",
+        op: ["Ña'mi", "Ntsixin", "Ndutyi tnuu", "Triu"],
+        correcta: "Ña'mi"
+    },
+    {
+        q: "🥬 Verde y espinoso por fuera, en caldo soy delicioso. ¿Qué soy?",
+        op: ["Yuva", "Ya'a", "Naña yute", "Tsikuitsi"],
+        correcta: "Naña yute"
+    },
+    {
+        q: "🟢 Pequeño y redondo, siempre voy acompañado en la comida. ¿Qué soy?",
+        op: ["Ndutyi tsinduu yute", "Ndutyi kuijin", "Nuni", "Ntsityi yute"],
+        correcta: "Ndutyi tsinduu yute"
+    },
+    {
+        q: "🎃 Grande y redonda, de mí hacen dulce y bebida. ¿Qué soy?",
+        op: ["Tsikumi", "Tsinduyu", "Ndutyi", "Ya’a kuii"],
+        correcta: "Tsinduyu"
+    },
+    {
+        q: "🌶️ Picoso y pequeño, si me comes mucho te hago llorar. ¿Qué soy?",
+        op: ["Ya'a", "Ña'mi", "Ndoko", "Triu"],
+        correcta: "Ya'a"
+    },
+    {
+        q: "🌱 Largo y verde, parezco frijol pero más delgado. ¿Qué soy?",
+        op: ["Ndoko", "Ntsityi yute", "Nuni", "Tsikuitsi"],
+        correcta: "Ntsityi yute"
+    },
+    {
+        q: "🌽 Amarillo y sabroso, me comes desgranado o entero. ¿Qué soy?",
+        op: ["Ntsixin", "Triu", "Ndutyi", "Ña'mi"],
+        correcta: "Ntsixin"
+    },
+    {
+        q: "🫘 Pequeño pero poderoso, negro o bayo me puedes encontrar. ¿Qué soy?",
+        op: ["Ndutyi", "Tsikuitsi", "Yuva tayoo", "Yuva xikutnu"],
+        correcta: "Ndutyi"
+    },
+    {
+        q: "🌾 Soy la base de muchas tortillas. ¿Qué soy?",
+        op: ["Yuva", "Nuni", "Minu ñuu savi", "Ya’a yityi"],
+        correcta: "Nuni"
+    },
+    {
+        q: "🥔 Vivo bajo tierra y en papas fritas me convierto. ¿Qué soy?",
+        op: ["Yikin yute", "Ndutyi kuijin", "Tsikuitsi", "Ña'mi tanaña"],
+        correcta: "Tsikuitsi"
+    },
+    {
+        q: "🌾 Dorado y largo, conmigo hacen pan. ¿Qué soy?",
+        op: ["Triu", "Nuni", "Nuu ta’yi", "Ya’a kuii"],
+        correcta: "Triu"
+    },
+    {
+        q: "🧅 Tengo muchas capas y hago llorar al cortarme. ¿Qué soy?",
+        op: ["Tsikumi", "Minu ñuu savi", "Ña'mi tanaña", "Nuu ta’yi"],
+        correcta: "Tsikumi"
+    },
+    {
+        q: "🥬 Verde y pequeño, crezco en el campo y soy muy nutritivo. ¿Qué soy?",
+        op: ["Yuva", "Ntsityi yute", "Ntsixin", "Ña'mi"],
+        correcta: "Yuva"
+    }
 ];
 
-let ri = 0;
+// ================= VARIABLES =================
 
-let buenas = 0;
+let indiceAdivinanza = 0;
+let respuestasCorrectasAdivinanzas = 0;
+let respuestasIncorrectasAdivinanzas = 0;
+let respuestaContestada = false;
 
-let malas = 0;
+// ================= ELEMENTOS HTML =================
 
-function cargar(){
+const preguntaAdivinanza = document.getElementById("preguntaAdivinanza");
+const opcionesAdivinanza = document.getElementById("opcionesAdivinanza");
+const mensajeAdivinanza = document.getElementById("mensajeAdivinanza");
 
-document.getElementById("progreso").innerHTML =
-`Pregunta ${ri+1} de ${adv.length}`;
+const numeroAdivinanza = document.getElementById("numeroAdivinanza");
+const totalAdivinanzas = document.getElementById("totalAdivinanzas");
 
-document.getElementById("correctas").innerText = buenas;
-document.getElementById("incorrectas").innerText = malas;
+const correctasAdivinanzas = document.getElementById("correctasAdivinanzas");
+const incorrectasAdivinanzas = document.getElementById("incorrectasAdivinanzas");
 
-document.getElementById("rQ").innerText = adv[ri].q;
+const progresoAdivinanzas = document.getElementById("progresoAdivinanzas");
+const btnSiguienteAdivinanza = document.getElementById("btnSiguienteAdivinanza");
 
-let html="";
+// ================= MOSTRAR PREGUNTA =================
 
-adv[ri].op.forEach(op=>{
+function mostrarAdivinanza() {
 
-html+=`
-<button class="opcion" onclick="verificar(this,'${op}')">
-${op}
-</button>
-`;
+    respuestaContestada = false;
 
-});
+    const preguntaActual = adv[indiceAdivinanza];
 
-document.getElementById("rA").innerHTML=html;
+    preguntaAdivinanza.textContent = preguntaActual.q;
+    opcionesAdivinanza.innerHTML = "";
+    mensajeAdivinanza.textContent = "";
+    mensajeAdivinanza.className = "mensaje-adivinanza";
 
+    numeroAdivinanza.textContent = indiceAdivinanza + 1;
+    totalAdivinanzas.textContent = adv.length;
+
+    btnSiguienteAdivinanza.disabled = true;
+
+    const porcentaje = (indiceAdivinanza / adv.length) * 100;
+    progresoAdivinanzas.style.width = porcentaje + "%";
+
+    preguntaActual.op.forEach(opcion => {
+
+        const boton = document.createElement("button");
+
+        boton.type = "button";
+        boton.className = "opcion-adivinanza";
+        boton.textContent = opcion;
+        boton.dataset.respuesta = opcion;
+
+        boton.addEventListener("click", () => {
+            comprobarAdivinanza(boton, opcion);
+        });
+
+        opcionesAdivinanza.appendChild(boton);
+    });
 }
 
-function verificar(btn,respuesta){
+// ================= COMPROBAR RESPUESTA =================
 
-let botones=document.querySelectorAll("#adivinanzas .opcion");
+function comprobarAdivinanza(botonSeleccionado, opcionSeleccionada) {
 
-botones.forEach(b=>b.disabled=true);
+    if (respuestaContestada) {
+        return;
+    }
 
-if(respuesta===adv[ri].a){
+    respuestaContestada = true;
 
-btn.classList.add("correcta");
-buenas++;
+    const preguntaActual = adv[indiceAdivinanza];
+    const botones = opcionesAdivinanza.querySelectorAll(".opcion-adivinanza");
 
-}else{
+    botones.forEach(boton => {
+        boton.disabled = true;
+    });
 
-btn.classList.add("incorrecta");
-malas++;
+    if (opcionSeleccionada === preguntaActual.correcta) {
 
-botones.forEach(b=>{
+        botonSeleccionado.classList.add("respuesta-correcta");
 
-if(b.innerText===adv[ri].a){
+        mensajeAdivinanza.textContent = "✅ ¡Respuesta correcta!";
+        mensajeAdivinanza.classList.add("mensaje-correcto");
 
-b.classList.add("correcta");
+        respuestasCorrectasAdivinanzas++;
 
+    } else {
+
+        botonSeleccionado.classList.add("respuesta-incorrecta");
+
+        mensajeAdivinanza.textContent =
+            "❌ Respuesta incorrecta. La opción correcta está marcada en azul.";
+
+        mensajeAdivinanza.classList.add("mensaje-incorrecto");
+
+        respuestasIncorrectasAdivinanzas++;
+
+        botones.forEach(boton => {
+
+            if (boton.dataset.respuesta === preguntaActual.correcta) {
+                boton.classList.add("mostrar-correcta");
+            }
+
+        });
+    }
+
+    correctasAdivinanzas.textContent = respuestasCorrectasAdivinanzas;
+    incorrectasAdivinanzas.textContent = respuestasIncorrectasAdivinanzas;
+
+    btnSiguienteAdivinanza.disabled = false;
 }
 
-});
+// ================= SIGUIENTE PREGUNTA =================
 
+function siguienteAdivinanza() {
+
+    indiceAdivinanza++;
+
+    if (indiceAdivinanza < adv.length) {
+
+        mostrarAdivinanza();
+
+    } else {
+
+        mostrarResultadoFinalAdivinanzas();
+
+    }
 }
 
-document.getElementById("correctas").innerText=buenas;
-document.getElementById("incorrectas").innerText=malas;
+// ================= RESULTADO FINAL =================
 
-setTimeout(sig,2000);
+function mostrarResultadoFinalAdivinanzas() {
 
+    progresoAdivinanzas.style.width = "100%";
+
+    preguntaAdivinanza.textContent = "🏆 ¡Terminaste las adivinanzas!";
+
+    opcionesAdivinanza.innerHTML = `
+        <div style="
+            grid-column: 1 / -1;
+            padding: 25px;
+            background: #0f172a;
+            border-radius: 15px;
+            font-size: 21px;
+            line-height: 1.8;
+        ">
+            <p>✅ Respuestas correctas: 
+                <strong>${respuestasCorrectasAdivinanzas}</strong>
+            </p>
+
+            <p>❌ Respuestas incorrectas: 
+                <strong>${respuestasIncorrectasAdivinanzas}</strong>
+            </p>
+
+            <p>🎯 Puntaje final: 
+                <strong>
+                    ${respuestasCorrectasAdivinanzas} de ${adv.length}
+                </strong>
+            </p>
+        </div>
+    `;
+
+    mensajeAdivinanza.textContent = "";
+
+    btnSiguienteAdivinanza.textContent = "🔄 Jugar nuevamente";
+    btnSiguienteAdivinanza.disabled = false;
+    btnSiguienteAdivinanza.onclick = reiniciarAdivinanzas;
 }
 
-function sig(){
+// ================= REINICIAR =================
 
-ri++;
+function reiniciarAdivinanzas() {
 
-if(ri>=adv.length){
+    indiceAdivinanza = 0;
+    respuestasCorrectasAdivinanzas = 0;
+    respuestasIncorrectasAdivinanzas = 0;
+    respuestaContestada = false;
 
-let porcentaje=Math.round((buenas/adv.length)*100);
+    correctasAdivinanzas.textContent = "0";
+    incorrectasAdivinanzas.textContent = "0";
 
-let mensaje="";
+    btnSiguienteAdivinanza.textContent = "Siguiente ➡️";
+    btnSiguienteAdivinanza.onclick = siguienteAdivinanza;
 
-if(porcentaje==100){
-
-mensaje="🏆 ¡Perfecto!";
-
-}else if(porcentaje>=80){
-
-mensaje="🥇 ¡Excelente trabajo!";
-
-}else if(porcentaje>=60){
-
-mensaje="👏 Muy bien";
-
-}else{
-
-mensaje="📚 Sigue practicando";
-
+    mostrarAdivinanza();
 }
 
-document.getElementById("adivinanzas").innerHTML=`
+// ================= INICIAR =================
 
-<h2>🎉 Juego terminado 🎉</h2>
-
-<h1>${porcentaje}%</h1>
-
-<p>${mensaje}</p>
-
-<h3>
-
-✅ ${buenas} Aciertos<br>
-❌ ${malas} Errores
-
-</h3>
-
-<button onclick="location.reload()">
-
-🔄 Jugar otra vez
-
-</button>
-
-`;
-
-return;
-
-}
-
-cargar();
-
-}
-
-cargar();
+mostrarAdivinanza();
 
 
 </script>
