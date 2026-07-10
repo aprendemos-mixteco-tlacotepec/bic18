@@ -1,0 +1,309 @@
+  <!DOCTYPE html>
+<html lang="es">
+       <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="CSS/style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="CSS/script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+ <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="Alfabeto.html">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">Saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="leccion de lecto.html">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+<h1>Bienvenido a las actividades</h1>
+<style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5f7c5;
+            color: #333333;
+        }
+
+        header {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 30px 10px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7a/Mixteca_Oaxaque%C3%B1a.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            position: relative;
+            z-index: 2;
+            font-size: 2em;
+            margin: 0;
+        }
+
+        header img {
+            width: 120px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            z-index: 2;
+            position: relative;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #00695c;
+        }
+
+        .numeros {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .numero {
+            background-color: #e0f2f1;
+            border-radius: 12px;
+            padding: 15px;
+            width: 180px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .numero img {
+            width: 100px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .numero p {
+            margin: 10px 0;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .actividad {
+            background-color: #e8f5ebaf;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .actividad h3 {
+            color: #00154dd7;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #005f50;
+        }
+
+        footer {
+            background-color: #003d33;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+  <section class="actividad">
+            <h3>🔢 Actividad: adivina el número</h3>
+            <p>Escucha el audio y adivina el número</p>
+            <audio controls>
+                    <source src="audionu/uno.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <audio controls>
+                    <source src="audionu/dos.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+            </audio>
+            <audio controls>
+                    <source src="audionu/tres.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <form id="actividadForm">
+                <label><input type="radio" name="respuesta" value="1"> In</label><br>
+                <label><input type="radio" name="respuesta" value="2"> Un</label><br>
+                <label><input type="radio" name="respuesta" value="3"> Uni</label><br><br>
+                <button type="button" onclick="verificarRespuesta1()">Verificar</button>
+            </form>
+            <p id="resultado"></p>
+        </section>
+        <section class="actividad">
+            <h3>🔢 Actividad: adivina el número</h3>
+            <p>Escucha el audio y adivina el número</p>
+            <audio controls>
+                    <source src="audionu/catorce.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <audio controls>
+                    <source src="audionu/dicinueva.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+            </audio>
+            <audio controls>
+                    <source src="audionu/dicisiete.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <form id="actividadForm">
+                <label><input type="radio" name="respuesta" value="1"> Uxi Kuun</label><br>
+                <label><input type="radio" name="respuesta" value="2"> Ja'on Kuun</label><br>
+                <label><input type="radio" name="respuesta" value="3"> Ja'on uu</label><br><br>
+                <button type="button" onclick="verificarRespuesta2()">Verificar</button>
+            </form>
+            <p id="resultado"></p>
+        </section>
+        <section class="actividad">
+            <h3>🔢 Actividad: adivina el número</h3>
+            <p>Escucha el audio y adivina el número</p>
+            <audio controls>
+                    <source src="audionu/cinco.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <audio controls>
+                    <source src="audionu/ocho.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+            </audio>
+            <audio controls>
+                    <source src="audionu/veinte.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio.
+                </audio>
+            <form id="actividadForm">
+                <label><input type="radio" name="respuesta" value="1"> U'un</label><br>
+                <label><input type="radio" name="respuesta" value="2"> Una</label><br>
+                <label><input type="radio" name="respuesta" value="3"> Oko</label><br><br>
+                <button type="button" onclick="verificarRespuesta3()">Verificar</button>
+            </form>
+            <p id="resultado"></p>
+        </section>
+        <script> 
+        function verificarRespuesta1() {
+            const opciones = document.getElementsByName('respuesta');
+            let seleccion = null;
+            for (let i = 0; i < opciones.length; i++) {
+                if (opciones[i].checked) {
+                    seleccion = opciones[i].value;
+                    break;
+                }
+            }
+
+            const resultado = document.getElementById('resultado');
+            if (!seleccion) {
+                resultado.textContent = "Por favor selecciona una respuesta.";
+                resultado.style.color = "red";
+                return;
+            }
+
+            if (seleccion === "2") {
+                resultado.textContent = "✅ ¡Correcto! 'Un' significa 'Dos'.";
+                resultado.style.color = "green";
+            } else {
+                resultado.textContent = "❌ Incorrecto. Intenta otra vez.";
+                resultado.style.color = "red";
+            }
+        }
+        </script>
+        <script>
+        function verificarRespuesta2() {
+            const opciones = document.getElementsByName('respuesta');
+            let seleccion = null;
+            for (let i = 0; i < opciones.length; i++) {
+                if (opciones[i].checked) {
+                    seleccion = opciones[i].value;
+                    break;
+                }
+            }
+
+            const resultado = document.getElementById('resultado');
+            if (!seleccion) {
+                resultado.textContent = "Por favor selecciona una respuesta.";
+                resultado.style.color = "red";
+                return;
+            }
+
+            if (seleccion === "3") {
+                resultado.textContent = "✅ ¡Correcto! 'Ja'on uu' significa 'Diesiciete'.";
+                resultado.style.color = "green";
+            } else {
+                resultado.textContent = "❌ Incorrecto. Intenta otra vez.";
+                resultado.style.color = "red";
+            }
+        }
+        </script>
+        <footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://www.facebook.com/bic.tlacotepec?mibextid=ZbWKwL" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bic18tiic@gmail.com">bic18tiic@gmail.com</a></p>
+    <p>Teléfonos: (953) 124 2447 | (971) 102 0650</p>
+  </footer>
+</html>
+        

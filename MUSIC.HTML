@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="CSS/style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="CSS/script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+ <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">Saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="leccion de lecto.html">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+<meta charset="UTF-8">
+<title>MÚSICA MIXTECA</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg,#0f172a,#1e293b);
+  transition: background 1.2s ease, filter 0.3s ease;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+  font-size: 2.5em;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* GRID DE TARJETAS */
+.grid-canciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* TARJETA DE CANCIÓN */
+.cancion-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.cancion-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s;
+}
+
+.cancion-card:hover::before {
+  left: 100%;
+}
+
+.cancion-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  background: rgba(29, 185, 84, 0.15);
+  border-color: rgba(29, 185, 84, 0.5);
+  box-shadow: 0 15px 40px rgba(29, 185, 84, 0.2);
+}
+
+.cancion-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.3em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.play-icon {
+  font-size: 3em;
+  margin: 15px 0;
+  transition: transform 0.3s;
+}
+
+.cancion-card:hover .play-icon {
+  transform: scale(1.2);
+}
+
+.play-btn {
+  background: #1db954;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.play-btn:hover {
+  background: #1ed760;
+  transform: scale(1.1);
+}
+
+/* PLAYER */
+.player-section {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(29, 185, 84, 0.3);
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.player-section h2 {
+  color: #1db954;
+  margin-top: 0;
+  text-align: center;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.cover {
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#1db954,#0f172a);
+}
+
+.info {
+  flex: 1;
+  text-align: left;
+  color: white;
+}
+
+.bar {
+  width: 100%;
+  height: 6px;
+  background: #334155;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: #1db954;
+  transition: 0.3s;
+}
+
+.playBtn {
+  border: none;
+  background: #1db954;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.playBtn:hover {
+  background: #1ed760;
+}
+
+/* QUIZ SECTION */
+.quiz-section {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  color: white;
+}
+
+.quiz-section h3 {
+  text-align: center;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.game button {
+  display: block;
+  padding: 12px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background: #1e293b;
+  color: white;
+  transition: 0.3s;
+  font-size: 1em;
+}
+
+.game button:hover {
+  background: #334155;
+}
+
+/* ORDENAR PALABRAS */
+.ordenar-section {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  max-width: 700px;
+  margin: 40px auto 0;
+  color: white;
+}
+
+.ordenar-section h3 {
+  text-align: center;
+  font-size: 1.3em;
+  margin-bottom: 30px;
+  color: #1ed760;
+}
+
+.instruccion {
+  text-align: center;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  color: #b0b9c6;
+}
+
+.palabras-container {
+  background: rgba(0,0,0,0.3);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.palabra-item {
+  display: inline-block;
+  background: #1db954;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin: 8px;
+  cursor: move;
+  user-select: none;
+  transition: all 0.3s;
+  font-weight: bold;
+  touch-action: none;
+}
+
+.palabra-item:hover {
+  background: #1ed760;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(29, 185, 84, 0.4);
+}
+
+.palabra-item.dragging {
+  opacity: 0.6;
+  transform: scale(0.95);
+}
+
+.respuesta-area {
+  background: rgba(29, 185, 84, 0.1);
+  border: 2px dashed rgba(29, 185, 84, 0.5);
+  border-radius: 15px;
+  padding: 20px;
+  min-height: 60px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.palabra-ordenada {
+  display: inline-block;
+  background: rgba(29, 185, 84, 0.3);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(29, 185, 84, 0.6);
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.palabra-ordenada:hover {
+  background: rgba(29, 185, 84, 0.5);
+  border-color: rgba(29, 185, 84, 0.8);
+}
+
+.botones-ordenar {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.botones-ordenar button {
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-verificar {
+  background: #1db954;
+  color: white;
+}
+
+.btn-verificar:hover {
+  background: #1ed760;
+}
+
+.btn-reiniciar {
+  background: #ff6b6b;
+  color: white;
+}
+
+.btn-reiniciar:hover {
+  background: #ff8787;
+}
+
+.btn-siguiente {
+  background: #0ea5e9;
+  color: white;
+}
+
+.btn-siguiente:hover {
+  background: #06b6d4;
+}
+
+.mensaje {
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+  display: none;
+}
+
+.mensaje.correcto {
+  background: rgba(34, 197, 94, 0.3);
+  color: #4ade80;
+  border: 2px solid #22c55e;
+}
+
+.mensaje.incorrecto {
+  background: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  border: 2px solid #ef4444;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🎵 MÚSICA MIXTECA</h1>
+
+  <!-- GRID DE TARJETAS DE CANCIONES -->
+  <div class="grid-canciones" id="gridCanciones"></div>
+
+  <!-- PLAYER -->
+  <div class="player-section" id="playerSection" style="display:none;">
+    <h2 id="playerTitle">Reproduciendo...</h2>
+    <div class="player" id="player">
+      <div class="cover"></div>
+
+      <div class="info">
+        <div id="songName">Canción</div>
+        <div class="bar">
+          <div class="progress" id="progress"></div>
+        </div>
+      </div>
+
+      <button class="playBtn" onclick="togglePlay()">▶</button>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section">
+    <h3>🎮 APRENDE MIXTECO</h3>
+    <div class="game">
+      <h3 id="pregunta">Pregunta</h3>
+      <div id="opciones"></div>
+    </div>
+  </div>
+
+  <!-- ORDENAR PALABRAS -->
+  <div class="ordenar-section">
+    <h3>🧩 ORDENA LAS PALABRAS</h3>
+    <p class="instruccion" id="instruccionOrdenar">Arrastra las palabras para ordenarlas correctamente</p>
+    
+    <div class="palabras-container" id="palabrasDisponibles"></div>
+    
+    <p style="text-align:center; color: #64748b;">↓ Coloca aquí ↓</p>
+    <div class="respuesta-area" id="respuestaArea"></div>
+    
+    <div class="botones-ordenar">
+      <button class="btn-verificar" onclick="verificarOrden()">VERIFICAR</button>
+      <button class="btn-reiniciar" onclick="reiniciarOrden()">REINICIAR</button>
+      <button class="btn-siguiente" id="btnSiguiente" onclick="siguienteOrden()" style="display:none;">SIGUIENTE</button>
+    </div>
+    
+    <div class="mensaje" id="mensaje"></div>
+  </div>
+</div>
+
+<script>
+
+/* 🎵 10 CANCIONES */
+const canciones = [
+  {titulo:"Canción mixteca", audio:"CANCIONES/Canción Mixteca interpretada por la soprano Patricia Trujano Granados.mp3"},
+  {titulo:"Viko ñuu yukunama", audio:"CANCIONES/chilena viko ñuu yukunama (videoclip) Los chavez del Guamuchil (video oficial).mp3"},
+  {titulo:"Xa'a na lo'o loko xaku yu", audio:"CANCIONES/XA'A NA LO'O LOKO.mp3"},
+  {titulo:"El aguardientito", audio:"CANCIONES/AUD-20260520-WA0001.mp3"},
+  {titulo:"Vichin nin dou'un ", audio:"CANCIONES/AUD-202605200-WA0025.mp3"},
+  {titulo:"Ita nu yuku", audio:"CANCIONES/AUD-202605201-WA0024.mp3"},
+  {titulo:"Yuvi tun daxi", audio:"CANCIONES/YUVI TUN DAXI.mp3"},
+  {titulo:"Nduvi niña duvi", audio:"CANCIONES/NDUVI NIÑA YUVI.mp3"},
+  {titulo:"Tuxa numa", audio:"CANCIONES/TUXA NUMA.mp3"}
+];
+
+// Generar tarjetas de canciones
+const grid = document.getElementById("gridCanciones");
+canciones.forEach((c, i) => {
+  const card = document.createElement("div");
+  card.className = "cancion-card";
+  card.innerHTML = `
+    <div class="play-icon">🎵</div>
+    <h3>${c.titulo}</h3>
+    <button class="play-btn" onclick="cancion(${i})">REPRODUCIR</button>
+  `;
+  grid.appendChild(card);
+});
+
+/* 🎮 QUIZ */
+const preguntas = [
+  {q:"¿Cómo se dice agua?", opciones:["nduta","yuku","ñuu"], correcta:0},
+  {q:"¿Cómo se dice casa?", opciones:["kava","yivi","ndoo"], correcta:1},
+  {q:"¿Cómo se dice maíz?", opciones:["savi","tachi","ito"], correcta:1},
+  {q:"¿Cómo se dice sol?", opciones:["ñu'u","kuni","ta'vi"], correcta:0},
+  {q:"¿Cómo se dice tierra?", opciones:["yuku","ndee","kavi"], correcta:0},
+  {q:"¿Cómo se dice viento?", opciones:["tachi","savi","ñuu"], correcta:0},
+  {q:"¿Cómo se dice montaña?", opciones:["yuku","nduta","kava"], correcta:0},
+  {q:"¿Cómo se dice río?", opciones:["nduta","ñuu","kuni"], correcta:0},
+  {q:"¿Cómo se dice flor?", opciones:["ita","yivi","savi"], correcta:0},
+  {q:"¿Cómo se dice vida?", opciones:["ñuu","yuku","ndee"], correcta:0}
+];
+
+let pIndex = 0;
+let bloqueado = false;
+
+/* AUDIO */
+let audio;
+let playing = false;
+let interval;
+
+/* 🌈 FONDO ANIMADO */
+function cambiarFondo(i){
+  document.body.style.filter = "blur(5px)";
+
+  setTimeout(()=>{
+    document.body.style.background =
+      `linear-gradient(135deg,
+      hsl(${i*25},35%,18%),
+      hsl(${200+i*10},30%,22%))`;
+
+    document.body.style.filter = "blur(0px)";
+  },150);
+}
+
+/* 🎵 CANCIÓN */
+function cancion(i){
+
+  document.getElementById("playerTitle").innerText = canciones[i].titulo;
+  document.getElementById("songName").innerText = canciones[i].titulo;
+  document.getElementById("playerSection").style.display = "block";
+
+  cambiarFondo(i);
+
+  if(audio){
+    audio.pause();
+    audio.currentTime = 0;
+  }
+
+  audio = new Audio(canciones[i].audio);
+  audio.play();
+  playing = true;
+
+  document.querySelector(".playBtn").innerText = "⏸";
+
+  clearInterval(interval);
+
+  interval = setInterval(()=>{
+    if(audio.duration){
+      let p = (audio.currentTime/audio.duration)*100;
+      document.getElementById("progress").style.width = p+"%";
+    }
+  },200);
+
+  // Scroll al player
+  document.getElementById("playerSection").scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ▶ PLAY */
+function togglePlay(){
+  if(!audio) return;
+
+  if(playing){
+    audio.pause();
+    playing=false;
+    document.querySelector(".playBtn").innerText="▶";
+  } else {
+    audio.play();
+    playing=true;
+    document.querySelector(".playBtn").innerText="⏸";
+  }
+}
+
+/* 🎮 QUIZ */
+function cargarPregunta(){
+  const p = preguntas[pIndex];
+  bloqueado=false;
+
+  document.getElementById("pregunta").innerText=p.q;
+
+  const cont=document.getElementById("opciones");
+  cont.innerHTML="";
+
+  p.opciones.forEach((op,i)=>{
+    cont.innerHTML+=`<button onclick="responder(${i})">${op}</button>`;
+  });
+}
+
+function responder(i){
+  if(bloqueado) return;
+  bloqueado=true;
+
+  const p=preguntas[pIndex];
+  const botones=document.querySelectorAll("#opciones button");
+
+  botones.forEach((b,idx)=>{
+    if(idx===p.correcta){
+      b.style.background="green";
+      b.style.color="white";
+    } else if(idx===i){
+      b.style.background="red";
+      b.style.color="white";
+    } else {
+      b.style.opacity="0.4";
+    }
+    b.style.pointerEvents="none";
+  });
+
+  setTimeout(()=>{
+    pIndex++;
+    if(pIndex>=preguntas.length) pIndex=0;
+    cargarPregunta();
+  },1200);
+}
+
+/* INIT */
+cargarPregunta();
+
+/* 🧩 ORDENAR PALABRAS */
+const frases = [
+  {
+    frase: "Nduta ka xiki",
+    traduccion: "El agua está fría",
+    palabras: ["Nduta", "ka", "xiki"]
+  },
+  {
+    frase: "Yivi ndeya kuni",
+    traduccion: "La casa está soleada",
+    palabras: ["Yivi", "ndeya", "kuni"]
+  },
+  {
+    frase: "Tachi savi nda",
+    traduccion: "El maíz es sabroso",
+    palabras: ["Tachi", "savi", "nda"]
+  },
+  {
+    frase: "Ñuu xikin ka",
+    traduccion: "La tierra está fría",
+    palabras: ["Ñuu", "xikin", "ka"]
+  },
+  {
+    frase: "Kuni nduta vuu",
+    traduccion: "El sol calienta el agua",
+    palabras: ["Kuni", "nduta", "vuu"]
+  },
+  {
+    frase: "Viko ñuu yukunama",
+    traduccion: "Chilena de la tierra verde",
+    palabras: ["Viko", "ñuu", "yukunama"]
+  },
+  {
+    frase: "Tú ña yuku",
+    traduccion: "Subimos a la montaña",
+    palabras: ["Tú", "ña", "yuku"]
+  },
+  {
+    frase: "Nduta ñuu viñe",
+    traduccion: "El agua del río fluye",
+    palabras: ["Nduta", "ñuu", "viñe"]
+  },
+  {
+    frase: "Ita ñu vixi",
+    traduccion: "La flor es bella",
+    palabras: ["Ita", "ñu", "vixi"]
+  },
+  {
+    frase: "Tachi ndee kava",
+    traduccion: "El maíz de la casa",
+    palabras: ["Tachi", "ndee", "kava"]
+  },
+  {
+    frase: "Savi nda yuku",
+    traduccion: "Lo sabroso de la milpa",
+    palabras: ["Savi", "nda", "yuku"]
+  },
+  {
+    frase: "Kuni vuu yuvi",
+    traduccion: "El sol brilla hoy",
+    palabras: ["Kuni", "vuu", "yuvi"]
+  },
+  {
+    frase: "Nduta tachi nda",
+    traduccion: "Agua de maíz fresco",
+    palabras: ["Nduta", "tachi", "nda"]
+  },
+  {
+    frase: "Ñuu ka nduta",
+    traduccion: "La tierra necesita agua",
+    palabras: ["Ñuu", "ka", "nduta"]
+  },
+  {
+    frase: "Yuku xikin naa",
+    traduccion: "La montaña es muy grande",
+    palabras: ["Yuku", "xikin", "naa"]
+  }
+];
+
+let ordenIndex = 0;
+let respuestaActual = [];
+let draggedElement = null;
+
+function iniciarOrden() {
+  cargarFraseOrdenar(ordenIndex);
+}
+
+function cargarFraseOrdenar(i) {
+  const frase = frases[i];
+  document.getElementById("instruccionOrdenar").innerHTML = `<strong>Traducción:</strong> "${frase.traduccion}"`;
+  
+  const container = document.getElementById("palabrasDisponibles");
+  container.innerHTML = "";
+  
+  // Mezclar palabras
+  const palabrasMezcladas = [...frase.palabras].sort(() => Math.random() - 0.5);
+  
+  palabrasMezcladas.forEach((palabra, idx) => {
+    const div = document.createElement("div");
+    div.className = "palabra-item";
+    div.textContent = palabra;
+    div.draggable = true;
+    div.dataset.palabra = palabra;
+    div.dataset.indice = idx;
+    
+    div.addEventListener("dragstart", () => {
+      draggedElement = div;
+      div.classList.add("dragging");
+    });
+    
+    div.addEventListener("dragend", () => {
+      div.classList.remove("dragging");
+      draggedElement = null;
+    });
+    
+    container.appendChild(div);
+  });
+  
+  respuestaActual = [];
+  limpiarRespuesta();
+  document.getElementById("mensaje").style.display = "none";
+  document.getElementById("btnSiguiente").style.display = "none";
+}
+
+function limpiarRespuesta() {
+  document.getElementById("respuestaArea").innerHTML = "";
+}
+
+// Permitir drop
+document.addEventListener("dragover", (e) => {
+  e.preventDefault();
+});
+
+document.getElementById("respuestaArea").addEventListener("dragover", (e) => {
+  e.preventDefault();
+  e.target.style.background = "rgba(29, 185, 84, 0.2)";
+});
+
+document.getElementById("respuestaArea").addEventListener("dragleave", (e) => {
+  e.target.style.background = "";
+});
+
+document.getElementById("respuestaArea").addEventListener("drop", (e) => {
+  e.preventDefault();
+  e.target.style.background = "";
+  
+  if (draggedElement) {
+    const palabra = draggedElement.dataset.palabra;
+    respuestaActual.push(palabra);
+    
+    const div = document.createElement("div");
+    div.className = "palabra-ordenada";
+    div.textContent = palabra;
+    div.onclick = () => {
+      respuestaActual.splice(respuestaActual.indexOf(palabra), 1);
+      div.remove();
+    };
+    
+    document.getElementById("respuestaArea").appendChild(div);
+  }
+});
+
+function verificarOrden() {
+  const frazeCorrecta = frases[ordenIndex].palabras.join(" ");
+  const respuesta = respuestaActual.join(" ");
+  
+  const mensaje = document.getElementById("mensaje");
+  
+  if (respuesta === frazeCorrecta) {
+    mensaje.className = "mensaje correcto";
+    mensaje.textContent = "✓ ¡CORRECTO! " + frazeCorrecta;
+    document.getElementById("btnSiguiente").style.display = "inline-block";
+  } else {
+    mensaje.className = "mensaje incorrecto";
+    mensaje.textContent = "✗ Incorrecto. Intenta de nuevo.";
+  }
+  
+  mensaje.style.display = "block";
+}
+
+function reiniciarOrden() {
+  cargarFraseOrdenar(ordenIndex);
+}
+
+function siguienteOrden() {
+  ordenIndex++;
+  if (ordenIndex >= frases.length) ordenIndex = 0;
+  cargarFraseOrdenar(ordenIndex);
+}
+
+/* INIT ORDENAR */
+iniciarOrden();
+
+</script>
+
+<!-- INFO BOX -->
+<div id="infoBox" style="
+position:fixed;
+bottom:20px;
+right:20px;
+background:rgba(0,0,0,0.7);
+padding:15px;
+border-radius:10px;
+color:white;
+font-family:Arial;
+width:300px;
+cursor:move;
+z-index:9999;
+">
+
+<p><b>Dirección:</b> Bachillerato Integral Comunitario de San Agustín Tlacotepec, Oaxaca</p>
+
+<p><b>Facebook:</b>
+<a href="#" style="color:lightblue;">
+BIC San Agustín Tlacotepec
+</a>
+</p>
+
+<p><b>Correo:</b> bic.tlacotepec@gmail.com</p>
+
+<p><b>Teléfonos:</b> 953-123-4567 / 953-987-6543</p>
+
+</div>
+
+</body>
+</html>
+
+<p>
+
+
+
+
+
+
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ROMPECANCIONES</title>
+  <style>
+    :root {
+      --rojo-tierra: #A63A2B;
+      --ocre-dorado: #D9A441;
+      --verde-milpa: #29a94f;
+      --azul-profundo: #cb6060;
+      --blanco-suave: #776b6b;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--ocre-dorado), var(--rojo-tierra));
+      color: var(--blanco-suave);
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: var(--azul-profundo);
+    }
+    p {
+      font-size: 1.1em;
+    }
+    #contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .frase {
+      background: var(--blanco-suave);
+      color: var(--azul-profundo);
+      border: 2px solid var(--verde-milpa);
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin: 8px;
+      cursor: grab;
+      font-weight: bold;
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+    .frase:hover {
+      transform: scale(1.05);
+      background: var(--verde-milpa);
+      color: var(--blanco-suave);
+    }
+    button {
+      background: var(--verde-milpa);
+      color: var(--blanco-suave);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: var(--azul-profundo);
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+    #motivacion {
+      margin-top: 10px;
+      font-size: 1.1em;
+      font-style: italic;
+      color: var(--blanco-suave);
+    }
+    #resultado.correcto {
+      color: #00FF88;
+      animation: brillar 1s infinite alternate;
+    }
+    #resultado.incorrecto {
+      color: #FF4444;
+    }
+    @keyframes brillar {
+      from { text-shadow: 0 0 5px #00FF88; }
+      to { text-shadow: 0 0 15px #00FF88; }
+    }
+  </style>
+</head>

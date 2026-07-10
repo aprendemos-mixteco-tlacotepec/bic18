@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mixteco - Variante de San Agustín Tlacotepec</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+header{
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+}
+
+header h1{
+    font-size:3rem;
+}
+
+header p{
+    margin-top:10px;
+    font-size:1.2rem;
+}
+
+nav{
+    background:#17345f;
+    padding:15px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#ffd700;
+}
+
+section{
+    max-width:1400px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:25px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+h2{
+    color:#1e3c72;
+    margin-bottom:15px;
+}
+
+ul{
+    padding-left:25px;
+}
+
+/* GALERÍA */
+.galeria-palabras{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.palabra-card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.palabra-card:hover{
+    transform:translateY(-5px);
+}
+
+.palabra-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.palabra-info{
+    padding:15px;
+    text-align:center;
+}
+.palabra-info h3{
+    color:#1e3c72;
+    margin-bottom:8px;
+    font-size:1.5rem;
+}
+
+.palabra-info p{
+    font-size:1.1rem;
+}
+
+.palabra-info .audio-button{
+    margin-top:12px;
+    background:#2a5298;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:0.95rem;
+    font-weight:bold;
+    transition:background 0.3s ease;
+}
+
+.palabra-info .audio-button:hover{
+    background:#1e3c72;
+}
+
+.memorama-section{
+    margin-top:40px;
+}
+
+.memorama-header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.memorama-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+    justify-items:center;
+}
+
+.memorama-card{
+    width:150px;
+    height:190px;
+    perspective:1000px;
+}
+
+.memorama-inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transition:transform .5s;
+    transform-style:preserve-3d;
+    cursor:pointer;
+}
+
+.memorama-card.flipped .memorama-inner{
+    transform:rotateY(180deg);
+}
+
+.memorama-face{
+    position:absolute;
+    inset:0;
+    border-radius:15px;
+    backface-visibility:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px;
+    text-align:center;
+}
+
+.memorama-front{
+    background:#1e3c72;
+    color:white;
+    font-size:1.1rem;
+}
+
+.memorama-back{
+    background:white;
+    transform:rotateY(180deg);
+}
+
+.memorama-back img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+}
+
+.memorama-back span{
+    display:block;
+    font-size:1.1rem;
+    color:#1e3c72;
+}
+
+.memorama-controls{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.score-panel{
+    background:#eef4ff;
+    color:#1e3c72;
+    font-weight:700;
+    border:1px solid #d0d9f1;
+    border-radius:12px;
+    padding:12px 18px;
+    min-width:130px;
+}
+
+.score-panel span{
+    display:inline-block;
+    min-width:36px;
+    text-align:right;
+}
+
+.memorama-button{
+    background:#2a5298;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:12px;
+    font-size:1rem;
+    cursor:pointer;
+    transition:background .25s ease;
+}
+
+.memorama-button:hover{
+    background:#1e3c72;
+}
+
+.memorama-message{
+    width:100%;
+    margin-top:10px;
+    color:#1e3c72;
+    font-weight:bold;
+    text-align:center;
+}
+
+.memorama-section.card{
+    position:relative;
+    overflow:visible;
+}
+
+.confetti-container{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:10;
+}
+
+.confetti-piece{
+    position:absolute;
+    width:10px;
+    height:14px;
+    opacity:0.9;
+    transform-origin:center;
+    animation:confetti-fall 2s ease-out forwards, confetti-spin 1.5s linear infinite;
+}
+
+@keyframes confetti-fall{
+    0%{opacity:1; transform:translateY(0) rotate(0deg);}
+    100%{opacity:0; transform:translateY(260px) rotate(720deg);}
+}
+
+@keyframes confetti-spin{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+footer{
+    background:#17345f;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>mixteco</h1>
+    <p>Variante de San Agustín Tlacotepec</p>
+</header>
+
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#combinaciones">Combinaciones</a>
+    <a href="#ejemplos">Ejemplos</a>
+</nav>
+
+<section id="inicio">
+    <div class="card">
+        <h2>Introducción</h2>
+        <p>
+            El mixteco es una lengua originaria hablada en diversas comunidades
+            de Oaxaca. Esta página presenta algunas combinaciones consonánticas
+            y ejemplos de palabras utilizadas en la variante de San Agustín Tlacotepec.
+        </p>
+    </div>
+</section>
+
+<section id="combinaciones">
+    <div class="card">
+        <h2>Combinaciones Consonánticas</h2>
+
+        <ul>
+            <li>Ty</li>
+            <li>Ts</li>
+            <li>Nd</li>
+            <li>Tn</li>
+            <li>Ng</li>
+            <li>St</li>
+            <li>Mb</li>
+            <li>Nts</li>
+            <li>Rr</li>
+        </ul>
+    </div>
+</section>
+
+<section id="ejemplos">
+
+<h2 style="text-align:center; margin-bottom:25px;">
+Palabras con Imágenes
+</h2>
+
+<div class="galeria-palabras">
+
+<div class="palabra-card">
+<img src="./IMAGEN/cebolla.png" alt="Cebolla">
+<div class="palabra-info">
+<h3>Tsíkumi</h3>
+<p>Cebolla</p>
+<button class="audio-button" data-audio="audiosalfabeto/cebolla.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/tomate.png" alt="Tomate">
+<div class="palabra-info">
+<h3>Tsínana kua'a</h3>
+<p>Tomate</p>
+<button class="audio-button" data-audio="audiosalfabeto/Tomate.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/cantaro.png" alt="Cántaro">
+<div class="palabra-info">
+<h3>Tsíndo'o</h3>
+<p>Cántaro</p>
+<button class="audio-button" data-audio="audiosalfabeto/Cantaro.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/agua.png" alt="Agua">
+<div class="palabra-info">
+<h3>Ndúte</h3>
+<p>Agua</p>
+<button class="audio-button" data-audio="audiosalfabeto/Agua.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/mano.png" alt="Mano">
+<div class="palabra-info">
+<h3>Ndá'a</h3>
+<p>Mano</p>
+<button class="audio-button" data-audio="audiosalfabeto/Mano.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/anona.png" alt="Anona">
+<div class="palabra-info">
+<h3>Ndóko iñu</h3>
+<p>Anona</p>
+<button class="audio-button" data-audio="audiosalfabeto/Anona.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/pluma.png" alt="Pluma">
+<div class="palabra-info">
+<h3>Tnúmi</h3>
+<p>Pluma</p>
+<button class="audio-button" data-audio="audiosalfabeto/Pluma.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/Color Negro.png" alt="Color Negro">
+<div class="palabra-info">
+<h3>Tnúú</h3>
+<p>Color Negro</p>
+<button class="audio-button" data-audio="audiosalfabeto/color_negro.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/sol.png" alt="Sol">
+<div class="palabra-info">
+<h3>I'ya ngantsii</h3>
+<p>Sol</p>
+<button class="audio-button" data-audio="audiosalfabeto/Sol.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/platano.png" alt="Plátano">
+<div class="palabra-info">
+<h3>Ntsíka</h3>
+<p>Plátano</p>
+<button class="audio-button" data-audio="audiosalfabeto/Platano.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/tuna.png" alt="Tuna">
+<div class="palabra-info">
+<h3>Tyíki</h3>
+<p>Tuna</p>
+<button class="audio-button" data-audio="audiosalfabeto/Tuna.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/pescado.png" alt="Pescado">
+<div class="palabra-info">
+<h3>Tyáka</h3>
+<p>Pescado</p>
+<button class="audio-button" data-audio="audiosalfabeto/Pescado.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/cesto.png" alt="Cesto">
+<div class="palabra-info">
+<h3>Tyíka</h3>
+<p>Cesto</p>
+<button class="audio-button" data-audio="audiosalfabeto/Cesto.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/tortilla.png" alt="Tortilla">
+<div class="palabra-info">
+<h3>Stáa</h3>
+<p>Tortilla</p>
+<button class="audio-button" data-audio="audiosalfabeto/Tortilla (2).mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/tio.png" alt="Tío">
+<div class="palabra-info">
+<h3>Stóo</h3>
+<p>Tío</p>
+<button class="audio-button" data-audio="audiosalfabeto/Tio.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/Nariz.png" alt="Nariz">
+<div class="palabra-info">
+<h3>Stníi</h3>
+<p>Nariz</p>
+<button class="audio-button" data-audio="audiosalfabeto/Nariz.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+<div class="palabra-card">
+<img src="./IMAGEN/pajaro%20carpintero.png" alt="Pájaro Carpintero">
+<div class="palabra-info">
+<h3>Rríki</h3>
+<p>Pájaro Carpintero</p>
+<button class="audio-button" data-audio="audiosalfabeto/Pajaro_carpintero.mp3">🔊 Escuchar</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="memorama" class="memorama-section card">
+    <div class="memorama-header">
+        <h2>Memorama mixteco</h2>
+        <p>Encuentra la pareja: palabra en mixteco + imagen.</p>
+    </div>
+    <div class="memorama-controls">
+        <div class="score-panel">Puntos: <span id="puntos">0</span></div>
+        <button id="reiniciar" class="memorama-button">Reiniciar juego</button>
+        <div id="mensaje" class="memorama-message"></div>
+    </div>
+    <div id="confettiContainer" class="confetti-container"></div>
+    <div id="memoramaGrid" class="memorama-grid"></div>
+</section>
+
+<footer>
+<p>Proyecto Escolar - mixteco, Variante de San Agustín Tlacotepec</p>
+</footer>
+
+<script>
+const parejas = [
+    {mixteco:'Tsíkumi', imagen:'IMAGEN/cebolla.png', clave:'cebolla'},
+    {mixteco:'Tsínana kua\'a', imagen:'IMAGEN/tomate.png', clave:'tomate'},
+    {mixteco:'Tsíndo\'o', imagen:'IMAGEN/cantaro.png', clave:'cantaro'},
+    {mixteco:'Ndúte', imagen:'IMAGEN/agua.png', clave:'agua'},
+    {mixteco:'Ndá\'a', imagen:'IMAGEN/mano.png', clave:'mano'},
+    {mixteco:'Tnúmi', imagen:'IMAGEN/pluma.png', clave:'pluma'},
+    {mixteco:'Tnúú', imagen:'IMAGEN/color%20negro.png', clave:'color_negro'},
+    {mixteco:'Ngántsii', imagen:'IMAGEN/sol.png', clave:'sol'},
+    {mixteco:'Ntsíka', imagen:'IMAGEN/platano.png', clave:'platano'},
+    {mixteco:'Tyíki', imagen:'IMAGEN/tuna.png', clave:'tuna'},
+    {mixteco:'Tyáka', imagen:'IMAGEN/pescado.png', clave:'pescado'},
+    {mixteco:'Tyíka', imagen:'IMAGEN/cesto.png', clave:'cesto'},
+    {mixteco:'Stáa', imagen:'IMAGEN/tortilla.png', clave:'tortilla'},
+    {mixteco:'Stóo', imagen:'IMAGEN/tio.png', clave:'tio'},
+    {mixteco:'Stníi', imagen:'IMAGEN/Nariz.png', clave:'nariz'},
+    {mixteco:'Rríki', imagen:'IMAGEN/pajaro%20carpintero.png', clave:'pajaro_carpintero'}
+];
+
+const grid = document.getElementById('memoramaGrid');
+const mensaje = document.getElementById('mensaje');
+const reiniciar = document.getElementById('reiniciar');
+const puntosElemento = document.getElementById('puntos');
+const confettiContainer = document.getElementById('confettiContainer');
+let primerTarjeta = null;
+let segundoTarjeta = null;
+let bloqueado = false;
+let aciertos = 0;
+let puntos = 0;
+
+function crearJuego() {
+    const tarjetas = [];
+    parejas.forEach(item => {
+        tarjetas.push({tipo:'palabra', texto:item.mixteco, clave:item.clave});
+        tarjetas.push({tipo:'imagen', imagen:item.imagen, clave:item.clave});
+    });
+
+    tarjetas.sort(() => Math.random() - 0.5);
+    grid.innerHTML = '';
+    mensaje.textContent = 'Encuentra todas las parejas para ganar puntos.';
+    aciertos = 0;
+    puntos = 0;
+    puntosElemento.textContent = puntos;
+    primerTarjeta = null;
+    segundoTarjeta = null;
+    bloqueado = false;
+    confettiContainer.innerHTML = '';
+
+    tarjetas.forEach((tarjeta) => {
+        const card = document.createElement('div');
+        card.className = 'memorama-card';
+        card.dataset.clave = tarjeta.clave;
+        card.dataset.tipo = tarjeta.tipo;
+        card.innerHTML = `
+            <div class="memorama-inner">
+                <div class="memorama-face memorama-front">?</div>
+                <div class="memorama-face memorama-back">
+                    ${tarjeta.tipo === 'imagen' ? `<img src="${tarjeta.imagen}" alt="${tarjeta.clave}">` : `<span>${tarjeta.texto}</span>`}
+                </div>
+            </div>
+        `;
+        card.addEventListener('click', () => girarTarjeta(card));
+        grid.appendChild(card);
+    });
+}
+
+function girarTarjeta(card) {
+    if (bloqueado || card === primerTarjeta || card.classList.contains('matched')) return;
+    card.classList.add('flipped');
+
+    if (!primerTarjeta) {
+        primerTarjeta = card;
+        return;
+    }
+
+    segundoTarjeta = card;
+    comprobarPareja();
+}
+
+function comprobarPareja() {
+    const mismaClave = primerTarjeta.dataset.clave === segundoTarjeta.dataset.clave;
+    const distintoTipo = primerTarjeta.dataset.tipo !== segundoTarjeta.dataset.tipo;
+
+    if (mismaClave && distintoTipo) {
+        primerTarjeta.classList.add('matched');
+        segundoTarjeta.classList.add('matched');
+        aciertos += 1;
+        puntos += 10;
+        puntosElemento.textContent = puntos;
+        mensaje.textContent = `¡Correcto! Has ganado 10 puntos. Total: ${puntos}.`;
+
+        if (aciertos === parejas.length) {
+            mensaje.textContent = `¡Campeón! Has ganado ${puntos} puntos y completaste el memorama.`;
+            lanzarConfeti();
+        }
+
+        primerTarjeta = null;
+        segundoTarjeta = null;
+        return;
+    }
+
+    bloqueado = true;
+    mensaje.textContent = 'Intenta de nuevo...';
+    puntos = Math.max(0, puntos - 2);
+    puntosElemento.textContent = puntos;
+
+    setTimeout(() => {
+        primerTarjeta.classList.remove('flipped');
+        segundoTarjeta.classList.remove('flipped');
+        primerTarjeta = null;
+        segundoTarjeta = null;
+        bloqueado = false;
+        mensaje.textContent = 'Sigue intentando.';
+    }, 900);
+}
+
+function lanzarConfeti() {
+    confettiContainer.innerHTML = '';
+    const colores = ['#ff4b5c', '#ffda79', '#7ae7c7', '#5d54a4', '#ff6b6b'];
+
+    for (let i = 0; i < 40; i++) {
+        const pieza = document.createElement('div');
+        pieza.className = 'confetti-piece';
+        pieza.style.backgroundColor = colores[i % colores.length];
+        pieza.style.left = `${Math.random() * 100}%`;
+        pieza.style.top = `${-Math.random() * 40 - 10}%`;
+        pieza.style.width = `${8 + Math.random() * 8}px`;
+        pieza.style.height = `${10 + Math.random() * 10}px`;
+        pieza.style.animationDelay = `${Math.random() * 0.5}s`;
+        pieza.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confettiContainer.appendChild(pieza);
+    }
+
+    setTimeout(() => {
+        confettiContainer.innerHTML = '';
+    }, 2500);
+}
+
+reiniciar.addEventListener('click', crearJuego);
+crearJuego();
+
+// Funcionalidad de audios
+document.addEventListener('DOMContentLoaded', function() {
+    const audioButtons = document.querySelectorAll('.audio-button');
+    
+    audioButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const audioFile = this.getAttribute('data-audio');
+            
+            if (audioFile) {
+                const audio = new Audio(audioFile);
+                audio.play().catch(error => {
+                    console.log('Error al reproducir audio:', error);
+                    alert('No se pudo reproducir el audio. Verifica que el archivo exista en: ' + audioFile);
+                });
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

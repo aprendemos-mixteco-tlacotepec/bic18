@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="CSS/style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="CSS/script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+ <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="Alfabeto.html">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">Saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="leccion de lecto.html">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<head>
+<meta charset="UTF-8">
+
+<title>Juegos Mixteco</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#020617;
+color:white;
+text-align:center;
+margin:0;
+padding:0;
+}
+
+h1{
+background:#1e3a8a;
+padding:15px;
+margin:0;
+font-size:35px;
+}
+
+/* BOTONES */
+
+button{
+padding:10px 20px;
+margin:5px;
+background:#38bdf8;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+transition:.2s;
+}
+
+button:hover{
+transform:scale(1.05);
+background:#0ea5e9;
+}
+
+/* SECCIONES */
+
+.section{
+display:none;
+padding:20px;
+margin:20px;
+background:#1e293b;
+border-radius:20px;
+box-shadow:0 0 20px rgba(56,189,248,.3);
+}
+
+/* ================= MEMORAMA ================= */
+
+#boardM{
+display:grid;
+grid-template-columns:repeat(5,120px);
+gap:15px;
+justify-content:center;
+margin-top:20px;
+}
+
+.cardM{
+width:120px;
+height:120px;
+background:linear-gradient(135deg,#2563eb,#38bdf8);
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+transform-style:preserve-3d;
+box-shadow:0 0 15px rgba(56,189,248,0.5);
+user-select:none;
+padding:10px;
+text-align:center;
+}
+
+.cardM:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #38bdf8;
+}
+
+.cardM.open{
+background:white;
+color:#0f172a;
+transform:scale(1.05);
+}
+
+.cardM.match{
+background:limegreen !important;
+color:white;
+animation:match 0.5s;
+}
+
+@keyframes match{
+0%{transform:scale(0.7);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+#winM{
+margin-top:20px;
+font-size:28px;
+color:yellow;
+text-shadow:0 0 10px yellow;
+}
+
+/* ================= SOPA ================= */
+
+#sopa{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+border-radius:20px;
+padding:20px;
+box-shadow:0 0 25px rgba(56,189,248,0.4);
+}
+
+#sopaContainer{
+display:flex;
+justify-content:center;
+align-items:flex-start;
+gap:30px;
+flex-wrap:wrap;
+}
+
+#sopaGrid{
+display:grid;
+grid-template-columns:repeat(20,35px);
+gap:4px;
+background:#ffffff;
+padding:20px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(56,189,248,0.5);
+}
+
+.cell{
+width:35px;
+height:35px;
+background:#e2e8f0;
+color:##ffffff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+font-size:18px;
+border-radius:8px;
+cursor:pointer;
+transition:0.2s;
+user-select:none;
+}
+
+.cell:hover{
+transform:scale(1.1);
+background:#38bdf8;
+color:white;
+}
+
+.selected{
+background:#fde047 !important;
+color:black !important;
+transform:scale(1.15);
+box-shadow:0 0 12px yellow;
+}
+
+.correcta{
+background:limegreen !important;
+color:white !important;
+animation:found .4s;
+}
+
+@keyframes found{
+0%{transform:scale(0.5);}
+100%{transform:scale(1);}
+}
+
+#lista{
+background:##ffffff;
+padding:20px;
+border-radius:15px;
+width:240px;
+text-align:left;
+box-shadow:0 0 20px rgba(56,189,248,0.5);
+}
+
+#lista span{
+display:block;
+padding:8px;
+margin:5px 0;
+border-radius:8px;
+transition:0.2s;
+font-size:18px;
+}
+
+#lista span.ok{
+background:limegreen;
+color:white;
+text-decoration:line-through;
+}
+
+#mensajeSopa{
+margin-top:15px;
+font-size:22px;
+color:#fde047;
+font-weight:bold;
+}
+
+/* ================= QUIZ ================= */
+
+.opcion{
+background:#38bdf8;
+margin:10px auto;
+padding:12px;
+cursor:pointer;
+border-radius:10px;
+width:250px;
+transition:.2s;
+}
+
+#quizBox{
+background:#0f172a;
+padding:20px;
+border-radius:20px;
+max-width:700px;
+margin:auto;
+box-shadow:0 0 20px #38bdf8;
+}
+
+#pregunta{
+font-size:28px;
+margin-bottom:20px;
+color:#38bdf8;
+}
+
+.opcion{
+background:#38bdf8;
+margin:10px auto;
+padding:15px;
+cursor:pointer;
+border-radius:12px;
+width:80%;
+font-size:20px;
+transition:.2s;
+font-weight:bold;
+}
+
+.opcion:hover{
+transform:scale(1.03);
+background:#0ea5e9;
+}
+
+.correctaQuiz{
+background:lime !important;
+color:black;
+}
+
+.incorrectaQuiz{
+background:#ef4444 !important;
+}
+
+#feedback{
+font-size:22px;
+margin:15px;
+font-weight:bold;
+}
+
+#resultadoFinal{
+font-size:30px;
+margin-top:25px;
+color:yellow;
+}
+
+
+/* ================= DISEÑO DE ADIVINANZAS ================= */
+
+.seccion-adivinanzas {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    font-family: Arial, sans-serif;
+    color: #111827;
+
+}
+
+.encabezado-adivinanzas {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.encabezado-adivinanzas h2 {
+    margin: 0;
+    font-size: 36px;
+    color: #38bdf8;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+}
+
+.encabezado-adivinanzas p {
+    font-size: 18px;
+    color: #cbd5e1;
+}
+
+.marcador-adivinanzas {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 15px;
+    background: #ffffff;
+    border: 2px solid #334155;
+    border-radius: 14px;
+}
+
+.marcador-adivinanzas span {
+    font-size: 17px;
+}
+
+.barra-progreso-adivinanzas {
+    width: 100%;
+    height: 16px;
+    margin-bottom: 22px;
+    overflow: hidden;
+    background: #334155;
+    border-radius: 20px;
+}
+
+#progresoAdivinanzas {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+.tarjeta-adivinanza{
+
+    padding:30px;
+    text-align:center;
+
+    background:#ffffff;
+
+    border:3px solid #38bdf8;
+    border-radius:20px;
+
+    box-shadow:0 0 25px rgba(0,0,0,.20);
+}
+
+#preguntaAdivinanza {
+    min-height: 70px;
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #111827;
+    font-weight: bold;
+
+}
+
+.opciones-adivinanza {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.opcion-adivinanza {
+    width: 100%;
+    min-height: 60px;
+    padding: 14px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    background: #2563eb;
+    border: 3px solid transparent;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.opcion-adivinanza:hover:not(:disabled) {
+    background: #1d4ed8;
+    transform: scale(1.03);
+}
+
+/* RESPUESTA SELECCIONADA CORRECTAMENTE */
+
+.opcion-adivinanza.respuesta-correcta {
+    color: white;
+    background: #16a34a;
+    border-color: #86efac;
+    box-shadow: 0 0 18px rgba(34, 197, 94, 0.8);
+    animation: aciertoAdivinanza 0.5s ease;
+}
+
+/* RESPUESTA INCORRECTA SELECCIONADA */
+
+.opcion-adivinanza.respuesta-incorrecta {
+    color: white;
+    background: #dc2626;
+    border-color: #fca5a5;
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.8);
+    animation: errorAdivinanza 0.4s ease;
+}
+
+/* RESPUESTA CORRECTA MOSTRADA DESPUÉS DE FALLAR */
+
+.opcion-adivinanza.mostrar-correcta {
+    color: white;
+    background: #0891b2;
+    border-color: #67e8f9;
+    box-shadow: 0 0 18px rgba(6, 182, 212, 0.8);
+}
+
+.opcion-adivinanza:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.mensaje-adivinanza{
+
+    min-height:30px;
+
+    margin-top:22px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#111827;
+
+}
+
+.mensaje-correcto {
+    color: #86efac;
+}
+
+.mensaje-incorrecto {
+    color: #fca5a5;
+}
+
+.btn-siguiente-adivinanza {
+    margin-top: 15px;
+    padding: 13px 28px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    background: #7c3aed;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.btn-siguiente-adivinanza:hover:not(:disabled) {
+    background: #6d28d9;
+    transform: scale(1.05);
+}
+
+.btn-siguiente-adivinanza:disabled {
+    background: #475569;
+    cursor: not-allowed;
+}
+
+@keyframes aciertoAdivinanza {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes errorAdivinanza {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+@media (max-width: 650px) {
+    .opciones-adivinanza {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-adivinanza {
+        padding: 20px;
+    }
+
+    #preguntaAdivinanza {
+        font-size: 20px;
+    }
+}
+
+
+
+/*==========================================
+REMODELACIÓN V2 - INTERFAZ DE JUEGOS
+==========================================*/
+
+html{scroll-behavior:smooth;}
+
+body{
+background:linear-gradient(135deg,#fff7d6,#f7f4ec,#eaf5e4);
+background-size:300% 300%;
+animation:fondoV2 14s ease infinite;
+font-family:Arial, sans-serif;
+}
+
+@keyframes fondoV2{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.hero{
+min-height:80vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px 20px;
+background:linear-gradient(135deg,#3E8E41,#2563eb);
+color:white;
+}
+
+.hero-content{
+max-width:900px;
+animation:entradaV2 .8s ease;
+}
+
+.hero-icon{
+font-size:80px;
+margin-bottom:15px;
+}
+
+.hero h1{
+background:none;
+font-size:52px;
+padding:0;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:22px;
+line-height:1.7;
+margin-bottom:30px;
+}
+
+.hero-btn{
+display:inline-block;
+background:#f4c430;
+color:#1f2937;
+text-decoration:none;
+padding:15px 35px;
+border-radius:40px;
+font-weight:bold;
+box-shadow:0 12px 25px rgba(0,0,0,.25);
+transition:.3s;
+}
+
+.hero-btn:hover{
+transform:translateY(-5px);
+background:white;
+}
+
+.barra-juegos{
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+padding:14px;
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(12px);
+box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+
+.barra-juegos a,
+.barra-juegos button{
+text-decoration:none;
+border:none;
+background:#ffffff;
+color:#1e3a8a;
+padding:10px 16px;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,.10);
+transition:.25s;
+}
+
+.barra-juegos a:hover,
+.barra-juegos button:hover{
+background:#3E8E41;
+color:white;
+transform:translateY(-3px);
+}
+
+.menu-juegos{
+padding:70px 8%;
+text-align:center;
+}
+
+.menu-juegos h2{
+font-size:42px;
+color:#3E8E41;
+margin-bottom:10px;
+}
+
+.menu-subtitulo{
+font-size:20px;
+color:#374151;
+margin-bottom:40px;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:28px;
+}
+
+.menu-card{
+background:white;
+border-radius:25px;
+padding:32px 24px;
+box-shadow:0 15px 35px rgba(0,0,0,.12);
+cursor:pointer;
+transition:.35s;
+border:3px solid transparent;
+}
+
+.menu-card:hover{
+transform:translateY(-12px) scale(1.02);
+border-color:#3E8E41;
+}
+
+.menu-icon{
+font-size:62px;
+margin-bottom:15px;
+transition:.3s;
+}
+
+.menu-card:hover .menu-icon{
+transform:scale(1.18) rotate(5deg);
+}
+
+.menu-card h3{
+font-size:25px;
+color:#2563eb;
+margin-bottom:12px;
+}
+
+.menu-card p{
+color:#4b5563;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+.menu-card button,
+.volver-menu{
+border:none;
+background:linear-gradient(90deg,#2563eb,#38bdf8);
+color:white;
+padding:12px 25px;
+border-radius:30px;
+cursor:pointer;
+font-weight:bold;
+transition:.25s;
+box-shadow:0 8px 18px rgba(37,99,235,.25);
+}
+
+.menu-card button:hover,
+.volver-menu:hover{
+transform:translateY(-4px);
+background:linear-gradient(90deg,#3E8E41,#22c55e);
+}
+
+.section{
+max-width:1200px;
+margin:40px auto;
+animation:entradaV2 .5s ease;
+}
+
+.section h2{
+font-size:34px;
+margin-bottom:15px;
+}
+
+/* QUIZ restaurado: azul, centrado y sin conflicto */
+#quiz .opcion{
+display:block;
+width:80%;
+max-width:520px;
+margin:12px auto;
+padding:15px;
+background:#38bdf8;
+color:white;
+border-radius:12px;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
+}
+
+#quiz .opcion:hover{
+background:#0ea5e9;
+transform:scale(1.03);
+}
+
+#quiz .correctaQuiz{
+background:lime !important;
+color:black !important;
+}
+
+#quiz .incorrectaQuiz{
+background:#ef4444 !important;
+color:white !important;
+}
+
+/* Adivinanzas independientes */
+#adivinanzas{
+background:#ffffff;
+color:#1f2937;
+}
+
+#adivinanzas #rQ{
+font-size:24px;
+margin:20px auto;
+max-width:850px;
+line-height:1.6;
+}
+
+#adivinanzas .opcion{
+display:block;
+width:90%;
+max-width:620px;
+margin:12px auto;
+padding:15px;
+background:#22c55e;
+color:white;
+border:none;
+border-radius:14px;
+font-size:19px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
+}
+
+#adivinanzas .opcion:hover{
+background:#16a34a;
+transform:translateY(-3px);
+}
+
+#adivinanzas .correcta{
+background:#2ecc71 !important;
+color:white !important;
+}
+
+#adivinanzas .incorrecta{
+background:#e74c3c !important;
+color:white !important;
+}
+
+#adivinanzas .opcion:disabled{
+cursor:not-allowed;
+opacity:.95;
+}
+
+#progreso,
+#marcador{
+color:#1f2937;
+}
+
+@keyframes entradaV2{
+from{opacity:0;transform:translateY(25px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@media(max-width:700px){
+.hero h1{font-size:35px;}
+.hero p{font-size:17px;}
+
+.barra-juegos{
+gap:6px;
+}
+
+.barra-juegos a,
+.barra-juegos button{
+font-size:13px;
+padding:8px 10px;
+}
+
+.section{
+margin:20px 10px;
+padding:18px;
+}
+
+#boardM{
+grid-template-columns:repeat(3,95px);
+gap:10px;
+}
+
+.cardM{
+width:95px;
+height:95px;
+font-size:15px;
+}
+
+#sopaGrid{
+grid-template-columns:repeat(20,22px);
+gap:2px;
+padding:10px;
+overflow:auto;
+}
+
+.cell{
+width:22px;
+height:22px;
+font-size:12px;
+}
+}
+
+
+/*==========================================
+MODO APP POR PANTALLAS - CORREGIDO
+==========================================*/
+
+body.vista-inicio #menuJuegos,
+body.vista-inicio .section,
+body.vista-inicio .barra-juegos{
+display:none !important;
+}
+
+body.vista-menu .hero,
+body.vista-menu .section{
+display:none !important;
+}
+
+body.vista-menu .barra-juegos{
+display:flex !important;
+}
+
+body.vista-menu #menuJuegos{
+display:block !important;
+min-height:calc(100vh - 80px);
+}
+
+body.vista-juego .hero,
+body.vista-juego #menuJuegos{
+display:none !important;
+}
+
+body.vista-juego .barra-juegos{
+display:flex !important;
+}
+
+body.vista-juego .section{
+display:none !important;
+}
+
+body.vista-juego .section.juego-activo{
+display:block !important;
+min-height:calc(100vh - 90px);
+}
+
+.section.juego-activo{
+padding-top:35px;
+}
+
+.section.juego-activo::before{
+content:"";
+display:block;
+width:90px;
+height:6px;
+background:linear-gradient(90deg,#3E8E41,#2563eb);
+border-radius:20px;
+margin:0 auto 25px;
+}
+
+
+/*==========================================
+AJUSTE FINAL: SIN BARRA SUPERIOR Y FONDO UNIFORME
+==========================================*/
+
+.barra-juegos{
+display:none !important;
+}
+
+body.vista-menu .barra-juegos,
+body.vista-juego .barra-juegos{
+display:none !important;
+}
+
+body,
+body.vista-inicio,
+body.vista-menu,
+body.vista-juego{
+background:linear-gradient(135deg,#fff7d6,#f7f4ec,#eaf5e4) !important;
+background-size:300% 300% !important;
+animation:fondoV2 14s ease infinite !important;
+}
+
+.section,
+#memorama,
+#sopa,
+#quiz,
+#adivinanzas{
+background:rgba(255,255,255,.95) !important;
+color:#1f2937 !important;
+border-radius:25px !important;
+box-shadow:0 15px 35px rgba(0,0,0,.12) !important;
+}
+
+body.vista-juego .section.juego-activo{
+display:block !important;
+min-height:calc(100vh - 40px);
+margin-top:30px;
+margin-bottom:30px;
+}
+
+.volver-menu{
+display:inline-block;
+margin-top:30px;
+}
+
+</style>
+</head>
+
+<body class="vista-inicio">
+
+<header class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-icon">🌽</div>
+    <h1>Juntos Aprendamos Mixteco</h1>
+    <p>Aprende jugando con actividades interactivas en lengua mixteca.</p>
+    <a href="#" onclick="mostrarMenu(); return false;" class="hero-btn">🎮 Ver juegos</a>
+  </div>
+</header>
+
+
+
+
+<section id="menuJuegos" class="menu-juegos">
+  <h2>🎮 Juegos interactivos</h2>
+  <p class="menu-subtitulo">Selecciona una actividad para comenzar.</p>
+
+  <div class="menu-grid">
+    <article class="menu-card" onclick="show('memorama')">
+      <div class="menu-icon">🧠</div>
+      <h3>Memorama</h3>
+      <p>Encuentra los pares de números en mixteco.</p>
+      <button>Comenzar</button>
+    </article>
+
+    <article class="menu-card" onclick="show('sopa')">
+      <div class="menu-icon">🔤</div>
+      <h3>Sopa de letras</h3>
+      <p>Busca palabras ocultas en el tablero.</p>
+      <button>Comenzar</button>
+    </article>
+
+    <article class="menu-card" onclick="show('quiz')">
+      <div class="menu-icon">❓</div>
+      <h3>Quiz</h3>
+      <p>Responde preguntas y suma puntos.</p>
+      <button>Comenzar</button>
+    </article>
+
+    <article class="menu-card" onclick="show('adivinanzas')">
+      <div class="menu-icon">🌽</div>
+      <h3>Adivinanzas</h3>
+      <p>Elige la respuesta correcta tipo examen.</p>
+      <button>Comenzar</button>
+    </article>
+  </div>
+</section>
+
+<!-- ================= MEMORAMA ================= -->
+
+<div id="memorama" class="section">
+
+<h2>🧠 Memorama de números en mixteco</h2>
+
+<p style="color:#93c5fd;">
+Encuentra los pares iguales 😎
+</p>
+
+<div id="boardM"></div>
+
+<p id="winM"></p>
+
+<button class="volver-menu" onclick="volverMenu()">⬆ Volver al menú</button>
+
+</div>
+
+<!-- SOPA -->
+
+<div id="sopa" class="section">
+
+<h2>🔤 Sopa de letras </h2>
+
+<div id="sopaContainer">
+
+<div>
+
+<div id="sopaGrid"></div>
+
+<br>
+
+<button onclick="verificarSopa()">
+✅ Verificar palabras
+</button>
+
+<p id="mensajeSopa"></p>
+
+</div>
+
+<div id="lista"></div>
+
+</div>
+
+<button class="volver-menu" onclick="volverMenu()">⬆ Volver al menú</button>
+
+</div>
+
+<!-- ================= QUIZ ================= -->
+
+<div id="quiz" class="section">
+
+<h2>❓ Quiz </h2>
+
+<div id="quizBox">
+
+<h3 id="pregunta"></h3>
+
+<div id="opciones"></div>
+
+<p id="res"></p>
+
+<div id="scoreBox">
+🏆 Puntaje:
+<span id="score">0</span>
+</div>
+
+<br>
+
+<button onclick="next()">
+➡ Siguiente
+</button>
+
+</div>
+
+<button class="volver-menu" onclick="volverMenu()">⬆ Volver al menú</button>
+
+</div>
+
+
+<!-- ================= ADIVINANZAS EN MIXTECO ================= -->
+
+<section id="adivinanzas" class="section seccion-adivinanzas">
+
+    <button class="volver" onclick="volverMenu()">
+        ⬅ Volver al menú
+    </button>
+
+    <div class="encabezado-adivinanzas">
+        <h2>🧠 Adivinanzas en mixteco</h2>
+        <p>Selecciona la respuesta correcta</p>
+    </div>
+
+    <div class="marcador-adivinanzas">
+        <span>
+            Pregunta:
+            <b id="numeroAdivinanza">1</b>/
+            <b id="totalAdivinanzas">14</b>
+        </span>
+
+        <span>
+            ✅ Correctas:
+            <b id="correctasAdivinanzas">0</b>
+        </span>
+
+        <span>
+            ❌ Incorrectas:
+            <b id="incorrectasAdivinanzas">0</b>
+        </span>
+    </div>
+
+    <div class="barra-progreso-adivinanzas">
+        <div id="progresoAdivinanzas"></div>
+    </div>
+
+    <div class="tarjeta-adivinanza">
+
+        <h3 id="preguntaAdivinanza"></h3>
+
+        <div
+            id="opcionesAdivinanza"
+            class="opciones-adivinanza"
+        ></div>
+
+        <p
+            id="mensajeAdivinanza"
+            class="mensaje-adivinanza"
+        ></p>
+
+        <button
+            id="btnSiguienteAdivinanza"
+            class="btn-siguiente-adivinanza"
+            onclick="siguienteAdivinanza()"
+            disabled
+        >
+            Siguiente ➡️
+        </button>
+
+</div>
+
+<script>
+
+/* MENU */
+function mostrarInicio(){
+
+document.body.className = "vista-inicio";
+
+document.querySelectorAll('.section').forEach(s=>{
+s.classList.remove('juego-activo');
+s.style.display='none';
+});
+
+window.scrollTo({top:0, behavior:"smooth"});
+
+}
+
+function mostrarMenu(){
+
+document.body.className = "vista-menu";
+
+document.querySelectorAll('.section').forEach(s=>{
+s.classList.remove('juego-activo');
+s.style.display='none';
+});
+
+setTimeout(()=>{
+document.getElementById('menuJuegos').scrollIntoView({
+behavior:'smooth',
+block:'start'
+});
+},80);
+
+}
+
+function show(sec){
+
+document.body.className = "vista-juego";
+
+document.querySelectorAll('.section').forEach(s=>{
+s.classList.remove('juego-activo');
+s.style.display='none';
+});
+
+const pantalla = document.getElementById(sec);
+pantalla.classList.add('juego-activo');
+pantalla.style.display='block';
+
+setTimeout(()=>{
+pantalla.scrollIntoView({behavior:'smooth', block:'start'});
+},80);
+
+}
+
+function volverMenu(){
+
+mostrarMenu();
+
+}
+
+/* ================= MEMORAMA ================= */
+
+let numerosMixteco=[
+
+"IN",
+"UU",
+"UNI",
+"KUUN",
+"U'UN",
+
+"IÑU",
+"UJA",
+"UNA",
+"IIN",
+"UXI",
+
+"UXI IN",
+"UXI UU",
+"UXI UNI",
+"UXI KUUN",
+
+"JA'ON",
+"JA'ON IN",
+"JA'ON UU",
+"JA'ON UNI",
+"JA'ON KUUN",
+
+"OKO"
+
+];
+
+/* DUPLICAR CARTAS */
+
+let cartasM=[...numerosMixteco,...numerosMixteco]
+.sort(()=>Math.random()-0.5);
+
+let boardM=document.getElementById("boardM");
+
+let primera=null;
+let bloqueo=false;
+let aciertos=0;
+
+/* CREAR CARTAS */
+
+cartasM.forEach(texto=>{
+
+let card=document.createElement("div");
+
+card.className="cardM";
+
+card.innerText="❓";
+
+card.dataset.valor=texto;
+
+card.onclick=()=>{
+
+if(
+bloqueo ||
+card.classList.contains("open") ||
+card.classList.contains("match")
+)return;
+
+/* ABRIR */
+
+card.classList.add("open");
+
+card.innerText=texto;
+
+/* PRIMERA */
+
+if(!primera){
+
+primera=card;
+
+return;
+
+}
+
+/* SEGUNDA */
+
+if(primera.dataset.valor===card.dataset.valor){
+
+primera.classList.add("match");
+
+card.classList.add("match");
+
+aciertos++;
+
+primera=null;
+
+/* GANAR */
+
+if(aciertos===numerosMixteco.length){
+
+document.getElementById("winM").innerText=
+"🎉 ¡Ganaste el memorama! 😎🔥";
+
+}
+
+}else{
+
+bloqueo=true;
+
+setTimeout(()=>{
+
+primera.classList.remove("open");
+
+card.classList.remove("open");
+
+primera.innerText="❓";
+
+card.innerText="❓";
+
+primera=null;
+
+bloqueo=false;
+
+},900);
+
+}
+
+};
+
+boardM.appendChild(card);
+
+});
+
+/* ================= SOPA DE LETRAS ================= */
+
+const palabras = [
+    "ÑUÑU",
+    "YOKO",
+    "TYUMI",
+    "YAKIN",
+    "KUENI",
+    "LAJAN",
+    "TYOKO"
+];
+
+/* ================= ELEMENTOS ================= */
+
+const lista = document.getElementById("lista");
+const sopaGrid = document.getElementById("sopaGrid");
+const mensajeSopa = document.getElementById("mensajeSopa");
+
+/* Limpiar contenido anterior */
+
+lista.innerHTML = "<h3>📚 Palabras</h3>";
+sopaGrid.innerHTML = "";
+mensajeSopa.innerText = "";
+
+/* ================= PANEL DE PALABRAS ================= */
+
+palabras.forEach((palabra, indice) => {
+
+    const elemento = document.createElement("span");
+
+    elemento.id = "palabra-sopa-" + indice;
+    elemento.dataset.palabra = palabra;
+    elemento.innerHTML = `🔎 ${palabra}`;
+
+    lista.appendChild(elemento);
+});
+
+/* ================= VARIABLES ================= */
+
+const sizeSopa = 20;
+
+const letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+
+const gridSopa = Array.from(
+    { length: sizeSopa },
+    () => Array(sizeSopa).fill("")
+);
+
+let seleccion = [];
+let encontradas = [];
+let seleccionando = false;
+
+/* ================= DIRECCIONES ================= */
+
+/*
+[0, 1]  = horizontal
+[1, 0]  = vertical
+[1, 1]  = diagonal
+*/
+
+const dirs = [
+    [0, 1],
+    [1, 0],
+    [1, 1]
+];
+
+/* ================= COLOCAR PALABRAS ================= */
+
+palabras.forEach(palabra => {
+
+    let colocado = false;
+    let intentos = 0;
+
+    while (!colocado && intentos < 1000) {
+
+        intentos++;
+
+        const direccion =
+            dirs[Math.floor(Math.random() * dirs.length)];
+
+        const dx = direccion[0];
+        const dy = direccion[1];
+
+        const fila =
+            Math.floor(Math.random() * sizeSopa);
+
+        const columna =
+            Math.floor(Math.random() * sizeSopa);
+
+        let espacioDisponible = true;
+
+        for (let i = 0; i < palabra.length; i++) {
+
+            const x = fila + dx * i;
+            const y = columna + dy * i;
+
+            if (
+                x < 0 ||
+                y < 0 ||
+                x >= sizeSopa ||
+                y >= sizeSopa
+            ) {
+                espacioDisponible = false;
+                break;
+            }
+
+            if (
+                gridSopa[x][y] !== "" &&
+                gridSopa[x][y] !== palabra[i]
+            ) {
+                espacioDisponible = false;
+                break;
+            }
+        }
+
+        if (espacioDisponible) {
+
+            for (let i = 0; i < palabra.length; i++) {
+
+                const x = fila + dx * i;
+                const y = columna + dy * i;
+
+                gridSopa[x][y] = palabra[i];
+            }
+
+            colocado = true;
+        }
+    }
+
+    if (!colocado) {
+        console.warn(
+            "No se pudo colocar la palabra:",
+            palabra
+        );
+    }
+});
+
+/* ================= RELLENAR ESPACIOS ================= */
+
+for (let fila = 0; fila < sizeSopa; fila++) {
+
+    for (let columna = 0; columna < sizeSopa; columna++) {
+
+        if (gridSopa[fila][columna] === "") {
+
+            gridSopa[fila][columna] =
+                letras[
+                    Math.floor(Math.random() * letras.length)
+                ];
+        }
+    }
+}
+
+/* ================= LIMPIAR SELECCIÓN ================= */
+
+function limpiarSeleccionTemporal() {
+
+    document
+        .querySelectorAll("#sopaGrid .cell.selected")
+        .forEach(celda => {
+            celda.classList.remove("selected");
+        });
+
+    seleccion = [];
+}
+
+/* ================= SELECCIONAR CELDA ================= */
+
+function seleccionarCelda(celda) {
+
+    if (
+        celda.classList.contains("correcta") ||
+        seleccion.includes(celda)
+    ) {
+        return;
+    }
+
+    celda.classList.add("selected");
+    seleccion.push(celda);
+}
+
+/* ================= CREAR TABLERO ================= */
+
+for (let fila = 0; fila < sizeSopa; fila++) {
+
+    for (let columna = 0; columna < sizeSopa; columna++) {
+
+        const celda = document.createElement("div");
+
+        celda.className = "cell";
+        celda.innerText = gridSopa[fila][columna];
+
+        celda.dataset.letra = gridSopa[fila][columna];
+        celda.dataset.fila = fila;
+        celda.dataset.columna = columna;
+
+        celda.addEventListener("mousedown", evento => {
+
+            evento.preventDefault();
+
+            limpiarSeleccionTemporal();
+
+            seleccionando = true;
+
+            seleccionarCelda(celda);
+        });
+
+        celda.addEventListener("mouseenter", () => {
+
+            if (seleccionando) {
+                seleccionarCelda(celda);
+            }
+        });
+
+        sopaGrid.appendChild(celda);
+    }
+}
+
+/* Dejar de seleccionar al soltar el mouse */
+
+document.addEventListener("mouseup", () => {
+    seleccionando = false;
+});
+
+/* Evitar arrastrar texto accidentalmente */
+
+sopaGrid.addEventListener("dragstart", evento => {
+    evento.preventDefault();
+});
+
+/* ================= VERIFICAR PALABRA ================= */
+
+function verificarSopa() {
+
+    if (seleccion.length === 0) {
+
+        mensajeSopa.innerText =
+            "⚠️ Primero selecciona una palabra.";
+
+        return;
+    }
+
+    const palabraSeleccionada = seleccion
+        .map(celda => celda.dataset.letra)
+        .join("");
+
+    const palabraInvertida = palabraSeleccionada
+        .split("")
+        .reverse()
+        .join("");
+
+    const palabraEncontrada = palabras.find(palabra => {
+
+        return (
+            palabraSeleccionada === palabra ||
+            palabraInvertida === palabra
+        );
+    });
+
+    if (!palabraEncontrada) {
+
+        mensajeSopa.innerText =
+            "❌ Esa palabra no existe.";
+
+        limpiarSeleccionTemporal();
+
+        return;
+    }
+
+    if (encontradas.includes(palabraEncontrada)) {
+
+        mensajeSopa.innerText =
+            "⚠️ Esa palabra ya fue encontrada.";
+
+        limpiarSeleccionTemporal();
+
+        return;
+    }
+
+    encontradas.push(palabraEncontrada);
+
+    /* Marcar las letras encontradas */
+
+    seleccion.forEach(celda => {
+
+        celda.classList.remove("selected");
+        celda.classList.add("correcta");
+    });
+
+    /* Marcar la palabra en la lista */
+
+    const indicePalabra =
+        palabras.indexOf(palabraEncontrada);
+
+    document
+        .getElementById("palabra-sopa-" + indicePalabra)
+        .classList.add("ok");
+
+    mensajeSopa.innerText =
+        "🎉 Encontraste: " + palabraEncontrada;
+
+    seleccion = [];
+
+    /* Comprobar victoria */
+
+    if (encontradas.length === palabras.length) {
+
+        mensajeSopa.innerText =
+            "🏆 ¡COMPLETASTE TODA LA SOPA! 😎🔥";
+    }
+}
+
+/* ================= QUIZ ================= */
+
+let preguntas=[
+
+{
+q:"¿Qué es NDUTE?",
+o:["Agua","Río","Mar"],
+c:0
+},
+
+{
+q:"¿Qué es NDUTE UUN?",
+o:["Agua mineral","Agua pura","Refresco"],
+c:1
+},
+
+{
+q:"¿Qué es TEE I´NI?",
+o:["Café","Cerveza","Atole"],
+c:0
+},
+
+{
+q:"¿Qué es NDUTE TSIKUAA?",
+o:["Agua de naranja","Agua de guayaba","Agua de sandia"],
+c:0
+},
+
+{
+q:"¿Qué es NDUTE TSIKUAA IYA?",
+o:["Agua de limón","Agua de melón","Agua"],
+c:0
+},
+
+{
+q:"¿Qué es NDUTE TSIKUAA TSIKUENTSIKIN?",
+o:["Agua de piña","Agua de guayaba","Agua de pepino"],
+c:1
+},
+
+{
+q:"¿Qué es TEE VIXI?",
+o:["Refresco","Cerveza","Aguardiente"],
+c:0
+},
+
+{
+q:"¿Qué es TOLI?",
+o:["Jugo","Atole","Chocolate"],
+c:1
+},
+
+{
+q:"¿Qué es TOLI NUNI?",
+o:["Atole de vainilla","Atole de nuez","Atole de maíz"],
+c:2
+},
+
+{
+q:"¿Qué es NTSIXI?",
+o:["Aguardiente","Mezcal","Tequila"],
+c:0
+}
+
+];
+
+let qi=0;
+let puntos=0;
+let respondido=false;
+
+/* ================= CARGAR QUIZ ================= */
+
+function load(){
+
+respondido=false;
+
+let p=preguntas[qi];
+
+document.getElementById("pregunta").innerText=p.q;
+
+let opciones=
+document.getElementById("opciones");
+
+opciones.innerHTML="";
+
+document.getElementById("res").innerText="";
+
+p.o.forEach((op,i)=>{
+
+let d=document.createElement("div");
+
+d.className="opcion";
+
+d.innerText=op;
+
+/* CLICK RESPUESTA */
+
+d.onclick=()=>{
+
+if(respondido) return;
+
+respondido=true;
+
+/* RESPUESTA CORRECTA */
+
+if(i==p.c){
+
+d.classList.add("correctaQuiz");
+
+document.getElementById("res").innerText=
+"✅ Correcto 😎";
+
+puntos++;
+
+document.getElementById("score").innerText=
+puntos;
+
+/* RESPUESTA INCORRECTA */
+
+}else{
+
+d.classList.add("incorrectaQuiz");
+
+document.getElementById("res").innerText=
+"❌ Incorrecto 😢";
+
+/* MOSTRAR CORRECTA */
+
+document.querySelectorAll(".opcion")[p.c]
+.classList.add("correctaQuiz");
+
+}
+
+};
+
+opciones.appendChild(d);
+
+});
+
+}
+
+/* ================= SIGUIENTE ================= */
+
+function next(){
+
+/* EVITAR PASAR SIN RESPONDER */
+
+if(!respondido){
+
+document.getElementById("res").innerText=
+"⚠ Responde primero ";
+
+return;
+
+}
+
+qi++;
+
+/* FINAL */
+
+if(qi>=preguntas.length){
+
+document.getElementById("quizBox").innerHTML=`
+
+<h2 style="font-size:40px;">
+🏆 QUIZ TERMINADO 🏆
+</h2>
+
+<p style="font-size:30px;">
+Tu puntaje fue:
+<b>${puntos}</b> / ${preguntas.length}
+</p>
+
+<button onclick="location.reload()">
+🔄 Jugar otra vez
+</button>
+
+`;
+
+return;
+
+}
+
+/* CARGAR NUEVA */
+
+load();
+
+}
+
+/* ================= INICIAR ================= */
+
+load();
+
+// ================= DATOS DE LAS ADIVINANZAS =================
+
+const adv = [
+    {
+        q: "🥒 Verde por fuera y suave por dentro, crezco en la milpa y me usan en comida. ¿Qué soy?",
+        op: ["Naña yute", "Yikin yute", "Ya’a kuii", "Ña'mi tanaña"],
+        correcta: "Yikin yute"
+    },
+    {
+        q: "🍠 Dulce y naranja, crezco bajo tierra y parece papa. ¿Qué soy?",
+        op: ["Ña'mi", "Ntsixin", "Ndutyi tnuu", "Triu"],
+        correcta: "Ña'mi"
+    },
+    {
+        q: "🥬 Verde y espinoso por fuera, en caldo soy delicioso. ¿Qué soy?",
+        op: ["Yuva", "Ya'a", "Naña yute", "Tsikuitsi"],
+        correcta: "Naña yute"
+    },
+    {
+        q: "🟢 Pequeño y redondo, siempre voy acompañado en la comida. ¿Qué soy?",
+        op: ["Ndutyi tsinduu yute", "Ndutyi kuijin", "Nuni", "Ntsityi yute"],
+        correcta: "Ndutyi tsinduu yute"
+    },
+    {
+        q: "🎃 Grande y redonda, de mí hacen dulce y bebida. ¿Qué soy?",
+        op: ["Tsikumi", "Tsinduyu", "Ndutyi", "Ya’a kuii"],
+        correcta: "Tsinduyu"
+    },
+    {
+        q: "🌶️ Picoso y pequeño, si me comes mucho te hago llorar. ¿Qué soy?",
+        op: ["Ya'a", "Ña'mi", "Ndoko", "Triu"],
+        correcta: "Ya'a"
+    },
+    {
+        q: "🌱 Largo y verde, parezco frijol pero más delgado. ¿Qué soy?",
+        op: ["Ndoko", "Ntsityi yute", "Nuni", "Tsikuitsi"],
+        correcta: "Ntsityi yute"
+    },
+    {
+        q: "🌽 Amarillo y sabroso, me comes desgranado o entero. ¿Qué soy?",
+        op: ["Ntsixin", "Triu", "Ndutyi", "Ña'mi"],
+        correcta: "Ntsixin"
+    },
+    {
+        q: "🫘 Pequeño pero poderoso, negro o bayo me puedes encontrar. ¿Qué soy?",
+        op: ["Ndutyi", "Tsikuitsi", "Yuva tayoo", "Yuva xikutnu"],
+        correcta: "Ndutyi"
+    },
+    {
+        q: "🌾 Soy la base de muchas tortillas. ¿Qué soy?",
+        op: ["Yuva", "Nuni", "Minu ñuu savi", "Ya’a yityi"],
+        correcta: "Nuni"
+    },
+    {
+        q: "🥔 Vivo bajo tierra y en papas fritas me convierto. ¿Qué soy?",
+        op: ["Yikin yute", "Ndutyi kuijin", "Tsikuitsi", "Ña'mi tanaña"],
+        correcta: "Tsikuitsi"
+    },
+    {
+        q: "🌾 Dorado y largo, conmigo hacen pan. ¿Qué soy?",
+        op: ["Triu", "Nuni", "Nuu ta’yi", "Ya’a kuii"],
+        correcta: "Triu"
+    },
+    {
+        q: "🧅 Tengo muchas capas y hago llorar al cortarme. ¿Qué soy?",
+        op: ["Tsikumi", "Minu ñuu savi", "Ña'mi tanaña", "Nuu ta’yi"],
+        correcta: "Tsikumi"
+    },
+    {
+        q: "🥬 Verde y pequeño, crezco en el campo y soy muy nutritivo. ¿Qué soy?",
+        op: ["Yuva", "Ntsityi yute", "Ntsixin", "Ña'mi"],
+        correcta: "Yuva"
+    }
+];
+
+// ================= VARIABLES =================
+
+let indiceAdivinanza = 0;
+let respuestasCorrectasAdivinanzas = 0;
+let respuestasIncorrectasAdivinanzas = 0;
+let respuestaContestada = false;
+
+// ================= ELEMENTOS HTML =================
+
+const preguntaAdivinanza = document.getElementById("preguntaAdivinanza");
+const opcionesAdivinanza = document.getElementById("opcionesAdivinanza");
+const mensajeAdivinanza = document.getElementById("mensajeAdivinanza");
+
+const numeroAdivinanza = document.getElementById("numeroAdivinanza");
+const totalAdivinanzas = document.getElementById("totalAdivinanzas");
+
+const correctasAdivinanzas = document.getElementById("correctasAdivinanzas");
+const incorrectasAdivinanzas = document.getElementById("incorrectasAdivinanzas");
+
+const progresoAdivinanzas = document.getElementById("progresoAdivinanzas");
+const btnSiguienteAdivinanza = document.getElementById("btnSiguienteAdivinanza");
+
+// ================= MOSTRAR PREGUNTA =================
+
+function mostrarAdivinanza() {
+
+    respuestaContestada = false;
+
+    const preguntaActual = adv[indiceAdivinanza];
+
+    preguntaAdivinanza.textContent = preguntaActual.q;
+    opcionesAdivinanza.innerHTML = "";
+    mensajeAdivinanza.textContent = "";
+    mensajeAdivinanza.className = "mensaje-adivinanza";
+
+    numeroAdivinanza.textContent = indiceAdivinanza + 1;
+    totalAdivinanzas.textContent = adv.length;
+
+    btnSiguienteAdivinanza.disabled = true;
+
+    const porcentaje = (indiceAdivinanza / adv.length) * 100;
+    progresoAdivinanzas.style.width = porcentaje + "%";
+
+    preguntaActual.op.forEach(opcion => {
+
+        const boton = document.createElement("button");
+
+        boton.type = "button";
+        boton.className = "opcion-adivinanza";
+        boton.textContent = opcion;
+        boton.dataset.respuesta = opcion;
+
+        boton.addEventListener("click", () => {
+            comprobarAdivinanza(boton, opcion);
+        });
+
+        opcionesAdivinanza.appendChild(boton);
+    });
+}
+
+// ================= COMPROBAR RESPUESTA =================
+
+function comprobarAdivinanza(botonSeleccionado, opcionSeleccionada) {
+
+    if (respuestaContestada) {
+        return;
+    }
+
+    respuestaContestada = true;
+
+    const preguntaActual = adv[indiceAdivinanza];
+    const botones = opcionesAdivinanza.querySelectorAll(".opcion-adivinanza");
+
+    botones.forEach(boton => {
+        boton.disabled = true;
+    });
+
+    if (opcionSeleccionada === preguntaActual.correcta) {
+
+        botonSeleccionado.classList.add("respuesta-correcta");
+
+        mensajeAdivinanza.textContent = "✅ ¡Respuesta correcta!";
+        mensajeAdivinanza.classList.add("mensaje-correcto");
+
+        respuestasCorrectasAdivinanzas++;
+
+    } else {
+
+        botonSeleccionado.classList.add("respuesta-incorrecta");
+
+        mensajeAdivinanza.textContent =
+            "❌ Respuesta incorrecta. La opción correcta está marcada en azul.";
+
+        mensajeAdivinanza.classList.add("mensaje-incorrecto");
+
+        respuestasIncorrectasAdivinanzas++;
+
+        botones.forEach(boton => {
+
+            if (boton.dataset.respuesta === preguntaActual.correcta) {
+                boton.classList.add("mostrar-correcta");
+            }
+
+        });
+    }
+
+    correctasAdivinanzas.textContent = respuestasCorrectasAdivinanzas;
+    incorrectasAdivinanzas.textContent = respuestasIncorrectasAdivinanzas;
+
+    btnSiguienteAdivinanza.disabled = false;
+}
+
+// ================= SIGUIENTE PREGUNTA =================
+
+function siguienteAdivinanza() {
+
+    indiceAdivinanza++;
+
+    if (indiceAdivinanza < adv.length) {
+
+        mostrarAdivinanza();
+
+    } else {
+
+        mostrarResultadoFinalAdivinanzas();
+
+    }
+}
+
+// ================= RESULTADO FINAL =================
+
+function mostrarResultadoFinalAdivinanzas() {
+
+    progresoAdivinanzas.style.width = "100%";
+
+    preguntaAdivinanza.textContent = "🏆 ¡Terminaste las adivinanzas!";
+
+  opcionesAdivinanza.innerHTML = `
+    <div style="
+        grid-column: 1 / -1;
+        padding: 25px;
+        background: #ffffff;
+        color: #111827;
+        border: 2px solid #38bdf8;
+        border-radius: 15px;
+        font-size: 21px;
+        line-height: 1.8;
+        box-shadow: 0 0 15px rgba(0,0,0,.15);
+    ">
+            <p>✅ Respuestas correctas: 
+                <strong>${respuestasCorrectasAdivinanzas}</strong>
+            </p>
+
+            <p>❌ Respuestas incorrectas: 
+                <strong>${respuestasIncorrectasAdivinanzas}</strong>
+            </p>
+
+            <p>🎯 Puntaje final: 
+                <strong>
+                    ${respuestasCorrectasAdivinanzas} de ${adv.length}
+                </strong>
+            </p>
+        </div>
+    `;
+
+    mensajeAdivinanza.textContent = "";
+
+    btnSiguienteAdivinanza.textContent = "🔄 Jugar nuevamente";
+    btnSiguienteAdivinanza.disabled = false;
+    btnSiguienteAdivinanza.onclick = reiniciarAdivinanzas;
+}
+
+// ================= REINICIAR =================
+
+function reiniciarAdivinanzas() {
+
+    indiceAdivinanza = 0;
+    respuestasCorrectasAdivinanzas = 0;
+    respuestasIncorrectasAdivinanzas = 0;
+    respuestaContestada = false;
+
+    correctasAdivinanzas.textContent = "0";
+    incorrectasAdivinanzas.textContent = "0";
+
+    btnSiguienteAdivinanza.textContent = "Siguiente ➡️";
+    btnSiguienteAdivinanza.onclick = siguienteAdivinanza;
+
+    mostrarAdivinanza();
+}
+
+// ================= INICIAR =================
+
+mostrarAdivinanza();
+
+
+</script>
+
+</body>
+</html>
+
+</script>
+
+</body>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://www.facebook.com/bic.tlacotepec?mibextid=ZbWKwL" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bic18tiic@gmail.com">bic18tiic@gmail.com</a></p>
+    <p>Teléfonos: (953) 124 2447 | (971) 102 0650</p>
+  </footer>
+</html>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="CSS/style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="CSS/script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+                    <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="Alfabeto.html">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="#">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #2c5364);
+    color: white;
+    text-align: center;
+}
+
+/* HEADER */
+header {
+
+    padding: 40px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+/* TARJETAS */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+}
+
+.card {
+    width: 260px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* IMAGEN MISMO TAMAÑO */
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.card button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+  </style>
+ </head>
+
+<body>
+
+<header>
+    <h1>Vocabulario de los animales</h1>
+  
+</header>
+
+<!-- TARJETAS -->
+<div class="container">
+
+    
+    <div class="card">
+        <img src="imagenesA/zancudo.jpg">
+        <h3>Tsikueñu</h3>
+        <p></p>
+        <audio id="a1">
+            <source src="audiosA/zancudo.mp3">
+        </audio>
+        <button onclick="a1.play()">🔊 Escuchar</button>
+    </div>
+
+
+<div class="card">
+        <img src="imagenesA/ardilla.jpg">
+        <h3>Kueñi</h5>
+        <p></p>
+        <audio id="a2">
+            <source src="audiosA/ardilla.mp3">
+        </audio>
+        <button onclick="a2.play()">🔊 Escuchar</button>
+    </div>
+
+
+<div class="card">
+        <img src="imagenesA/chapulín.jpg">
+        <h3>Tsika</h11>
+        <p></p>
+        <audio id="a4">
+            <source src="audiosA/chapulin.mp3">
+        </audio>
+        <button onclick="a4.play()">🔊 Escuchar</button>
+    </div>
+
+
+<div class="card">
+        <img src="imagenesA/colibri.jpg">
+        <h3>Ntsiyo'o</h13>
+        <p></p>
+        <audio id="a5">
+            <source src="audiosA/colibri .mp3">
+        </audio>
+        <button onclick="a5.play()">🔊 Escuchar</button>
+    </div>
+
+
+<div class="card">
+        <img src="imagenesA/guajolota.jpg">
+        <h3>Koni</h16>
+        <p></p>
+        <audio id="a6">
+            <source src="audiosA/guajolota.mp3">
+        </audio>
+        <button onclick="a6.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/guajolote.jpg">
+        <h3>ko'lo</h17>
+        <p></p>
+        <audio id="a7">
+            <source src="audiosA/guajolote.mp3">
+        </audio>
+        <button onclick="a7.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/gato.jpg">
+        <h3>Vilu</h23>
+        <p></p>
+        <audio id="a8">
+            <source src="audiosA/gato.mp3">
+        </audio>
+        <button onclick="a8.play()">🔊 Escuchar</button>
+    </div>
+
+
+
+<div class="card">
+        <img src="imagenesA/lagartija.jpg">
+        <h3>Lana´ña  </h28>
+        <p></p>
+        <audio id="a9">
+            <source src="audiosA/lagartija.mp3">
+        </audio>
+        <button onclick="a9.play()">🔊 Escuchar</button>
+    </div>
+
+
+<div class="card">
+        <img src="imagenesA/perro.jpg">
+        <h3>Ina</h37>
+        <p></p>
+        <audio id="a37">
+            <source src="audiosA/perro.mp3">
+        </audio>
+        <button onclick="a37.play()">🔊 Escuchar</button>
+    </div>
+ 
+<div class="card">
+        <img src="imagenesA/araña.jpg">
+        <h3>Tsindoo</h46>
+        <p></p>
+        <audio id="a10">
+            <source src="audiosA/araña.mp3">
+        </audio>
+        <button onclick="a10.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/araña capulina.jpg">
+        <h3>Tsiñu´u</h47>
+        <p></p>
+        <audio id="a11">
+            <source src="audiosA/araña capulina.mp3">
+        </audio>
+        <button onclick="a11.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/Ciempies (1).jpg ">
+        <h3>Koo yuja</h49>
+        <p></p>
+        <audio id="a12">
+            <source src="audiosA/cien pies .mp3">
+        </audio>
+        <button onclick="a12.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/gusano de maguey.jpg">
+        <h3>Tsinda´a</h50>
+        <p></p>
+        <audio id="a13">
+            <source src="audiosA/gusano de maguey.mp3">
+        </audio>
+        <button onclick="a13.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/aventurilla.jfif  ">
+        <h3>Longrii</h52>
+        <p></p>
+        <audio id="a14">
+            <source src="audiosA/aventurilla.mp3">
+        </audio>
+        <button onclick="a14.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/cenzontle.jpg">
+        <h3>Lasaa nuu tatyi</h53>
+        <p></p>
+        <audio id="a15">
+            <source src="audiosA/cenzontle.mp3">
+        </audio>
+        <button onclick="a15.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/zopilote.jpg">
+        <h3>Tyoko</h54>
+        <p></p>
+        <audio id="a16">
+            <source src="audiosA/Zopilote.mp3">
+        </audio>
+        <button onclick="a16.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/coyote.jpg">
+        <h3>Vo´o</h56>
+        <p></p>
+        <audio id="a17">
+            <source src="audiosA/coyote.mp3">
+        </audio>
+        <button onclick="a17.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/tlacuache.jpg">
+        <h3>Jako</h58>
+        <p></p>
+        <audio id="a18">
+            <source src="audiosA/tlacuache.mp3">
+        </audio>
+        <button onclick="a18.play()">🔊 Escuchar</button>
+    </div>
+
+
+<div class="card">
+        <img src="imagenesA/vibora.jpg">
+        <h3>Koo</h62>
+        <p></p>
+        <audio id="a20">
+            <source src="audiosA/vibora.mp3">
+        </audio>
+        <button onclick="a20.play()">🔊 Escuchar</button>
+    </div>
+
+<div class="card">
+        <img src="imagenesA/vibora de cascabel.jpg">
+        <h3>Koo kaa</h63>
+        <p></p>
+        <audio id="a21">
+            <source src="audiosA/vibora de cascabel.mp3">
+        </audio>
+        <button onclick="a21.play()">🔊 Escuchar</button>
+    </div>
+
+    <div class="card">
+        <img src="imagenesA/renacuajos.jpg">
+        <h3>Lava´va</h64>
+        <p></p>
+        <audio id="a22">
+            <source src="audiosA/renacuajo.mp3">
+        </audio>
+        <button onclick="a22.play()">🔊 Escuchar</button>
+    </div>
+
+</div>
+
+
+
+
+
+

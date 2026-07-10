@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="CSS/style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="CSS/script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+ <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="Alfabeto.html">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">Saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="leccion de lecto.html">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+
+<head>
+<title>Saberes Comunitarios de San Agustìn Tlacotepec </title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #edf2f7, #d6e4f0);
+    color:#333;
+}
+
+/* ENCABEZADO */
+
+header{
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+}
+
+header h1{
+    font-size:3rem;
+    margin-bottom:10px;
+    letter-spacing:2px;
+}
+
+header p{
+    font-size:1.1rem;
+    opacity:0.9;
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+/* TARJETAS */
+
+.apartado{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    transition:0.4s ease;
+}
+
+.apartado:hover{
+    transform:translateY(-10px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* IMÁGENES */
+
+.apartado img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+/* CONTENIDO */
+
+.contenido{
+    padding:25px;
+}
+
+.contenido h2{
+    font-size:1.8rem;
+    margin-bottom:15px;
+    color:#1e3c72;
+}
+
+.contenido p{
+    text-align:justify;
+    line-height:1.8;
+    font-size:1rem;
+    color:#444;
+}
+
+/* PIE DE PÁGINA */
+
+footer{
+    background:#1e3c72;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    font-size:0.95rem;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    header h1{
+        font-size:2.2rem;
+    }
+
+    .contenido h2{
+        font-size:1.5rem;
+    }
+
+}
+
+</style>
+
+<body>
+
+<header>
+    <h1>Saberes Comunitarios de San Agustín Tlacotepec</h1>
+    <p>Conservando la historia, tradiciones y cultura de nuestra comunidad</p>
+</header>
+
+<div class="contenedor">
+
+    <!-- TARJETA 1 -->
+
+    <div class="apartado">
+
+        <img src="IMAGEN/asentamiento.webp" alt="Historia de la comunidad">
+
+        <div class="contenido">
+
+            <h2>Historia de la comunidad</h2>
+
+            <p>
+                El señor Celestino López, originario de San Agustín Tlacotepec, nos habló sobre cómo han cambiado los asentamientos de la comunidad a lo largo del tiempo.
+             Menciona que el primer asentamiento se ubicó en el paraje “Yosoyoko”. Posteriormente, la población se trasladó a “Yukuiti”, cerca de la confluencia de los ríos. 
+             Más tarde, se establecieron en “Bikiñuu”, lugar donde aún se encuentran vestigios. Con el paso del tiempo, la comunidad se movió a lo que hoy conocemos como “Tixi”, en la actualidad,
+             se encuentra asentada en el centro. Este conocimiento se respalda por los hallazgos en la ranchería de "Tixi", donde se han encontrado restos de un piso antiguo,
+             así como una imagen de San Agustín. Sin embargo, no se cuenta con una fecha exacta para estos registros.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- TARJETA 2 -->
+
+    <div class="apartado">
+
+        <img src="IMAGEN/boda.jpg" alt="Casamiento">
+
+        <div class="contenido">
+
+            <h2>Casamiento</h2>
+
+            <p>
+               En cuanto al casamiento, el señor Celestino López relata que, antiguamente, el novio debía ir a pedir la mano de la novia llevando velas. Al llegar a la casa de los padres de ella, tocaba la puerta; si se la abrían, era señal de aceptación por parte de la familia. Después, se dirigían directamente al altar, donde encendían las velas e iniciaban el diálogo básico de la pedida de mano. Durante la plática, el novio ofrecía a los padres de la novia una copa de aguardiente, con la intención —como menciona don Celestino— de “remojarles la garganta” y propiciar que aceptaran. Una vez obtenida la autorización, se convocaba a los padrinos, acompañantes y demás personas interesadas a unirse a la “revista”, que consiste en un arco adornado donde hay bebidas como pulque, cerveza, aguardiente y cigarros. Posteriormente, todos se trasladaban a la casa de los padrinos para la comida. Cabe destacar que los alimentos eran enviados por los padres de los novios, ya que era su responsabilidad, mientras que la convivencia se realizaba en casa de los padrinos, quienes otorgaban la bendición. Al llegar a la casa de los novios, todos debían pasar por la “revista”. Más adelante, se entregaban regalos a los padrinos, siendo el guajolote uno de los más importantes. Después hacían su aparición los mascareros, quienes animaban la celebración con chistes, bailes y chascarrillos. Don Celestino menciona que los músicos y los mascareros debían coordinarse bien, ya que, de lo contrario, los padrinos los “castigaban” con cervezas, emborrachándolos para evitar que los mascareros hicieran bromas en doble sentido sobre ellos. Finalmente, al segundo día, durante el recalentado, los novios llevaban un chivo o un borrego a la casa de los padrinos. En esta ocasión, nuevamente participaban los mascareros, quienes guiaban al animal acompañados por músicos, sin importar el número, que podía variar entre dos y cuatro.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+    <!-- TARJETA 3 -->
+
+    <div class="apartado">
+
+        <img src="IMAGEN/carnavaL.jpg" alt="Casamiento">
+
+        <div class="contenido">
+
+            <h2>Carnaval</h2>
+
+            <p>
+           Durante la entrevista realizada con el señor Luis quien es un habitante de la comunidad, se obtuvo información acerca de cómo se llevan a cabo las festividades tradicionales 
+             relacionadas con el carnaval, nos comentó que depende la fecha en que caiga el carnaval, desde enero o febrero comienzan los preparativos de la fiesta, mencionó que los 
+             habitantes recorren casa por casa para recolectar apoyo económico, el cual se utiliza para cubrir los gastos de la fiesta y de la ranchería, lo que sobra se guarda para otras
+             necesidades de la comunidad.  Después inician las actividades religiosas, como la novena, donde las personas se reúnen en la casa comunitaria junto con el comité de festejo,
+             posteriormente, todos se dirigen a la iglesia y después a la presidencia, donde participan con música y celebraciones. Al terminar estas actividades, cada persona regresa a su rancho.
+             También explicó que la culminación de estas festividades ocurre en viernes, el pueblo es el encargado de ofrecer la comida a todos los asistentes. De igual manera, 
+             señaló que durante varios días las rancherías participan ofreciendo desayunos, comidas y cenas en diferentes lugares como Buenavista, Yundi, Tixi, La junta del río y Ndicayuco.
+             Cada ranchería tiene la responsabilidad de atender a las personas que participan en la celebración.
+
+        
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+ <!-- TARJETA 4 -->
+
+    <div class="apartado">
+
+        <img src="IMAGEN" alt="Casamiento">
+
+        <div class="contenido">
+
+            <h2>Ritual del agua </h2>
+
+            <p>
+           Durante el mes de mayo, en la comunidad se lleva a cabo una tradición muy importante relacionada con la petición de lluvia para las cosechas y el bienestar de las familias. Los habitantes suben al cerro para realizar una ceremonia especial dedicada a pedir que lleguen buenas lluvias durante la temporada agrícola. Esta actividad representa una costumbre ancestral que ha sido transmitida de generación en generación y que todavía conserva un gran valor cultural y espiritual para las personas de la comunidad.
+
+Para realizar esta ceremonia, las personas acostumbran a llevar dos borregos. Uno de ellos se utiliza como ofrenda durante el ritual que se realiza en el cerro, mientras que el otro se ocupa para preparar alimentos que posteriormente son compartidos entre los asistentes. Durante toda la actividad se realizan rezos y peticiones dirigidas a la naturaleza y a las fuerzas espirituales, con la intención de que las lluvias sean abundantes y beneficien las siembras.
+
+Asimismo, en algunas ocasiones se invita a una orquesta para acompañar la ceremonia. La música tradicional se escucha durante gran parte del día, creando un ambiente de convivencia, respeto y alegría entre las familias que participan. Mientras algunos realizan los rezos, otras personas colaboran preparando la comida o apoyando en la organización de la actividad comunitaria.
+
+Al finalizar la ceremonia y las actividades del día, las personas regresan nuevamente a la comunidad. Esta tradición no solamente tiene un significado religioso o espiritual, sino que también fortalece la unión entre los habitantes, promueve el respeto por las costumbres y mantiene viva la identidad cultural de la comunidad.
+
+        
+            </p>
+
+        </div>
+
+    </div>
+
+
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+

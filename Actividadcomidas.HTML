@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+        <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="CSS/style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="CSS/script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+ <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">Saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="leccion de lecto.html">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+<head>
+    <meta charset="UTF-8">
+    <title>Comidas en Mixteco – San Agustín Tlacotepec</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+        }
+
+        header {
+            background-color: #024d2c;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        header img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        h1 {
+            margin-top: 15px;
+        }
+
+        .contenedor {
+            width: 95%;
+            max-width: 1000px;
+            margin: auto;
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .comida {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #0a602f;
+        }
+
+        .comida img {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        h3 {
+            margin: 0;
+        }
+
+        #actividad {
+            margin-top: 40px;
+            background: #fff4d0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #resultado {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #012814;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+   <!-- DESAFÍO DE TRADUCCIÓN ESTILO TLACOTEPEC -->
+<div id="actividad-pro">
+    <div class="header-reto">
+        <h3>✨ Desafío de Traducción ✨</h3>
+        <p>¿Qué tanto has aprendido hoy?</p>
+    </div>
+
+    <div class="stats-container">
+        <div class="stat-box">Puntos: <span id="puntos">0</span></div>
+        <div class="stat-box">Tiempo: <span id="timer-bar">10</span>s</div>
+    </div>
+    
+    <div id="pregunta-container">
+        <p class="pregunta-texto">¿Cómo se dice en mixteco:<br><strong id="palabra-espanol">...</strong>?</p>
+        <div id="opciones" class="grid-opciones">
+            <!-- Botones dinámicos -->
+        </div>
+    </div>
+    
+    <p id="feedback"></p>
+    <button id="btn-siguiente" onclick="nuevaPregunta()" style="display:none;">Siguiente ➔</button>
+</div>
+
+<style>
+    /* Ajuste para combinar con tu diseño de tarjetas blancas */
+    #actividad-pro {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        max-width: 500px;
+        margin: 30px auto;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra suave como tus tarjetas */
+        border: 1px solid #eee;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .header-reto h3 {
+        margin: 0;
+        color: #1a4731; /* Un verde oscuro que suele ir con temas comunitarios/escolares */
+    }
+
+    .stats-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 15px 0;
+    }
+
+    .stat-box {
+        background: #f8f9fa;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        font-weight: bold;
+        color: #555;
+        border: 1px solid #ddd;
+    }
+
+    .pregunta-texto {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+    }
+
+    .grid-opciones {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .btn-opcion {
+        padding: 15px 10px;
+        border: 1px solid #ddd;
+        background: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.95em;
+        transition: all 0.2s ease;
+    }
+
+    .btn-opcion:hover {
+        background: #f0f7f4;
+        border-color: #1a4731;
+    }
+
+    /* Colores de acierto/error */
+    .btn-opcion.correcto {
+        background: #d4edda !important;
+        border-color: #28a745 !important;
+        color: #155724;
+    }
+
+    .btn-opcion.incorrecto {
+        background: #f8d7da !important;
+        border-color: #dc3545 !important;
+        color: #721c24;
+    }
+
+    #btn-siguiente {
+        margin-top: 20px;
+        background: #1a4731;
+        color: white;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    // Diccionario actualizado con los nombres exactos de tu lista
+    const diccionario = [
+        { es: "Pozole", mix: "Duxa" },
+        { es: "Caldo de pollo", mix: "Deminu chu’un" },
+        { es: "Tortilla", mix: "Stá" },
+        { es: "Tamal", mix: "Staña’ama" },
+        { es: "Sope", mix: "Staxi’i" },
+        { es: "Totopos", mix: "Lu’u" },
+        { es: "Barbacoa", mix: "Ñu’u jitnu" },
+        { es: "Tortilla con Salsa", mix: "Staa teya´a" },
+        { es: "Frijol molido", mix: "Dejunun daxi" }, 
+        { es: "Salsa de semillas de calabaza", mix: "Teja’a chikun" },
+    ];
+
+    let preguntaActual = {};
+    let puntos = 0;
+    let tiempoRestante = 10;
+    let intervalo;
+
+    // Función de sonido que ya tenías
+    function sonido(frecuencia, duracion){
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.value = frecuencia;
+        osc.type = "sine";
+        osc.start();
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duracion);
+        setTimeout(()=>{ ctx.close(); }, duracion*1000);
+    }
+
+    function nuevaPregunta() {
+        clearInterval(intervalo);
+        tiempoRestante = 10;
+        document.getElementById("timer-bar").textContent = tiempoRestante;
+        document.getElementById("feedback").textContent = "";
+        document.getElementById("btn-siguiente").style.display = "none";
+        
+        preguntaActual = diccionario[Math.floor(Math.random() * diccionario.length)];
+        document.getElementById("palabra-espanol").textContent = preguntaActual.es;
+
+        let opciones = [preguntaActual.mix];
+        while(opciones.length < 4) {
+            let azar = diccionario[Math.floor(Math.random() * diccionario.length)].mix;
+            if(!opciones.includes(azar)) opciones.push(azar);
+        }
+        opciones.sort(() => Math.random() - 0.5);
+
+        const contenedor = document.getElementById("opciones");
+        contenedor.innerHTML = "";
+        opciones.forEach(opt => {
+            const btn = document.createElement("button");
+            btn.classList.add("btn-opcion");
+            btn.textContent = opt;
+            btn.onclick = () => verificarRespuesta(opt, btn);
+            contenedor.appendChild(btn);
+        });
+
+        intervalo = setInterval(() => {
+            tiempoRestante--;
+            document.getElementById("timer-bar").textContent = tiempoRestante;
+            if(tiempoRestante <= 0) {
+                clearInterval(intervalo);
+                verificarRespuesta(null, null);
+            }
+        }, 1000);
+    }
+
+    function verificarRespuesta(elegida, btn) {
+        clearInterval(intervalo);
+        const botones = document.querySelectorAll(".btn-opcion");
+        botones.forEach(b => b.disabled = true);
+
+        if(elegida === preguntaActual.mix) {
+            btn.classList.add("correcto");
+            document.getElementById("feedback").textContent = "¡Correcto! ✨";
+            puntos += 10;
+            sonido(800, 0.2);
+        } else {
+            if(btn) btn.classList.add("incorrecto");
+            document.getElementById("feedback").textContent = `Era: ${preguntaActual.mix}`;
+            sonido(200, 0.3);
+        }
+        
+        document.getElementById("puntos").textContent = puntos;
+        document.getElementById("btn-siguiente").style.display = "inline-block";
+    }
+
+    // Iniciar
+    nuevaPregunta();
+</script>
+</body>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>

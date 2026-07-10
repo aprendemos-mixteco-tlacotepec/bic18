@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos Aprendemos Mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="CSS/style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="CSS/script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+                    <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="Alfabeto.html">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">Saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="leccion de lecto.html">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#4facfe,#00f2fe);
+padding:20px;
+}
+
+.contenedor{
+max-width:1000px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+h1{
+text-align:center;
+color:#0d47a1;
+margin-bottom:20px;
+}
+
+h2{
+color:#1565c0;
+margin:20px 0;
+}
+
+h3{
+color:#bc09e9;
+margin:20px 0;
+}
+
+.lectura{
+background:#f5f9ff;
+padding:20px;
+border-left:8px solid #2196f3;
+border-radius:10px;
+line-height:1.8;
+font-size:20px;
+}
+
+.preguntas{
+margin-top:20px;
+padding:20px;
+background:#fff8e1;
+border-radius:10px;
+}
+
+.pregunta{
+margin-bottom:15px;
+font-size:18px;
+}
+
+.vocal{
+text-align:center;
+font-size:90px;
+font-weight:bold;
+color:#ff5722;
+margin:30px 0;
+}
+
+.silabas{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.silaba{
+background:#4caf50;
+color:white;
+padding:15px;
+text-align:center;
+font-size:28px;
+font-weight:bold;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+.silaba:hover{
+transform:scale(1.08);
+background:#388e3c;
+}
+
+.tabla{
+margin-top:30px;
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+td{
+border:2px solid #f38021;
+padding:15px;
+text-align:center;
+font-size:28px;
+font-weight:bold;
+}
+
+.btn{
+display:block;
+margin:40px auto;
+padding:15px 40px;
+font-size:22px;
+border:none;
+border-radius:50px;
+background:#ff9800;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+background:#f57c00;
+transform:scale(1.05);
+}
+
+#mensaje{
+display:none;
+text-align:center;
+font-size:30px;
+font-weight:bold;
+color:green;
+margin-top:20px;
+}
+
+.contador{
+font-size:24px;
+color:red;
+text-align:center;
+margin-top:10px;
+}
+/* Elimina los márgenes y rellenos por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo del contenedor principal */
+.menu-navegacion {
+    background-color: #27c7e4;
+    font-family: Arial, sans-serif;
+    padding: 10px 0;
+}
+
+/* Alinea la lista horizontalmente */
+.menu-navegacion ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 12px; /* Espacio entre elementos */
+}
+
+/* Estilo de los enlaces */
+.menu-navegacion a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.menu-navegacion a:hover {
+    background-color: #00bcd4;
+}
+.imagen{
+    text-align:center;
+    margin:35px 0;
+}
+
+.imagen img{
+    width:300px;
+    max-width:100%;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+</style>
+</head>
+
+<body>
+   
+
+<div class="contenedor">
+
+<h1>Lección 3</h1>
+ <nav class="menu-navegacion">
+    <ul>
+        <li><a href="leccion de lecto.html">Inicio</a></li>
+        <li><a href="leccion 1.html">Lección 1</a></li>
+        <li><a href="leccion2.html">Lección 2</a></li>
+        <li><a href="leccion3.html">Lección 3</a></li>
+        <li><a href="leccion4.html">lección 4</a></li>
+        <li><a href="leccion5.html">Lección 5</a></li>
+        <li><a href="leccion6.html">Lección 6</a></li>
+        <li><a href="leccion7.html">Lección 7</a></li>
+        <li><a href="leccion8.html">lección 8</a></li>
+        <li><a href="leccion9.html">Lección 9</a></li>
+        <li><a href="leccion10.html">Lección 10</a></li>
+        
+        
+    </ul>
+</nav>
+<h2>nuni</h2>
+
+<div class="imagen">
+    <img src="imagenle/maiz.webp" alt="Descripción breve de la imagen">
+</div>
+
+<h2 id="lectura">
+Tata Chanu kastnu'u_te nuu tee vekoo kuechi ka, ja oo uu nini; nuni ne'e, ji'in nini ja chi'i_o savi, nuni ne'e ma uni ni yoo te kuu.
+
+</h2>
+
+<h2>¿Nasaa yoo te kuu tata neꞌe ma?</h2>
+
+<button onclick="verificarSeleccion()">Verificar respuesta</button>
+
+<p id="resultado">   </p>
+
+<!-- Audios opcionales -->
+<audio id="correcto" src="audios/correcto.mp3"></audio>
+<audio id="error" src="audios/error.mp3"></audio>
+
+<script>
+function verificarSeleccion() {
+
+    let seleccion = window.getSelection().toString().trim();
+
+    let respuestaCorrecta = "Te nana_ña jito_ña ichi Ana_ña.";
+
+    let resultado = document.getElementById("resultado");
+
+    if (seleccion === respuestaCorrecta) {
+
+        resultado.innerHTML = "✅ ¡Correcto!";
+        resultado.style.color = "green";
+
+        let audioCorrecto = document.getElementById("correcto");
+        if(audioCorrecto) audioCorrecto.play();
+
+    } else if (seleccion === "") {
+
+        resultado.innerHTML = "⚠️ Debes subrayar una oración.";
+        resultado.style.color = "orange";
+
+    } else {
+
+        resultado.innerHTML = "❌ Inténtalo nuevamente.";
+        resultado.style.color = "red";
+
+        let audioError = document.getElementById("error");
+        if(audioError) audioError.play();
+    }
+}
+</script>
+
+<h2>forma palabras en el cuadro que se ilustra</h2>
+
+<!-- INICIO DEL JUEGO DE FORMAR PALABRAS -->
+
+<style>
+#juego-palabras{
+    text-align:center;
+    margin:20px auto;
+}
+
+#jp-palabra{
+    font-size:32px;
+    font-weight:bold;
+    min-height:40px;
+    margin-bottom:15px;
+}
+
+#juego-palabras .jp-tablero{
+    display:grid;
+    grid-template-columns:repeat(3,70px);
+    gap:10px;
+    justify-content:center;
+    margin:20px 0;
+}
+
+#juego-palabras .jp-celda{
+    width:70px;
+    height:70px;
+    border:2px solid #333;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    font-weight:bold;
+    cursor:pointer;
+    user-select:none;
+}
+
+#juego-palabras .jp-celda:hover{
+    transform:scale(1.08);
+}
+
+#juego-palabras .jp-seleccionada{
+    background:#ffe082;
+}
+
+#jp-resultado{
+    font-size:24px;
+    font-weight:bold;
+    margin-top:15px;
+}
+</style>
+
+<style>
+
+/* CONTENEDOR GENERAL */
+
+.jp-contenedor{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+/* TABLERO DE IMÁGENES */
+
+.jp-imagenes{
+    display:grid;
+    grid-template-columns:repeat(3,120px);
+    gap:15px;
+}
+
+.jp-imagen{
+    width:120px;
+    height:120px;
+    border:4px solid #ccc;
+    border-radius:15px;
+    overflow:hidden;
+    transition:0.5s;
+}
+
+.jp-imagen img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* EFECTO DE LUZ */
+
+.jp-activa{
+    border-color:gold;
+    box-shadow:
+        0 0 10px gold,
+        0 0 20px gold,
+        0 0 40px yellow;
+    transform:scale(1.08);
+}
+
+/* JUEGO */
+
+#juego-palabras{
+    text-align:center;
+}
+
+#jp-palabra{
+    font-size:32px;
+    font-weight:bold;
+    min-height:40px;
+    margin-bottom:15px;
+}
+
+#juego-palabras .jp-tablero{
+    display:grid;
+    grid-template-columns:repeat(3,70px);
+    gap:10px;
+    justify-content:center;
+    margin:20px 0;
+}
+
+#juego-palabras .jp-celda{
+    width:70px;
+    height:70px;
+    border:2px solid #333;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    font-weight:bold;
+    cursor:pointer;
+    user-select:none;
+}
+
+#juego-palabras .jp-celda:hover{
+    transform:scale(1.08);
+}
+
+#juego-palabras .jp-seleccionada{
+    background:#ffe082;
+}
+
+#jp-resultado{
+    font-size:24px;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+</style>
+
+<div class="jp-contenedor">
+
+    <!-- TABLERO DE IMÁGENES -->
+
+    <div class="jp-imagenes">
+
+        <div id="img-perro" class="jp-imagen">
+            <img src="imagenle/perro.webp" alt="">
+        </div>
+
+        <div id="img-adentro" class="jp-imagen">
+            <img src="imagenle/adentro.webp" alt="">
+        </div>
+
+        <div id="img-maiz" class="jp-imagen">
+            <img src="imagenle/maiz.webp" alt="">
+        </div>
+
+        <div id="img-escuchando" class="jp-imagen">
+            <img src="imagenle/escuchando.webp" alt="">
+        </div>
+
+        <div id="img-cigarro" class="jp-imagen">
+            <img src="imagenle/cigarro.webp" alt="">
+        </div>
+
+
+    </div>
+
+    <!-- JUEGO -->
+
+    <div id="juego-palabras">
+
+        <h2>Forma una palabra</h2>
+
+        <div id="jp-palabra"></div>
+
+        <div class="jp-tablero">
+
+            <div class="jp-celda">u</div>
+            <div class="jp-celda">n</div>
+            <div class="jp-celda">i</div>
+            
+
+            <div class="jp-celda">n</div>
+            <div class="jp-celda">i</div>
+            <div class="jp-celda">n</div>
+            
+
+            <div class="jp-celda">a</div>
+            <div class="jp-celda">u</div>
+            <div class="jp-celda">a</div>
+           
+        
+        </div>
+
+        <button onclick="jpVerificar()">Verificar</button>
+        <button onclick="jpLimpiar()">Limpiar</button>
+
+        <p id="jp-resultado"></p>
+
+    </div>
+
+</div>
+
+<audio id="jp-correcto" src="audios/correcto.mp3"></audio>
+<audio id="jp-error" src="audios/error.mp3"></audio>
+
+<script>
+
+const jpPalabrasValidas = [
+    "ina",
+    "ini",
+    "nini",
+    "nuni",
+    "inu",
+];
+
+let jpActual = "";
+
+document.querySelectorAll("#juego-palabras .jp-celda").forEach(celda => {
+
+    celda.addEventListener("click", () => {
+
+        jpActual += celda.textContent.toLowerCase();
+
+        celda.classList.add("jp-seleccionada");
+
+        document.getElementById("jp-palabra").textContent = jpActual;
+
+    });
+
+});
+
+function jpVerificar(){
+
+    const resultado = document.getElementById("jp-resultado");
+
+    if(jpPalabrasValidas.includes(jpActual)){
+
+        resultado.innerHTML = "✅ ¡Correcto!";
+        resultado.style.color = "green";
+
+        if(jpActual === "ina"){
+            document.getElementById("img-perro").classList.add("jp-activa");
+        }
+
+        if(jpActual === "ini"){
+            document.getElementById("img-adentro").classList.add("jp-activa");
+        }
+
+        if(jpActual === "nini"){
+            document.getElementById("img-escuchando").classList.add("jp-activa");
+        }
+
+         if(jpActual === "nuni"){
+            document.getElementById("img-maiz").classList.add("jp-activa");
+        }
+
+          if(jpActual === "inu"){
+            document.getElementById("img-cigarro").classList.add("jp-activa");
+        }
+
+
+        document.getElementById("jp-correcto").play();
+
+    }else{
+
+        resultado.innerHTML = "❌ Incorrecto";
+        resultado.style.color = "red";
+
+        document.getElementById("jp-error").play();
+    }
+}
+
+function jpLimpiar(){
+
+    jpActual = "";
+
+    document.getElementById("jp-palabra").textContent = "";
+
+    document.querySelectorAll("#juego-palabras .jp-celda").forEach(celda=>{
+        celda.classList.remove("jp-seleccionada");
+    });
+
+    document.getElementById("jp-resultado").textContent = "";
+}
+
+</script>
+<footer>
+<p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+<p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+<p>Facebook: <a href="https://www.facebook.com/bic.tlacotepec?mibextid=ZbWKwL" target="_blank">@BICSanAgustinTlacotepec</a></p>
+<p>Correo: <a href="mailto:bic18tiic@gmail.com">bic18tiic@gmail.com</a></p>
+<p>Teléfonos: (953) 124 2447 | (971) 102 0650</p>
+</footer>

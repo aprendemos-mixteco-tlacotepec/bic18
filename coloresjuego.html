@@ -1,0 +1,192 @@
+No">
+           <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juntos aprendemos mixteco - BIC 18</title>
+
+<link rel="stylesheet" href="CSS/style2.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script defer src="CSS/script.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+ <img src="logotipos/juntos aprendamos mixteco1.png" alt="Logo CSS" class="logo-header">
+<span>Aprendemos Mixteco</span>
+</div>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="Alfabeto.html">Alfabeto ilustrado</a></li>
+<li><a href="saberes.html">saberes</a></li>
+<li><a href="MUSIC.HTML">Canciones</a></li>
+<li><a href="juegos.html">Juegos</a></li>
+<li><a href="leccion de lecto.html">Lecto-escritura</a></li>
+<li><a href="reseña.html">Reseña</a></li>
+</ul>
+
+</nav>
+
+</header>
+<meta charset="UTF-8">
+<title>Juego interactivo - Lengua Mixteca</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0748d3, #660769);
+    text-align: center;
+    padding: 20px;
+}
+h1{
+    color: #e2deec;
+}
+.container{
+    background: rgb(22, 210, 216);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.question{
+    margin-bottom: 20px;
+}
+button{
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: #7c7b7a;
+    color: rgb(3, 3, 3);
+    cursor: pointer;
+}
+button:hover{
+    background-color: #dd5757;
+}
+#resultado{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Juego interactivo: Lengua mixteca sobre las partes del cuerpo 🎉</h1>
+
+<div class="container">
+
+<div class="question">
+<p><b>1.-</b> No existo en el arcoíris,
+pero nací cuando el día muere.
+Si mezclas pasión con misterio,
+mi tono aparece.</p>
+<button onclick="responder(this, true)">Ndsi´i</button>
+<button onclick="responder(this, false)">Kuaan ya´a</button>
+<button onclick="responder(this, false)">Kuaan</button>
+</div>
+
+<div class="question">
+<p><b>2.-</b> No soy sol, pero brillo.
+No soy limón, pero existo.
+Si el oro tuviera sombra,
+tal vez sería lo que has visto.</p>
+<button onclick="responder(this, false)">Yi´i</button>
+<button onclick="responder(this, false)">Kuii</button>
+<button onclick="responder(this, true)">Kuaan</button>
+</div>
+
+<div class="question">
+<p><b>3.-</b> No tierra sin ser barro,
+soy madera sin ser árbol.
+En otoño me presumen
+cuando las hojas caen del campo.</p>
+<button onclick="responder(this, false)">Yi´i</button>
+<button onclick="responder(this, true)">Ya´a</button>
+<button onclick="responder(this, false)">Ndsi´i</button>
+</div>
+
+<div class="question">
+<p><b>4.-</b> No soy noche, pero la acompaño.
+No soy humo, pero me parezco.
+Entre blanco y negro vivo,
+y en la duda siempre crezco</p>
+<button onclick="responder(this, true)">Yi´i</button>
+<button onclick="responder(this, false)">Kuaan</button>
+<button onclick="responder(this, false)">Ya´a</button>
+</div>
+
+<button onclick="mostrarResultado()">Ver Resultado</button>
+<button onclick="reiniciar()">Reiniciar</button>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+let puntaje = 0;
+let respondidas = 0;
+
+function responder(boton, correcta){
+    if(boton.classList.contains("respondido")) return;
+
+    let botones = boton.parentElement.querySelectorAll("button");
+    botones.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.add("respondido");
+    });
+
+    if(correcta){
+        puntaje++;
+        boton.style.backgroundColor = "green";
+    } else {
+        boton.style.backgroundColor = "red";
+    }
+
+    respondidas++;
+}
+
+function mostrarResultado(){
+    let mensaje = "";
+    if(respondidas < 4){
+        mensaje = "⚠️ Responde todas las preguntas primero.";
+    } else {
+        if(puntaje == 4){
+            mensaje = "🏆 ¡Excelente! Sigue así, eres muy bueno para esto.";
+        } else if(puntaje >= 2){
+            mensaje = "👍 ¡Muy bien estas progresando ya te falta poco.";
+        } else {
+            mensaje = "📚 No te sientas mal y sigue aprendiendo.";
+        }
+        mensaje += "<br>Puntaje: " + puntaje + " / 4";
+    }
+    document.getElementById("resultado").innerHTML = mensaje;
+}
+
+function reiniciar(){
+    location.reload();
+}
+</script>
+
+</body>
+<footer>
+    <p><strong>Bachillerato Integral Comunitario de San Agustín Tlacotepec</strong></p>
+    <p>Dirección: Calle Principal s/n, San Agustín Tlacotepec, Oaxaca</p>
+    <p>Facebook: <a href="https://facebook.com/BICSanAgustinTlacotepec" target="_blank">@BICSanAgustinTlacotepec</a></p>
+    <p>Correo: <a href="mailto:bicsanagustin@gmail.com">bicsanagustin@gmail.com</a></p>
+    <p>Teléfonos: (953) 123-4567 | (953) 765-4321</p>
+  </footer>
+</html>

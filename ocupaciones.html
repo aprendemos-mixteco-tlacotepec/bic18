@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f4f6f5;
+color:#222;
+min-height:100vh;
+padding-bottom:100px;
+}
+
+/* LOGIN */
+
+#login{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+gap:15px;
+padding:20px;
+text-align:center;
+}
+
+.logo{
+font-size:70px;
+}
+
+#login h1{
+color:#2e7d32;
+font-size:35px;
+}
+
+#login input{
+width:260px;
+padding:12px;
+border-radius:10px;
+border:1px solid #ccc;
+font-size:16px;
+}
+
+#login button{
+padding:12px 30px;
+border:none;
+border-radius:10px;
+background:#2e7d32;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+/* TOPBAR */
+
+.topbar{
+position:sticky;
+top:0;
+background:white;
+display:flex;
+justify-content:space-between;
+padding:10px;
+border-bottom:1px solid #ddd;
+z-index:100;
+}
+
+.topbox{
+background:#f1f1f1;
+padding:8px 12px;
+border-radius:10px;
+font-weight:bold;
+}
+
+/* SECCIONES */
+
+.section{
+display:none;
+padding:15px;
+}
+
+.active{
+display:block;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:15px;
+}
+
+/* TARJETAS */
+
+.card{
+background:white;
+border-radius:15px;
+padding:15px;
+text-align:center;
+border:1px solid #ddd;
+transition:.2s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:80px;
+height:80px;
+object-fit:contain;
+}
+
+.card h3{
+margin-top:10px;
+font-size:20px;
+}
+
+.mix{
+color:#2e7d32;
+font-weight:bold;
+margin-top:5px;
+}
+
+.card button{
+margin-top:10px;
+padding:10px;
+width:100%;
+border:none;
+border-radius:10px;
+background:#2e7d32;
+color:white;
+cursor:pointer;
+}
+
+/* MEMORAMA */
+
+.mem-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+gap:10px;
+margin-top:20px;
+}
+
+.mem-card{
+height:120px;
+background:white;
+border:1px solid #ccc;
+border-radius:12px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+transition:.2s;
+padding:5px;
+text-align:center;
+}
+
+.mem-card:hover{
+transform:scale(1.05);
+}
+
+.mem-card img{
+width:50px;
+height:50px;
+object-fit:contain;
+margin-bottom:5px;
+}
+
+.ok{
+background:#c8e6c9;
+}
+
+/* QUIZ */
+
+#quiz{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:20px;
+}
+
+.quiz-btn{
+padding:12px;
+border:none;
+border-radius:10px;
+background:white;
+border:1px solid #ccc;
+cursor:pointer;
+font-size:16px;
+}
+
+.quiz-btn:hover{
+background:#eeeeee;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+bottom:0;
+width:100%;
+display:flex;
+justify-content:space-around;
+background:white;
+border-top:1px solid #ddd;
+padding:10px;
+}
+
+.navbar button{
+background:none;
+border:none;
+font-size:25px;
+cursor:pointer;
+color:#2e7d32;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<div id="login">
+
+<div class="logo">📚</div>
+
+<h1>Mixteco Educativo PRO</h1>
+
+<input id="nombre" placeholder="Ingresa tu nombre">
+
+<button onclick="entrar()">Entrar</button>
+
+</div>
+
+<!-- APP -->
+
+<div id="app" style="display:none;">
+
+<div class="topbar">
+
+<div class="topbox" id="vidas"></div>
+
+<div class="topbox" id="nivel"></div>
+
+<div class="topbox">
+🏆 <span id="puntos">0</span>
+</div>
+
+</div>
+
+<!-- INICIO -->
+
+<div id="inicio" class="section active">
+
+<h2>📖 Ocupaciones</h2>
+
+<br>
+
+<div class="grid" id="grid"></div>
+
+</div>
+
+<!-- MEMORAMA -->
+
+<div id="memorama" class="section">
+
+<h2>🎮 Memorama mixteco</h2>
+
+<br>
+
+<button onclick="cargarMemorama()">
+🔄 Reiniciar
+</button>
+
+<div class="mem-grid" id="memgame"></div>
+
+</div>
+
+<!-- QUIZ -->
+
+<div id="quizsec" class="section">
+
+<h2>🧠 Quiz Mixteco</h2>
+
+<div id="quiz"></div>
+
+</div>
+
+<!-- NAV -->
+
+<div class="navbar">
+
+<button onclick="mostrar('inicio')">🏠</button>
+
+<button onclick="mostrar('memorama')">🎮</button>
+
+<button onclick="mostrar('quizsec')">🧠</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* LOGIN */
+
+let usuario=""
+
+function entrar(){
+
+usuario=document.getElementById("nombre").value
+
+if(!usuario){
+alert("Escribe tu nombre")
+return
+}
+
+document.getElementById("login").style.display="none"
+document.getElementById("app").style.display="block"
+
+}
+
+/* ESTADO */
+
+let puntos=0
+let vidas=5
+let nivel=1
+
+function actualizarUI(){
+
+document.getElementById("puntos").innerText=puntos
+
+document.getElementById("vidas").innerHTML=
+"❤️".repeat(vidas)
+
+document.getElementById("nivel").innerHTML=
+"⭐ Nivel "+nivel
+
+}
+
+/* OCUPACIONES */
+
+const ocupaciones=[
+
+{
+n:"Agricultor",
+m:"Tee sa'a tniñu nuu ñu'un nde'yu",
+img:"imagenocu/agricultor.png",
+audio:"audioocu/agricultora.mp3"
+},
+
+{
+n:"Albañil",
+m:"Tee sa'a ve'e",
+img:"imagenocu/albañil.png",
+audio:"audioocu/albañil.mp3"
+},
+
+{
+n:"Ama de casa",
+m:"Ña'a sa'a tniñu ve'e",
+img:"imagenocu/ama de casa.jpg",
+audio:"audioocu/ama de cas.mp3"
+},
+
+{
+n:"Chofer",
+m:"Tee sikaka carru",
+img:"imagenocu/chofer.png",
+audio:"audioocu/chofer.mp3"
+},
+
+{
+n:"Cocinero",
+m:"Tee sa'a ndeyu",
+img:"imagenocu/cocinero.png",
+audio:"audioocu/cocinera.mp3"
+},
+
+{
+n:"Comerciante",
+m:"Tee xiko",
+img:"imagenocu/comercio.png",
+audio:"audioocu/comerciante.mp3"
+},
+
+{
+n:"Fotógrafo",
+m:"Tee tava yiki nuu",
+img:"imagenocu/fotoo.jpg",
+audio:"audioocu/fotografo.mp3"
+},
+
+{
+n:"Ganadero",
+m:"Tee jito kitsi",
+img:"imagenocu/ganadero.png",
+audio:"audio/ganadero.mp3"
+},
+
+{
+n:"Maestra",
+m:"Ña'a sikua'a",
+img:"imagenocu/maestra.jpg",
+audio:"audio/maestra.mp3"
+},
+
+{
+n:"Maestro",
+m:"Tee sikua'a",
+img:"imagenocu/maestro.png",
+audio:"audioocu/maestro.mp3"
+},
+
+{
+n:"Mecánico",
+m:"Tee ndasa'a carru",
+img:"imagenocu/mecanicosss.png",
+audio:"audioocu/mecanico.mp3"
+},
+
+{
+n:"Médico",
+m:"Tee sa'a tatna",
+img:"imagenocu/medico.png",
+audio:"audio/medico.mp3"
+},
+
+{
+n:"Doctora",
+m:"Ña'a sa'a tatna",
+img:"imagenocu/doctora.png",
+audio:"audioocu/doctora.mp3"
+},
+
+{
+n:"Estudiante",
+m:"Sutyi sikua'a",
+img:"imagenocu/estudiante.jpg",
+audio:"audio/estudiante.mp3"
+},
+
+{
+n:"Músico",
+m:"Tee sa'a yaa",
+img:"imagenocu/musico.png",
+audio:"audioocu/musico.mp3"
+},
+
+{
+n:"Pintor",
+m:"Tee ka'yu",
+img:"imagenocu/pintor.png",
+audio:"audioocu/pintor.mp3"
+}
+
+]
+
+/* GRID */
+
+let grid=document.getElementById("grid")
+
+ocupaciones.forEach(o=>{
+
+let div=document.createElement("div")
+
+div.className="card"
+
+div.innerHTML=`
+
+<img src="${o.img}">
+
+<h3>${o.n}</h3>
+
+<div class="mix">${o.m}</div>
+
+<button>🔊 Escuchar</button>
+
+`
+
+div.querySelector("button").onclick=(e)=>{
+
+e.stopPropagation()
+
+new Audio(o.audio).play()
+
+}
+
+div.onclick=()=>{
+
+puntos+=5
+
+if(puntos>=100){
+nivel++
+puntos=0
+alert("🚀 Subiste de nivel")
+}
+
+actualizarUI()
+
+}
+
+grid.appendChild(div)
+
+})
+
+/* MOSTRAR */
+
+function mostrar(id){
+
+document.querySelectorAll(".section")
+.forEach(s=>s.classList.remove("active"))
+
+document.getElementById(id)
+.classList.add("active")
+
+}
+
+/* MEMORAMA */
+
+let mem=document.getElementById("memgame")
+
+let seleccion=[]
+
+let bloqueo=false
+
+function cargarMemorama(){
+
+mem.innerHTML=""
+
+seleccion=[]
+
+bloqueo=false
+
+let cartas=[...ocupaciones.slice(0,6),
+...ocupaciones.slice(0,6)]
+
+.sort(()=>Math.random()-0.5)
+
+cartas.forEach(c=>{
+
+let d=document.createElement("div")
+
+d.className="mem-card"
+
+d.innerHTML="❓"
+
+d.onclick=()=>{
+
+if(bloqueo)return
+
+if(d.classList.contains("ok"))return
+
+if(d.innerHTML!=="❓")return
+
+d.innerHTML=`
+
+<img src="${c.img}">
+
+<strong>${c.m}</strong>
+
+`
+
+new Audio(c.audio).play()
+
+seleccion.push({d,c})
+
+if(seleccion.length==2){
+
+bloqueo=true
+
+if(seleccion[0].c.n===seleccion[1].c.n){
+
+seleccion[0].d.classList.add("ok")
+seleccion[1].d.classList.add("ok")
+
+puntos+=10
+
+actualizarUI()
+
+seleccion=[]
+
+bloqueo=false
+
+}else{
+
+setTimeout(()=>{
+
+seleccion[0].d.innerHTML="❓"
+seleccion[1].d.innerHTML="❓"
+
+seleccion=[]
+
+bloqueo=false
+
+},800)
+
+}
+
+}
+
+}
+
+mem.appendChild(d)
+
+})
+
+}
+
+/* QUIZ */
+
+let quiz=document.getElementById("quiz")
+
+function nuevaPregunta(){
+
+quiz.innerHTML=""
+
+let correcta=
+ocupaciones[
+Math.floor(Math.random()*ocupaciones.length)
+]
+
+let titulo=document.createElement("h3")
+
+titulo.innerHTML=`
+¿Cómo se dice en Mixteco?
+<br><br>
+${correcta.n}
+`
+
+quiz.appendChild(titulo)
+
+let opciones=[correcta]
+
+while(opciones.length<4){
+
+let r=
+ocupaciones[
+Math.floor(Math.random()*ocupaciones.length)
+]
+
+if(!opciones.includes(r))
+opciones.push(r)
+
+}
+
+opciones.sort(()=>Math.random()-0.5)
+
+opciones.forEach(op=>{
+
+let b=document.createElement("button")
+
+b.className="quiz-btn"
+
+b.innerText=op.m
+
+b.onclick=()=>{
+
+if(op.m===correcta.m){
+
+puntos+=10
+
+new Audio(correcta.audio).play()
+
+alert("✅ Correcto")
+
+}else{
+
+vidas--
+
+alert("❌ Incorrecto")
+
+if(vidas<=0){
+
+alert("💀 Juego terminado")
+
+vidas=5
+puntos=0
+nivel=1
+
+}
+
+}
+
+actualizarUI()
+
+nuevaPregunta()
+
+}
+
+quiz.appendChild(b)
+
+})
+
+}
+
+cargarMemorama()
+
+nuevaPregunta()
+
+actualizarUI()
+
+</script>
+
+</body>
+</html>
