@@ -325,7 +325,8 @@ color:yellow;
     margin: 30px auto;
     padding: 25px;
     font-family: Arial, sans-serif;
-    color: white;
+    color: #111827;
+
 }
 
 .encabezado-adivinanzas {
@@ -391,18 +392,14 @@ color:yellow;
     box-shadow:0 0 25px rgba(0,0,0,.20);
 }
 
-#preguntaAdivinanza{
+#preguntaAdivinanza {
+    min-height: 70px;
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #111827;
+    font-weight: bold;
 
-    min-height:70px;
-    margin-bottom:25px;
-
-    font-size:24px;
-
-    line-height:1.5;
-
-    color:#ffffff;
-
-    font-weight:bold;
 }
 
 .opciones-adivinanza {
@@ -2035,15 +2032,18 @@ function mostrarResultadoFinalAdivinanzas() {
 
     preguntaAdivinanza.textContent = "🏆 ¡Terminaste las adivinanzas!";
 
-    opcionesAdivinanza.innerHTML = `
-        <div style="
-            grid-column: 1 / -1;
-            padding: 25px;
-            background: #0f172a;
-            border-radius: 15px;
-            font-size: 21px;
-            line-height: 1.8;
-        ">
+  opcionesAdivinanza.innerHTML = `
+    <div style="
+        grid-column: 1 / -1;
+        padding: 25px;
+        background: #ffffff;
+        color: #111827;
+        border: 2px solid #38bdf8;
+        border-radius: 15px;
+        font-size: 21px;
+        line-height: 1.8;
+        box-shadow: 0 0 15px rgba(0,0,0,.15);
+    ">
             <p>✅ Respuestas correctas: 
                 <strong>${respuestasCorrectasAdivinanzas}</strong>
             </p>
